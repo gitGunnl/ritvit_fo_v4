@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const features = [
   {
@@ -34,13 +35,17 @@ const Index = () => {
               Elevate your business with our innovative solutions and expert guidance.
             </p>
             <div className="flex justify-center gap-4">
-              <Button size="lg" className="hover-lift">
-                Get Started
-                <ArrowRight className="ml-2 h-4 w-4" />
-              </Button>
-              <Button size="lg" variant="outline" className="hover-lift">
-                Learn More
-              </Button>
+              <Link to="/services">
+                <Button size="lg" className="hover-lift">
+                  Get Started
+                  <ArrowRight className="ml-2 h-4 w-4" />
+                </Button>
+              </Link>
+              <Link to="/about">
+                <Button size="lg" variant="outline" className="hover-lift">
+                  Learn More
+                </Button>
+              </Link>
             </div>
           </div>
         </div>
@@ -76,10 +81,12 @@ const Index = () => {
               Join thousands of satisfied customers who have transformed their
               digital presence with our solutions.
             </p>
-            <Button size="lg" className="hover-lift mt-4">
-              Contact Us
-              <ArrowRight className="ml-2 h-4 w-4" />
-            </Button>
+            <Link to="/contact">
+              <Button size="lg" className="hover-lift mt-4">
+                Contact Us
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </Button>
+            </Link>
           </div>
         </div>
       </section>
