@@ -120,6 +120,32 @@ export default {
             transform: "translate(2px, -2px)",
             "text-shadow": "-1px -1px #00ffff, 1px 1px #ff00ff",
           }
+        },
+        "intense-glitch": {
+          "0%, 100%": {
+            transform: "translate(0)",
+            "text-shadow": "none",
+          },
+          "10%": {
+            transform: "translate(-5px, 5px) skew(10deg)",
+            "text-shadow": "3px 3px #00ffff, -3px -3px #ff00ff",
+          },
+          "30%": {
+            transform: "translate(5px, -5px) skew(-10deg)",
+            "text-shadow": "-3px 3px #00ffff, 3px -3px #ff00ff",
+          },
+          "50%": {
+            transform: "translate(-8px, 8px) skew(15deg)",
+            "text-shadow": "4px -4px #00ffff, -4px 4px #ff00ff",
+          },
+          "70%": {
+            transform: "translate(8px, -8px) skew(-15deg)",
+            "text-shadow": "-4px -4px #00ffff, 4px 4px #ff00ff",
+          },
+          "90%": {
+            transform: "translate(-3px, 3px) skew(5deg)",
+            "text-shadow": "2px 2px #00ffff, -2px -2px #ff00ff",
+          }
         }
       },
       animation: {
@@ -130,6 +156,7 @@ export default {
         "glitch-1": "glitch 0.5s cubic-bezier(.25,.46,.45,.94) both",
         "glitch-2": "glitch 0.5s cubic-bezier(.25,.46,.45,.94) both 0.1s",
         "glitch-3": "glitch 0.5s cubic-bezier(.25,.46,.45,.94) both 0.2s",
+        "intense-glitch": "intense-glitch 0.8s cubic-bezier(.25,.46,.45,.94) both"
       },
     },
   },

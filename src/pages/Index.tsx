@@ -23,20 +23,31 @@ const features = [
 
 const Index = () => {
   const [isLoaded, setIsLoaded] = useState(false);
+  const [showIntenseGlitch, setShowIntenseGlitch] = useState(false);
 
   useEffect(() => {
-    // Trigger the glitch effect after component mounts
+    // Trigger the initial glitch effect after component mounts
     setIsLoaded(true);
     
-    // Reset the glitch effect after 2 seconds
-    const timer = setTimeout(() => {
+    // Reset the initial glitch effect after 2 seconds
+    const initialTimer = setTimeout(() => {
       const elements = document.querySelectorAll('.glitch-text');
       elements.forEach(el => {
         (el as HTMLElement).style.animation = 'none';
       });
+      
+      // Trigger the intense glitch effect after a brief pause
+      setTimeout(() => {
+        setShowIntenseGlitch(true);
+        
+        // Reset the intense glitch after it completes
+        setTimeout(() => {
+          setShowIntenseGlitch(false);
+        }, 800);
+      }, 500);
     }, 2000);
 
-    return () => clearTimeout(timer);
+    return () => clearTimeout(initialTimer);
   }, []);
 
   return (
@@ -52,7 +63,7 @@ const Index = () => {
         
         <div className="max-w-7xl mx-auto relative">
           <div className="text-center space-y-8">
-            <h1 className={`text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight bg-gradient-to-r from-purple-600 to-indigo-600 text-transparent bg-clip-text glitch-text ${isLoaded ? 'animate-glitch-1' : ''}`}>
+            <h1 className={`text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight bg-gradient-to-r from-purple-600 to-indigo-600 text-transparent bg-clip-text ${isLoaded ? 'animate-glitch-1' : ''} ${showIntenseGlitch ? 'animate-intense-glitch' : ''}`}>
               Transform Your Digital Experience
             </h1>
             <p className={`max-w-2xl mx-auto text-xl text-gray-600 glitch-text ${isLoaded ? 'animate-glitch-2' : ''}`}>
