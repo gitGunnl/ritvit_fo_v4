@@ -87,6 +87,18 @@ export default {
             transform: "translateY(0)",
           },
         },
+        "tracking-in-expand": {
+          "0%": {
+            "letter-spacing": "-.5em",
+            opacity: "0",
+          },
+          "40%": {
+            opacity: ".6",
+          },
+          "100%": {
+            opacity: "1",
+          },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",

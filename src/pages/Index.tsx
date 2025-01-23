@@ -25,17 +25,23 @@ const Index = () => {
     <div className="min-h-screen flex flex-col bg-gradient-to-br from-purple-50 via-white to-indigo-50">
       <Navigation />
       
-      {/* Hero Section */}
-      <section className="pt-32 pb-16 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center space-y-8 fade-in">
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight bg-gradient-to-r from-purple-600 to-indigo-600 text-transparent bg-clip-text">
+      {/* Hero Section with Explosive Animation */}
+      <section className="pt-32 pb-16 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute inset-0 bg-gradient-to-br from-purple-500/10 to-indigo-500/10 animate-[pulse_4s_ease-in-out_infinite]" />
+          <div className="absolute -top-40 -right-40 w-80 h-80 bg-purple-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-[bounce_8s_ease-in-out_infinite]" />
+          <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-indigo-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-[bounce_8s_ease-in-out_infinite_1s]" />
+        </div>
+        
+        <div className="max-w-7xl mx-auto relative">
+          <div className="text-center space-y-8">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight bg-gradient-to-r from-purple-600 to-indigo-600 text-transparent bg-clip-text animate-[tracking-in-expand_1s_cubic-bezier(0.215,0.610,0.355,1.000)_both]">
               Transform Your Digital Experience
             </h1>
-            <p className="max-w-2xl mx-auto text-xl text-gray-600">
+            <p className="max-w-2xl mx-auto text-xl text-gray-600 animate-fade-up" style={{ animationDelay: '0.5s' }}>
               Elevate your business with our innovative solutions and expert guidance.
             </p>
-            <div className="flex justify-center gap-4">
+            <div className="flex justify-center gap-4 animate-fade-up" style={{ animationDelay: '0.75s' }}>
               <Link to="/services">
                 <Button size="lg" className="hover-lift bg-gradient-to-r from-purple-600 to-indigo-600 hover:shadow-lg hover:shadow-purple-500/30">
                   Get Started
