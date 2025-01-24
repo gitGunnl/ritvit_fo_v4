@@ -105,20 +105,20 @@ export default {
             "text-shadow": "none",
           },
           "20%": {
-            transform: "translate(-2px, 2px)",
-            "text-shadow": "1px 1px #00ffff, -1px -1px #ff00ff",
+            transform: "translate(-1px, 1px)",
+            "text-shadow": "0.5px 0.5px #00ffff, -0.5px -0.5px #ff00ff",
           },
           "40%": {
-            transform: "translate(-2px, -2px)",
-            "text-shadow": "2px -1px #00ffff, -2px 1px #ff00ff",
+            transform: "translate(-1px, -1px)",
+            "text-shadow": "1px -0.5px #00ffff, -1px 0.5px #ff00ff",
           },
           "60%": {
-            transform: "translate(2px, 2px)",
-            "text-shadow": "-1px 1px #00ffff, 1px -1px #ff00ff",
+            transform: "translate(1px, 1px)",
+            "text-shadow": "-0.5px 0.5px #00ffff, 0.5px -0.5px #ff00ff",
           },
           "80%": {
-            transform: "translate(2px, -2px)",
-            "text-shadow": "-1px -1px #00ffff, 1px 1px #ff00ff",
+            transform: "translate(1px, -1px)",
+            "text-shadow": "-0.5px -0.5px #00ffff, 0.5px 0.5px #ff00ff",
           }
         },
         "intense-glitch": {
@@ -127,24 +127,24 @@ export default {
             "text-shadow": "none",
           },
           "10%": {
-            transform: "translate(-5px, 5px) skew(10deg)",
-            "text-shadow": "3px 3px #00ffff, -3px -3px #ff00ff",
+            transform: "translate(-2px, 2px) skew(5deg)",
+            "text-shadow": "1px 1px #00ffff, -1px -1px #ff00ff",
           },
           "30%": {
-            transform: "translate(5px, -5px) skew(-10deg)",
-            "text-shadow": "-3px 3px #00ffff, 3px -3px #ff00ff",
+            transform: "translate(2px, -2px) skew(-5deg)",
+            "text-shadow": "-1px 1px #00ffff, 1px -1px #ff00ff",
           },
           "50%": {
-            transform: "translate(-8px, 8px) skew(15deg)",
-            "text-shadow": "4px -4px #00ffff, -4px 4px #ff00ff",
+            transform: "translate(-3px, 3px) skew(7deg)",
+            "text-shadow": "2px -2px #00ffff, -2px 2px #ff00ff",
           },
           "70%": {
-            transform: "translate(8px, -8px) skew(-15deg)",
-            "text-shadow": "-4px -4px #00ffff, 4px 4px #ff00ff",
+            transform: "translate(3px, -3px) skew(-7deg)",
+            "text-shadow": "-2px -2px #00ffff, 2px 2px #ff00ff",
           },
           "90%": {
-            transform: "translate(-3px, 3px) skew(5deg)",
-            "text-shadow": "2px 2px #00ffff, -2px -2px #ff00ff",
+            transform: "translate(-1px, 1px) skew(3deg)",
+            "text-shadow": "1px 1px #00ffff, -1px -1px #ff00ff",
           }
         }
       },
@@ -160,5 +160,5 @@ export default {
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [require("tailwindcss-animate"), require("@tailwindcss/typography")],
 } satisfies Config;
