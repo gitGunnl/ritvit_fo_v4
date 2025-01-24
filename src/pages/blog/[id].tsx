@@ -17,6 +17,89 @@ interface BlogPost {
 
 const fetchBlogPost = async (id: string): Promise<BlogPost> => {
   // This would normally be an API call
+  if (id === 'tech-stack') {
+    return {
+      id,
+      title: "Complete Technical Documentation & Architecture Overview",
+      content: `
+        <h2>Tech Stack Overview</h2>
+        <p>Our application is built with modern web technologies, focusing on performance, developer experience, and maintainability:</p>
+        
+        <h3>Core Technologies</h3>
+        <ul>
+          <li><strong>React 18:</strong> Our frontend framework, utilizing hooks and functional components</li>
+          <li><strong>TypeScript:</strong> For type safety and better developer experience</li>
+          <li><strong>Vite:</strong> Our build tool, providing fast HMR and optimized production builds</li>
+        </ul>
+
+        <h3>Styling & UI</h3>
+        <ul>
+          <li><strong>Tailwind CSS:</strong> For utility-first styling with custom configurations</li>
+          <li><strong>shadcn/ui:</strong> Accessible and customizable UI components</li>
+          <li><strong>Custom Animations:</strong> Including fade, glitch, and transition effects</li>
+        </ul>
+
+        <h3>State Management & Data Fetching</h3>
+        <ul>
+          <li><strong>TanStack Query:</strong> For efficient server state management and data fetching</li>
+          <li><strong>React Router:</strong> For client-side routing with dynamic routes</li>
+        </ul>
+
+        <h2>Project Structure</h2>
+        <p>The project follows a feature-based organization:</p>
+        <ul>
+          <li><strong>/src/components/:</strong> Reusable UI components</li>
+          <li><strong>/src/components/ui/:</strong> shadcn/ui components</li>
+          <li><strong>/src/pages/:</strong> Route components and page layouts</li>
+          <li><strong>/src/hooks/:</strong> Custom React hooks</li>
+          <li><strong>/src/lib/:</strong> Utility functions and helpers</li>
+        </ul>
+
+        <h2>Key Features</h2>
+        <ul>
+          <li><strong>Responsive Design:</strong> Mobile-first approach with Tailwind breakpoints</li>
+          <li><strong>Blog System:</strong> With search, categories, and individual post views</li>
+          <li><strong>Animations:</strong> Custom keyframes and transitions for enhanced UX</li>
+          <li><strong>Accessibility:</strong> ARIA labels and keyboard navigation support</li>
+        </ul>
+
+        <h2>Development Practices</h2>
+        <ul>
+          <li><strong>Component Structure:</strong> Small, focused components (≤50 lines)</li>
+          <li><strong>Type Safety:</strong> Strict TypeScript usage throughout</li>
+          <li><strong>Error Handling:</strong> Proper error boundaries and loading states</li>
+          <li><strong>Code Style:</strong> Consistent formatting with ESLint and Prettier</li>
+        </ul>
+
+        <h2>Performance Optimizations</h2>
+        <ul>
+          <li><strong>Code Splitting:</strong> Route-based splitting with React Router</li>
+          <li><strong>Asset Optimization:</strong> Vite's built-in optimizations</li>
+          <li><strong>Caching Strategy:</strong> TanStack Query's smart caching</li>
+        </ul>
+
+        <h2>Getting Started</h2>
+        <p>To start development:</p>
+        <ol>
+          <li>Clone the repository</li>
+          <li>Install dependencies with \`npm install\`</li>
+          <li>Start development server with \`npm run dev\`</li>
+        </ol>
+
+        <h2>Deployment</h2>
+        <p>The application can be deployed through:</p>
+        <ul>
+          <li>Direct deployment via Lovable platform</li>
+          <li>Manual deployment to services like Netlify</li>
+          <li>Custom deployment with provided build commands</li>
+        </ul>
+      `,
+      date: "2024-02-21",
+      readTime: "8 min read",
+      category: "Documentation",
+      imageUrl: "/placeholder.svg"
+    };
+  }
   return {
     id,
     title: "Getting Started with Digital Transformation",

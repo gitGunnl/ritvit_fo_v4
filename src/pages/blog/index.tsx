@@ -20,6 +20,15 @@ const fetchBlogPosts = async (): Promise<BlogPost[]> => {
   // This would normally be an API call
   return [
     {
+      id: "tech-stack",
+      title: "Complete Technical Documentation & Architecture Overview",
+      excerpt: "A comprehensive guide to our tech stack, architecture, and development practices for quick onboarding of new developers.",
+      date: "2024-02-21",
+      readTime: "8 min read",
+      category: "Documentation",
+      imageUrl: "/placeholder.svg"
+    },
+    {
       id: "1",
       title: "Getting Started with Digital Transformation",
       excerpt: "Learn how to transform your business with modern digital solutions...",
