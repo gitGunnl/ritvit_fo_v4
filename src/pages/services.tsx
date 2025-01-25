@@ -5,43 +5,6 @@ import Footer from "@/components/Footer"
 import { Button } from "@/components/ui/button"
 import { Link } from "react-router-dom"
 
-const services = [
-  {
-    icon: <MessageSquare className="w-12 h-12 text-violet-600" />,
-    title: "ChatGPT Course",
-    description: "Our flagship course teaching you how to leverage ChatGPT effectively in your daily work",
-    price: "1.200 DKK",
-    highlight: "Most Popular",
-    details: "Perfect first step for beginners and professionals alike"
-  },
-  {
-    icon: <Lightbulb className="w-12 h-12 text-indigo-600" />,
-    title: "15 ChatGPT Use Cases",
-    description: "Save time discovering ChatGPT applications - we provide 15 tailored ways to use ChatGPT in your specific work context",
-    price: "1.200 DKK",
-    details: "Personalized for your industry and role"
-  },
-  {
-    icon: <Presentation className="w-12 h-12 text-violet-600" />,
-    title: "AI Talks & Workshops",
-    description: "Inspirational and practical talks for employees and leaders about AI's potential in your organization",
-    price: "10.000 DKK",
-    details: "Customized presentations for your team"
-  },
-  {
-    icon: <Users2 className="w-12 h-12 text-indigo-600" />,
-    title: "AI Implementation Consulting",
-    description: "Hands-on assistance implementing ChatGPT or Copilot in your daily workflows",
-    details: "Recommended after completing our course"
-  },
-  {
-    icon: <Code className="w-12 h-12 text-violet-600" />,
-    title: "Custom AI Automation",
-    description: "Turn your AI automation ideas into reality with our development expertise",
-    details: "Contact us for custom pricing"
-  }
-]
-
 export default function Services() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-50 to-indigo-50">
@@ -50,58 +13,132 @@ export default function Services() {
         <div className="container px-4 mx-auto">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <h1 className="text-4xl font-bold mb-6 animate-fade-down bg-gradient-to-r from-violet-600 to-indigo-600 bg-clip-text text-transparent">
-              AI Solutions for Faroese Businesses
+              Start Your AI Journey Today
             </h1>
-            <p className="text-lg text-gray-600">
-              From beginner-friendly courses to custom AI implementations, we help Faroese businesses embrace the future of technology.
+            <p className="text-lg text-gray-600 mb-8">
+              We help Faroese businesses embrace AI technology, starting with practical tools like ChatGPT and Microsoft Copilot. Our structured approach ensures your team can effectively implement AI in their daily work.
             </p>
           </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {services.map((service, index) => (
-              <Card 
-                key={index}
-                className="p-6 hover:shadow-lg transition-shadow glass-card hover-lift animate-fade-up relative overflow-hidden"
-                style={{ animationDelay: `${index * 100}ms` }}
-              >
-                {service.highlight && (
-                  <div className="absolute top-4 right-4">
-                    <span className="px-3 py-1 text-sm font-medium text-white bg-gradient-to-r from-violet-600 to-indigo-600 rounded-full">
-                      {service.highlight}
-                    </span>
-                  </div>
-                )}
-                <div className="mb-4">{service.icon}</div>
-                <h3 className="text-xl font-semibold mb-2">{service.title}</h3>
-                <p className="text-muted-foreground mb-4">{service.description}</p>
-                {service.price && (
-                  <p className="text-lg font-semibold text-violet-600 mb-2">
-                    {service.price}
+
+          {/* Main Course Section */}
+          <div className="mb-20">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl font-bold text-gray-900 mb-4">Start Here: Our Flagship Course</h2>
+              <p className="text-lg text-gray-600">The perfect first step in your AI journey</p>
+            </div>
+            
+            <Card className="p-8 glass-card hover-lift animate-fade-up max-w-2xl mx-auto">
+              <div className="flex items-start gap-6">
+                <MessageSquare className="w-12 h-12 text-violet-600 flex-shrink-0" />
+                <div>
+                  <h3 className="text-2xl font-semibold mb-3">ChatGPT Course</h3>
+                  <p className="text-gray-600 mb-4">
+                    Our comprehensive course teaches you how to leverage ChatGPT effectively in your daily work. Perfect for beginners and professionals alike.
                   </p>
-                )}
-                <p className="text-sm text-gray-500 italic mb-4">{service.details}</p>
-                <Link to="/contact">
-                  <Button 
-                    className="w-full bg-gradient-to-r from-violet-600 to-indigo-600 hover:shadow-lg hover:shadow-purple-500/30"
-                  >
-                    Get Started
-                  </Button>
-                </Link>
-              </Card>
-            ))}
+                  <p className="text-xl font-semibold text-violet-600 mb-4">1.200 DKK</p>
+                  <Link to="/contact">
+                    <Button 
+                      className="w-full bg-gradient-to-r from-violet-600 to-indigo-600 hover:shadow-lg hover:shadow-purple-500/30"
+                    >
+                      Get Started
+                    </Button>
+                  </Link>
+                </div>
+              </div>
+            </Card>
           </div>
 
-          <div className="mt-16 text-center">
+          {/* Journey Steps */}
+          <div className="space-y-24">
+            {/* Step 2: Use Cases */}
+            <div className="flex flex-col md:flex-row gap-8 items-center">
+              <div className="md:w-1/2">
+                <Lightbulb className="w-12 h-12 text-indigo-600 mb-4" />
+                <h3 className="text-2xl font-semibold mb-4">Next Step: 15 ChatGPT Use Cases</h3>
+                <p className="text-gray-600 mb-4">
+                  Save time discovering ChatGPT applications - we provide 15 tailored ways to use ChatGPT in your specific work context.
+                </p>
+                <p className="text-xl font-semibold text-violet-600 mb-4">1.200 DKK</p>
+                <Link to="/contact">
+                  <Button variant="outline" className="hover-lift">Learn More</Button>
+                </Link>
+              </div>
+              <Card className="md:w-1/2 p-6 glass-card">
+                <p className="text-gray-600">
+                  After completing our course, this service helps you identify specific opportunities for AI implementation in your workflow, saving weeks of discovery time.
+                </p>
+              </Card>
+            </div>
+
+            {/* Step 3: Talks & Workshops */}
+            <div className="flex flex-col md:flex-row gap-8 items-center">
+              <Card className="md:w-1/2 p-6 glass-card order-2 md:order-1">
+                <p className="text-gray-600">
+                  Perfect for organizations wanting to introduce AI concepts to multiple employees simultaneously. Our talks combine inspiration with practical demonstrations.
+                </p>
+              </Card>
+              <div className="md:w-1/2 order-1 md:order-2">
+                <Presentation className="w-12 h-12 text-violet-600 mb-4" />
+                <h3 className="text-2xl font-semibold mb-4">Scale Up: AI Talks & Workshops</h3>
+                <p className="text-gray-600 mb-4">
+                  Inspirational and practical talks for employees and leaders about AI's potential in your organization.
+                </p>
+                <p className="text-xl font-semibold text-violet-600 mb-4">10.000 DKK</p>
+                <Link to="/contact">
+                  <Button variant="outline" className="hover-lift">Book a Session</Button>
+                </Link>
+              </div>
+            </div>
+
+            {/* Step 4: Implementation */}
+            <div className="flex flex-col md:flex-row gap-8 items-center">
+              <div className="md:w-1/2">
+                <Users2 className="w-12 h-12 text-indigo-600 mb-4" />
+                <h3 className="text-2xl font-semibold mb-4">Implement: AI Consulting</h3>
+                <p className="text-gray-600 mb-4">
+                  Once your team understands the basics, we provide hands-on assistance implementing ChatGPT or Copilot in your daily workflows.
+                </p>
+                <Link to="/contact">
+                  <Button variant="outline" className="hover-lift">Get Support</Button>
+                </Link>
+              </div>
+              <Card className="md:w-1/2 p-6 glass-card">
+                <p className="text-gray-600">
+                  Our experts work directly with your team to integrate AI tools into their specific workflows, ensuring successful adoption and maximum benefit.
+                </p>
+              </Card>
+            </div>
+
+            {/* Step 5: Custom Solutions */}
+            <div className="flex flex-col md:flex-row gap-8 items-center">
+              <Card className="md:w-1/2 p-6 glass-card order-2 md:order-1">
+                <p className="text-gray-600">
+                  Have a specific process you want to automate with AI? We can help turn your automation ideas into reality with our development expertise.
+                </p>
+              </Card>
+              <div className="md:w-1/2 order-1 md:order-2">
+                <Code className="w-12 h-12 text-violet-600 mb-4" />
+                <h3 className="text-2xl font-semibold mb-4">Build: Custom AI Automation</h3>
+                <p className="text-gray-600 mb-4">
+                  Turn your AI automation ideas into reality with our development expertise.
+                </p>
+                <Link to="/contact">
+                  <Button variant="outline" className="hover-lift">Discuss Your Project</Button>
+                </Link>
+              </div>
+            </div>
+          </div>
+
+          <div className="mt-20 text-center">
             <p className="text-lg text-gray-600 mb-6">
-              Not sure which service is right for you? Contact us for a free consultation.
+              Ready to start your AI journey? Begin with our ChatGPT course today.
             </p>
             <Link to="/contact">
               <Button 
                 size="lg"
-                variant="outline" 
-                className="hover-lift hover:shadow-lg hover:shadow-purple-500/30"
+                className="bg-gradient-to-r from-violet-600 to-indigo-600 hover:shadow-lg hover:shadow-purple-500/30"
               >
-                Contact Us
+                Get Started
               </Button>
             </Link>
           </div>
