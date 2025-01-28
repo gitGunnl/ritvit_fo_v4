@@ -1,69 +1,144 @@
-# Welcome to your Lovable project
+# AI Innovation in the Faroe Islands
 
-## Project info
+Welcome to the official repository of the first dedicated AI company in the Faroe Islands. We're pioneering the integration of artificial intelligence into Faroese businesses, starting with practical tools like ChatGPT and Microsoft Copilot.
 
-**URL**: https://lovable.dev/projects/66eca049-2188-462e-97f8-74338d5149a3
+## 🎯 Our Mission
 
-## How can I edit this code?
+To help Faroese businesses embrace AI technology through:
+- Practical AI training and workshops
+- Custom AI implementation consulting
+- Development of AI-powered solutions
+- Building a strong tech community in the Faroe Islands
 
-There are several ways of editing your application.
+## 🚀 Getting Started
 
-**Use Lovable**
+### Prerequisites
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/66eca049-2188-462e-97f8-74338d5149a3) and start prompting.
+- Node.js (v18 or higher) - [Install Node.js](https://nodejs.org/)
+- npm (comes with Node.js)
 
-Changes made via Lovable will be committed automatically to this repo.
+### Installation
 
-**Use your preferred IDE**
+```bash
+# Clone the repository
+git clone <your-repo-url>
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+# Navigate to the project directory
+cd <project-directory>
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+# Install dependencies
+npm install
 
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
+# Start the development server
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+## 🛠 Tech Stack
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+This project is built with modern technologies:
 
-**Use GitHub Codespaces**
+- **React** - A JavaScript library for building user interfaces
+- **TypeScript** - Adds static typing to JavaScript
+- **Vite** - Next generation frontend tooling
+- **Tailwind CSS** - A utility-first CSS framework
+- **shadcn/ui** - High-quality UI components
+- **React Router** - For client-side routing
+- **Lucide Icons** - Beautiful open-source icons
+- **React Query** - For efficient data fetching and caching
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+## 📦 Project Structure
 
-## What technologies are used for this project?
+```
+src/
+├── components/        # Reusable UI components
+├── pages/            # Page components and routes
+├── hooks/            # Custom React hooks
+├── lib/              # Utility functions and helpers
+├── styles/           # Global styles and Tailwind config
+└── types/            # TypeScript type definitions
+```
 
-This project is built with .
+## 🎨 Features
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+- **Modern Design**: Responsive, mobile-first design with a clean and professional aesthetic
+- **Performance**: Built with Vite for lightning-fast development and production builds
+- **Type Safety**: Full TypeScript support for better development experience
+- **Component Library**: Leveraging shadcn/ui for consistent, accessible components
+- **Routing**: Client-side routing with React Router
+- **State Management**: Efficient state management with React Query
 
-## How can I deploy this project?
+## 🌟 Services
 
-Simply open [Lovable](https://lovable.dev/projects/66eca049-2188-462e-97f8-74338d5149a3) and click on Share -> Publish.
+1. **ChatGPT Course**
+   - Comprehensive training for beginners and professionals
+   - Practical implementation strategies
+   - Real-world use cases
 
-## I want to use a custom domain - is that possible?
+2. **AI Implementation**
+   - Custom solutions for businesses
+   - Integration support
+   - Workflow optimization
 
-We don't support custom domains (yet). If you want to deploy your project under your own domain then we recommend using Netlify. Visit our docs for more details: [Custom domains](https://docs.lovable.dev/tips-tricks/custom-domain/)
+3. **Workshops & Training**
+   - On-site training sessions
+   - Team workshops
+   - Customized learning paths
+
+## 🔧 Development
+
+### Available Scripts
+
+```bash
+# Start development server
+npm run dev
+
+# Build for production
+npm run build
+
+# Preview production build
+npm run preview
+
+# Run type checking
+npm run typecheck
+
+# Run linting
+npm run lint
+```
+
+### Code Style
+
+This project uses:
+- ESLint for code linting
+- Prettier for code formatting
+- TypeScript for type checking
+
+## 🤝 Contributing
+
+We welcome contributions! Please follow these steps:
+
+1. Fork the repository
+2. Create a new branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+## 📝 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 📞 Contact
+
+- Website: [Your Website]
+- Email: [Your Email]
+- LinkedIn: [Your LinkedIn]
+
+## 🙏 Acknowledgments
+
+Special thanks to:
+- The Faroese business community for embracing innovation
+- Our early adopters and supporters
+- The open-source community for the amazing tools we use
+
+---
+
+Built with ❤️ in the Faroe Islands 🇫🇴
