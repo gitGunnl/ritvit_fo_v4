@@ -2,125 +2,160 @@ import { Button } from "@/components/ui/button";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import ChatbotButton from "@/components/ChatbotButton";
-import { ArrowRight, CheckCircle2 } from "lucide-react";
+import { ArrowRight, Mail, Phone, MessageSquare, CheckCircle2, Clock, Users, Zap } from "lucide-react";
 import { Link } from "react-router-dom";
-import { useEffect, useState } from "react";
-
-const features = [
-  {
-    title: "Innovative Solutions",
-    description: "Cutting-edge technology solutions for modern businesses",
-  },
-  {
-    title: "Expert Support",
-    description: "24/7 support from our team of experienced professionals",
-  },
-  {
-    title: "Scalable Infrastructure",
-    description: "Built to grow with your business needs",
-  },
-];
 
 const Index = () => {
-  const [isLoaded, setIsLoaded] = useState(false);
-  const [showIntenseGlitch, setShowIntenseGlitch] = useState(false);
-
-  useEffect(() => {
-    setIsLoaded(true);
-    
-    const initialTimer = setTimeout(() => {
-      const elements = document.querySelectorAll('.glitch-text');
-      elements.forEach(el => {
-        (el as HTMLElement).style.animation = 'none';
-      });
-      
-      setTimeout(() => {
-        setShowIntenseGlitch(true);
-        
-        setTimeout(() => {
-          setShowIntenseGlitch(false);
-        }, 800);
-      }, 500);
-    }, 2000);
-
-    return () => clearTimeout(initialTimer);
-  }, []);
-
   return (
     <div className="min-h-screen flex flex-col bg-gradient-to-br from-purple-50 via-white to-indigo-50">
       <Navigation />
       
+      {/* Hero Section */}
       <section className="pt-32 pb-16 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
-        <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute inset-0 bg-gradient-to-br from-purple-500/10 to-indigo-500/10 animate-[pulse_4s_ease-in-out_infinite]" />
-          <div className="absolute -top-40 -right-40 w-80 h-80 bg-purple-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-[bounce_8s_ease-in-out_infinite]" />
-          <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-indigo-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-[bounce_8s_ease-in-out_infinite_1s]" />
+        <div className="max-w-7xl mx-auto text-center">
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-gray-900 mb-8 animate-fade-up">
+            Før din arbejdsplads ind i fremtiden med AI – lokalt forankret i Færøerne
+          </h1>
+          <p className="max-w-2xl mx-auto text-xl text-gray-600 mb-8 animate-fade-up">
+            Vi er Færøernes første og eneste virksomhed, der udelukkende arbejder med AI. Uanset om du er nybegynder eller allerede har kendskab til kunstig intelligens, er vi her for at hjælpe dig godt i gang og åbne op for de mange muligheder, AI kan tilbyde.
+          </p>
+          <Link to="/services">
+            <Button size="lg" className="animate-fade-up bg-purple-600 hover:bg-purple-700">
+              Tag vores ChatGPT-kursus <ArrowRight className="ml-2" />
+            </Button>
+          </Link>
         </div>
-        
-        <div className="max-w-7xl mx-auto relative">
-          <div className="text-center space-y-8">
-            <h1 className={`text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight bg-gradient-to-r from-purple-600 to-indigo-600 text-transparent bg-clip-text ${isLoaded ? 'animate-glitch-1' : ''}`}>
-              Transform Your Digital Experience
-            </h1>
-            <p className={`max-w-2xl mx-auto text-xl text-gray-600 glitch-text ${isLoaded ? 'animate-glitch-2' : ''}`}>
-              Elevate your business with our innovative solutions and expert guidance.
+      </section>
+
+      {/* Who We Are Section */}
+      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-white/50">
+        <div className="max-w-7xl mx-auto">
+          <h2 className="text-3xl font-bold mb-8 text-center">Hvem er vi?</h2>
+          <div className="prose prose-lg mx-auto">
+            <p className="text-gray-600 mb-8">
+              Mit navn er [DIT NAVN], og jeg er både stifter og eneste fuldtidsansatte i virksomheden. Jeg har arbejdet med AI i flere år og brænder for at gøre teknologien mere tilgængelig for alle – særligt her på Færøerne. Mine mål er at skabe innovative AI-løsninger, hjælpe lokale virksomheder med at udnytte kunstig intelligens, og på længere sigt være med til at sælge alt fra robotter til selvkørende biler.
             </p>
-            <div className={`flex justify-center gap-4 glitch-text ${isLoaded ? 'animate-glitch-3' : ''}`}>
-              <Link to="/services">
-                <Button 
-                  size="lg" 
-                  className={`hover-lift bg-gradient-to-r from-purple-600 to-indigo-600 hover:shadow-lg hover:shadow-purple-500/30 ${showIntenseGlitch ? 'animate-intense-glitch' : ''}`}
-                >
-                  Get Started
-                  <ArrowRight className="ml-2 h-4 w-4" />
-                </Button>
-              </Link>
-              <Link to="/about">
-                <Button size="lg" variant="outline" className="hover-lift hover:shadow-lg hover:shadow-indigo-500/20">
-                  Learn More
-                </Button>
-              </Link>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
+              <div className="glass-card p-6 hover-lift">
+                <h3 className="text-xl font-semibold mb-2">Indgående AI-viden</h3>
+                <p className="text-gray-600">Jeg holder mig konstant opdateret om de nyeste tendenser inden for AI.</p>
+              </div>
+              <div className="glass-card p-6 hover-lift">
+                <h3 className="text-xl font-semibold mb-2">Praktisk erfaring</h3>
+                <p className="text-gray-600">Jeg bruger AI dagligt i både udvikling og undervisning.</p>
+              </div>
+              <div className="glass-card p-6 hover-lift">
+                <h3 className="text-xl font-semibold mb-2">Lokalkendskab</h3>
+                <p className="text-gray-600">Som færing kender jeg vilkårene og behovene her på øerne.</p>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
+      {/* Course Section */}
       <section className="py-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {features.map((feature, index) => (
-              <div
-                key={feature.title}
-                className={`glass-card p-8 rounded-xl hover-lift hover:shadow-xl hover:shadow-purple-500/10 glitch-text ${isLoaded ? `animate-glitch-${index + 1}` : ''}`}
-                style={{
-                  animationDelay: `${index * 100}ms`,
-                }}
-              >
-                <CheckCircle2 className="h-8 w-8 text-purple-600 mb-4" />
-                <h3 className="text-xl font-semibold mb-2">{feature.title}</h3>
-                <p className="text-gray-600">{feature.description}</p>
+          <div className="glass-card p-8 md:p-12 relative overflow-hidden">
+            <div className="absolute top-0 right-0 bg-yellow-400 text-black px-4 py-1 rounded-bl-lg font-medium">
+              Anbefalet første skridt
+            </div>
+            <h2 className="text-3xl font-bold mb-6">Býrjunarskeið í ChatGPT til Føroysk Skrivstovufólk</h2>
+            <p className="text-xl text-gray-600 mb-8">
+              Det bedste skridt for alle, der er nye inden for AI, er at tage netop dette kursus.
+            </p>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+              <div className="flex items-start gap-4">
+                <CheckCircle2 className="w-6 h-6 text-green-500 flex-shrink-0 mt-1" />
+                <div>
+                  <h3 className="font-semibold mb-2">Skræddersyet til færøske kontormedarbejdere</h3>
+                  <p className="text-gray-600">Lær, hvordan ChatGPT kan effektivisere e-mails, tekstdokumenter og andre opgaver i din hverdag.</p>
+                </div>
               </div>
-            ))}
+              <div className="flex items-start gap-4">
+                <Clock className="w-6 h-6 text-green-500 flex-shrink-0 mt-1" />
+                <div>
+                  <h3 className="font-semibold mb-2">Fleksibel online undervisning</h3>
+                  <p className="text-gray-600">Du kan lære i dit eget tempo, uden at skulle møde fysisk op.</p>
+                </div>
+              </div>
+            </div>
+            <Link to="/services">
+              <Button size="lg" className="w-full md:w-auto bg-purple-600 hover:bg-purple-700">
+                Tag kurset nu <ArrowRight className="ml-2" />
+              </Button>
+            </Link>
           </div>
         </div>
       </section>
 
+      {/* Benefits Section */}
+      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-white/50">
+        <div className="max-w-7xl mx-auto">
+          <h2 className="text-3xl font-bold mb-12 text-center">Hvad kan AI gøre for dig og din virksomhed?</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="flex items-start gap-4">
+              <Zap className="w-6 h-6 text-purple-600 flex-shrink-0 mt-1" />
+              <div>
+                <h3 className="text-xl font-semibold mb-2">Automatisér rutineopgaver</h3>
+                <p className="text-gray-600">Lad ChatGPT håndtere gentagne opgaver som e-mails, grundlæggende rapportskrivning og informationssøgning.</p>
+              </div>
+            </div>
+            <div className="flex items-start gap-4">
+              <Users className="w-6 h-6 text-purple-600 flex-shrink-0 mt-1" />
+              <div>
+                <h3 className="text-xl font-semibold mb-2">Effektivisér kontorarbejdet</h3>
+                <p className="text-gray-600">Integrér AI-værktøjer i programmer som Word eller Excel, og få kontrol over tidskrævende processer.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Contact Section */}
       <section className="py-16 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto text-center">
-          <div className={`glass-card p-12 rounded-2xl space-y-6 bg-gradient-to-br from-purple-500/10 via-transparent to-indigo-500/10 glitch-text ${isLoaded ? 'animate-glitch-2' : ''}`}>
-            <h2 className="text-3xl font-bold bg-gradient-to-r from-purple-600 to-indigo-600 text-transparent bg-clip-text">
-              Ready to Get Started?
-            </h2>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              Join thousands of satisfied customers who have transformed their
-              digital presence with our solutions.
-            </p>
-            <Link to="/contact">
-              <Button size="lg" className="hover-lift bg-gradient-to-r from-purple-600 to-indigo-600 hover:shadow-lg hover:shadow-purple-500/30 mt-4">
-                Contact Us
-                <ArrowRight className="ml-2 h-4 w-4" />
-              </Button>
-            </Link>
+        <div className="max-w-7xl mx-auto">
+          <h2 className="text-3xl font-bold mb-8 text-center">Kontakt</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="glass-card p-8">
+              <h3 className="text-xl font-semibold mb-4">Kontakt mig</h3>
+              <div className="space-y-4">
+                <div className="flex items-center gap-3">
+                  <Mail className="w-5 h-5 text-purple-600" />
+                  <span>info@ditfirma.fo</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <Phone className="w-5 h-5 text-purple-600" />
+                  <span>(+298) XX XX XX</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <MessageSquare className="w-5 h-5 text-purple-600" />
+                  <span>@DitFirma på Facebook</span>
+                </div>
+              </div>
+            </div>
+            <div className="glass-card p-8">
+              <h3 className="text-xl font-semibold mb-4">Send en besked</h3>
+              <form className="space-y-4">
+                <input
+                  type="text"
+                  placeholder="Navn"
+                  className="w-full p-2 border rounded-md"
+                />
+                <input
+                  type="email"
+                  placeholder="E-mail"
+                  className="w-full p-2 border rounded-md"
+                />
+                <textarea
+                  placeholder="Besked"
+                  className="w-full p-2 border rounded-md h-32"
+                ></textarea>
+                <Button className="w-full bg-purple-600 hover:bg-purple-700">
+                  Send besked
+                </Button>
+              </form>
+            </div>
           </div>
         </div>
       </section>
