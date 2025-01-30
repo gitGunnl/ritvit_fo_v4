@@ -21,7 +21,7 @@ To help Faroese businesses embrace AI technology through:
 
 ```bash
 # Clone the repository
-git clone <your-repo-url>
+git clone (https://github.com/gitGunnl/modern-foundation-oasis.git)
 
 # Navigate to the project directory
 cd <project-directory>
