@@ -2,13 +2,10 @@
 const fs = require('fs');
 
 const filePaths = [
-  'static/css/src/main.css',
-  'static/css/tailwind.css',
-  'tailwind.config.js',
-  'postcss.config.js',
-  'templates/toggle_test.html',
-  'static/js/main.js',
-  'templates/index.html'
+  'src/index.css',
+  'src/App.css',
+  'tailwind.config.ts',
+  'postcss.config.js'
 ];
 
 let outputContent = '';
