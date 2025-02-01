@@ -13,7 +13,7 @@ const BlogSearch = ({ searchQuery, setSearchQuery }: BlogSearchProps) => {
       <Input
         type="text"
         placeholder="Search articles..."
-        className="pl-10"
+        className="pl-10 bg-black/30 border-gray-800 text-white placeholder:text-gray-400"
         value={searchQuery}
         onChange={(e) => setSearchQuery(e.target.value)}
       />

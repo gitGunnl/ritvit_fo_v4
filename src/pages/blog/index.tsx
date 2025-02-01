@@ -77,16 +77,16 @@ const BlogIndex = () => {
   });
 
   return (
-    <div className="min-h-screen flex flex-col bg-gradient-to-br from-purple-50 via-white to-indigo-50">
+    <div className="min-h-screen flex flex-col bg-gradient-to-br from-gray-900 via-gray-800 to-purple-900">
       <Navigation />
       
       <main className="flex-grow container mx-auto px-4 py-24 animate-fade-up">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12 space-y-4">
-            <h1 className="text-4xl font-bold bg-gradient-to-r from-purple-600 to-indigo-600 text-transparent bg-clip-text">
+            <h1 className="text-4xl font-bold bg-gradient-to-r from-purple-400 to-indigo-400 text-transparent bg-clip-text">
               Our Blog
             </h1>
-            <p className="text-gray-600 max-w-2xl mx-auto">
+            <p className="text-gray-300 max-w-2xl mx-auto">
               Explore our latest insights, tutorials, and updates about digital transformation
               and web development.
             </p>
