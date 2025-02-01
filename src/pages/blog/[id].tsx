@@ -127,17 +127,17 @@ const BlogPost = () => {
 
   if (isLoading) {
     return (
-      <div className="min-h-screen flex flex-col bg-gradient-to-br from-purple-50 via-white to-indigo-50">
+      <div className="min-h-screen flex flex-col bg-gradient-to-br from-gray-900 via-gray-800 to-purple-900">
         <Navigation />
         <div className="flex-grow container mx-auto px-4 py-24">
           <div className="animate-pulse max-w-3xl mx-auto">
-            <div className="h-8 bg-gray-200 rounded w-3/4 mb-4"></div>
-            <div className="h-4 bg-gray-200 rounded w-1/4 mb-8"></div>
-            <div className="h-48 bg-gray-200 rounded mb-8"></div>
+            <div className="h-8 bg-gray-800 rounded w-3/4 mb-4"></div>
+            <div className="h-4 bg-gray-800 rounded w-1/4 mb-8"></div>
+            <div className="h-48 bg-gray-800 rounded mb-8"></div>
             <div className="space-y-4">
-              <div className="h-4 bg-gray-200 rounded"></div>
-              <div className="h-4 bg-gray-200 rounded"></div>
-              <div className="h-4 bg-gray-200 rounded w-5/6"></div>
+              <div className="h-4 bg-gray-800 rounded"></div>
+              <div className="h-4 bg-gray-800 rounded"></div>
+              <div className="h-4 bg-gray-800 rounded w-5/6"></div>
             </div>
           </div>
         </div>
@@ -149,23 +149,23 @@ const BlogPost = () => {
   if (!post) return null;
 
   return (
-    <div className="min-h-screen flex flex-col bg-gradient-to-br from-purple-50 via-white to-indigo-50">
+    <div className="min-h-screen flex flex-col bg-gradient-to-br from-gray-900 via-gray-800 to-purple-900">
       <Navigation />
       
       <main className="flex-grow container mx-auto px-4 py-24">
         <article className="max-w-3xl mx-auto">
           <Link to="/blog">
-            <Button variant="ghost" className="mb-8 hover-lift">
+            <Button variant="ghost" className="mb-8 hover-lift text-gray-300 hover:text-white hover:bg-white/10">
               <ArrowLeft className="mr-2 h-4 w-4" />
               Back to Blog
             </Button>
           </Link>
 
-          <h1 className="text-4xl font-bold mb-4 bg-gradient-to-r from-purple-600 to-indigo-600 text-transparent bg-clip-text">
+          <h1 className="text-4xl font-bold mb-4 bg-gradient-to-r from-purple-400 to-indigo-400 text-transparent bg-clip-text">
             {post.title}
           </h1>
 
-          <div className="flex items-center gap-4 text-gray-500 mb-8">
+          <div className="flex items-center gap-4 text-gray-400 mb-8">
             <span className="flex items-center gap-1">
               <Calendar className="h-4 w-4" />
               {new Date(post.date).toLocaleDateString()}
@@ -174,19 +174,22 @@ const BlogPost = () => {
               <Clock className="h-4 w-4" />
               {post.readTime}
             </span>
-            <span className="text-purple-600 font-medium">
+            <span className="text-purple-400 font-medium">
               {post.category}
             </span>
           </div>
 
-          <img
-            src={post.imageUrl}
-            alt={post.title}
-            className="w-full h-64 object-cover rounded-lg mb-8"
-          />
+          <div className="relative">
+            <img
+              src={post.imageUrl}
+              alt={post.title}
+              className="w-full h-64 object-cover rounded-lg mb-8"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-gray-900/20 to-transparent rounded-lg" />
+          </div>
 
           <div 
-            className="prose prose-lg max-w-none prose-headings:text-gray-900 prose-p:text-gray-600"
+            className="prose prose-lg max-w-none prose-invert prose-headings:text-gray-100 prose-p:text-gray-300 prose-strong:text-purple-400 prose-a:text-purple-400"
             dangerouslySetInnerHTML={{ __html: post.content }}
           />
         </article>
