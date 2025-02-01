@@ -2,12 +2,12 @@ import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
-    <footer className="bg-white border-t border-gray-200">
+    <footer className="bg-black/50 backdrop-blur-md border-t border-gray-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="space-y-4">
-            <h3 className="text-lg font-semibold">Brand</h3>
-            <p className="text-gray-600">
+            <h3 className="text-lg font-semibold text-white">Brand</h3>
+            <p className="text-gray-300">
               Creating exceptional digital experiences through innovative solutions.
             </p>
           </div>
@@ -16,7 +16,7 @@ const Footer = () => {
             <h3 className="text-lg font-semibold">Company</h3>
             <ul className="space-y-2">
               <li>
-                <Link to="/about" className="text-gray-600 hover:text-gray-900">
+                <Link to="/about" className="text-gray-300 hover:text-purple-400">
                   About Us
                 </Link>
               </li>
@@ -66,7 +66,7 @@ const Footer = () => {
         </div>
         
         <div className="mt-8 pt-8 border-t border-gray-200">
-          <p className="text-center text-gray-600">
+          <p className="text-center text-gray-400">
             © {new Date().getFullYear()} Brand. All rights reserved.
           </p>
         </div>

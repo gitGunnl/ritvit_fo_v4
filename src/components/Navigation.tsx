@@ -15,11 +15,11 @@ const Navigation = () => {
   ];
 
   return (
-    <nav className="fixed w-full bg-white/80 backdrop-blur-md z-50 border-b border-gray-200">
+    <nav className="fixed w-full bg-black/50 dark:bg-black/50 backdrop-blur-md z-50 border-b border-gray-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16">
           <div className="flex items-center">
-            <Link to="/" className="text-xl font-semibold">
+            <Link to="/" className="text-xl font-semibold text-white">
               Brand
             </Link>
           </div>
@@ -30,12 +30,12 @@ const Navigation = () => {
               <Link
                 key={item.name}
                 to={item.path}
-                className="text-gray-600 hover:text-gray-900 transition-colors"
+                className="text-gray-300 hover:text-purple-400 transition-colors"
               >
                 {item.name}
               </Link>
             ))}
-            <Button className="hover-lift">Get Started</Button>
+            <Button className="hover-lift bg-purple-600 hover:bg-purple-700">Get Started</Button>
           </div>
 
           {/* Mobile Navigation Button */}
