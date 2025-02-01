@@ -1,0 +1,301 @@
+### src/index.css
+```
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+ 
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 240 10% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
+    --primary: 240 5.9% 10%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 240 4.8% 95.9%;
+    --secondary-foreground: 240 5.9% 10%;
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 46.1%;
+    --accent: 240 4.8% 95.9%;
+    --accent-foreground: 240 5.9% 10%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+    --ring: 240 5.9% 10%;
+    --radius: 0.75rem;
+  }
+
+  .dark {
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 240 10% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 0 0% 98%;
+    --primary-foreground: 240 5.9% 10%;
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
+    --accent: 240 3.7% 15.9%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 240 4.9% 83.9%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground antialiased;
+  }
+}
+
+.glass-card {
+  @apply bg-white/30 backdrop-blur-md border border-white/20 shadow-xl dark:bg-black/30 dark:border-white/10;
+}
+
+.hover-lift {
+  @apply transition-transform duration-300 hover:-translate-y-1;
+}
+
+.fade-in {
+  @apply animate-fade-up;
+}
+```
+
+### src/App.css
+```
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
+
+```
+
+### tailwind.config.ts
+```
+import type { Config } from "tailwindcss";
+
+export default {
+  darkMode: ["class"],
+  content: [
+    "./pages/**/*.{ts,tsx}",
+    "./components/**/*.{ts,tsx}",
+    "./app/**/*.{ts,tsx}",
+    "./src/**/*.{ts,tsx}",
+  ],
+  prefix: "",
+  theme: {
+    container: {
+      center: true,
+      padding: "2rem",
+      screens: {
+        "2xl": "1400px",
+      },
+    },
+    extend: {
+      colors: {
+        border: "hsl(var(--border))",
+        input: "hsl(var(--input))",
+        ring: "hsl(var(--ring))",
+        background: "hsl(var(--background))",
+        foreground: "hsl(var(--foreground))",
+        primary: {
+          DEFAULT: "hsl(var(--primary))",
+          foreground: "hsl(var(--primary-foreground))",
+        },
+        secondary: {
+          DEFAULT: "hsl(var(--secondary))",
+          foreground: "hsl(var(--secondary-foreground))",
+        },
+        destructive: {
+          DEFAULT: "hsl(var(--destructive))",
+          foreground: "hsl(var(--destructive-foreground))",
+        },
+        muted: {
+          DEFAULT: "hsl(var(--muted))",
+          foreground: "hsl(var(--muted-foreground))",
+        },
+        accent: {
+          DEFAULT: "hsl(var(--accent))",
+          foreground: "hsl(var(--accent-foreground))",
+        },
+        popover: {
+          DEFAULT: "hsl(var(--popover))",
+          foreground: "hsl(var(--popover-foreground))",
+        },
+        card: {
+          DEFAULT: "hsl(var(--card))",
+          foreground: "hsl(var(--card-foreground))",
+        },
+      },
+      borderRadius: {
+        lg: "var(--radius)",
+        md: "calc(var(--radius) - 2px)",
+        sm: "calc(var(--radius) - 4px)",
+      },
+      keyframes: {
+        "accordion-down": {
+          from: { height: "0" },
+          to: { height: "var(--radix-accordion-content-height)" },
+        },
+        "accordion-up": {
+          from: { height: "var(--radix-accordion-content-height)" },
+          to: { height: "0" },
+        },
+        "fade-up": {
+          "0%": {
+            opacity: "0",
+            transform: "translateY(10px)",
+          },
+          "100%": {
+            opacity: "1",
+            transform: "translateY(0)",
+          },
+        },
+        "fade-down": {
+          "0%": {
+            opacity: "0",
+            transform: "translateY(-10px)",
+          },
+          "100%": {
+            opacity: "1",
+            transform: "translateY(0)",
+          },
+        },
+        "tracking-in-expand": {
+          "0%": {
+            "letter-spacing": "-.5em",
+            opacity: "0",
+          },
+          "40%": {
+            opacity: ".6",
+          },
+          "100%": {
+            opacity: "1",
+          },
+        },
+        "glitch": {
+          "0%, 100%": {
+            transform: "translate(0)",
+            "text-shadow": "none",
+          },
+          "20%": {
+            transform: "translate(-1px, 1px)",
+            "text-shadow": "0.5px 0.5px #00ffff, -0.5px -0.5px #ff00ff",
+          },
+          "40%": {
+            transform: "translate(-1px, -1px)",
+            "text-shadow": "1px -0.5px #00ffff, -1px 0.5px #ff00ff",
+          },
+          "60%": {
+            transform: "translate(1px, 1px)",
+            "text-shadow": "-0.5px 0.5px #00ffff, 0.5px -0.5px #ff00ff",
+          },
+          "80%": {
+            transform: "translate(1px, -1px)",
+            "text-shadow": "-0.5px -0.5px #00ffff, 0.5px 0.5px #ff00ff",
+          }
+        },
+        "intense-glitch": {
+          "0%, 100%": {
+            transform: "translate(0)",
+            "text-shadow": "none",
+          },
+          "10%": {
+            transform: "translate(-2px, 2px) skew(5deg)",
+            "text-shadow": "1px 1px #00ffff, -1px -1px #ff00ff",
+          },
+          "30%": {
+            transform: "translate(2px, -2px) skew(-5deg)",
+            "text-shadow": "-1px 1px #00ffff, 1px -1px #ff00ff",
+          },
+          "50%": {
+            transform: "translate(-3px, 3px) skew(7deg)",
+            "text-shadow": "2px -2px #00ffff, -2px 2px #ff00ff",
+          },
+          "70%": {
+            transform: "translate(3px, -3px) skew(-7deg)",
+            "text-shadow": "-2px -2px #00ffff, 2px 2px #ff00ff",
+          },
+          "90%": {
+            transform: "translate(-1px, 1px) skew(3deg)",
+            "text-shadow": "1px 1px #00ffff, -1px -1px #ff00ff",
+          }
+        }
+      },
+      animation: {
+        "accordion-down": "accordion-down 0.2s ease-out",
+        "accordion-up": "accordion-up 0.2s ease-out",
+        "fade-up": "fade-up 0.5s ease-out",
+        "fade-down": "fade-down 0.5s ease-out",
+        "glitch-1": "glitch 0.5s cubic-bezier(.25,.46,.45,.94) both",
+        "glitch-2": "glitch 0.5s cubic-bezier(.25,.46,.45,.94) both 0.1s",
+        "glitch-3": "glitch 0.5s cubic-bezier(.25,.46,.45,.94) both 0.2s",
+        "intense-glitch": "intense-glitch 0.8s cubic-bezier(.25,.46,.45,.94) both"
+      },
+    },
+  },
+  plugins: [require("tailwindcss-animate"), require("@tailwindcss/typography")],
+} satisfies Config;
+```
+
+### postcss.config.js
+```
+export default {
+  plugins: {
+    tailwindcss: {},
+    autoprefixer: {},
+  },
+}
+
+```
+
