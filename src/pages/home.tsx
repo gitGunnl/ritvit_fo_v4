@@ -55,7 +55,7 @@ export default function Home() {
             ].map((item, index) => (
               <Card 
                 key={index}
-                className="glass-card hover-lift animate-fade-up p-6"
+                className="glass-card hover-lift animate-fade-up p-8 transition-all duration-300"
                 style={{ animationDelay: `${index * 100}ms` }}
               >
                 {item.icon}

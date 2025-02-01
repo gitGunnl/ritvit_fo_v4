@@ -59,11 +59,15 @@
 }
 
 .glass-card {
-  @apply bg-white/30 backdrop-blur-md border border-white/20 shadow-xl dark:bg-black/30 dark:border-white/10;
+  @apply bg-white/30 backdrop-blur-md border border-white/20 shadow-lg transition-all duration-300 dark:bg-black/30 dark:border-white/10;
 }
 
 .hover-lift {
-  @apply transition-transform duration-300 hover:-translate-y-1;
+  @apply transition-all duration-300 hover:-translate-y-1 hover:shadow-xl;
+}
+
+.gradient-text {
+  @apply bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 bg-clip-text text-transparent;
 }
 
 .fade-in {
