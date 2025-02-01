@@ -44,14 +44,14 @@ export default function Contact() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-50 to-indigo-50">
+    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-purple-900">
       <Navigation />
-      <div className="py-20 bg-background">
+      <div className="py-20">
         <div className="container px-4 mx-auto max-w-2xl">
-          <h1 className="text-4xl font-bold text-center mb-12 animate-fade-down bg-gradient-to-r from-violet-600 to-indigo-600 bg-clip-text text-transparent">
+          <h1 className="text-4xl font-bold text-center mb-12 animate-fade-down bg-gradient-to-r from-purple-400 to-indigo-400 bg-clip-text text-transparent">
             Get in Touch
           </h1>
-          <Card className="p-6 glass-card animate-fade-up hover:shadow-purple-200/50 hover:border-purple-200">
+          <Card className="p-6 glass-card animate-fade-up bg-black/30 border-white/10 hover:border-purple-500/30 transition-all">
             <Form {...form}>
               <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
                 <FormField
@@ -102,7 +102,7 @@ export default function Contact() {
                     </FormItem>
                   )}
                 />
-                <Button type="submit" className="w-full bg-gradient-to-r from-violet-600 to-indigo-600 hover:from-violet-700 hover:to-indigo-700">
+                <Button type="submit" className="w-full bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white">
                   Send Message
                 </Button>
               </form>
