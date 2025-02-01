@@ -79,7 +79,7 @@ const BlogIndex = () => {
   return (
     <div className="min-h-screen flex flex-col bg-gradient-to-br from-gray-900 via-gray-800 to-purple-900">
       <Navigation />
-      
+
       <main className="flex-grow container mx-auto px-4 py-24 animate-fade-up">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12 space-y-4">
@@ -116,11 +116,11 @@ const BlogIndex = () => {
           ) : filteredPosts.length > 0 ? (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {filteredPosts.map((post, index) => (
-                <div key={post.id} 
+                <div key={`post-${post.id}`} 
                   className="opacity-0 animate-fade-up"
                   style={{ animationDelay: `${index * 100}ms`, animationFillMode: 'forwards' }}
                 >
-                  <BlogCard post={post} />
+                  <BlogCard post={post} index={index} />
                 </div>
               ))}
             </div>

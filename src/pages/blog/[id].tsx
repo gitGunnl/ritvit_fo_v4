@@ -24,7 +24,7 @@ const fetchBlogPost = async (id: string): Promise<BlogPost> => {
       content: `
         <h2>Tech Stack Overview</h2>
         <p>Our application is built with modern web technologies, focusing on performance, developer experience, and maintainability:</p>
-        
+
         <h3>Core Technologies</h3>
         <ul>
           <li><strong>React 18:</strong> Our frontend framework, utilizing hooks and functional components</li>
@@ -118,7 +118,7 @@ const fetchBlogPost = async (id: string): Promise<BlogPost> => {
 
 const BlogPost = () => {
   const { id } = useParams();
-  
+
   const { data: post, isLoading } = useQuery({
     queryKey: ['blog-post', id],
     queryFn: () => fetchBlogPost(id!),
@@ -151,7 +151,7 @@ const BlogPost = () => {
   return (
     <div className="min-h-screen flex flex-col bg-gradient-to-br from-gray-900 via-gray-800 to-purple-900">
       <Navigation />
-      
+
       <main className="flex-grow container mx-auto px-4 py-24">
         <article className="max-w-3xl mx-auto">
           <Link to="/blog">
@@ -190,7 +190,11 @@ const BlogPost = () => {
 
           <div 
             className="prose prose-lg max-w-none prose-invert prose-headings:text-gray-100 prose-p:text-gray-300 prose-strong:text-purple-400 prose-a:text-purple-400"
-            dangerouslySetInnerHTML={{ __html: post.content }}
+            dangerouslySetInnerHTML={{ 
+              __html: post.content.split('\n').map((line, index) => 
+                `<div data-key="${index}">${line}</div>`
+              ).join('')
+            }}
           />
         </article>
       </main>
