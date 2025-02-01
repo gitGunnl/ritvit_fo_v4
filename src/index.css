@@ -75,7 +75,7 @@
 }
 
 .text-balance {
-  @apply text-pretty balance-text;
+  @apply text-pretty;
 }
 
 .fade-in {
