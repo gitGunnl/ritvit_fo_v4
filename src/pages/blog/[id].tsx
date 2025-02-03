@@ -127,7 +127,7 @@ const BlogPost = () => {
 
   if (isLoading) {
     return (
-      <div className="min-h-screen flex flex-col bg-gradient-to-br from-gray-900 via-gray-800 to-purple-900">
+      <div className="min-h-screen flex flex-col bg-gradient-to-br from-purple-50 via-white to-indigo-50 dark:from-gray-900 dark:via-gray-800 dark:to-purple-900">
         <Navigation />
         <div className="flex-grow container mx-auto px-4 py-24">
           <div className="animate-pulse max-w-3xl mx-auto">
@@ -149,7 +149,7 @@ const BlogPost = () => {
   if (!post) return null;
 
   return (
-    <div className="min-h-screen flex flex-col bg-gradient-to-br from-gray-900 via-gray-800 to-purple-900">
+    <div className="min-h-screen flex flex-col bg-gradient-to-br from-purple-50 via-white to-indigo-50 dark:from-gray-900 dark:via-gray-800 dark:to-purple-900">
       <Navigation />
 
       <main className="flex-grow container mx-auto px-4 py-24">
