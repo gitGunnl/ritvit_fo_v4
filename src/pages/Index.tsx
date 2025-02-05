@@ -356,30 +356,36 @@ const Index = () => {
             Ritvit er <strong className="text-purple-400">ikki nakað, tú kanst skoyta til viks</strong> – tað hevur longu broytt spælið.
           </p>
           <div className="space-y-6 mb-12">
-            <div className="flex items-center gap-4 p-4 bg-purple-950 rounded-lg hover:bg-purple-900 transition-colors border border-purple-500">
-              <span className="text-2xl">🎓</span>
-              <div className="text-white">
-                <h3 className="font-bold text-purple-300">Vilt tú læra ritvit frá grundini?</h3>
-                <p>Tekna teg til okkara skeið</p>
+            <Link to="/services" className="block">
+              <div className="flex items-center gap-4 p-4 bg-purple-950 rounded-lg hover:bg-purple-900 transition-colors border border-purple-500">
+                <span className="text-2xl">🎓</span>
+                <div className="text-white">
+                  <h3 className="font-bold text-purple-300">Vilt tú læra ritvit frá grundini?</h3>
+                  <p>Tekna teg til okkara skeið</p>
+                </div>
+                <ArrowRight className="ml-auto w-6 h-6 text-purple-400" />
               </div>
-              <ArrowRight className="ml-auto w-6 h-6 text-purple-400" />
-            </div>
-            <div className="flex items-center gap-4 p-4 bg-purple-950 rounded-lg hover:bg-purple-900 transition-colors border border-purple-500">
-              <span className="text-2xl">💼</span>
-              <div className="text-white">
-                <h3 className="font-bold text-purple-300">Vilt tú innføra ritvit í tína fyritøku?</h3>
-                <p>Hygg eftir okkara tænastum</p>
+            </Link>
+            <Link to="/services" className="block">
+              <div className="flex items-center gap-4 p-4 bg-purple-950 rounded-lg hover:bg-purple-900 transition-colors border border-purple-500">
+                <span className="text-2xl">💼</span>
+                <div className="text-white">
+                  <h3 className="font-bold text-purple-300">Vilt tú innføra ritvit í tína fyritøku?</h3>
+                  <p>Hygg eftir okkara tænastum</p>
+                </div>
+                <ArrowRight className="ml-auto w-6 h-6 text-purple-400" />
               </div>
-              <ArrowRight className="ml-auto w-6 h-6 text-purple-400" />
-            </div>
-            <div className="flex items-center gap-4 p-4 bg-purple-950 rounded-lg hover:bg-purple-900 transition-colors border border-purple-500">
-              <span className="text-2xl">❓</span>
-              <div className="text-white">
-                <h3 className="font-bold text-purple-300">Ert tú í iva?</h3>
-                <p>Set teg í samband við okkum</p>
+            </Link>
+            <Link to="/contact" className="block">
+              <div className="flex items-center gap-4 p-4 bg-purple-950 rounded-lg hover:bg-purple-900 transition-colors border border-purple-500">
+                <span className="text-2xl">❓</span>
+                <div className="text-white">
+                  <h3 className="font-bold text-purple-300">Ert tú í iva?</h3>
+                  <p>Set teg í samband við okkum</p>
+                </div>
+                <ArrowRight className="ml-auto w-6 h-6 text-purple-400" />
               </div>
-              <ArrowRight className="ml-auto w-6 h-6 text-purple-400" />
-            </div>
+            </Link>
           </div>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
             <Button size="lg" className="bg-purple-600 hover:bg-purple-700 text-white font-bold shadow-[0_0_20px_rgba(147,51,234,0.5)]">
