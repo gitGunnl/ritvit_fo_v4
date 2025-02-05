@@ -159,39 +159,55 @@ const Index = () => {
           <div className="prose prose-lg mx-auto dark:prose-invert text-gray-600 dark:text-gray-300 mb-8">
 
             <Link to="/services/beginner" className="block mb-6 group">
-                <div className="flex items-center justify-between">
-                  <p>
-                    <strong>📌 Ert tú nýbyrjari?</strong><br />
-                    <strong>Tak okkara ChatGPT-skeið</strong> – skjótasti og lættasti háttur at koma í gongd.
+                <div className="flex flex-col">
+                  <p className="mb-1">
+                    <strong>📌 Ert tú nýbyrjari?</strong>
                   </p>
-                  <ArrowRight className="w-5 h-5 text-purple-600 transform transition-transform group-hover:translate-x-1" />
+                  <div className="flex items-center justify-between">
+                    <p>
+                      <strong>Tak okkara ChatGPT-skeið</strong> – skjótasti og lættasti háttur at koma í gongd.
+                    </p>
+                    <ArrowRight className="w-5 h-5 text-purple-600 transform transition-transform group-hover:translate-x-1 ml-4" />
+                  </div>
                 </div>
               </Link>
               <Link to="/services/use-cases" className="block mb-6 group">
-                <div className="flex items-center justify-between">
-                  <p>
-                    <strong>📌 Vilt tú síggja, hvussu ritvit kann nýtast í tínari fyritøku?</strong><br />
-                    <strong>Vit finna 15 ting júst tú kann brúka ChatGPT til!</strong> - So sparir tú tíðina.
+                <div className="flex flex-col">
+                  <p className="mb-1">
+                    <strong>📌 Vilt tú síggja, hvussu ritvit kann nýtast í tínari fyritøku?</strong>
                   </p>
-                  <ArrowRight className="w-5 h-5 text-purple-600 transform transition-transform group-hover:translate-x-1" />
+                  <div className="flex items-center justify-between">
+                    <p>
+                      <strong>Vit finna 15 ting júst tú kann brúka ChatGPT til!</strong> - So sparir tú tíðina.
+                    </p>
+                    <ArrowRight className="w-5 h-5 text-purple-600 transform transition-transform group-hover:translate-x-1 ml-4" />
+                  </div>
                 </div>
               </Link>
               <Link to="/services/workshops" className="block mb-6 group">
-                <div className="flex items-center justify-between">
-                  <p>
-                    <strong>📌 Vilt tú hava praktiska venjing?</strong><br />
-                    <strong>Verkstovur & fyrilestrar</strong> – Vit vísa øllum tínum toymi, hvussu ritvit kann gera mun.
+                <div className="flex flex-col">
+                  <p className="mb-1">
+                    <strong>📌 Vilt tú hava praktiska venjing?</strong>
                   </p>
-                  <ArrowRight className="w-5 h-5 text-purple-600 transform transition-transform group-hover:translate-x-1" />
+                  <div className="flex items-center justify-between">
+                    <p>
+                      <strong>Verkstovur & fyrilestrar</strong> – Vit vísa øllum tínum toymi, hvussu ritvit kann gera mun.
+                    </p>
+                    <ArrowRight className="w-5 h-5 text-purple-600 transform transition-transform group-hover:translate-x-1 ml-4" />
+                  </div>
                 </div>
               </Link>
               <Link to="/services/automation" className="block mb-6 group">
-                <div className="flex items-center justify-between">
-                  <p>
-                    <strong>📌 Klár/ur at automatisera arbeiðsgongdir?</strong><br />
-                    <strong>Ráðgeving & AI-innføring</strong> – Vit hjálpa tær at innlima AI í tína fyritøku.
+                <div className="flex flex-col">
+                  <p className="mb-1">
+                    <strong>📌 Klár/ur at automatisera arbeiðsgongdir?</strong>
                   </p>
-                  <ArrowRight className="w-5 h-5 text-purple-600 transform transition-transform group-hover:translate-x-1" />
+                  <div className="flex items-center justify-between">
+                    <p>
+                      <strong>Ráðgeving & AI-innføring</strong> – Vit hjálpa tær at innlima AI í tína fyritøku.
+                    </p>
+                    <ArrowRight className="w-5 h-5 text-purple-600 transform transition-transform group-hover:translate-x-1 ml-4" />
+                  </div>
                 </div>
               </Link>
           </div>
