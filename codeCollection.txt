@@ -1,14 +1,16 @@
 ### src/pages/blog/index.tsx
 ```
-import { useState } from "react";
-import { useQuery } from "@tanstack/react-query";
+import React from 'react';
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import BlogSearch from "@/components/blog/BlogSearch";
 import BlogCategories from "@/components/blog/BlogCategories";
 import BlogCard from "@/components/blog/BlogCard";
 
-interface BlogPost {
+// Import the JSON “database” of blog posts
+import blogPostsData from "@/data/blogPosts.json";
+
+export interface BlogPost {
   id: string;
   title: string;
   excerpt: string;
@@ -16,64 +18,37 @@ interface BlogPost {
   readTime: string;
   category: string;
   imageUrl: string;
+  content?: string; // content is optional here
 }
 
+// Simulate an async fetch (e.g. using a Promise)
 const fetchBlogPosts = async (): Promise<BlogPost[]> => {
-  // This would normally be an API call
-  return [
-    {
-      id: "tech-stack",
-      title: "Complete Technical Documentation & Architecture Overview",
-      excerpt: "A comprehensive guide to our tech stack, architecture, and development practices for quick onboarding of new developers.",
-      date: "2024-02-21",
-      readTime: "8 min read",
-      category: "Documentation",
-      imageUrl: "/placeholder.svg"
-    },
-    {
-      id: "1",
-      title: "Getting Started with Digital Transformation",
-      excerpt: "Learn how to transform your business with modern digital solutions...",
-      date: "2024-02-20",
-      readTime: "5 min read",
-      category: "Digital Transformation",
-      imageUrl: "/placeholder.svg"
-    },
-    {
-      id: "2",
-      title: "The Future of Web Development",
-      excerpt: "Explore the latest trends and technologies shaping the future of web development...",
-      date: "2024-02-18",
-      readTime: "7 min read",
-      category: "Development",
-      imageUrl: "/placeholder.svg"
-    },
-    {
-      id: "3",
-      title: "Mastering User Experience Design",
-      excerpt: "Discover key principles and practices for creating exceptional user experiences...",
-      date: "2024-02-15",
-      readTime: "6 min read",
-      category: "Design",
-      imageUrl: "/placeholder.svg"
-    },
-  ];
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve(blogPostsData);
+    }, 300);
+  });
 };
 
 const BlogIndex = () => {
-  const [searchQuery, setSearchQuery] = useState("");
-  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+  const [searchQuery, setSearchQuery] = React.useState("");
+  const [selectedCategory, setSelectedCategory] = React.useState<string | null>(null);
+  const [posts, setPosts] = React.useState<BlogPost[]>([]);
+  const [isLoading, setIsLoading] = React.useState(true);
 
-  const { data: posts = [], isLoading } = useQuery({
-    queryKey: ['blog-posts'],
-    queryFn: fetchBlogPosts,
-  });
+  React.useEffect(() => {
+    fetchBlogPosts().then((data) => {
+      setPosts(data);
+      setIsLoading(false);
+    });
+  }, []);
 
-  const categories = Array.from(new Set(posts.map(post => post.category)));
+  const categories = Array.from(new Set(posts.map((post) => post.category)));
 
-  const filteredPosts = posts.filter(post => {
-    const matchesSearch = post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                         post.excerpt.toLowerCase().includes(searchQuery.toLowerCase());
+  const filteredPosts = posts.filter((post) => {
+    const matchesSearch =
+      post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      post.excerpt.toLowerCase().includes(searchQuery.toLowerCase());
     const matchesCategory = !selectedCategory || post.category === selectedCategory;
     return matchesSearch && matchesCategory;
   });
@@ -118,9 +93,10 @@ const BlogIndex = () => {
           ) : filteredPosts.length > 0 ? (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {filteredPosts.map((post, index) => (
-                <div key={`post-${post.id}`} 
+                <div
+                  key={`post-${post.id}`}
                   className="opacity-0 animate-fade-up"
-                  style={{ animationDelay: `${index * 100}ms`, animationFillMode: 'forwards' }}
+                  style={{ animationDelay: `${index * 100}ms`, animationFillMode: "forwards" }}
                 >
                   <BlogCard post={post} index={index} />
                 </div>
@@ -140,136 +116,42 @@ const BlogIndex = () => {
 };
 
 export default BlogIndex;
+
 ```
 
 ### src/pages/blog/[id].tsx
 ```
+import React from "react";
 import { useParams, Link } from "react-router-dom";
-import { useQuery } from "@tanstack/react-query";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Calendar, Clock, ArrowLeft } from "lucide-react";
+import blogPostsData from "@/data/blogPosts.json";
+import { BlogPost } from "./index";
 
-interface BlogPost {
-  id: string;
-  title: string;
-  content: string;
-  date: string;
-  readTime: string;
-  category: string;
-  imageUrl: string;
-}
-
-const fetchBlogPost = async (id: string): Promise<BlogPost> => {
-  // This would normally be an API call
-  if (id === 'tech-stack') {
-    return {
-      id,
-      title: "Complete Technical Documentation & Architecture Overview",
-      content: `
-        <h2>Tech Stack Overview</h2>
-        <p>Our application is built with modern web technologies, focusing on performance, developer experience, and maintainability:</p>
-
-        <h3>Core Technologies</h3>
-        <ul>
-          <li><strong>React 18:</strong> Our frontend framework, utilizing hooks and functional components</li>
-          <li><strong>TypeScript:</strong> For type safety and better developer experience</li>
-          <li><strong>Vite:</strong> Our build tool, providing fast HMR and optimized production builds</li>
-        </ul>
-
-        <h3>Styling & UI</h3>
-        <ul>
-          <li><strong>Tailwind CSS:</strong> For utility-first styling with custom configurations</li>
-          <li><strong>shadcn/ui:</strong> Accessible and customizable UI components</li>
-          <li><strong>Custom Animations:</strong> Including fade, glitch, and transition effects</li>
-        </ul>
-
-        <h3>State Management & Data Fetching</h3>
-        <ul>
-          <li><strong>TanStack Query:</strong> For efficient server state management and data fetching</li>
-          <li><strong>React Router:</strong> For client-side routing with dynamic routes</li>
-        </ul>
-
-        <h2>Project Structure</h2>
-        <p>The project follows a feature-based organization:</p>
-        <ul>
-          <li><strong>/src/components/:</strong> Reusable UI components</li>
-          <li><strong>/src/components/ui/:</strong> shadcn/ui components</li>
-          <li><strong>/src/pages/:</strong> Route components and page layouts</li>
-          <li><strong>/src/hooks/:</strong> Custom React hooks</li>
-          <li><strong>/src/lib/:</strong> Utility functions and helpers</li>
-        </ul>
-
-        <h2>Key Features</h2>
-        <ul>
-          <li><strong>Responsive Design:</strong> Mobile-first approach with Tailwind breakpoints</li>
-          <li><strong>Blog System:</strong> With search, categories, and individual post views</li>
-          <li><strong>Animations:</strong> Custom keyframes and transitions for enhanced UX</li>
-          <li><strong>Accessibility:</strong> ARIA labels and keyboard navigation support</li>
-        </ul>
-
-        <h2>Development Practices</h2>
-        <ul>
-          <li><strong>Component Structure:</strong> Small, focused components (≤50 lines)</li>
-          <li><strong>Type Safety:</strong> Strict TypeScript usage throughout</li>
-          <li><strong>Error Handling:</strong> Proper error boundaries and loading states</li>
-          <li><strong>Code Style:</strong> Consistent formatting with ESLint and Prettier</li>
-        </ul>
-
-        <h2>Performance Optimizations</h2>
-        <ul>
-          <li><strong>Code Splitting:</strong> Route-based splitting with React Router</li>
-          <li><strong>Asset Optimization:</strong> Vite's built-in optimizations</li>
-          <li><strong>Caching Strategy:</strong> TanStack Query's smart caching</li>
-        </ul>
-
-        <h2>Getting Started</h2>
-        <p>To start development:</p>
-        <ol>
-          <li>Clone the repository</li>
-          <li>Install dependencies with \`npm install\`</li>
-          <li>Start development server with \`npm run dev\`</li>
-        </ol>
-
-        <h2>Deployment</h2>
-        <p>The application can be deployed through:</p>
-        <ul>
-          <li>Direct deployment via Lovable platform</li>
-          <li>Manual deployment to services like Netlify</li>
-          <li>Custom deployment with provided build commands</li>
-        </ul>
-      `,
-      date: "2024-02-21",
-      readTime: "8 min read",
-      category: "Documentation",
-      imageUrl: "/placeholder.svg"
-    };
-  }
-  return {
-    id,
-    title: "Getting Started with Digital Transformation",
-    content: `
-      <p>Digital transformation is revolutionizing how businesses operate in today's fast-paced world...</p>
-      <h2>Why Digital Transformation Matters</h2>
-      <p>In an increasingly connected world, businesses must adapt to survive and thrive...</p>
-      <!-- Add more content as needed -->
-    `,
-    date: "2024-02-20",
-    readTime: "5 min read",
-    category: "Digital Transformation",
-    imageUrl: "/placeholder.svg"
-  };
+const fetchBlogPost = async (id: string): Promise<BlogPost | null> => {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      const post = (blogPostsData as BlogPost[]).find((p) => p.id === id) || null;
+      resolve(post);
+    }, 300);
+  });
 };
 
-const BlogPost = () => {
-  const { id } = useParams();
+const BlogPostPage = () => {
+  const { id } = useParams<{ id: string }>();
+  const [post, setPost] = React.useState<BlogPost | null>(null);
+  const [isLoading, setIsLoading] = React.useState(true);
 
-  const { data: post, isLoading } = useQuery({
-    queryKey: ['blog-post', id],
-    queryFn: () => fetchBlogPost(id!),
-    enabled: !!id,
-  });
+  React.useEffect(() => {
+    if (id) {
+      fetchBlogPost(id).then((data) => {
+        setPost(data);
+        setIsLoading(false);
+      });
+    }
+  }, [id]);
 
   if (isLoading) {
     return (
@@ -301,7 +183,10 @@ const BlogPost = () => {
       <main className="flex-grow container mx-auto px-4 py-24">
         <article className="max-w-3xl mx-auto">
           <Link to="/blog">
-            <Button variant="ghost" className="mb-8 hover-lift text-gray-300 hover:text-white hover:bg-white/10">
+            <Button
+              variant="ghost"
+              className="mb-8 hover-lift text-gray-300 hover:text-white hover:bg-white/10"
+            >
               <ArrowLeft className="mr-2 h-4 w-4" />
               Back to Blog
             </Button>
@@ -320,9 +205,7 @@ const BlogPost = () => {
               <Clock className="h-4 w-4" />
               {post.readTime}
             </span>
-            <span className="text-purple-400 font-medium">
-              {post.category}
-            </span>
+            <span className="text-purple-400 font-medium">{post.category}</span>
           </div>
 
           <div className="relative">
@@ -334,13 +217,9 @@ const BlogPost = () => {
             <div className="absolute inset-0 bg-gradient-to-t from-gray-900/20 to-transparent rounded-lg" />
           </div>
 
-          <div 
+          <div
             className="prose prose-lg max-w-none prose-invert prose-headings:text-gray-100 prose-p:text-gray-300 prose-strong:text-purple-400 prose-a:text-purple-400"
-            dangerouslySetInnerHTML={{ 
-              __html: post.content.split('\n').map((line, index) => 
-                `<div data-key="${index}">${line}</div>`
-              ).join('')
-            }}
+            dangerouslySetInnerHTML={{ __html: post.content }}
           />
         </article>
       </main>
@@ -350,6 +229,191 @@ const BlogPost = () => {
   );
 };
 
-export default BlogPost;
+export default BlogPostPage;
+
+```
+
+### src/data/blogPosts.json
+```
+[
+  {
+    "id": "smart-fiskeri-p-f-r-erne-hvordan-ai-kan-sikre-fremtidens-fiskeri",
+    "title": "Smart Fiskeri på Færøerne: Hvordan AI Kan Sikre Fremtidens Fiskeri",
+    "excerpt": "Smart Fiskeri på Færøerne: Hvordan AI Kan Sikre Fremtidens Fiskeri Når Tradition Møder TeknologiFiskeri er ikke bare en industri på Færøerne – det er...",
+    "date": "2025-02-05",
+    "readTime": "8 min read",
+    "category": "Sustainability",
+    "imageUrl": "/placeholder.svg",
+    "content": "# Smart Fiskeri på Færøerne: Hvordan AI Kan Sikre Fremtidens Fiskeri\n\n## Når Tradition Møder Teknologi\nFiskeri er ikke bare en industri på Færøerne – det er en livsstil. …\n(rest of your markdown content)"
+  }
+]
+```
+
+### scripts/add-blog.js
+```
+#!/usr/bin/env node
+/**
+ * scripts/add-blog.js
+ *
+ * Reads a blog post from blog-template.txt, extracts front matter (if provided)
+ * and content, generates an ID from the title, appends the new blog post to
+ * src/data/blogPosts.json, and finally empties blog-template.txt.
+ *
+ * Expected template format (front matter is optional):
+ *
+ *   Title: My Amazing Post
+ *   Category: Digital Transformation
+ *   ReadTime: 7 min read
+ *   ImageUrl: /my-image.svg
+ *   Excerpt: (optional excerpt, otherwise generated)
+ *   ---
+ *   # My Amazing Post
+ *
+ *   (Markdown content …)
+ */
+
+import fs from "fs";
+import path from "path";
+import { fileURLToPath } from "url";
+
+// Determine __dirname since we're using ES modules.
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+// A simple slugify function
+function slugify(text) {
+  return text
+    .toString()
+    .toLowerCase()
+    .trim()
+    .replace(/[\s\W-]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+}
+
+const templateFilePath = path.join(__dirname, "..", "blog-template.txt");
+const blogPostsFilePath = path.join(__dirname, "..", "src", "data", "blogPosts.json");
+
+// Read the template file
+fs.readFile(templateFilePath, "utf8", (err, data) => {
+  if (err) {
+    console.error("Error reading template file:", err);
+    process.exit(1);
+  }
+
+  if (!data.trim()) {
+    console.log("Template file is empty. Nothing to add.");
+    process.exit(0);
+  }
+
+  // Split the file into lines
+  const lines = data.split("\n");
+  let frontMatter = {};
+  let contentStartIndex = 0;
+
+  // If the first line starts with "Title:", we assume there is front matter.
+  if (lines[0].startsWith("Title:")) {
+    for (let i = 0; i < lines.length; i++) {
+      if (lines[i].trim() === "---" || lines[i].trim() === "") {
+        contentStartIndex = i + 1;
+        break;
+      }
+      const [key, ...rest] = lines[i].split(":");
+      frontMatter[key.trim().toLowerCase()] = rest.join(":").trim();
+    }
+  }
+
+  // The rest of the file is the content
+  const content = lines.slice(contentStartIndex).join("\n").trim();
+  if (!content) {
+    console.error("No content found in the template file.");
+    process.exit(1);
+  }
+
+  // Get the title either from front matter or by extracting the first markdown heading (# ...)
+  let title = frontMatter.title;
+  if (!title) {
+    const match = content.match(/^#\s+(.+)/);
+    if (match) {
+      title = match[1].trim();
+    } else {
+      console.error("No title found in front matter or content.");
+      process.exit(1);
+    }
+  }
+
+  // Other metadata (with defaults if not provided)
+  const category = frontMatter.category || "General";
+  const readTime = frontMatter.readtime || "5 min read";
+  const imageUrl = frontMatter.imageurl || "/placeholder.svg";
+  const excerpt =
+    frontMatter.excerpt ||
+    content.replace(/[#_*>\n]/g, "").slice(0, 150).trim() + "...";
+
+  // Generate a slug from the title
+  const id = slugify(title);
+
+  // Use today's date in YYYY-MM-DD format
+  const date = new Date().toISOString().slice(0, 10);
+
+  // Build the new blog post object
+  const newBlogPost = {
+    id,
+    title,
+    excerpt,
+    date,
+    readTime,
+    category,
+    imageUrl,
+    content,
+  };
+
+  // Load existing blog posts from the JSON file (or start with an empty array)
+  let blogPosts = [];
+  if (fs.existsSync(blogPostsFilePath)) {
+    try {
+      const jsonData = fs.readFileSync(blogPostsFilePath, "utf8");
+      blogPosts = JSON.parse(jsonData);
+    } catch (e) {
+      console.error("Error reading blog posts JSON:", e);
+      process.exit(1);
+    }
+  }
+
+  // Check for duplicate IDs
+  if (blogPosts.find((post) => post.id === id)) {
+    console.error(`A blog post with id "${id}" already exists.`);
+    process.exit(1);
+  }
+
+  // Append the new blog post and write back to the JSON file
+  blogPosts.push(newBlogPost);
+  fs.writeFile(
+    blogPostsFilePath,
+    JSON.stringify(blogPosts, null, 2),
+    "utf8",
+    (err) => {
+      if (err) {
+        console.error("Error writing blog posts JSON:", err);
+        process.exit(1);
+      }
+      console.log(`Blog post "${title}" added successfully!`);
+
+      // Empty the template file
+      fs.writeFile(templateFilePath, "", "utf8", (err) => {
+        if (err) {
+          console.error("Error emptying template file:", err);
+          process.exit(1);
+        }
+        console.log("Template file emptied.");
+      });
+    }
+  );
+});
+
+```
+
+### blog-template.txt
+```
+
 ```
 
