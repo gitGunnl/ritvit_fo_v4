@@ -10,15 +10,13 @@ import {
   CheckCircle2,
   Clock,
   Zap,
-  Users,
-  Sun,
-  Moon
+  Users
 } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useTheme } from "@/hooks/use-theme";
 
 const Index = () => {
-  const { theme, toggleTheme } = useTheme();
+  const { theme } = useTheme();
 
   return (
     <div className="min-h-screen flex flex-col bg-gradient-to-br from-purple-50 via-white to-indigo-50 dark:from-gray-900 dark:via-gray-800 dark:to-purple-900">
