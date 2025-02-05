@@ -17,227 +17,152 @@ export default function About() {
       {/* Hero Section */}
       <section className="py-20">
         <div className="container mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-6xl font-bold mb-4 animate-fade-down">
-            Om os
-          </h1>
-          <h2 className="text-2xl md:text-3xl font-semibold mb-6 animate-fade-down text-gray-300">
-            Vi bringer AI til Færøerne – og videre
-          </h2>
-          <p className="text-xl max-w-3xl mx-auto leading-relaxed text-gray-300 animate-fade-down">
-            AI ændrer verden. Vi sørger for, at Færøerne ikke halter bagefter.
-          </p>
-        </div>
+      <h1 className="text-4xl md:text-6xl font-bold mb-4 animate-fade-down">
+        Um okkum
+      </h1>
+      <h2 className="text-2xl md:text-3xl font-semibold mb-6 animate-fade-down text-gray-300">
+        Vit bera ritvit til Føroyar – og víðari
+      </h2>
+      <p className="text-xl max-w-3xl mx-auto leading-relaxed text-gray-300 animate-fade-down">
+        Ritvit broytir heiminn. Vit syrgja fyri, at Føroyar ikki detta afturúr.
+      </p>
+      </div>
       </section>
 
-      {/* Introduktion */}
+      {/* Introduktión */}
       <section className="py-16">
-        <div className="container mx-auto px-4">
-          <div className="max-w-3xl mx-auto bg-gray-800/50 backdrop-blur-sm rounded-lg p-8 shadow-xl border border-purple-500/20 animate-fade-up">
-            <p className="text-lg mb-4">
-              Vi startede <strong>Tøkni Tænastan</strong> af én simpel grund:
-            </p>
-            <p className="text-lg mb-4">
-              <strong>
-                At hjælpe færøske virksomheder med at udnytte AI – uden bøvl, uden hype, uden unødvendigt teknisk snak.
-              </strong>
-            </p>
-            <p className="text-lg mb-4">
-              Sandheden? <strong>AI er her allerede.</strong> Og dem, der lærer at bruge det først, får et stort forspring.
-            </p>
-            <p className="text-lg">
-              Derfor gør vi AI <strong>simpelt, brugbart og praktisk</strong> – så virksomheder kan <strong>spare tid, arbejde smartere og få tingene gjort hurtigere</strong>.
-            </p>
-            <p className="text-lg mt-4">
-              🚀 <strong>Ingen teknisk viden nødvendig. Ingen dyre konsulenter. Bare AI, der fungerer.</strong>
-            </p>
-          </div>
-        </div>
+      <div className="container mx-auto px-4">
+      <div className="max-w-3xl mx-auto bg-gray-800/50 backdrop-blur-sm rounded-lg p-8 shadow-xl border border-purple-500/20 animate-fade-up">
+        <p className="text-lg mb-4">
+          Vit stovnaðu <strong>Tøkni Tænastuna</strong> av einføldum orsøkum:
+        </p>
+        <p className="text-lg mb-4">
+          <strong>
+            At hjálpa føroyskum fyritøkum at brúka ritvit – uttan stríð, uttan hype, uttan óneyðuga tøkni-snakk.
+          </strong>
+        </p>
+        <p className="text-lg mb-4">
+          Veruleikin? <strong>Ritvit er longu her.</strong> Og tey, sum læra at brúka tað fyrst, fáa eitt stórt fyrimun.
+        </p>
+        <p className="text-lg">
+          Tí gera vit ritvit <strong>einfalt, brúkiligt og praktiskt</strong> – so fyritøkur kunnu <strong>spara tíð, arbeiða smartari og fáa meira frá hondini</strong>.
+        </p>
+        <p className="text-lg mt-4">
+          🚀 <strong>Eingin tøkni-fatan neyðug. Ongar dýrar ráðgevarar. Bara ritvit, sum riggar.</strong>
+        </p>
+      </div>
+      </div>
       </section>
 
-      {/* Vores historie */}
+      {/* Okkara søga */}
       <section className="py-16">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-8 animate-fade-down">
-            Vores historie: Fra nysgerrighed til innovation
-          </h2>
-          <div className="max-w-3xl mx-auto bg-gray-800/50 backdrop-blur-sm rounded-lg p-8 shadow-xl border border-purple-500/20 animate-fade-up">
-            <h3 className="text-2xl font-semibold mb-4">Mød Gunnleygur</h3>
-            <p className="text-lg mb-4">
-              Jeg har altid været besat af <strong>ny teknologi</strong> – alt det, der ændrer måden, vi arbejder og lever på.
-            </p>
-            <p className="text-lg mb-4">
-              Som ingeniør arbejdede jeg med avancerede systemer, men intet fascinerede mig som AI.
-            </p>
-            <p className="text-lg mb-4">Så en dag gik det op for mig:</p>
-            <ul className="list-disc ml-6 text-lg mb-4">
-              <li>
-                💡 <strong>AI er ikke kun for store tech-giganter.</strong>
-              </li>
-              <li>
-                💡 <strong>AI er ikke kun fremtidssnak – det er lige nu.</strong>
-              </li>
-              <li>
-                💡 <strong>AI kan bruges i alle virksomheder, også på Færøerne.</strong>
-              </li>
-            </ul>
-            <p className="text-lg mb-4">
-              Problemet? <strong>De fleste har ikke tid til at sætte sig ind i det.</strong>
-            </p>
-            <p className="text-lg mt-4">
-              Derfor startede jeg <strong>Tøkni Tænastan</strong> – for at bygge bro mellem{" "}
-              <strong>AI’s potentiale</strong> og{" "}
-              <strong>de reelle behov i færøske virksomheder</strong>.
-            </p>
-            <p className="text-lg mt-4">
-              Nu hjælper vi virksomheder med at{" "}
-              <strong>automatisere opgaver, effektivisere deres arbejde og udnytte AI’s fulde kraft</strong> – så de kan fokusere på det, der virkelig betyder noget.
-            </p>
-          </div>
-        </div>
+      <div className="container mx-auto px-4">
+      <h2 className="text-3xl font-bold text-center mb-8 animate-fade-down">
+        Okkara søga: Frá forvitni til nýskapan
+      </h2>
+      <div className="max-w-3xl mx-auto bg-gray-800/50 backdrop-blur-sm rounded-lg p-8 shadow-xl border border-purple-500/20 animate-fade-up">
+        <h3 className="text-2xl font-semibold mb-4">Møt Gunnleyg</h3>
+        <p className="text-lg mb-4">
+          Eg havi altíð verið bergtikin av <strong>nýggjari tøkni</strong> – øllum tí, sum broytir, hvussu vit arbeiða og liva.
+        </p>
+        <p className="text-lg mb-4">
+          Sum verkfrøðingur arbeiddi eg við framkomnum skipanum, men einki fangaði meg sum ritvit.
+        </p>
+        <p className="text-lg mb-4">So ein dag gekk tað upp fyri mær:</p>
+        <ul className="list-disc ml-6 text-lg mb-4">
+          <li>
+            💡 <strong>Ritvit er ikki bara fyri stórar tøkni-risar.</strong>
+          </li>
+          <li>
+            💡 <strong>Ritvit er ikki bara framtíð – tað er nú.</strong>
+          </li>
+          <li>
+            💡 <strong>Ritvit kann nýtast í øllum fyritøkum – eisini í Føroyum.</strong>
+          </li>
+        </ul>
+        <p className="text-lg mb-4">
+          Trupulleikin? <strong>Flestu hava ikki tíð at seta seg inn í tað.</strong>
+        </p>
+        <p className="text-lg mt-4">
+          Tí stovnaði eg <strong>Tøkni Tænastuna</strong> – fyri at byggja brúnna millum{" "}
+          <strong>møguleikarnar hjá ritviti</strong> og{" "}
+          <strong>veruligu tørvin hjá føroyskum fyritøkum</strong>.
+        </p>
+        <p className="text-lg mt-4">
+          Nú hjálpa vit fyritøkum at{" "}
+          <strong>sjálvvirka uppgávur, effektivisera arbeiðið og brúka ritvit fult út</strong> – so tær kunnu fokusera uppá tað, sum veruliga hevur týdning.
+        </p>
+      </div>
+      </div>
       </section>
 
-      {/* Vores mission */}
+      {/* Okkara visjón */}
       <section className="py-16">
-        <div className="container mx-auto px-4">
-          <div className="max-w-3xl mx-auto bg-gray-800/50 backdrop-blur-sm rounded-lg p-8 shadow-xl border border-purple-500/20 animate-fade-up">
-            <h2 className="text-3xl font-bold mb-4">Vores mission: AI for alle</h2>
-            <p className="text-lg mb-4">
-              AI er ikke kun for <strong>Silicon Valley</strong>. Det er for din virksomhed. Dit team. Din hverdag.
-            </p>
-            <p className="text-lg mb-4">
-              Vores mål hos <strong>Tøkni Tænastan</strong> er at:
-            </p>
-            <ul className="list-disc ml-6 text-lg mb-4">
-              <li>
-                ✅ <strong>Gøre AI nemt og tilgængeligt</strong> for alle.
-              </li>
-              <li>
-                ✅ <strong>Hjælpe virksomheder med at spare tid og ressourcer</strong> – uden at ansætte ekstra personale.
-              </li>
-              <li>
-                ✅ <strong>Lave AI-løsninger, der rent faktisk virker i praksis.</strong>
-              </li>
-            </ul>
-            <p className="text-lg">
-              Vi sælger ikke bare "AI-rådgivning". Vi <strong>træner, implementerer og bygger</strong> løsninger, der giver <strong>konkrete resultater</strong>.
-            </p>
-          </div>
-        </div>
+      <div className="container mx-auto px-4">
+      <div className="max-w-3xl mx-auto bg-gray-800/50 backdrop-blur-sm rounded-lg p-8 shadow-xl border border-purple-500/20 animate-fade-up">
+        <h2 className="text-3xl font-bold mb-4">Okkara visjón: Ritvit fyri øll</h2>
+        <p className="text-lg mb-4">
+          Ritvit er ikki bara fyri <strong>Silicon Valley</strong>. Tað er fyri tína fyritøku. Títt toymi. Tína gerandisdag.
+        </p>
+        <p className="text-lg mb-4">
+          Mál okkara hjá <strong>Tøkni Tænastuni</strong> er at:
+        </p>
+        <ul className="list-disc ml-6 text-lg mb-4">
+          <li>
+            ✅ <strong>Gera ritvit lætt og atkomiligt</strong> fyri øll.
+          </li>
+          <li>
+            ✅ <strong>Hjálpa fyritøkum at spara tíð og tilfeingi</strong> – uttan at seta fleiri fólk í starv.
+          </li>
+          <li>
+            ✅ <strong>Skapa ritvit-loysnir, sum veruliga rigga.</strong>
+          </li>
+        </ul>
+        <p className="text-lg">
+          Vit selja ikki bara "ritvit-ráðgeving". Vit <strong>læra, innføra og byggja</strong> loysnir, sum geva <strong>verulig úrslit</strong>.
+        </p>
+      </div>
+      </div>
       </section>
 
-      {/* Hvad gør os anderledes */}
+      {/* Hvat ger okkum øðrvísi? */}
       <section className="py-16">
-        <div className="container mx-auto px-4">
-          <div className="max-w-3xl mx-auto bg-gray-800/50 backdrop-blur-sm rounded-lg p-8 shadow-xl border border-purple-500/20 animate-fade-up">
-            <h2 className="text-3xl font-bold mb-4">Hvad gør os anderledes?</h2>
-            <p className="text-lg mb-4">
-              AI er <strong>overalt</strong>, men de fleste virksomheder kæmper med de samme udfordringer:
-            </p>
-            <ul className="list-disc ml-6 text-lg mb-4">
-              <li>
-                ❌ <strong>Hvor starter vi?</strong>
-              </li>
-              <li>
-                ❌ <strong>Hvordan fungerer det i praksis?</strong>
-              </li>
-              <li>
-                ❌ <strong>Er AI for komplekst for os?</strong>
-              </li>
-            </ul>
-            <p className="text-lg mb-4">Her er, hvad der gør os anderledes:</p>
-            <ul className="list-disc ml-6 text-lg">
-              <li>
-                💡 <strong>Vi taler dit sprog.</strong> Ingen kompliceret AI-snak – kun klar, brugbar vejledning.
-              </li>
-              <li>
-                🚀 <strong>Vi fokuserer på små, hurtige sejre.</strong> AI behøver ikke være et stort projekt. Vi starter med én ting, du kan automatisere nu – så du ser resultater med det samme.
-              </li>
-              <li>
-                🇫🇴 <strong>Vi forstår det færøske marked.</strong> Internationale AI-firmaer kan give generelle råd, men vi kender <strong>de faktiske udfordringer</strong> og <strong>den unikke færøske arbejdskultur</strong>.
-              </li>
-              <li>
-                🤖 <strong>Vi bruger selv AI hver dag.</strong> Det her er ikke teori. Vi har testet, bygget og optimeret AI-løsninger, så vi ved præcis, hvad der virker – og hvad der ikke gør.
-              </li>
-            </ul>
-          </div>
-        </div>
+      <div className="container mx-auto px-4">
+      <div className="max-w-3xl mx-auto bg-gray-800/50 backdrop-blur-sm rounded-lg p-8 shadow-xl border border-purple-500/20 animate-fade-up">
+        <h2 className="text-3xl font-bold mb-4">Hvat ger okkum øðrvísi?</h2>
+        <p className="text-lg mb-4">
+          Ritvit er <strong>allastaðni</strong>, men flestu fyritøkur stríðast við somu spurningar:
+        </p>
+        <ul className="list-disc ml-6 text-lg mb-4">
+          <li>
+            ❌ <strong>Hvar skulu vit byrja?</strong>
+          </li>
+          <li>
+            ❌ <strong>Hvussu riggar tað í verki?</strong>
+          </li>
+          <li>
+            ❌ <strong>Er ritvit ov trupult fyri okkum?</strong>
+          </li>
+        </ul>
+        <p className="text-lg mb-4">Tað, sum ger okkum øðrvísi:</p>
+        <ul className="list-disc ml-6 text-lg">
+          <li>
+            💡 <strong>Vit tosa títt mál.</strong> Ongar torgreiddar forklaringar – bara greið ráðgeving.
+          </li>
+          <li>
+            🚀 <strong>Vit leggja dent á skjót úrslit.</strong> Tú sært mun beinanvegin.
+          </li>
+          <li>
+            🇫🇴 <strong>Vit kenna føroyska marknaðin.</strong> Vit skilja veruligu avbjóðingarnar.
+          </li>
+          <li>
+            🤖 <strong>Vit brúka sjálvi ritvit hvønn dag.</strong> Tað her er ikki bara teori – vit vita, hvat riggar.
+          </li>
+        </ul>
+      </div>
+      </div>
       </section>
 
-      {/* Hvor vi er på vej hen */}
-      <section className="py-16">
-        <div className="container mx-auto px-4">
-          <div className="max-w-3xl mx-auto bg-gray-800/50 backdrop-blur-sm rounded-lg p-8 shadow-xl border border-purple-500/20 animate-fade-up">
-            <h2 className="text-3xl font-bold mb-4">
-              Hvor vi er på vej hen: AI’s fremtid på Færøerne
-            </h2>
-            <p className="text-lg mb-4">
-              Vi hjælper ikke bare virksomheder <strong>i dag</strong> – vi bygger <strong>for fremtiden</strong>.
-            </p>
-            <ul className="list-disc ml-6 text-lg mb-4">
-              <li>
-                🚀 <strong>Uddanne en hel generation af færøske medarbejdere i AI.</strong>
-              </li>
-              <li>
-                🤖 <strong>Udvikle skræddersyede AI-værktøjer til færøske brancher.</strong>
-              </li>
-              <li>
-                🌍 <strong>Udbrede færøsk AI-ekspertise til resten af verden.</strong>
-              </li>
-            </ul>
-            <p className="text-lg">
-              Og måske, bare måske…<br />
-              🦾 <strong>Bygge robotter. Selvstyrende systemer. Den næste store AI-innovation.</strong>
-              <br />
-              Hey, man skal jo drømme stort, ikke?
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* Call-to-Action */}
-      <section className="py-16 bg-gradient-to-br from-purple-600/20 to-indigo-600/20">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl font-bold mb-4 animate-fade-up">
-            Vil du arbejde smartere? Lad os tage en snak.
-          </h2>
-          <p className="text-lg mb-8 animate-fade-up">
-            Er du klar til at:
-          </p>
-          <ul className="list-disc ml-6 text-lg mb-8 animate-fade-up">
-            <li>✅ Stoppe med at spilde tid på gentagne opgaver?</li>
-            <li>✅ Få AI til at hjælpe dig med e-mails, rapporter og oversættelser?</li>
-            <li>✅ Komme foran dine konkurrenter?</li>
-          </ul>
-          <p className="text-lg mb-8 animate-fade-up">
-            Så er vi klar til at hjælpe.
-          </p>
-          <div className="flex flex-col md:flex-row justify-center gap-4 animate-fade-up">
-            <Link to="/contact">
-              <Button size="lg" className="bg-purple-600 hover:bg-purple-700 text-white">
-                Send os en besked
-              </Button>
-            </Link>
-            <Link to="/contact">
-              <Button size="lg" variant="outline" className="text-purple-600 border-purple-600">
-                Book et møde
-              </Button>
-            </Link>
-            <Link to="/services">
-              <Button size="lg" className="bg-purple-600 hover:bg-purple-700 text-white">
-                Se vores services
-              </Button>
-            </Link>
-            <Link to="/services">
-              <Button size="lg" variant="outline" className="text-purple-600 border-purple-600">
-                Tag kurset
-              </Button>
-            </Link>
-          </div>
-          <p className="text-lg mt-8 animate-fade-up">
-            🚀 Fremtiden for AI på Færøerne starter nu. Er du med?
-          </p>
-        </div>
-      </section>
 
       {/* Theme Toggle */}
       <div className="fixed bottom-4 right-4 z-50">
