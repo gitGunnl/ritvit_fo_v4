@@ -303,14 +303,21 @@ const Index = () => {
                   <Phone className="w-5 h-5 text-purple-600" />
                   <span>+298 919444</span>
                 </div>
-                <div className="flex items-center gap-3">
-                  <MessageSquare className="w-5 h-5 text-purple-600" />
-                  <span>https://www.facebook.com/profile.php?id=61557593776267</span>
+                <div className="flex items-center gap-3 hover:text-purple-400 transition-colors">
+                  <a href="https://www.facebook.com/profile.php?id=61557593776267" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5 text-purple-600">
+                      <path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm3 8h-1.35c-.538 0-.65.221-.65.778v1.222h2l-.209 2h-1.791v7h-3v-7h-2v-2h2v-2.308c0-1.769.931-2.692 3.029-2.692h1.971v3z"/>
+                    </svg>
+                    <span>Facebook</span>
+                  </a>
                 </div>
-                <div className="flex items-center gap-3">
-                  <Link to="/linkedin">
-                    <span className="text-purple-600 font-semibold">https://linkedin.com/company/t%C3%B8kni-t%C3%A6nastan</span>
-                  </Link>
+                <div className="flex items-center gap-3 hover:text-purple-400 transition-colors">
+                  <a href="https://linkedin.com/company/t%C3%B8kni-t%C3%A6nastan" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5 text-purple-600">
+                      <path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm-2 16h-2v-6h2v6zm-1-6.891c-.607 0-1.1-.496-1.1-1.109 0-.612.492-1.109 1.1-1.109s1.1.497 1.1 1.109c0 .613-.493 1.109-1.1 1.109zm8 6.891h-1.998v-2.861c0-1.881-2.002-1.722-2.002 0v2.861h-2v-6h2v1.093c.872-1.616 4-1.736 4 1.548v3.359z"/>
+                    </svg>
+                    <span>LinkedIn</span>
+                  </a>
                 </div>
               </div>
             </div>
