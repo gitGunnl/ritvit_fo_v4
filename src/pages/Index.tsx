@@ -25,12 +25,12 @@ const Index = () => {
       <Navigation />
 
       {/* Hero Section */}
-      <section className="pt-32 pb-16 px-4 sm:px-6 lg:px-8 relative overflow-hidden hero-section">
+      <section className="pt-32 pb-16 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
         <div className="max-w-7xl mx-auto text-center">
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-gray-900 dark:text-white mb-8 animate-fade-up">
             Steðga at spilla tíð upp á uppgávur, sum ritvit kann gera fyri teg!
           </h1>
-          <p className="max-w-2xl mx-auto text-xl text-gray-600 dark:text-gray-300 mb-8 animate-fade-up hero-content">
+          <p className="max-w-2xl mx-auto text-xl text-gray-600 dark:text-gray-300 mb-8 animate-fade-up">
             Tú hevur nógv um at vera. Kortini brúkar tú enn tíð upp á at skriva teldupostar,  
             skipa fundarfrágreiðingar og skriva dokumentatión. <strong>Men hví?</strong>  
             <br />
