@@ -369,7 +369,7 @@ const Index = () => {
             <Link to="/services" className="block">
               <div className="flex items-center gap-4 p-4 bg-purple-950 rounded-lg hover:bg-purple-900 transition-colors border border-purple-500">
                 <span className="text-2xl">💼</span>
-                <div className="text-whiAlso add the new public/logos/logo-header.png to the navbar instead of "BRAND"te">
+                <div className="text-white">
                   <h3 className="font-bold text-purple-300">Vilt tú innføra ritvit í tína fyritøku?</h3>
                   <p>Hygg eftir okkara tænastum</p>
                 </div>
