@@ -164,54 +164,58 @@ const Index = () => {
           </h2>
           <div className="prose prose-lg mx-auto dark:prose-invert text-gray-600 dark:text-gray-300 mb-8">
 
-            <div className="mb-6">
+            <Link to="/services#chatgpt-course" className="mb-6 block hover:bg-purple-950/50 p-4 rounded-lg transition-colors">
                 <div className="flex flex-col">
                   <p className="mb-1">
                     <strong>📌 Ert tú nýbyrjari?</strong>
                   </p>
-                  <div className="flex items-center">
+                  <div className="flex items-center justify-between">
                     <p>
-                      <strong>Tak okkara ChatGPT-skeið</strong> – skjótasti og lættasti háttur at koma í gongd. <ArrowRight className="inline w-5 h-5 text-purple-600 ml-1" />
+                      <strong>Tak okkara ChatGPT-skeið</strong> – skjótasti og lættasti háttur at koma í gongd.
                     </p>
+                    <ArrowRight className="w-5 h-5 text-purple-600" />
                   </div>
                 </div>
-              </div>
-              <div className="mb-6">
+              </Link>
+              <Link to="/services#ai-analysis" className="mb-6 block hover:bg-purple-950/50 p-4 rounded-lg transition-colors">
                 <div className="flex flex-col">
                   <p className="mb-1">
                     <strong>📌 Vilt tú bara finna útav hvussu ritvit kann hjálpa júst tær?</strong>
                   </p>
-                  <div className="flex items-center">
+                  <div className="flex items-center justify-between">
                     <p>
-                      <strong>Vit finna 15 ting júst tú kann brúka ChatGPT til!</strong> - so kemur tú ígong á besta hátt. <ArrowRight className="inline w-5 h-5 text-purple-600 ml-1" />
+                      <strong>Vit finna 15 ting júst tú kann brúka ChatGPT til!</strong> - so kemur tú ígong á besta hátt.
                     </p>
+                    <ArrowRight className="w-5 h-5 text-purple-600" />
                   </div>
                 </div>
-              </div>
-              <div className="mb-6">
+              </Link>
+              <Link to="/services#workshops" className="mb-6 block hover:bg-purple-950/50 p-4 rounded-lg transition-colors">
                 <div className="flex flex-col">
                   <p className="mb-1">
                     <strong>📌 Vilt tú hava praktiska venjing?</strong>
                   </p>
-                  <div className="flex items-center">
+                  <div className="flex items-center justify-between">
                     <p>
-                      <strong>Verkstovur & fyrilestrar</strong> – Vit vísa øllum tínum toymi, hvussu ritvit kann gera mun fyri tykkum. <ArrowRight className="inline w-5 h-5 text-purple-600 ml-1" />
+                      <strong>Verkstovur & fyrilestrar</strong> – Vit vísa øllum tínum toymi, hvussu ritvit kann gera mun fyri tykkum.
                     </p>
+                    <ArrowRight className="w-5 h-5 text-purple-600" />
                   </div>
                 </div>
-              </div>
-              <div className="mb-6">
+              </Link>
+              <Link to="/services#consulting" className="mb-6 block hover:bg-purple-950/50 p-4 rounded-lg transition-colors">
                 <div className="flex flex-col">
                   <p className="mb-1">
                     <strong>📌 Ella vilt tú sjálvirka arbeiðsgongdir?</strong>
                   </p>
-                  <div className="flex items-center">
+                  <div className="flex items-center justify-between">
                     <p>
-                      <strong>Ráðgeving</strong> – Vit hjálpa tær at at fáa ritvit at gera tað keðiliga arbeiði. <ArrowRight className="inline w-5 h-5 text-purple-600 ml-1" />
+                      <strong>Ráðgeving</strong> – Vit hjálpa tær at at fáa ritvit at gera tað keðiliga arbeiði.
                     </p>
+                    <ArrowRight className="w-5 h-5 text-purple-600" />
                   </div>
                 </div>
-              </div>
+              </Link>
           </div>
           <div className="text-center">
             <Link to="/services">
