@@ -349,25 +349,25 @@ const Index = () => {
       {/* Final CTA / Summary */}
       <section className="py-16 px-4 sm:px-6 lg:px-8 text-center">
         <h2 className="text-3xl font-bold mb-8 dark:text-white">
-          Tiden er nu – lad os komme i gang!
+          Tíðin er røtt nú – lat okkum býrja!
         </h2>
         <p className="text-lg text-gray-600 dark:text-gray-300 mb-8">
-          AI er <strong>ikke noget, du kan ignorere</strong> – det er allerede en game-changer for dem, der bruger det rigtigt.
+          Ritvit er <strong>ikki nakað, tú kanst skoyta til viks</strong> – tað hevur longu broytt spælið fyri tey, sum brúka tað rætt.
         </p>
         <ul className="list-disc list-inside text-lg text-gray-600 dark:text-gray-300 mb-8">
-          <li><strong>Vil du lære AI fra bunden?</strong> Tag vores kursus.</li>
-          <li><strong>Vil du implementere AI i din virksomhed?</strong> Se vores services.</li>
-          <li><strong>Er du i tvivl om, hvor du skal starte?</strong> Kontakt os.</li>
+          <li><strong>Vilt tú læra ritvit frá grundini?</strong> Tekna teg til okkara skeið.</li>
+          <li><strong>Vilt tú innføra ritvit í tína fyritøku?</strong> Hygg eftir okkara tænastum.</li>
+          <li><strong>Ert tú í iva um, hvar tú skalt byrja?</strong> Set teg í samband við okkum.</li>
         </ul>
         <div className="flex justify-center gap-4">
           <Link to="/services">
             <Button size="lg" className="bg-purple-600 hover:bg-purple-700 text-white">
-              👉 Køb kurset nu
+              👉 Keyp skeiðið nú
             </Button>
           </Link>
           <Link to="/services">
             <Button variant="outline" size="lg" className="text-purple-600 border-purple-600">
-              📖 Se vores services
+              📖 Sí okkara tænastur
             </Button>
           </Link>
         </div>
