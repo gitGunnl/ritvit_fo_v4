@@ -28,30 +28,29 @@ const Index = () => {
       <section className="pt-32 pb-16 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
         <div className="max-w-7xl mx-auto text-center">
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-gray-900 dark:text-white mb-8 animate-fade-up">
-            Stop med at spilde tid på opgaver, AI kan klare for dig
+            Steðga við at spilla tíð upp á uppgávur, sum ritvit kann gera fyri teg!
           </h1>
           <p className="max-w-2xl mx-auto text-xl text-gray-600 dark:text-gray-300 mb-8 animate-fade-up">
-            Du har travlt. Alligevel bruger du stadig tid på at skrive e-mails,
-            organisere mødenotater og lave dokumentation manuelt.{" "}
-            <strong>Men hvorfor?</strong>
+            Tú hevur nógv um at vera. Kortini brúkar tú enn tíð upp á at skriva teldupostar,  
+            skipa fundarfrágreiðingar og skriva dokumentatión. <strong>Men hví?</strong>  
             <br />
             <br />
-            Med ChatGPT kan du <strong>sætte opgaver på autopilot</strong> – og
-            spare <strong>timer</strong> hver uge. Ingen teknisk viden nødvendig.
+            Við KjattGPT kanst tú seta arbeiði á autopilot –  
+            og spara <strong>tímar</strong> hvønn mána. Og onki tøkni innlit krevst.  
             <br />
             <br />
-            🚀 <strong>Lær at bruge AI på få dage – og få mere tid til det, der
-            betyder noget.</strong>
+            🚀 <strong>Lær at brúka ritvit upp á fáar dagar – og fá meira tíð til tað, sum  
+            veruliga hevur týdning.</strong>
           </p>
           <div className="flex justify-center gap-4 animate-fade-up">
             <Link to="/services">
               <Button size="lg" className="bg-purple-600 hover:bg-purple-700 text-white">
-                👉 Tag hvores online kursus nu
+                👉 Tak okkara netskeið nú
               </Button>
             </Link>
             <Link to="/about">
               <Button variant="outline" size="lg" className="text-purple-600 border-purple-600">
-                📖 Læs mere
+                📖 Les meira um skeiði
               </Button>
             </Link>
           </div>
@@ -63,61 +62,86 @@ const Index = () => {
         <div className="max-w-7xl mx-auto">
           <div className="glass-card p-8 md:p-12 relative overflow-hidden">
             <h2 className="text-3xl font-bold mb-6">
-              Start med det vigtigste: Lær at bruge ChatGPT
+              Byrja við tí týdningarmesta: Lær at brúka ChatGPT
             </h2>
-            <h3 className="text-xl font-semibold mb-4">
-              Býrjunarskeið í ChatGPT til Føroysk Skrivstovufólk
-            </h3>
-            <p className="text-xl text-gray-600 mb-8">
-              Dette kursus er <strong>den hurtigste vej til at komme i gang med AI</strong> – skræddersyet til færøske kontorfolk!
+            {/* Course Card */}
+            <div className="bg-white rounded-lg shadow-lg overflow-hidden flex flex-col md:flex-row mb-8">
+              {/* Course Screenshot */}
+              <div className="md:w-1/2">
+                <img
+                  src="public/images/course-screenshot.jpg"
+                  alt="Course Screenshot"
+                  className="object-cover w-full h-full"
+                />
+              </div>
+              {/* Course Info */}
+              <div className="p-6 flex flex-col justify-center md:w-1/2">
+                <div className="flex items-center gap-2 mb-2">
+                  <img
+                    src="public/images/640px-ChatGPT-Logo.webp"
+                    alt="OpenAI Logo"
+                    className="w-8 h-8"
+                  />
+                  <h3 className="text-xl font-semibold">
+                    Byrjunarskeið í ChatGPT til Føroysk Skrivstovufólk
+                  </h3>
+                </div>
+                <p className="text-gray-600">
+                  Lær at brúka ChatGPT gjøgnum eitt serligt samansett skeið – serliga lagað til føroysk skrivstovufólk.
+                </p>
+              </div>
+            </div>
+            {/* End of Course Card */}
+            <p className="text-xl text-white-600 mb-8">
+              Hetta skeiðið er <strong>skjótasti mátin at koma í gongd við ritvit</strong> – og serliga lagað til føroysk skrivstovufólk!
             </p>
             <div className="space-y-4 mb-8">
               <div className="flex items-center gap-3">
                 <CheckCircle2 className="w-6 h-6 text-green-500" />
                 <span>
-                  <strong>Spar timer hver uge</strong> – Slip for manuelle opgaver.
+                  <strong>Lær hvussu tú kann spara tímar hvønn mána</strong> – ímeðan tú ger arbeiði stuttligari.
                 </span>
               </div>
               <div className="flex items-center gap-3">
                 <CheckCircle2 className="w-6 h-6 text-green-500" />
                 <span>
-                  <strong>Lær i dit eget tempo</strong> – Online, fleksibelt og letforståeligt.
+                  <strong>Lær í tínum egna tempo</strong> – online, fleksibult og lætt at skilja.
                 </span>
               </div>
               <div className="flex items-center gap-3">
                 <CheckCircle2 className="w-6 h-6 text-green-500" />
                 <span>
-                  <strong>Bliv mere effektiv</strong> – Brug ChatGPT til e-mails, oversættelser, rapporter og brainstorming.
+                  <strong>Tann besti sparringspartnarin</strong> – tú fert ikki at minnast hvussu lívið uttan ChatGPT plagdi at vera.
                 </span>
               </div>
               <div className="flex items-center gap-3">
                 <CheckCircle2 className="w-6 h-6 text-green-500" />
                 <span>
-                  <strong>AI-assisteret undervisning</strong> – Få adgang til en AI-lærer, der guider dig hele vejen.
+                  <strong>Ritvit lærari</strong> – Fá atgongd til ein ritvit-lærara, sum vegleiðir teg alla leiðina.
                 </span>
               </div>
               <div className="flex items-center gap-3">
                 <CheckCircle2 className="w-6 h-6 text-green-500" />
                 <span>
-                  <strong>100% risikofrit</strong> – Er du ikke tilfreds, får du pengene tilbage.
+                  <strong>100% vandaleyst</strong> – pengarnir aftur um skeið ikki er nøgdsamt.
                 </span>
               </div>
             </div>
-            <p className="text-lg text-gray-600 mb-8">
-              <strong>Kurset gør dig produktiv med AI fra dag ét – uden tekniske forudsætninger.</strong>
+            <p className="text-lg text-white-600 mb-8">
+              <strong>Skeiðið ger teg kláran at brúka ritvit frá fyrsta degi – uttan tekniskan forkunnleika.</strong>
             </p>
-            <p className="text-lg text-gray-600 mb-8">
-              📌 <strong>Bonus</strong>: Du får adgang til en <strong>dedikeret AI-chatbot</strong>, der besvarer dine spørgsmål undervejs!
+            <p className="text-lg text-white-600 mb-8">
+              📌 <strong>Eyka</strong>: Tú fært eisini ókeypis atgongd til okkara komandi skeið, "Copilot til Føroysk skrivstovufólk"!
             </p>
             <div className="flex justify-center gap-4">
               <Link to="/services">
                 <Button size="lg" className="bg-purple-600 hover:bg-purple-700 text-white">
-                  👉 Køb kurset nu
+                  👉 Keyp skeiðið nú
                 </Button>
               </Link>
               <Link to="/services">
                 <Button variant="outline" size="lg" className="text-purple-600 border-purple-600">
-                  📖 Se vores services
+                  📖 Lær meira um okkara tænastur
                 </Button>
               </Link>
             </div>
@@ -125,42 +149,42 @@ const Index = () => {
         </div>
       </section>
 
+
       {/* Additional Offers / Services Teaser */}
       <section className="py-16 px-4 sm:px-6 lg:px-8 bg-white/50 dark:bg-black/20">
         <div className="max-w-7xl mx-auto">
           <h2 className="text-3xl font-bold mb-8 text-center dark:text-white">
-            Vi hjælper dig igang med AI – uanset hvor du starter
+            Vit hjálpa tær í gongd við AI – uttan mun til hvat støði tú ert á
           </h2>
           <div className="prose prose-lg mx-auto dark:prose-invert text-gray-600 dark:text-gray-300 mb-8">
+
             <p>
-              Uanset om du <strong>lige er begyndt</strong> eller allerede <strong>bruger AI</strong>, har vi en løsning, der passer til dig.
+              <strong>📌 Ert tú nýbyrjari?</strong><br />
+              <strong>Tak okkara ChatGPT-skeið</strong> – skjótasti og lættasti háttur at koma í gongd.
             </p>
             <p>
-              <strong>🔹 Er du nybegynder?</strong><br />
-              📌 <strong>Tag vores ChatGPT-kursus</strong> – en hurtig og effektiv måde at komme i gang på.
+              <strong>📌 Vilt tú síggja, hvussu ritvit kann nýtast í tínari fyritøku?</strong><br />
+              <strong>Vit finna 15 ting júst tú kann brúka ChatGPT til!</strong> - So sparir tú tíðina.
             </p>
             <p>
-              <strong>🔹 Vil du se, hvordan AI kan bruges i din virksomhed?</strong><br />
-              📌 <strong>Få en analyse af dine arbejdsopgaver</strong> og se, hvordan AI kan spare dig tid.
+              <strong>📌 Vilt tú hava praktiska venjing?</strong><br />
+              <strong>Verkstovur & fyrilestrar</strong> – Vit vísa øllum tínum toymi, hvussu ritvit kann gera mun.
             </p>
             <p>
-              <strong>🔹 Vil du have hands-on træning?</strong><br />
-              📌 <strong>Workshops & foredrag</strong> – Vi viser hele dit team, hvordan AI kan gøre en forskel.
-            </p>
-            <p>
-              <strong>🔹 Klar til at automatisere processer?</strong><br />
-              📌 <strong>Rådgivning & AI-implementering</strong> – Vi hjælper dig med at integrere AI i din virksomhed.
+              <strong>📌 Klár/ur at automatisera arbeiðsgongdir?</strong><br />
+              <strong>Ráðgeving & AI-innføring</strong> – Vit hjálpa tær at innlima AI í tína fyritøku.
             </p>
           </div>
           <div className="text-center">
             <Link to="/services">
               <Button size="lg" className="bg-purple-600 hover:bg-purple-700 text-white">
-                📖 Se vores services
+                📖 Síggið okkara tænastur
               </Button>
             </Link>
           </div>
         </div>
       </section>
+
 
       {/* Urgency / Why Act Now */}
       <section className="py-16 px-4 sm:px-6 lg:px-8">
