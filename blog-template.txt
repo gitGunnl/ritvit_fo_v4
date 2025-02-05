@@ -1,0 +1,13 @@
+
+Title: Test Blog Post
+Category: General
+ReadTime: 5 min read
+ImageUrl: /placeholder.svg
+---
+# Test Blog Post
+
+This is a test blog post to verify that our blog system is working correctly.
+
+## What's this about?
+
+This post demonstrates how the blog system processes new content and adds it to the JSON database.
