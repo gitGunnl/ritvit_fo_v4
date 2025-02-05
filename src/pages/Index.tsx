@@ -166,30 +166,30 @@ const Index = () => {
           </h2>
           <div className="prose prose-lg mx-auto dark:prose-invert text-gray-600 dark:text-gray-300 mb-8">
 
-            <Link to="/services/beginner" className="block mb-6 group">
+            <div className="mb-6">
                 <div className="flex flex-col">
                   <p className="mb-1">
                     <strong>📌 Ert tú nýbyrjari?</strong>
                   </p>
                   <div className="flex items-center">
                     <p>
-                      <strong>Tak okkara ChatGPT-skeið</strong> – skjótasti og lættasti háttur at koma í gongd. <ArrowRight className="inline w-5 h-5 text-purple-600 transform transition-transform group-hover:translate-x-1 ml-1" />
+                      <strong>Tak okkara ChatGPT-skeið</strong> – skjótasti og lættasti háttur at koma í gongd. <ArrowRight className="inline w-5 h-5 text-purple-600 ml-1" />
                     </p>
                   </div>
                 </div>
-              </Link>
-              <Link to="/services/use-cases" className="block mb-6 group">
+              </div>
+              <div className="mb-6">
                 <div className="flex flex-col">
                   <p className="mb-1">
                     <strong>📌 Vilt tú bara finna útav hvussu ritvit kann hjálpa júst tær?</strong>
                   </p>
                   <div className="flex items-center">
                     <p>
-                      <strong>Vit finna 15 ting júst tú kann brúka ChatGPT til!</strong> - so kemur tú ígong á besta hátt. <ArrowRight className="inline w-5 h-5 text-purple-600 transform transition-transform group-hover:translate-x-1 ml-1" />
+                      <strong>Vit finna 15 ting júst tú kann brúka ChatGPT til!</strong> - so kemur tú ígong á besta hátt. <ArrowRight className="inline w-5 h-5 text-purple-600 ml-1" />
                     </p>
                   </div>
                 </div>
-              </Link>
+              </div>
               <Link to="/services/workshops" className="block mb-6 group">
                 <div className="flex flex-col">
                   <p className="mb-1">
