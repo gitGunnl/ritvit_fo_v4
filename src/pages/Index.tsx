@@ -354,10 +354,16 @@ const Index = () => {
         <p className="text-lg text-gray-600 dark:text-gray-300 mb-8">
           Ritvit er <strong>ikki nakað, tú kanst skoyta til viks</strong> – tað hevur longu broytt spælið fyri tey, sum brúka tað rætt.
         </p>
-        <ul className="list-disc list-inside text-lg text-gray-600 dark:text-gray-300 mb-8">
-          <li><strong>Vilt tú læra ritvit frá grundini?</strong> Tekna teg til okkara skeið.</li>
-          <li><strong>Vilt tú innføra ritvit í tína fyritøku?</strong> Hygg eftir okkara tænastum.</li>
-          <li><strong>Ert tú í iva um, hvar tú skalt byrja?</strong> Set teg í samband við okkum.</li>
+        <ul className="list-none space-y-2 text-lg text-gray-600 dark:text-gray-300 mb-8">
+          <li className="flex items-center gap-2">
+            <span><strong>Vilt tú læra ritvit frá grundini?</strong> Tekna teg til okkara skeið. <ArrowRight className="inline w-5 h-5 text-purple-600 transform transition-transform group-hover:translate-x-1 ml-1" /></span>
+          </li>
+          <li className="flex items-center gap-2">
+            <span><strong>Vilt tú innføra ritvit í tína fyritøku?</strong> Hygg eftir okkara tænastum. <ArrowRight className="inline w-5 h-5 text-purple-600 transform transition-transform group-hover:translate-x-1 ml-1" /></span>
+          </li>
+          <li className="flex items-center gap-2">
+            <span><strong>Ert tú í iva um, hvar tú skalt byrja?</strong> Set teg í samband við okkum. <ArrowRight className="inline w-5 h-5 text-purple-600 transform transition-transform group-hover:translate-x-1 ml-1" /></span>
+          </li>
         </ul>
         <div className="flex justify-center gap-4">
           <Link to="/services">
