@@ -1,12 +1,13 @@
-import { useState } from "react";
-import { useQuery } from "@tanstack/react-query";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import BlogSearch from "@/components/blog/BlogSearch";
 import BlogCategories from "@/components/blog/BlogCategories";
 import BlogCard from "@/components/blog/BlogCard";
 
-interface BlogPost {
+// Import the JSON “database” of blog posts
+import blogPostsData from "@/data/blogPosts.json";
+
+export interface BlogPost {
   id: string;
   title: string;
   excerpt: string;
@@ -14,64 +15,37 @@ interface BlogPost {
   readTime: string;
   category: string;
   imageUrl: string;
+  content?: string; // content is optional here
 }
 
+// Simulate an async fetch (e.g. using a Promise)
 const fetchBlogPosts = async (): Promise<BlogPost[]> => {
-  // This would normally be an API call
-  return [
-    {
-      id: "tech-stack",
-      title: "Complete Technical Documentation & Architecture Overview",
-      excerpt: "A comprehensive guide to our tech stack, architecture, and development practices for quick onboarding of new developers.",
-      date: "2024-02-21",
-      readTime: "8 min read",
-      category: "Documentation",
-      imageUrl: "/placeholder.svg"
-    },
-    {
-      id: "1",
-      title: "Getting Started with Digital Transformation",
-      excerpt: "Learn how to transform your business with modern digital solutions...",
-      date: "2024-02-20",
-      readTime: "5 min read",
-      category: "Digital Transformation",
-      imageUrl: "/placeholder.svg"
-    },
-    {
-      id: "2",
-      title: "The Future of Web Development",
-      excerpt: "Explore the latest trends and technologies shaping the future of web development...",
-      date: "2024-02-18",
-      readTime: "7 min read",
-      category: "Development",
-      imageUrl: "/placeholder.svg"
-    },
-    {
-      id: "3",
-      title: "Mastering User Experience Design",
-      excerpt: "Discover key principles and practices for creating exceptional user experiences...",
-      date: "2024-02-15",
-      readTime: "6 min read",
-      category: "Design",
-      imageUrl: "/placeholder.svg"
-    },
-  ];
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve(blogPostsData);
+    }, 300);
+  });
 };
 
 const BlogIndex = () => {
-  const [searchQuery, setSearchQuery] = useState("");
-  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+  const [searchQuery, setSearchQuery] = React.useState("");
+  const [selectedCategory, setSelectedCategory] = React.useState<string | null>(null);
+  const [posts, setPosts] = React.useState<BlogPost[]>([]);
+  const [isLoading, setIsLoading] = React.useState(true);
 
-  const { data: posts = [], isLoading } = useQuery({
-    queryKey: ['blog-posts'],
-    queryFn: fetchBlogPosts,
-  });
+  React.useEffect(() => {
+    fetchBlogPosts().then((data) => {
+      setPosts(data);
+      setIsLoading(false);
+    });
+  }, []);
 
-  const categories = Array.from(new Set(posts.map(post => post.category)));
+  const categories = Array.from(new Set(posts.map((post) => post.category)));
 
-  const filteredPosts = posts.filter(post => {
-    const matchesSearch = post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                         post.excerpt.toLowerCase().includes(searchQuery.toLowerCase());
+  const filteredPosts = posts.filter((post) => {
+    const matchesSearch =
+      post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      post.excerpt.toLowerCase().includes(searchQuery.toLowerCase());
     const matchesCategory = !selectedCategory || post.category === selectedCategory;
     return matchesSearch && matchesCategory;
   });
@@ -116,9 +90,10 @@ const BlogIndex = () => {
           ) : filteredPosts.length > 0 ? (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {filteredPosts.map((post, index) => (
-                <div key={`post-${post.id}`} 
+                <div
+                  key={`post-${post.id}`}
                   className="opacity-0 animate-fade-up"
-                  style={{ animationDelay: `${index * 100}ms`, animationFillMode: 'forwards' }}
+                  style={{ animationDelay: `${index * 100}ms`, animationFillMode: "forwards" }}
                 >
                   <BlogCard post={post} index={index} />
                 </div>
