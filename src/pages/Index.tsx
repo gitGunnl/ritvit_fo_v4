@@ -154,7 +154,7 @@ const Index = () => {
       <section className="py-16 px-4 sm:px-6 lg:px-8 bg-white/50 dark:bg-black/20">
         <div className="max-w-7xl mx-auto">
           <h2 className="text-3xl font-bold mb-8 text-center dark:text-white">
-            Vit hjálpa tær í gongd við AI – uttan mun til hvat støði tú ert á
+            Vit hjálpa tær í gongd við ritvit – uttan mun til hvat støði tú ert á
           </h2>
           <div className="prose prose-lg mx-auto dark:prose-invert text-gray-600 dark:text-gray-300 mb-8">
 
@@ -173,11 +173,11 @@ const Index = () => {
               <Link to="/services/use-cases" className="block mb-6 group">
                 <div className="flex flex-col">
                   <p className="mb-1">
-                    <strong>📌 Vilt tú síggja, hvussu ritvit kann nýtast í tínari fyritøku?</strong>
+                    <strong>📌 Vilt tú bara finna útav hvussu ritvit kann hjálpa júst tær?</strong>
                   </p>
                   <div className="flex items-center">
                     <p>
-                      <strong>Vit finna 15 ting júst tú kann brúka ChatGPT til!</strong> - So sparir tú tíðina. <ArrowRight className="inline w-5 h-5 text-purple-600 transform transition-transform group-hover:translate-x-1 ml-1" />
+                      <strong>Vit finna 15 ting júst tú kann brúka ChatGPT til!</strong> - so kemur tú ígong á besta hátt. <ArrowRight className="inline w-5 h-5 text-purple-600 transform transition-transform group-hover:translate-x-1 ml-1" />
                     </p>
                   </div>
                 </div>
@@ -189,7 +189,7 @@ const Index = () => {
                   </p>
                   <div className="flex items-center">
                     <p>
-                      <strong>Verkstovur & fyrilestrar</strong> – Vit vísa øllum tínum toymi, hvussu ritvit kann gera mun. <ArrowRight className="inline w-5 h-5 text-purple-600 transform transition-transform group-hover:translate-x-1 ml-1" />
+                      <strong>Verkstovur & fyrilestrar</strong> – Vit vísa øllum tínum toymi, hvussu ritvit kann gera mun fyri tykkum. <ArrowRight className="inline w-5 h-5 text-purple-600 transform transition-transform group-hover:translate-x-1 ml-1" />
                     </p>
                   </div>
                 </div>
@@ -197,11 +197,11 @@ const Index = () => {
               <Link to="/services/automation" className="block mb-6 group">
                 <div className="flex flex-col">
                   <p className="mb-1">
-                    <strong>📌 Klár/ur at automatisera arbeiðsgongdir?</strong>
+                    <strong>📌 Ella vilt tú sjálvirka arbeiðsgongdir?</strong>
                   </p>
                   <div className="flex items-center">
                     <p>
-                      <strong>Ráðgeving & AI-innføring</strong> – Vit hjálpa tær at innlima AI í tína fyritøku. <ArrowRight className="inline w-5 h-5 text-purple-600 transform transition-transform group-hover:translate-x-1 ml-1" />
+                      <strong>Ráðgeving</strong> – Vit hjálpa tær at at fáa ritvit at gera tað keðiliga arbeiði. <ArrowRight className="inline w-5 h-5 text-purple-600 transform transition-transform group-hover:translate-x-1 ml-1" />
                     </p>
                   </div>
                 </div>
@@ -210,7 +210,7 @@ const Index = () => {
           <div className="text-center">
             <Link to="/services">
               <Button size="lg" className="bg-purple-600 hover:bg-purple-700 text-white">
-                📖 Síggið okkara tænastur
+                📖 Les meira um okkara tænastur her!
               </Button>
             </Link>
           </div>
@@ -220,95 +220,96 @@ const Index = () => {
 
       {/* Urgency / Why Act Now */}
       <section className="py-16 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto text-center">
-          <h2 className="text-3xl font-bold mb-8 dark:text-white">
-            💡 AI udvikler sig hurtigt – lad være med at sakke bagud
-          </h2>
-          <ul className="list-disc list-inside text-xl text-gray-600 dark:text-gray-300 mb-8">
-            <li>
-              <strong>AI er allerede her</strong> – virksomheder, der lærer det først, får en kæmpe fordel.
-            </li>
-            <li>
-              <strong>Hvis du ikke gør det, vil dine konkurrenter.</strong>
-            </li>
-            <li>
-              <strong>Vores AI-kursus er den hurtigste vej til at komme i gang.</strong>
-            </li>
-            <li>
-              <strong>Få adgang til en AI-lærer</strong> der hjælper dig undervejs.
-            </li>
-            <li>
-              <strong>100% risikofrit</strong> – hvis du ikke er tilfreds, får du pengene tilbage.
-            </li>
-          </ul>
-          <div className="flex justify-center gap-4">
-            <Link to="/services">
-              <Button size="lg" className="bg-purple-600 hover:bg-purple-700 text-white">
-                👉 Tag kurset nu
-              </Button>
-            </Link>
-            <Link to="/services">
-              <Button variant="outline" size="lg" className="text-purple-600 border-purple-600">
-                📖 Se vores services
-              </Button>
-            </Link>
-          </div>
-        </div>
-      </section>
+              <div className="max-w-7xl mx-auto text-center">
+                <h2 className="text-3xl font-bold mb-8 dark:text-white">
+                  💡 Ritvit mennist skjótt – ikki sova í tímanum!
+                </h2>
+                <ul className="list-disc list-inside text-xl text-gray-600 dark:text-gray-300 mb-8">
+                  <li>
+                    <strong>Ritvit er longu her</strong> – fyritøkur, sum læra tað nú, fáa ein stóran fyrimun.
+                  </li>
+                  <li>
+                    <strong>Um tú ikki gert tað, so gera tínir kappingarneytar tað.</strong>
+                  </li>
+                  <li>
+                    <strong>Okkara ritvit-skeið er skjótasta og lættasta leiðin at koma í gongd.</strong>
+                  </li>
+                  <li>
+                    <strong>Fá atgongd til ein ritvit-lærara</strong> sum hjálpir tær á vegnum.
+                  </li>
+                  <li>
+                    <strong>100% vandaleyst</strong> – um skeiði ikki er nøgdandi so fært tú pengarnar aftur.
+                  </li>
+                </ul>
+                <div className="flex justify-center gap-4">
+                  <Link to="/services">
+                    <Button size="lg" className="bg-purple-600 hover:bg-purple-700 text-white">
+                      👉 Tak skeiðið nú
+                    </Button>
+                  </Link>
+                  <Link to="/services">
+                    <Button variant="outline" size="lg" className="text-purple-600 border-purple-600">
+                      📖 Síggj okkara tænastur
+                    </Button>
+                  </Link>
+                </div>
+              </div>
+            </section>
 
       {/* Who We Are / Trust Builder */}
       <section className="py-16 px-4 sm:px-6 lg:px-8 bg-white/50 dark:bg-black/20">
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl font-bold mb-8 text-center dark:text-white">Hvem står bag?</h2>
+          <h2 className="text-3xl font-bold mb-8 text-center dark:text-white">Hvør stendur aftanfyri?</h2>
           <div className="prose prose-lg mx-auto dark:prose-invert text-gray-600 dark:text-gray-300">
             <p>
-              Mit navn er <strong>Gunnleygur Clementsen</strong>, og jeg er <strong>Færøernes første AI-specialist</strong>.
+              Eg eiti <strong>Gunnleygur Clementsen</strong>, og tað er nokk eingin sum hevur spælt meira við ritvit amboð í Føroya enn eg.
             </p>
             <ul className="list-none mt-6">
               <li>
-                🧠 <strong>Jeg har brugt ChatGPT hver dag siden 2022</strong>, da jeg arbejdede som el-ingeniør i Danmark.
+                🧠 <strong>Eg havi brúkt ChatGPT so at siga hvønn dag síðan 2022</strong>, fyrst tá ið eg arbeiddi sum el-verkfrøðingur í Danmark. Og í dag ígjøgnum mína fyritøku sum bara arbeiður við ritvit øki.
               </li>
               <li>
-                📈 <strong>Jeg har fulgt AI’s udvikling i over 10 år</strong> og testet de største AI-værktøjer – også dengang de ikke var særlig gode.
+                📈 <strong>Eg havi fylgt við í menningini av ritvit í meira enn 10 ár</strong> og roynt fleiri hundra ritvit-amboð – eisini tá ið tey ikki nýttaðu nakað.
               </li>
               <li>
-                ⚡ <strong>Jeg startede Tøkni Tænastan</strong> for at hjælpe færøske virksomheder med at udnytte AI’s potentiale.
+                ⚡ <strong>Eg stovnaði Tøkni Tænastuna</strong> fyri at hjálpa føroyskum fyritøkum at gagnnýta møguleikarnar við ritvit.
               </li>
               <li>
-                📌 <strong>Jeg fokuserer på praktiske løsninger</strong> – du lærer ikke teori, men hvordan du får AI til at spare dig tid i hverdagen.
+                📌 <strong>Eg leggi dent á praktiskar loysnir</strong> – tú lærir ikki teori, men hvussu tú kanst brúka ritvit til at spara tíð í gerandisdegnum og gera arbeiði stuttligari.
               </li>
             </ul>
             <p className="mt-4">
-              <strong>AI er ikke fremtiden – det er nutiden.</strong> Skal vi hjælpe din virksomhed i gang?
+              <strong>Ritvit er ikki framtíðin – tað er nútíðin.</strong> So fá fingurin úr reyvuni og kom ígongd.
             </p>
           </div>
         </div>
       </section>
 
+
       {/* Contact Section */}
       <section className="py-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl font-bold mb-8 text-center dark:text-white">Skal vi tage en snak?</h2>
+          <h2 className="text-3xl font-bold mb-8 text-center dark:text-white">Skula vit taka eitt prát?</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {/* Contact Details */}
             <div className="glass-card p-8">
-              <h3 className="text-xl font-semibold mb-4">Kontakt mig</h3>
+              <h3 className="text-xl font-semibold mb-4">Fá samband her:</h3>
               <div className="space-y-4">
                 <div className="flex items-center gap-3">
                   <Mail className="w-5 h-5 text-purple-600" />
-                  <span>info@ditfirma.fo</span>
+                  <span>info@ritvit.fo</span>
                 </div>
                 <div className="flex items-center gap-3">
                   <Phone className="w-5 h-5 text-purple-600" />
-                  <span>+298 XX XX XX</span>
+                  <span>+298 919444</span>
                 </div>
                 <div className="flex items-center gap-3">
                   <MessageSquare className="w-5 h-5 text-purple-600" />
-                  <span>@DitFirma på Facebook</span>
+                  <span>https://www.facebook.com/profile.php?id=61557593776267</span>
                 </div>
                 <div className="flex items-center gap-3">
                   <Link to="/linkedin">
-                    <span className="text-purple-600 font-semibold">LinkedIn: Dit Firma</span>
+                    <span className="text-purple-600 font-semibold">https://linkedin.com/company/t%C3%B8kni-t%C3%A6nastan</span>
                   </Link>
                 </div>
               </div>
