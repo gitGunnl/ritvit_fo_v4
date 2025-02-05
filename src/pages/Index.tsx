@@ -163,11 +163,10 @@ const Index = () => {
                   <p className="mb-1">
                     <strong>📌 Ert tú nýbyrjari?</strong>
                   </p>
-                  <div className="flex items-center justify-between">
+                  <div className="flex items-center">
                     <p>
-                      <strong>Tak okkara ChatGPT-skeið</strong> – skjótasti og lættasti háttur at koma í gongd.
+                      <strong>Tak okkara ChatGPT-skeið</strong> – skjótasti og lættasti háttur at koma í gongd. <ArrowRight className="inline w-5 h-5 text-purple-600 transform transition-transform group-hover:translate-x-1 ml-1" />
                     </p>
-                    <ArrowRight className="w-5 h-5 text-purple-600 transform transition-transform group-hover:translate-x-1 ml-4" />
                   </div>
                 </div>
               </Link>
@@ -176,11 +175,10 @@ const Index = () => {
                   <p className="mb-1">
                     <strong>📌 Vilt tú síggja, hvussu ritvit kann nýtast í tínari fyritøku?</strong>
                   </p>
-                  <div className="flex items-center justify-between">
+                  <div className="flex items-center">
                     <p>
-                      <strong>Vit finna 15 ting júst tú kann brúka ChatGPT til!</strong> - So sparir tú tíðina.
+                      <strong>Vit finna 15 ting júst tú kann brúka ChatGPT til!</strong> - So sparir tú tíðina. <ArrowRight className="inline w-5 h-5 text-purple-600 transform transition-transform group-hover:translate-x-1 ml-1" />
                     </p>
-                    <ArrowRight className="w-5 h-5 text-purple-600 transform transition-transform group-hover:translate-x-1 ml-4" />
                   </div>
                 </div>
               </Link>
@@ -189,11 +187,10 @@ const Index = () => {
                   <p className="mb-1">
                     <strong>📌 Vilt tú hava praktiska venjing?</strong>
                   </p>
-                  <div className="flex items-center justify-between">
+                  <div className="flex items-center">
                     <p>
-                      <strong>Verkstovur & fyrilestrar</strong> – Vit vísa øllum tínum toymi, hvussu ritvit kann gera mun.
+                      <strong>Verkstovur & fyrilestrar</strong> – Vit vísa øllum tínum toymi, hvussu ritvit kann gera mun. <ArrowRight className="inline w-5 h-5 text-purple-600 transform transition-transform group-hover:translate-x-1 ml-1" />
                     </p>
-                    <ArrowRight className="w-5 h-5 text-purple-600 transform transition-transform group-hover:translate-x-1 ml-4" />
                   </div>
                 </div>
               </Link>
@@ -202,11 +199,10 @@ const Index = () => {
                   <p className="mb-1">
                     <strong>📌 Klár/ur at automatisera arbeiðsgongdir?</strong>
                   </p>
-                  <div className="flex items-center justify-between">
+                  <div className="flex items-center">
                     <p>
-                      <strong>Ráðgeving & AI-innføring</strong> – Vit hjálpa tær at innlima AI í tína fyritøku.
+                      <strong>Ráðgeving & AI-innføring</strong> – Vit hjálpa tær at innlima AI í tína fyritøku. <ArrowRight className="inline w-5 h-5 text-purple-600 transform transition-transform group-hover:translate-x-1 ml-1" />
                     </p>
-                    <ArrowRight className="w-5 h-5 text-purple-600 transform transition-transform group-hover:translate-x-1 ml-4" />
                   </div>
                 </div>
               </Link>
