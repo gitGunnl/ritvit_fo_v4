@@ -157,7 +157,7 @@ const Index = () => {
 
 
       {/* Additional Offers / Services Teaser */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-white/50 dark:bg-black/20">
+      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-black/20">
         <div className="max-w-7xl mx-auto">
           <h2 className="text-3xl font-bold mb-8 text-center dark:text-white">
             Vit hjálpa tær í gongd við ritvit – uttan mun til hvat støði tú ert á
@@ -263,7 +263,7 @@ const Index = () => {
             </section>
 
       {/* Who We Are / Trust Builder */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-white/50 dark:bg-black/20">
+      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-black/20">
         <div className="max-w-7xl mx-auto">
           <h2 className="text-3xl font-bold mb-8 text-center dark:text-white">Hvør stendur aftanfyri?</h2>
           <div className="prose prose-lg mx-auto dark:prose-invert text-gray-600 dark:text-gray-300">
