@@ -190,30 +190,30 @@ const Index = () => {
                   </div>
                 </div>
               </div>
-              <Link to="/services/workshops" className="block mb-6 group">
+              <div className="mb-6">
                 <div className="flex flex-col">
                   <p className="mb-1">
                     <strong>📌 Vilt tú hava praktiska venjing?</strong>
                   </p>
                   <div className="flex items-center">
                     <p>
-                      <strong>Verkstovur & fyrilestrar</strong> – Vit vísa øllum tínum toymi, hvussu ritvit kann gera mun fyri tykkum. <ArrowRight className="inline w-5 h-5 text-purple-600 transform transition-transform group-hover:translate-x-1 ml-1" />
+                      <strong>Verkstovur & fyrilestrar</strong> – Vit vísa øllum tínum toymi, hvussu ritvit kann gera mun fyri tykkum. <ArrowRight className="inline w-5 h-5 text-purple-600 ml-1" />
                     </p>
                   </div>
                 </div>
-              </Link>
-              <Link to="/services/automation" className="block mb-6 group">
+              </div>
+              <div className="mb-6">
                 <div className="flex flex-col">
                   <p className="mb-1">
                     <strong>📌 Ella vilt tú sjálvirka arbeiðsgongdir?</strong>
                   </p>
                   <div className="flex items-center">
                     <p>
-                      <strong>Ráðgeving</strong> – Vit hjálpa tær at at fáa ritvit at gera tað keðiliga arbeiði. <ArrowRight className="inline w-5 h-5 text-purple-600 transform transition-transform group-hover:translate-x-1 ml-1" />
+                      <strong>Ráðgeving</strong> – Vit hjálpa tær at at fáa ritvit at gera tað keðiliga arbeiði. <ArrowRight className="inline w-5 h-5 text-purple-600 ml-1" />
                     </p>
                   </div>
                 </div>
-              </Link>
+              </div>
           </div>
           <div className="text-center">
             <Link to="/services">
