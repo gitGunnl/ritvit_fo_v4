@@ -24,7 +24,7 @@ const Index = () => {
 
       {/* Hero Section */}
       <section className="pt-32 pb-16 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
-        <div className="max-w-7xl mx-auto text-center group">
+        <div className="max-w-7xl mx-auto text-center">
           {/* Main header – closer to the subheader by default */}
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-gray-900 dark:text-white mb-2 animate-fade-up">
             Steðga at spilla tíð upp á uppgávur, sum ritvit kann gera fyri teg!
