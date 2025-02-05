@@ -26,25 +26,29 @@ const Index = () => {
 
       {/* Hero Section */}
       <section className="pt-32 pb-16 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
-        <div className="max-w-7xl mx-auto text-center">
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-gray-900 dark:text-white mb-8 animate-fade-up">
+        <div className="max-w-7xl mx-auto text-center group">
+          {/* Main header – closer to the subheader by default */}
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-gray-900 dark:text-white mb-2 animate-fade-up">
             Steðga at spilla tíð upp á uppgávur, sum ritvit kann gera fyri teg!
           </h1>
-          <div className="group relative max-w-2xl mx-auto text-xl mb-8">
-            <p className="hidden md:block opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-gray-600 dark:text-gray-300 mb-4">
-              Tú hevur nógv um at vera. Kortini brúkar tú enn tíð upp á at skriva teldupostar,  
-              skipa fundarfrágreiðingar og skriva dokumentatión. <strong>Men hví?</strong>
+
+          {/* Hidden extra text container – expands on hover on md+ screens */}
+          <div className="transition-all duration-300 overflow-hidden max-h-0 md:group-hover:max-h-96">
+            <p className="opacity-0 md:group-hover:opacity-100 transition-opacity duration-300 text-gray-600 dark:text-gray-300 mb-4">
+              Tú hevur nógv um at vera. Kortini brúkar tú enn tíð upp á at skriva teldupostar, skipa fundarfrágreiðingar og skriva dokumentatión. <strong>Men hví?</strong>
             </p>
-            <p className="hidden md:block opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-gray-600 dark:text-gray-300 mb-4">
-              Við KjattGPT kanst tú seta arbeiði á autopilot –  
-              og spara <strong>tímar</strong> hvønn mána. Og onki tøkni innlit krevst.
-            </p>
-            <p className="text-gray-600 dark:text-gray-300 animate-fade-up">
-              🚀 <strong>Lær at brúka ritvit upp á fáar dagar – og fá meira tíð til tað, sum  
-              veruliga hevur týdning.</strong>
+            <p className="opacity-0 md:group-hover:opacity-100 transition-opacity duration-300 text-gray-600 dark:text-gray-300 mb-4">
+              Við KjattGPT kanst tú seta arbeiði á autopilot – og spara <strong>tímar</strong> hvønn mána. Og onki tøkni innlit krevst.
             </p>
           </div>
-          <div className="flex justify-center gap-4 animate-fade-up">
+
+          {/* Subheader – moves down when extra text is revealed */}
+          <p className="text-gray-600 dark:text-gray-300 animate-fade-up mt-2">
+            🚀 <strong>Lær at brúka ritvit upp á fáar dagar – og fá meira tíð til tað, sum veruliga hevur týdning.</strong>
+          </p>
+
+          {/* Buttons */}
+          <div className="flex justify-center gap-4 animate-fade-up mt-8">
             <Link to="/services">
               <Button size="lg" className="bg-purple-600 hover:bg-purple-700 text-white">
                 👉 Tak okkara netskeið nú
@@ -58,6 +62,8 @@ const Index = () => {
           </div>
         </div>
       </section>
+
+
 
       {/* Course Introduction / Core Offer */}
       <section className="py-16 px-4 sm:px-6 lg:px-8">
