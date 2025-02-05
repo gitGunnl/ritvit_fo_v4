@@ -164,7 +164,7 @@ const Index = () => {
           </h2>
           <div className="prose prose-lg mx-auto dark:prose-invert text-gray-600 dark:text-gray-300 mb-8">
 
-            <Link to="/services#chatgpt-course" className="mb-6 block hover:bg-purple-950/50 p-4 rounded-lg transition-colors">
+            <Link to="/services#chatgpt-course" className="mb-6 block p-4 rounded-lg transition-colors">
                 <div className="flex flex-col">
                   <p className="mb-1">
                     <strong>📌 Ert tú nýbyrjari?</strong>
