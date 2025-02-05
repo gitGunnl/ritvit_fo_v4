@@ -1,10 +1,8 @@
 import fs from 'fs';
 
 const filePaths = [
-  'src/index.css',
-  'src/App.css',
-  'tailwind.config.ts',
-  'postcss.config.js'
+  'src/pages/about.tsx',
+  'src/pages/services.tsx'
 ];
 
 let outputContent = '';
