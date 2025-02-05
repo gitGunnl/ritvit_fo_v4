@@ -28,7 +28,7 @@ const Index = () => {
       <section className="pt-32 pb-16 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
         <div className="max-w-7xl mx-auto text-center">
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-gray-900 dark:text-white mb-8 animate-fade-up">
-            Steðga við at spilla tíð upp á uppgávur, sum ritvit kann gera fyri teg!
+            Steðga at spilla tíð upp á uppgávur, sum ritvit kann gera fyri teg!
           </h1>
           <p className="max-w-2xl mx-auto text-xl text-gray-600 dark:text-gray-300 mb-8 animate-fade-up">
             Tú hevur nógv um at vera. Kortini brúkar tú enn tíð upp á at skriva teldupostar,  
@@ -69,7 +69,7 @@ const Index = () => {
               {/* Course Screenshot */}
               <div className="md:w-1/2">
                 <img
-                  src="public/images/course-screenshot.jpg"
+                  src="public/images/course-screenshot.png"
                   alt="Course Screenshot"
                   className="object-cover w-full h-full"
                 />
@@ -78,7 +78,7 @@ const Index = () => {
               <div className="p-8 flex flex-col justify-center md:w-1/2">
                 <div className="flex items-center gap-3 mb-4">
                   <img
-                    src="public/images/640px-ChatGPT-Logo.webp"
+                    src="public/images/ChatGPT-Logo.webp"
                     alt="OpenAI Logo"
                     className="w-10 h-10"
                   />
