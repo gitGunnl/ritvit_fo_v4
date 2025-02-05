@@ -19,8 +19,8 @@ const Navigation = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16">
           <div className="flex items-center">
-            <Link to="/" className="text-xl font-semibold text-white">
-              Brand
+            <Link to="/" className="flex items-center">
+              <img src="/logos/logo-header.png" alt="Logo" className="h-8" />
             </Link>
           </div>
 
