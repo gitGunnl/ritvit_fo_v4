@@ -31,8 +31,8 @@ const Index = () => {
           </h1>
 
           {/* Hidden extra text container – expands on hover on md+ screens */}
-          <div className="transition-all duration-300 overflow-hidden max-h-0 md:group-hover:max-h-96">
-            <p className="opacity-0 md:group-hover:opacity-100 transition-opacity duration-300 text-gray-600 dark:text-gray-300 mb-4">
+          <div className="transition-all duration-1800 overflow-hidden max-h-0 md:group-hover:max-h-96">
+            <p className="opacity-0 md:group-hover:opacity-100 transition-opacity duration-1800 text-gray-600 dark:text-gray-300 mb-4">
               Tú hevur nógv um at vera. Kortini brúkar tú enn tíð upp á at skriva teldupostar, skipa fundarfrágreiðingar og skriva dokumentatión. <strong>Men hví?</strong>
             </p>
             <p className="opacity-0 md:group-hover:opacity-100 transition-opacity duration-300 text-gray-600 dark:text-gray-300 mb-4">

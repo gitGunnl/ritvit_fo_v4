@@ -1,8 +1,8 @@
 import fs from 'fs';
 
 const filePaths = [
-  'src/pages/about.tsx',
-  'src/pages/services.tsx'
+  'src/pages/blog/index.tsx',
+  'src/pages/blog/[id].tsx'
 ];
 
 let outputContent = '';
