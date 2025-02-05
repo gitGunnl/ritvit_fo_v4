@@ -346,7 +346,7 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Style 4: Glass Card */}
+      {/* Style 4: Smooth Glass */}
       <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-purple-500/20 to-indigo-500/20 my-8">
         <div className="max-w-4xl mx-auto backdrop-blur-lg bg-white/30 dark:bg-gray-900/30 p-12 rounded-2xl border border-white/20">
           <h2 className="text-4xl font-bold mb-8 text-center">
@@ -386,6 +386,144 @@ const Index = () => {
               👉 Keyp skeiðið nú
             </Button>
             <Button variant="outline" size="lg" className="border-2 border-white/90 text-white hover:bg-white/10">
+              📖 Sí okkara tænastur
+            </Button>
+          </div>
+        </div>
+      </section>
+
+      {/* Style 5: Bold Dark */}
+      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-purple-900 to-indigo-900 my-8">
+        <div className="max-w-4xl mx-auto backdrop-blur-lg bg-black/40 p-12 rounded-2xl border-2 border-purple-500/50">
+          <h2 className="text-4xl font-bold mb-8 text-center text-white">
+            Tíðin er røtt nú – lat okkum býrja!
+          </h2>
+          <p className="text-xl mb-12 text-center text-purple-100">
+            Ritvit er <strong>ikki nakað, tú kanst skoyta til viks</strong> – tað hevur longu broytt spælið.
+          </p>
+          <div className="space-y-6 mb-12">
+            <div className="flex items-center gap-4 p-4 bg-purple-800/30 rounded-lg hover:bg-purple-700/40 transition-colors border border-purple-500/30">
+              <span className="text-2xl">🎓</span>
+              <div className="text-white">
+                <h3 className="font-bold">Vilt tú læra ritvit frá grundini?</h3>
+                <p className="text-purple-200">Tekna teg til okkara skeið</p>
+              </div>
+              <ArrowRight className="ml-auto w-6 h-6 text-purple-300" />
+            </div>
+            <div className="flex items-center gap-4 p-4 bg-purple-800/30 rounded-lg hover:bg-purple-700/40 transition-colors border border-purple-500/30">
+              <span className="text-2xl">💼</span>
+              <div className="text-white">
+                <h3 className="font-bold">Vilt tú innføra ritvit í tína fyritøku?</h3>
+                <p className="text-purple-200">Hygg eftir okkara tænastum</p>
+              </div>
+              <ArrowRight className="ml-auto w-6 h-6 text-purple-300" />
+            </div>
+            <div className="flex items-center gap-4 p-4 bg-purple-800/30 rounded-lg hover:bg-purple-700/40 transition-colors border border-purple-500/30">
+              <span className="text-2xl">❓</span>
+              <div className="text-white">
+                <h3 className="font-bold">Ert tú í iva?</h3>
+                <p className="text-purple-200">Set teg í samband við okkum</p>
+              </div>
+              <ArrowRight className="ml-auto w-6 h-6 text-purple-300" />
+            </div>
+          </div>
+          <div className="flex flex-col sm:flex-row justify-center gap-4">
+            <Button size="lg" className="bg-purple-500 hover:bg-purple-600 text-white font-bold border-2 border-purple-400">
+              👉 Keyp skeiðið nú
+            </Button>
+            <Button variant="outline" size="lg" className="border-2 border-purple-400 text-purple-200 hover:bg-purple-800/50">
+              📖 Sí okkara tænastur
+            </Button>
+          </div>
+        </div>
+      </section>
+
+      {/* Style 6: Neon Glow */}
+      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-black my-8">
+        <div className="max-w-4xl mx-auto p-12 rounded-2xl border-2 border-purple-500 shadow-[0_0_30px_rgba(147,51,234,0.3)]">
+          <h2 className="text-4xl font-bold mb-8 text-center text-white">
+            Tíðin er røtt nú – lat okkum býrja!
+          </h2>
+          <p className="text-xl mb-12 text-center text-purple-300">
+            Ritvit er <strong className="text-purple-400">ikki nakað, tú kanst skoyta til viks</strong> – tað hevur longu broytt spælið.
+          </p>
+          <div className="space-y-6 mb-12">
+            <div className="flex items-center gap-4 p-4 bg-purple-950 rounded-lg hover:bg-purple-900 transition-colors border border-purple-500">
+              <span className="text-2xl">🎓</span>
+              <div className="text-white">
+                <h3 className="font-bold text-purple-300">Vilt tú læra ritvit frá grundini?</h3>
+                <p>Tekna teg til okkara skeið</p>
+              </div>
+              <ArrowRight className="ml-auto w-6 h-6 text-purple-400" />
+            </div>
+            <div className="flex items-center gap-4 p-4 bg-purple-950 rounded-lg hover:bg-purple-900 transition-colors border border-purple-500">
+              <span className="text-2xl">💼</span>
+              <div className="text-white">
+                <h3 className="font-bold text-purple-300">Vilt tú innføra ritvit í tína fyritøku?</h3>
+                <p>Hygg eftir okkara tænastum</p>
+              </div>
+              <ArrowRight className="ml-auto w-6 h-6 text-purple-400" />
+            </div>
+            <div className="flex items-center gap-4 p-4 bg-purple-950 rounded-lg hover:bg-purple-900 transition-colors border border-purple-500">
+              <span className="text-2xl">❓</span>
+              <div className="text-white">
+                <h3 className="font-bold text-purple-300">Ert tú í iva?</h3>
+                <p>Set teg í samband við okkum</p>
+              </div>
+              <ArrowRight className="ml-auto w-6 h-6 text-purple-400" />
+            </div>
+          </div>
+          <div className="flex flex-col sm:flex-row justify-center gap-4">
+            <Button size="lg" className="bg-purple-600 hover:bg-purple-700 text-white font-bold shadow-[0_0_20px_rgba(147,51,234,0.5)]">
+              👉 Keyp skeiðið nú
+            </Button>
+            <Button variant="outline" size="lg" className="border-2 border-purple-500 text-purple-300 hover:bg-purple-950">
+              📖 Sí okkara tænastur
+            </Button>
+          </div>
+        </div>
+      </section>
+
+      {/* Style 7: Sharp Modern */}
+      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-gray-900 to-purple-900 my-8">
+        <div className="max-w-4xl mx-auto p-12 rounded-none border-l-4 border-r-4 border-purple-500">
+          <h2 className="text-4xl font-bold mb-8 text-center text-white tracking-tight">
+            Tíðin er røtt nú – lat okkum býrja!
+          </h2>
+          <p className="text-xl mb-12 text-center text-gray-300">
+            Ritvit er <strong className="text-purple-400">ikki nakað, tú kanst skoyta til viks</strong> – tað hevur longu broytt spælið.
+          </p>
+          <div className="space-y-6 mb-12">
+            <div className="flex items-center gap-4 p-4 bg-black/40 hover:bg-black/60 transition-colors border-l-2 border-purple-500">
+              <span className="text-2xl">🎓</span>
+              <div className="text-white">
+                <h3 className="font-bold">Vilt tú læra ritvit frá grundini?</h3>
+                <p className="text-gray-400">Tekna teg til okkara skeið</p>
+              </div>
+              <ArrowRight className="ml-auto w-6 h-6 text-purple-500" />
+            </div>
+            <div className="flex items-center gap-4 p-4 bg-black/40 hover:bg-black/60 transition-colors border-l-2 border-purple-500">
+              <span className="text-2xl">💼</span>
+              <div className="text-white">
+                <h3 className="font-bold">Vilt tú innføra ritvit í tína fyritøku?</h3>
+                <p className="text-gray-400">Hygg eftir okkara tænastum</p>
+              </div>
+              <ArrowRight className="ml-auto w-6 h-6 text-purple-500" />
+            </div>
+            <div className="flex items-center gap-4 p-4 bg-black/40 hover:bg-black/60 transition-colors border-l-2 border-purple-500">
+              <span className="text-2xl">❓</span>
+              <div className="text-white">
+                <h3 className="font-bold">Ert tú í iva?</h3>
+                <p className="text-gray-400">Set teg í samband við okkum</p>
+              </div>
+              <ArrowRight className="ml-auto w-6 h-6 text-purple-500" />
+            </div>
+          </div>
+          <div className="flex flex-col sm:flex-row justify-center gap-4">
+            <Button size="lg" className="bg-purple-600 hover:bg-purple-700 text-white font-bold border-b-4 border-purple-800">
+              👉 Keyp skeiðið nú
+            </Button>
+            <Button variant="outline" size="lg" className="border-2 border-purple-500 text-white hover:bg-purple-900/50">
               📖 Sí okkara tænastur
             </Button>
           </div>
