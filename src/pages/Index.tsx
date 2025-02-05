@@ -30,18 +30,20 @@ const Index = () => {
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-gray-900 dark:text-white mb-8 animate-fade-up">
             Steðga at spilla tíð upp á uppgávur, sum ritvit kann gera fyri teg!
           </h1>
-          <p className="max-w-2xl mx-auto text-xl text-gray-600 dark:text-gray-300 mb-8 animate-fade-up">
-            Tú hevur nógv um at vera. Kortini brúkar tú enn tíð upp á at skriva teldupostar,  
-            skipa fundarfrágreiðingar og skriva dokumentatión. <strong>Men hví?</strong>  
-            <br />
-            <br />
-            Við KjattGPT kanst tú seta arbeiði á autopilot –  
-            og spara <strong>tímar</strong> hvønn mána. Og onki tøkni innlit krevst.  
-            <br />
-            <br />
-            🚀 <strong>Lær at brúka ritvit upp á fáar dagar – og fá meira tíð til tað, sum  
-            veruliga hevur týdning.</strong>
-          </p>
+          <div className="group relative max-w-2xl mx-auto text-xl mb-8">
+            <p className="hidden md:block opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-gray-600 dark:text-gray-300 mb-4">
+              Tú hevur nógv um at vera. Kortini brúkar tú enn tíð upp á at skriva teldupostar,  
+              skipa fundarfrágreiðingar og skriva dokumentatión. <strong>Men hví?</strong>
+            </p>
+            <p className="hidden md:block opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-gray-600 dark:text-gray-300 mb-4">
+              Við KjattGPT kanst tú seta arbeiði á autopilot –  
+              og spara <strong>tímar</strong> hvønn mána. Og onki tøkni innlit krevst.
+            </p>
+            <p className="text-gray-600 dark:text-gray-300 animate-fade-up">
+              🚀 <strong>Lær at brúka ritvit upp á fáar dagar – og fá meira tíð til tað, sum  
+              veruliga hevur týdning.</strong>
+            </p>
+          </div>
           <div className="flex justify-center gap-4 animate-fade-up">
             <Link to="/services">
               <Button size="lg" className="bg-purple-600 hover:bg-purple-700 text-white">
