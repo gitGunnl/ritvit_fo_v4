@@ -38,11 +38,15 @@ const Navigation = () => {
             <Button className="hover-lift bg-purple-600 hover:bg-purple-700">Get Started</Button>
           </div>
 
-          {/* Mobile Navigation Button */}
-          <div className="md:hidden flex items-center">
+          {/* Mobile Navigation Buttons */}
+          <div className="md:hidden flex items-center gap-2">
+            <Link to="/contact">
+              <Button variant="ghost" className="text-gray-300 hover:text-purple-400">Contact</Button>
+            </Link>
+            <Button className="hover-lift bg-purple-600 hover:bg-purple-700">Get Started</Button>
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="text-gray-600 hover:text-gray-900 focus:outline-none"
+              className="text-gray-600 hover:text-gray-900 focus:outline-none ml-2"
             >
               {isOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
