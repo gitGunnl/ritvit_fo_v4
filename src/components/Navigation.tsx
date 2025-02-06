@@ -53,12 +53,12 @@ const Navigation = () => {
       {/* Mobile Navigation Menu */}
       {isOpen && (
         <div className="md:hidden">
-          <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white border-b">
+          <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 border-b">
             {navItems.map((item, index) => (
               <Link
                 key={`nav-item-${index}`}
                 to={item.path}
-                className="block px-3 py-2 text-gray-600 hover:text-gray-900"
+                className="block px-3 py-2 text-white-600 hover:text-gray-900"
                 onClick={() => setIsOpen(false)}
               >
                 {item.name}
