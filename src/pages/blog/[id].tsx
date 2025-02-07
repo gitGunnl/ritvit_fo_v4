@@ -76,6 +76,8 @@ const BlogPost = () => {
             "
             dangerouslySetInnerHTML={{ __html: post.content }}
           />
+
+          <RelatedPosts currentPost={post} posts={blogPosts} />
         </article>
       </main>
 
