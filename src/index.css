@@ -27,8 +27,27 @@
     @apply font-semibold text-[1.1em];
   }
 
-  .prose strong {
+  /* Override prose text colors to match our theme */
+  .prose strong,
+  .prose blockquote,
+  .prose em,
+  .prose code,
+  .prose a,
+  .prose h3,
+  .prose h4,
+  .prose thead th {
     @apply text-inherit;
+  }
+
+  .prose p,
+  .prose ul,
+  .prose ol,
+  .prose li {
+    @apply text-text/80;
+  }
+
+  .prose blockquote {
+    @apply border-l-4 border-text/20;
   }
 }
 
