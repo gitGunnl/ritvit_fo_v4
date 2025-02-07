@@ -138,79 +138,56 @@ const Index = () => {
 
       {/* Additional Offers / Services Teaser */}
       <section className="py-16 px-4 sm:px-6 lg:px-8 bg-primary/10">
-        <div className="max-w-7xl mx-auto">
+        <div className="max-w-4xl mx-auto">
           <h2 className="text-3xl font-bold mb-8 text-center">
             Vit hjálpa tær í gongd við ritvit – uttan mun til hvat støði tú ert á
           </h2>
-          <div className="prose prose-lg mx-auto text-text/80 mb-8">
-            <Link
-              to="/services#chatgpt-course"
-              className="mb-6 block p-4 rounded-lg transition-colors hover:bg-primary/20 no-underline text-accent"
-            >
-              <div className="flex flex-col">
-                <p className="mb-1">
-                  <strong>📌 Ert tú nýbyrjari?</strong>
-                </p>
-                <div className="flex items-center justify-between">
-                  <p>
+          <ul className="space-y-4 mb-8">
+            <li className="flex items-start p-4 border rounded-lg hover:bg-primary/20 transition">
+              <span className="text-3xl mr-4">📌</span>
+              <div>
+                <p className="font-bold">Ert tú nýbyrjari?</p>
+                <p>
+                  <Link to="/services#chatgpt-course" className="text-accent hover:underline">
                     <strong>Tak okkara ChatGPT-skeið</strong> – skjótasti og lættasti háttur at koma í gongd.
-                  </p>
-                  <ArrowRight className="w-5 h-5 text-primary" />
-                </div>
-              </div>
-            </Link>
-            <Link
-              to="/services#ai-analysis"
-              className="mb-6 block p-4 rounded-lg transition-colors hover:bg-primary/20 no-underline text-accent"
-            >
-              <div className="flex flex-col">
-                <p className="mb-1">
-                  <strong>📌 Vilt tú bara finna útav hvussu ritvit kann hjálpa júst tær?</strong>
+                  </Link>
                 </p>
-                <div className="flex items-center justify-between">
-                  <p>
-                    <strong>Vit finna 15 ting júst tú kann brúka ChatGPT til!</strong>{" "}
-                    - so kemur tú ígong á besta hátt.
-                  </p>
-                  <ArrowRight className="w-5 h-5 text-primary" />
-                </div>
               </div>
-            </Link>
-            <Link
-              to="/services#workshops"
-              className="mb-6 block p-4 rounded-lg transition-colors hover:bg-primary/20 no-underline text-accent"
-            >
-              <div className="flex flex-col">
-                <p className="mb-1">
-                  <strong>📌 Vilt tú hava praktiska venjing?</strong>
+            </li>
+            <li className="flex items-start p-4 border rounded-lg hover:bg-primary/20 transition">
+              <span className="text-3xl mr-4">📌</span>
+              <div>
+                <p className="font-bold">Vilt tú bara finna útav hvussu ritvit kann hjálpa júst tær?</p>
+                <p>
+                  <Link to="/services#ai-analysis" className="text-accent hover:underline">
+                    <strong>Vit finna 15 ting júst tú kann brúka ChatGPT til!</strong> - so kemur tú ígong á besta hátt.
+                  </Link>
                 </p>
-                <div className="flex items-center justify-between">
-                  <p>
-                    <strong>Verkstovur & fyrilestrar</strong> – Vit vísa øllum tínum
-                    toymi, hvussu ritvit kann gera mun fyri tykkum.
-                  </p>
-                  <ArrowRight className="w-5 h-5 text-primary" />
-                </div>
               </div>
-            </Link>
-            <Link
-              to="/services#consulting"
-              className="mb-6 block p-4 rounded-lg transition-colors hover:bg-primary/20 no-underline text-accent"
-            >
-              <div className="flex flex-col">
-                <p className="mb-1">
-                  <strong>📌 Ella vilt tú sjálvirka arbeiðsgongdir?</strong>
+            </li>
+            <li className="flex items-start p-4 border rounded-lg hover:bg-primary/20 transition">
+              <span className="text-3xl mr-4">📌</span>
+              <div>
+                <p className="font-bold">Vilt tú hava praktiska venjing?</p>
+                <p>
+                  <Link to="/services#workshops" className="text-accent hover:underline">
+                    <strong>Verkstovur & fyrilestrar</strong> – Vit vísa øllum tínum toymi, hvussu ritvit kann gera mun fyri tykkum.
+                  </Link>
                 </p>
-                <div className="flex items-center justify-between">
-                  <p>
-                    <strong>Ráðgeving</strong> – Vit hjálpa tær at fáa ritvit at gera
-                    tað keðiliga arbeiði.
-                  </p>
-                  <ArrowRight className="w-5 h-5 text-primary" />
-                </div>
               </div>
-            </Link>
-          </div>
+            </li>
+            <li className="flex items-start p-4 border rounded-lg hover:bg-primary/20 transition">
+              <span className="text-3xl mr-4">📌</span>
+              <div>
+                <p className="font-bold">Ella vilt tú sjálvirka arbeiðsgongdir?</p>
+                <p>
+                  <Link to="/services#consulting" className="text-accent hover:underline">
+                    <strong>Ráðgeving</strong> – Vit hjálpa tær at fáa ritvit at gera tað keðiliga arbeiði.
+                  </Link>
+                </p>
+              </div>
+            </li>
+          </ul>
           <div className="text-center">
             <Link to="/services">
               <Button size="lg" className="bg-primary hover:bg-primary/80 text-text">
@@ -220,6 +197,8 @@ const Index = () => {
           </div>
         </div>
       </section>
+
+
 
       {/* Urgency / Why Act Now */}
       <section className="py-16 px-4 sm:px-6 lg:px-8">
