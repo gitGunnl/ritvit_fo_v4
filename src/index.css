@@ -4,12 +4,14 @@
 
 @layer base {
   :root {
-    --background: 210 20% 98%;
-    --text: 210 15% 20%;
-    --primary: 210 90% 45%;
-    --accent: 45 80% 50%;
-    --border: 210 10% 80%;
+    --background: 210 10% 12%;   /* Deep charcoal background */
+    --text:       210 15% 80%;   /* Light text with a cool tone */
+    --primary:    180 60% 40%;   /* Rich teal for primary elements */
+    --accent:     30 70% 50%;    /* Warm amber accent for contrast */
+    --border:     210 10% 25%;   /* Darker charcoal for subtle borders */
   }
+
+
 
   /* Apply the border color to all elements – this sets the default border color */
   * {
