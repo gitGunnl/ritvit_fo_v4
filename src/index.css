@@ -24,7 +24,7 @@
   }
 
   strong {
-    @apply text-text/100 font-medium;
+    @apply font-semibold text-[1.1em];
   }
 }
 
