@@ -22,6 +22,10 @@
   body {
     @apply bg-background text-text antialiased;
   }
+
+  strong {
+    @apply text-text/90;
+  }
 }
 
 /* A glass-card now uses a subtle primary tint and our defined border color */
