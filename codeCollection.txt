@@ -1,47 +1,98 @@
+### src/pages/blog/[id].tsx
+```
+import { useParams, Link } from "react-router-dom";
+import Navigation from "@/components/Navigation";
+import Footer from "@/components/Footer";
+import { Button } from "@/components/ui/button";
+import { Calendar, Clock, ArrowLeft } from "lucide-react";
+// Import the JSON array of blog posts.
+import blogPosts from "@/data/blogPosts.json";
+
+const BlogPost = () => {
+  const { id } = useParams();
+
+  // Find the post in our JSON data.
+  const post = blogPosts.find((post) => post.id === id);
+
+  if (!post) {
+    return (
+      <div className="min-h-screen flex flex-col bg-gradient-to-br from-purple-50 via-white to-indigo-50 dark:from-gray-900 dark:via-gray-800 dark:to-purple-900">
+        <Navigation />
+        <div className="flex-grow container mx-auto px-4 py-24 text-center">
+          <p className="text-gray-600">Loading or post not found…</p>
+        </div>
+        <Footer />
+      </div>
+    );
+  }
+
+  return (
+    <div className="min-h-screen flex flex-col bg-gradient-to-br from-gray-900 via-gray-800 to-purple-900">
+      <Navigation />
+
+      <main className="flex-grow container mx-auto px-4 py-24">
+        <article className="max-w-3xl mx-auto">
+          <Link to="/blog">
+            <Button variant="ghost" className="mb-8 hover-lift text-gray-300 hover:text-white hover:bg-white/10">
+              <ArrowLeft className="mr-2 h-4 w-4" />
+              Back to Blog
+            </Button>
+          </Link>
+
+          <h1 className="text-4xl font-bold mb-4 bg-gradient-to-r from-purple-400 to-indigo-400 text-transparent bg-clip-text">
+            {post.title}
+          </h1>
+
+          <div className="flex items-center gap-4 text-gray-400 mb-8">
+            <span className="flex items-center gap-1">
+              <Calendar className="h-4 w-4" />
+              {new Date(post.date).toLocaleDateString()}
+            </span>
+            <span className="flex items-center gap-1">
+              <Clock className="h-4 w-4" />
+              {post.readTime}
+            </span>
+            <span className="text-purple-400 font-medium">{post.category}</span>
+          </div>
+
+          <div className="relative">
+            <img src={post.imageUrl} alt={post.title} className="w-full h-64 object-cover rounded-lg mb-8" />
+            <div className="absolute inset-0 bg-gradient-to-t from-gray-900/20 to-transparent rounded-lg" />
+          </div>
+
+          <div
+            className="prose prose-lg max-w-none prose-invert prose-headings:text-gray-100 prose-p:text-gray-300 prose-strong:text-purple-400 prose-a:text-purple-400"
+            dangerouslySetInnerHTML={{ __html: post.content }}
+          />
+        </article>
+      </main>
+
+      <Footer />
+    </div>
+  );
+};
+
+export default BlogPost;
+
+```
+
 ### src/pages/blog/index.tsx
 ```
-import React from 'react';
+import { useState } from "react";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import BlogSearch from "@/components/blog/BlogSearch";
 import BlogCategories from "@/components/blog/BlogCategories";
 import BlogCard from "@/components/blog/BlogCard";
-
-// Import the JSON “database” of blog posts
-import blogPostsData from "@/data/blogPosts.json";
-
-export interface BlogPost {
-  id: string;
-  title: string;
-  excerpt: string;
-  date: string;
-  readTime: string;
-  category: string;
-  imageUrl: string;
-  content?: string; // content is optional here
-}
-
-// Simulate an async fetch (e.g. using a Promise)
-const fetchBlogPosts = async (): Promise<BlogPost[]> => {
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      resolve(blogPostsData);
-    }, 300);
-  });
-};
+// Import the blog posts JSON file.
+import blogPosts from "@/data/blogPosts.json";
 
 const BlogIndex = () => {
-  const [searchQuery, setSearchQuery] = React.useState("");
-  const [selectedCategory, setSelectedCategory] = React.useState<string | null>(null);
-  const [posts, setPosts] = React.useState<BlogPost[]>([]);
-  const [isLoading, setIsLoading] = React.useState(true);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
 
-  React.useEffect(() => {
-    fetchBlogPosts().then((data) => {
-      setPosts(data);
-      setIsLoading(false);
-    });
-  }, []);
+  // In a real system you might fetch the posts via an API.
+  const posts = blogPosts;
 
   const categories = Array.from(new Set(posts.map((post) => post.category)));
 
@@ -54,7 +105,7 @@ const BlogIndex = () => {
   });
 
   return (
-    <div className="min-h-screen flex flex-col bg-gradient-to-br from-purple-50 via-white to-indigo-50 dark:from-gray-900 dark:via-gray-800 dark:to-purple-900">
+    <div className="min-h-screen flex flex-col bg-gradient-to-br from-gray-900 via-gray-800 to-purple-900">
       <Navigation />
 
       <main className="flex-grow container mx-auto px-4 py-24 animate-fade-up">
@@ -72,7 +123,7 @@ const BlogIndex = () => {
           <div className="glass-card p-6 rounded-xl mb-12">
             <div className="flex flex-col md:flex-row gap-8">
               <BlogSearch searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
-              <BlogCategories 
+              <BlogCategories
                 categories={categories}
                 selectedCategory={selectedCategory}
                 setSelectedCategory={setSelectedCategory}
@@ -80,17 +131,7 @@ const BlogIndex = () => {
             </div>
           </div>
 
-          {isLoading ? (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {[1, 2, 3].map((n) => (
-                <div key={n} className="animate-pulse glass-card p-6 rounded-xl">
-                  <div className="bg-gray-200 h-48 rounded-lg mb-4"></div>
-                  <div className="h-4 bg-gray-200 rounded w-3/4 mb-2"></div>
-                  <div className="h-4 bg-gray-200 rounded w-1/2"></div>
-                </div>
-              ))}
-            </div>
-          ) : filteredPosts.length > 0 ? (
+          {filteredPosts.length > 0 ? (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {filteredPosts.map((post, index) => (
                 <div
@@ -119,84 +160,202 @@ export default BlogIndex;
 
 ```
 
-### src/pages/blog/[id].tsx
+### src/components/Navigation.tsx
 ```
-import React from "react";
-import { useParams, Link } from "react-router-dom";
-import Navigation from "@/components/Navigation";
-import Footer from "@/components/Footer";
+import { useState } from "react";
+import { Link } from "react-router-dom";
+import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Calendar, Clock, ArrowLeft } from "lucide-react";
-import blogPostsData from "@/data/blogPosts.json";
-import { BlogPost } from "./index";
 
-const fetchBlogPost = async (id: string): Promise<BlogPost | null> => {
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      const post = (blogPostsData as BlogPost[]).find((p) => p.id === id) || null;
-      resolve(post);
-    }, 300);
-  });
+const Navigation = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const navItems = [
+    { name: "Home", path: "/" },
+    { name: "About", path: "/about" },
+    { name: "Services", path: "/services" },
+    { name: "Blog", path: "/blog" },
+    { name: "Contact", path: "/contact" },
+  ];
+
+  return (
+    <nav className="fixed w-full bg-black/50 dark:bg-black/50 backdrop-blur-md z-50 border-b border-gray-800">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex justify-between h-16">
+          <div className="flex items-center">
+            <Link to="/" className="flex items-center">
+              <img src="/logos/logo-header.png" alt="Logo" className="h-10" width="auto" height="40" />
+            </Link>
+          </div>
+
+          {/* Desktop Navigation */}
+          <div className="hidden md:flex items-center space-x-8">
+            {navItems.map((item) => (
+              <Link
+                key={item.name}
+                to={item.path}
+                className="text-gray-300 hover:text-purple-400 transition-colors"
+              >
+                {item.name}
+              </Link>
+            ))}
+            <Button className="hover-lift bg-purple-600 hover:bg-purple-700">Get Started</Button>
+          </div>
+
+          {/* Mobile Navigation Buttons */}
+          <div className="md:hidden flex items-center gap-2">
+            <Link to="/contact">
+              <Button variant="ghost" className="text-gray-300 hover:text-purple-400">Contact</Button>
+            </Link>
+            <Button className="hover-lift bg-purple-600 hover:bg-purple-700">Get Started</Button>
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              className="text-gray-600 hover:text-gray-900 focus:outline-none ml-2"
+            >
+              {isOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {/* Mobile Navigation Menu */}
+      {isOpen && (
+        <div className="md:hidden">
+          <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 border-b">
+            {navItems.map((item, index) => (
+              <Link
+                key={`nav-item-${index}`}
+                to={item.path}
+                className="block px-3 py-2 text-white-600 hover:text-gray-900"
+                onClick={() => setIsOpen(false)}
+              >
+                {item.name}
+              </Link>
+            ))}
+            <Button className="w-full mt-4">Get Started</Button>
+          </div>
+        </div>
+      )}
+    </nav>
+  );
 };
 
-const BlogPostPage = () => {
-  const { id } = useParams<{ id: string }>();
-  const [post, setPost] = React.useState<BlogPost | null>(null);
-  const [isLoading, setIsLoading] = React.useState(true);
+export default Navigation;
+```
 
-  React.useEffect(() => {
-    if (id) {
-      fetchBlogPost(id).then((data) => {
-        setPost(data);
-        setIsLoading(false);
-      });
-    }
-  }, [id]);
+### src/components/Footer.tsx
+```
+import { Link } from "react-router-dom";
 
-  if (isLoading) {
-    return (
-      <div className="min-h-screen flex flex-col bg-gradient-to-br from-purple-50 via-white to-indigo-50 dark:from-gray-900 dark:via-gray-800 dark:to-purple-900">
-        <Navigation />
-        <div className="flex-grow container mx-auto px-4 py-24">
-          <div className="animate-pulse max-w-3xl mx-auto">
-            <div className="h-8 bg-gray-800 rounded w-3/4 mb-4"></div>
-            <div className="h-4 bg-gray-800 rounded w-1/4 mb-8"></div>
-            <div className="h-48 bg-gray-800 rounded mb-8"></div>
-            <div className="space-y-4">
-              <div className="h-4 bg-gray-800 rounded"></div>
-              <div className="h-4 bg-gray-800 rounded"></div>
-              <div className="h-4 bg-gray-800 rounded w-5/6"></div>
+const Footer = () => {
+  return (
+    <footer className="bg-black/50 backdrop-blur-md border-t border-gray-800">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+          <div className="space-y-4">
+            <h3 className="text-lg font-semibold text-white">Brand</h3>
+            <p className="text-gray-300">
+              Creating exceptional digital experiences through innovative solutions.
+            </p>
+          </div>
+          
+          <div className="space-y-4">
+            <h3 className="text-lg font-semibold">Company</h3>
+            <ul className="space-y-2">
+              <li>
+                <Link to="/about" className="text-gray-300 hover:text-purple-400">
+                  About Us
+                </Link>
+              </li>
+              <li>
+                <Link to="/services" className="text-gray-600 hover:text-gray-900">
+                  Services
+                </Link>
+              </li>
+              <li>
+                <Link to="/contact" className="text-gray-600 hover:text-gray-900">
+                  Contact
+                </Link>
+              </li>
+            </ul>
+          </div>
+          
+          <div className="space-y-4">
+            <h3 className="text-lg font-semibold">Legal</h3>
+            <ul className="space-y-2">
+              <li>
+                <Link to="/privacy" className="text-gray-600 hover:text-gray-900">
+                  Privacy Policy
+                </Link>
+              </li>
+              <li>
+                <Link to="/terms" className="text-gray-600 hover:text-gray-900">
+                  Terms of Service
+                </Link>
+              </li>
+            </ul>
+          </div>
+          
+          <div className="space-y-4">
+            <h3 className="text-lg font-semibold">Connect</h3>
+            <div className="flex space-x-4">
+              <a href="#" className="text-gray-600 hover:text-gray-900">
+                Twitter
+              </a>
+              <a href="#" className="text-gray-600 hover:text-gray-900">
+                LinkedIn
+              </a>
+              <a href="#" className="text-gray-600 hover:text-gray-900">
+                GitHub
+              </a>
             </div>
           </div>
         </div>
-        <Footer />
+        
+        <div className="mt-8 pt-8 border-t border-gray-200">
+          <p className="text-center text-gray-400">
+            © {new Date().getFullYear()} Brand. All rights reserved.
+          </p>
+        </div>
       </div>
-    );
-  }
+    </footer>
+  );
+};
 
-  if (!post) return null;
+export default Footer;
+```
 
+### src/components/blog/BlogCard.tsx
+```
+import { Calendar, Clock, ChevronRight } from "lucide-react";
+import { Link } from "react-router-dom";
+
+interface BlogCardProps {
+  post: {
+    id: string;
+    title: string;
+    excerpt: string;
+    date: string;
+    readTime: string;
+    imageUrl: string;
+  };
+}
+
+const BlogCard = ({ post }: BlogCardProps) => {
   return (
-    <div className="min-h-screen flex flex-col bg-gradient-to-br from-purple-50 via-white to-indigo-50 dark:from-gray-900 dark:via-gray-800 dark:to-purple-900">
-      <Navigation />
-
-      <main className="flex-grow container mx-auto px-4 py-24">
-        <article className="max-w-3xl mx-auto">
-          <Link to="/blog">
-            <Button
-              variant="ghost"
-              className="mb-8 hover-lift text-gray-300 hover:text-white hover:bg-white/10"
-            >
-              <ArrowLeft className="mr-2 h-4 w-4" />
-              Back to Blog
-            </Button>
-          </Link>
-
-          <h1 className="text-4xl font-bold mb-4 bg-gradient-to-r from-purple-400 to-indigo-400 text-transparent bg-clip-text">
-            {post.title}
-          </h1>
-
-          <div className="flex items-center gap-4 text-gray-400 mb-8">
+    <Link to={`/blog/${post.id}`} className="group">
+      <article className="bg-black/30 backdrop-blur-md border border-gray-800 rounded-xl overflow-hidden transition-all duration-300 hover:shadow-purple-500/10 hover:-translate-y-1">
+        <div className="relative overflow-hidden">
+          <img
+            src={post.imageUrl}
+            alt={post.title}
+            className="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-105"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+        </div>
+        
+        <div className="p-6">
+          <div className="flex items-center gap-4 text-sm text-gray-400 mb-3">
             <span className="flex items-center gap-1">
               <Calendar className="h-4 w-4" />
               {new Date(post.date).toLocaleDateString()}
@@ -205,211 +364,27 @@ const BlogPostPage = () => {
               <Clock className="h-4 w-4" />
               {post.readTime}
             </span>
-            <span className="text-purple-400 font-medium">{post.category}</span>
           </div>
-
-          <div className="relative">
-            <img
-              src={post.imageUrl}
-              alt={post.title}
-              className="w-full h-64 object-cover rounded-lg mb-8"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-gray-900/20 to-transparent rounded-lg" />
+          
+          <h2 className="text-xl font-semibold text-white mb-2 bg-gradient-to-r from-purple-400 to-indigo-400 bg-[length:0%_2px] bg-no-repeat bg-left-bottom group-hover:bg-[length:100%_2px] transition-all duration-300">
+            {post.title}
+          </h2>
+          
+          <p className="text-gray-300 mb-4 line-clamp-2">
+            {post.excerpt}
+          </p>
+          
+          <div className="flex items-center text-purple-600 font-medium">
+            Read More
+            <ChevronRight className="ml-1 h-4 w-4 transform transition-transform duration-300 group-hover:translate-x-1" />
           </div>
-
-          <div
-            className="prose prose-lg max-w-none prose-invert prose-headings:text-gray-100 prose-p:text-gray-300 prose-strong:text-purple-400 prose-a:text-purple-400"
-            dangerouslySetInnerHTML={{ __html: post.content }}
-          />
-        </article>
-      </main>
-
-      <Footer />
-    </div>
+        </div>
+      </article>
+    </Link>
   );
 };
 
-export default BlogPostPage;
-
-```
-
-### src/data/blogPosts.json
-```
-[
-  {
-    "id": "smart-fiskeri-p-f-r-erne-hvordan-ai-kan-sikre-fremtidens-fiskeri",
-    "title": "Smart Fiskeri på Færøerne: Hvordan AI Kan Sikre Fremtidens Fiskeri",
-    "excerpt": "Smart Fiskeri på Færøerne: Hvordan AI Kan Sikre Fremtidens Fiskeri Når Tradition Møder TeknologiFiskeri er ikke bare en industri på Færøerne – det er...",
-    "date": "2025-02-05",
-    "readTime": "8 min read",
-    "category": "Sustainability",
-    "imageUrl": "/placeholder.svg",
-    "content": "# Smart Fiskeri på Færøerne: Hvordan AI Kan Sikre Fremtidens Fiskeri\n\n## Når Tradition Møder Teknologi\nFiskeri er ikke bare en industri på Færøerne – det er en livsstil. …\n(rest of your markdown content)"
-  }
-]
-```
-
-### scripts/add-blog.js
-```
-#!/usr/bin/env node
-/**
- * scripts/add-blog.js
- *
- * Reads a blog post from blog-template.txt, extracts front matter (if provided)
- * and content, generates an ID from the title, appends the new blog post to
- * src/data/blogPosts.json, and finally empties blog-template.txt.
- *
- * Expected template format (front matter is optional):
- *
- *   Title: My Amazing Post
- *   Category: Digital Transformation
- *   ReadTime: 7 min read
- *   ImageUrl: /my-image.svg
- *   Excerpt: (optional excerpt, otherwise generated)
- *   ---
- *   # My Amazing Post
- *
- *   (Markdown content …)
- */
-
-import fs from "fs";
-import path from "path";
-import { fileURLToPath } from "url";
-
-// Determine __dirname since we're using ES modules.
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-
-// A simple slugify function
-function slugify(text) {
-  return text
-    .toString()
-    .toLowerCase()
-    .trim()
-    .replace(/[\s\W-]+/g, "-")
-    .replace(/^-+|-+$/g, "");
-}
-
-const templateFilePath = path.join(__dirname, "..", "blog-template.txt");
-const blogPostsFilePath = path.join(__dirname, "..", "src", "data", "blogPosts.json");
-
-// Read the template file
-fs.readFile(templateFilePath, "utf8", (err, data) => {
-  if (err) {
-    console.error("Error reading template file:", err);
-    process.exit(1);
-  }
-
-  if (!data.trim()) {
-    console.log("Template file is empty. Nothing to add.");
-    process.exit(0);
-  }
-
-  // Split the file into lines
-  const lines = data.split("\n");
-  let frontMatter = {};
-  let contentStartIndex = 0;
-
-  // If the first line starts with "Title:", we assume there is front matter.
-  if (lines[0].startsWith("Title:")) {
-    for (let i = 0; i < lines.length; i++) {
-      if (lines[i].trim() === "---" || lines[i].trim() === "") {
-        contentStartIndex = i + 1;
-        break;
-      }
-      const [key, ...rest] = lines[i].split(":");
-      frontMatter[key.trim().toLowerCase()] = rest.join(":").trim();
-    }
-  }
-
-  // The rest of the file is the content
-  const content = lines.slice(contentStartIndex).join("\n").trim();
-  if (!content) {
-    console.error("No content found in the template file.");
-    process.exit(1);
-  }
-
-  // Get the title either from front matter or by extracting the first markdown heading (# ...)
-  let title = frontMatter.title;
-  if (!title) {
-    const match = content.match(/^#\s+(.+)/);
-    if (match) {
-      title = match[1].trim();
-    } else {
-      console.error("No title found in front matter or content.");
-      process.exit(1);
-    }
-  }
-
-  // Other metadata (with defaults if not provided)
-  const category = frontMatter.category || "General";
-  const readTime = frontMatter.readtime || "5 min read";
-  const imageUrl = frontMatter.imageurl || "/placeholder.svg";
-  const excerpt =
-    frontMatter.excerpt ||
-    content.replace(/[#_*>\n]/g, "").slice(0, 150).trim() + "...";
-
-  // Generate a slug from the title
-  const id = slugify(title);
-
-  // Use today's date in YYYY-MM-DD format
-  const date = new Date().toISOString().slice(0, 10);
-
-  // Build the new blog post object
-  const newBlogPost = {
-    id,
-    title,
-    excerpt,
-    date,
-    readTime,
-    category,
-    imageUrl,
-    content,
-  };
-
-  // Load existing blog posts from the JSON file (or start with an empty array)
-  let blogPosts = [];
-  if (fs.existsSync(blogPostsFilePath)) {
-    try {
-      const jsonData = fs.readFileSync(blogPostsFilePath, "utf8");
-      blogPosts = JSON.parse(jsonData);
-    } catch (e) {
-      console.error("Error reading blog posts JSON:", e);
-      process.exit(1);
-    }
-  }
-
-  // Check for duplicate IDs
-  if (blogPosts.find((post) => post.id === id)) {
-    console.error(`A blog post with id "${id}" already exists.`);
-    process.exit(1);
-  }
-
-  // Append the new blog post and write back to the JSON file
-  blogPosts.push(newBlogPost);
-  fs.writeFile(
-    blogPostsFilePath,
-    JSON.stringify(blogPosts, null, 2),
-    "utf8",
-    (err) => {
-      if (err) {
-        console.error("Error writing blog posts JSON:", err);
-        process.exit(1);
-      }
-      console.log(`Blog post "${title}" added successfully!`);
-
-      // Empty the template file
-      fs.writeFile(templateFilePath, "", "utf8", (err) => {
-        if (err) {
-          console.error("Error emptying template file:", err);
-          process.exit(1);
-        }
-        console.log("Template file emptied.");
-      });
-    }
-  );
-});
-
+export default BlogCard;
 ```
 
 ### blog-template.txt
