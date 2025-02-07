@@ -2,48 +2,34 @@ import { Button } from "@/components/ui/button";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import ChatbotButton from "@/components/ChatbotButton";
-import {
-  ArrowRight,
-  Mail,
-  Phone,
-  MessageSquare,
-  CheckCircle2,
-  Clock,
-  Zap,
-  Users
-} from "lucide-react";
+import { ArrowRight, Mail, Phone, MessageSquare, CheckCircle2 } from "lucide-react";
 import { Link } from "react-router-dom";
-import { useTheme } from "@/hooks/use-theme";
 
 const Index = () => {
-  const { theme } = useTheme();
-
   return (
-    <div className="min-h-screen flex flex-col bg-gradient-to-br from-purple-50 via-white to-indigo-50 dark:from-gray-900 dark:via-gray-800 dark:to-purple-900">
+    <div className="min-h-screen flex flex-col bg-background text-text">
       <Navigation />
 
       {/* Hero Section */}
       <section className="pt-32 pb-16 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
         <div className="max-w-7xl mx-auto text-center">
-          {/* Main header – closer to the subheader by default */}
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-gray-900 dark:text-white mb-2 animate-fade-up">
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight mb-2 animate-fade-up">
             Steðga at spilla tíð upp á uppgávur, sum ritvit kann gera fyri teg!
           </h1>
 
-          {/* Subheader – moves down when extra text is revealed */}
-          <p className="text-gray-600 dark:text-gray-300 animate-fade-up mt-2">
+          <p className="animate-fade-up mt-2 text-text/80">
             🚀 <strong>Lær at brúka ritvit upp á fáar dagar – og fá meira tíð til tað, sum veruliga hevur týdning.</strong>
           </p>
 
           {/* Buttons */}
           <div className="flex justify-center gap-4 animate-fade-up mt-8">
             <Link to="/services">
-              <Button size="lg" className="bg-purple-600 hover:bg-purple-700 text-white">
+              <Button size="lg" className="bg-primary hover:bg-primary/80 text-text">
                 👉 Tak okkara netskeið nú
               </Button>
             </Link>
             <Link to="/about">
-              <Button variant="outline" size="lg" className="text-purple-600 border-purple-600">
+              <Button variant="outline" size="lg" className="text-primary border border-primary">
                 📖 Les meira um skeiði
               </Button>
             </Link>
@@ -51,17 +37,17 @@ const Index = () => {
         </div>
       </section>
 
-
-
       {/* Course Introduction / Core Offer */}
       <section className="py-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
-          <div className="glass-card p-8 md:p-12 relative overflow-hidden">
+          {/* Glass-like card */}
+          <div className="bg-primary/10 p-8 md:p-12 relative overflow-hidden border border-border backdrop-blur-sm rounded-lg">
             <h2 className="text-3xl font-bold mb-6">
               Byrja við tí týdningarmesta: Lær at brúka ChatGPT
             </h2>
+
             {/* Course Card */}
-            <div className="glass-card overflow-hidden flex flex-col md:flex-row mb-8 hover-lift bg-black/20 border border-purple-500/20">
+            <div className="flex flex-col md:flex-row mb-8 bg-primary/10 border border-primary/20 backdrop-blur-sm rounded-lg hover-lift overflow-hidden">
               {/* Course Screenshot */}
               <div className="md:w-1/2">
                 <img
@@ -78,65 +64,70 @@ const Index = () => {
                     alt="OpenAI Logo"
                     className="w-10 h-10"
                   />
-                  <h3 className="text-2xl font-semibold bg-gradient-to-r from-purple-400 to-indigo-400 text-transparent bg-clip-text">
+                  <h3 className="text-2xl font-semibold bg-gradient-to-r from-primary to-accent text-transparent bg-clip-text">
                     Byrjunarskeið í ChatGPT til Føroysk Skrivstovufólk
                   </h3>
                 </div>
-                <p className="text-gray-300">
+                <p className="text-text/80">
                   Lær at brúka ChatGPT gjøgnum eitt serligt samansett skeið – serliga lagað til føroysk skrivstovufólk.
                 </p>
               </div>
             </div>
             {/* End of Course Card */}
-            <p className="text-xl text-white-600 mb-8">
+
+            <p className="text-xl text-text/80 mb-8">
               Hetta skeiðið er <strong>skjótasti mátin at koma í gongd við ritvit</strong> – og serliga lagað til føroysk skrivstovufólk!
             </p>
             <div className="space-y-4 mb-8">
               <div className="flex items-center gap-3">
-                <CheckCircle2 className="w-6 h-6 text-green-500" />
+                <CheckCircle2 className="w-6 h-6 text-primary" />
                 <span>
                   <strong>Lær hvussu tú kann spara tímar hvønn mána</strong> – ímeðan tú ger arbeiði stuttligari.
                 </span>
               </div>
               <div className="flex items-center gap-3">
-                <CheckCircle2 className="w-6 h-6 text-green-500" />
+                <CheckCircle2 className="w-6 h-6 text-primary" />
                 <span>
                   <strong>Lær í tínum egna tempo</strong> – online, fleksibult og lætt at skilja.
                 </span>
               </div>
               <div className="flex items-center gap-3">
-                <CheckCircle2 className="w-6 h-6 text-green-500" />
+                <CheckCircle2 className="w-6 h-6 text-primary" />
                 <span>
                   <strong>Tann besti sparringspartnarin</strong> – tú fert ikki at minnast hvussu lívið uttan ChatGPT plagdi at vera.
                 </span>
               </div>
               <div className="flex items-center gap-3">
-                <CheckCircle2 className="w-6 h-6 text-green-500" />
+                <CheckCircle2 className="w-6 h-6 text-primary" />
                 <span>
                   <strong>Ritvit lærari</strong> – Fá atgongd til ein ritvit-lærara, sum vegleiðir teg alla leiðina.
                 </span>
               </div>
               <div className="flex items-center gap-3">
-                <CheckCircle2 className="w-6 h-6 text-green-500" />
+                <CheckCircle2 className="w-6 h-6 text-primary" />
                 <span>
                   <strong>100% vandaleyst</strong> – pengarnir aftur um skeið ikki er nøgdsamt.
                 </span>
               </div>
             </div>
-            <p className="text-lg text-white-600 mb-8">
+            <p className="text-lg text-text/80 mb-8">
               <strong>Skeiðið ger teg kláran at brúka ritvit frá fyrsta degi – uttan tekniskan forkunnleika.</strong>
             </p>
-            <p className="text-lg text-white-600 mb-8">
+            <p className="text-lg text-text/80 mb-8">
               📌 <strong>Eyka</strong>: Tú fært eisini ókeypis atgongd til okkara komandi skeið, "Copilot til Føroysk skrivstovufólk"!
             </p>
             <div className="flex justify-center gap-4">
               <Link to="/services">
-                <Button size="lg" className="bg-purple-600 hover:bg-purple-700 text-white">
+                <Button size="lg" className="bg-primary hover:bg-primary/80 text-text">
                   👉 Keyp skeiðið nú
                 </Button>
               </Link>
               <Link to="/services">
-                <Button variant="outline" size="lg" className="text-purple-600 border-purple-600">
+                <Button
+                  variant="outline"
+                  size="lg"
+                  className="text-primary border border-primary"
+                >
                   📖 Lær meira um okkara tænastur
                 </Button>
               </Link>
@@ -145,71 +136,84 @@ const Index = () => {
         </div>
       </section>
 
-
       {/* Additional Offers / Services Teaser */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-black/20">
+      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-primary/10">
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl font-bold mb-8 text-center dark:text-white">
+          <h2 className="text-3xl font-bold mb-8 text-center">
             Vit hjálpa tær í gongd við ritvit – uttan mun til hvat støði tú ert á
           </h2>
-          <div className="prose prose-lg mx-auto dark:prose-invert text-gray-600 dark:text-gray-300 mb-8">
-
-            <Link to="/services#chatgpt-course" className="mb-6 block p-4 rounded-lg transition-colors">
-                <div className="flex flex-col">
-                  <p className="mb-1">
-                    <strong>📌 Ert tú nýbyrjari?</strong>
+          <div className="prose prose-lg mx-auto text-text/80 mb-8">
+            <Link
+              to="/services#chatgpt-course"
+              className="mb-6 block p-4 rounded-lg transition-colors hover:bg-primary/20"
+            >
+              <div className="flex flex-col">
+                <p className="mb-1">
+                  <strong>📌 Ert tú nýbyrjari?</strong>
+                </p>
+                <div className="flex items-center justify-between">
+                  <p>
+                    <strong>Tak okkara ChatGPT-skeið</strong> – skjótasti og lættasti háttur at koma í gongd.
                   </p>
-                  <div className="flex items-center justify-between">
-                    <p>
-                      <strong>Tak okkara ChatGPT-skeið</strong> – skjótasti og lættasti háttur at koma í gongd.
-                    </p>
-                    <ArrowRight className="w-5 h-5 text-purple-600" />
-                  </div>
+                  <ArrowRight className="w-5 h-5 text-primary" />
                 </div>
-              </Link>
-              <Link to="/services#ai-analysis" className="mb-6 block hover:bg-purple-950/50 p-4 rounded-lg transition-colors">
-                <div className="flex flex-col">
-                  <p className="mb-1">
-                    <strong>📌 Vilt tú bara finna útav hvussu ritvit kann hjálpa júst tær?</strong>
+              </div>
+            </Link>
+            <Link
+              to="/services#ai-analysis"
+              className="mb-6 block p-4 rounded-lg transition-colors hover:bg-primary/20"
+            >
+              <div className="flex flex-col">
+                <p className="mb-1">
+                  <strong>📌 Vilt tú bara finna útav hvussu ritvit kann hjálpa júst tær?</strong>
+                </p>
+                <div className="flex items-center justify-between">
+                  <p>
+                    <strong>Vit finna 15 ting júst tú kann brúka ChatGPT til!</strong>{" "}
+                    - so kemur tú ígong á besta hátt.
                   </p>
-                  <div className="flex items-center justify-between">
-                    <p>
-                      <strong>Vit finna 15 ting júst tú kann brúka ChatGPT til!</strong> - so kemur tú ígong á besta hátt.
-                    </p>
-                    <ArrowRight className="w-5 h-5 text-purple-600" />
-                  </div>
+                  <ArrowRight className="w-5 h-5 text-primary" />
                 </div>
-              </Link>
-              <Link to="/services#workshops" className="mb-6 block hover:bg-purple-950/50 p-4 rounded-lg transition-colors">
-                <div className="flex flex-col">
-                  <p className="mb-1">
-                    <strong>📌 Vilt tú hava praktiska venjing?</strong>
+              </div>
+            </Link>
+            <Link
+              to="/services#workshops"
+              className="mb-6 block p-4 rounded-lg transition-colors hover:bg-primary/20"
+            >
+              <div className="flex flex-col">
+                <p className="mb-1">
+                  <strong>📌 Vilt tú hava praktiska venjing?</strong>
+                </p>
+                <div className="flex items-center justify-between">
+                  <p>
+                    <strong>Verkstovur & fyrilestrar</strong> – Vit vísa øllum tínum
+                    toymi, hvussu ritvit kann gera mun fyri tykkum.
                   </p>
-                  <div className="flex items-center justify-between">
-                    <p>
-                      <strong>Verkstovur & fyrilestrar</strong> – Vit vísa øllum tínum toymi, hvussu ritvit kann gera mun fyri tykkum.
-                    </p>
-                    <ArrowRight className="w-5 h-5 text-purple-600" />
-                  </div>
+                  <ArrowRight className="w-5 h-5 text-primary" />
                 </div>
-              </Link>
-              <Link to="/services#consulting" className="mb-6 block hover:bg-purple-950/50 p-4 rounded-lg transition-colors">
-                <div className="flex flex-col">
-                  <p className="mb-1">
-                    <strong>📌 Ella vilt tú sjálvirka arbeiðsgongdir?</strong>
+              </div>
+            </Link>
+            <Link
+              to="/services#consulting"
+              className="mb-6 block p-4 rounded-lg transition-colors hover:bg-primary/20"
+            >
+              <div className="flex flex-col">
+                <p className="mb-1">
+                  <strong>📌 Ella vilt tú sjálvirka arbeiðsgongdir?</strong>
+                </p>
+                <div className="flex items-center justify-between">
+                  <p>
+                    <strong>Ráðgeving</strong> – Vit hjálpa tær at fáa ritvit at gera
+                    tað keðiliga arbeiði.
                   </p>
-                  <div className="flex items-center justify-between">
-                    <p>
-                      <strong>Ráðgeving</strong> – Vit hjálpa tær at at fáa ritvit at gera tað keðiliga arbeiði.
-                    </p>
-                    <ArrowRight className="w-5 h-5 text-purple-600" />
-                  </div>
+                  <ArrowRight className="w-5 h-5 text-primary" />
                 </div>
-              </Link>
+              </div>
+            </Link>
           </div>
           <div className="text-center">
             <Link to="/services">
-              <Button size="lg" className="bg-purple-600 hover:bg-purple-700 text-white">
+              <Button size="lg" className="bg-primary hover:bg-primary/80 text-text">
                 📖 Les meira um okkara tænastur her!
               </Button>
             </Link>
@@ -217,127 +221,192 @@ const Index = () => {
         </div>
       </section>
 
-
       {/* Urgency / Why Act Now */}
       <section className="py-16 px-4 sm:px-6 lg:px-8">
-              <div className="max-w-7xl mx-auto text-center">
-                <h2 className="text-3xl font-bold mb-8 dark:text-white">
-                  💡 Ritvit mennist skjótt – ikki sova í tímanum!
-                </h2>
-                <ul className="list-disc list-inside text-xl text-gray-600 dark:text-gray-300 mb-8">
-                  <li>
-                    <strong>Ritvit er longu her</strong> – fyritøkur, sum læra tað nú, fáa ein stóran fyrimun.
-                  </li>
-                  <li>
-                    <strong>Um tú ikki gert tað, so gera tínir kappingarneytar tað.</strong>
-                  </li>
-                  <li>
-                    <strong>Okkara ritvit-skeið er skjótasta og lættasta leiðin at koma í gongd.</strong>
-                  </li>
-                  <li>
-                    <strong>Fá atgongd til ein ritvit-lærara</strong> sum hjálpir tær á vegnum.
-                  </li>
-                  <li>
-                    <strong>100% vandaleyst</strong> – um skeiði ikki er nøgdandi so fært tú pengarnar aftur.
-                  </li>
-                </ul>
-                <div className="flex justify-center gap-4">
-                  <Link to="/services">
-                    <Button size="lg" className="bg-purple-600 hover:bg-purple-700 text-white">
-                      👉 Tak skeiðið nú
-                    </Button>
-                  </Link>
-                  <Link to="/services">
-                    <Button variant="outline" size="lg" className="text-purple-600 border-purple-600">
-                      📖 Síggj okkara tænastur
-                    </Button>
-                  </Link>
-                </div>
-              </div>
-            </section>
+        <div className="max-w-7xl mx-auto text-center">
+          <h2 className="text-3xl font-bold mb-8">
+            💡 Ritvit mennist skjótt – ikki sova í tímanum!
+          </h2>
+          <ul className="list-disc list-inside text-xl text-text/80 mb-8 space-y-2">
+            <li>
+              <strong>Ritvit er longu her</strong> – fyritøkur, sum læra tað nú, fáa ein
+              stóran fyrimun.
+            </li>
+            <li>
+              <strong>Um tú ikki gert tað, so gera tínir kappingarneytar tað.</strong>
+            </li>
+            <li>
+              <strong>Okkara ritvit-skeið er skjótasta og lættasta leiðin at koma í gongd.</strong>
+            </li>
+            <li>
+              <strong>Fá atgongd til ein ritvit-lærara</strong> sum hjálpir tær á vegnum.
+            </li>
+            <li>
+              <strong>100% vandaleyst</strong> – um skeiði ikki er nøgdandi so fært tú
+              pengarnar aftur.
+            </li>
+          </ul>
+          <div className="flex justify-center gap-4">
+            <Link to="/services">
+              <Button size="lg" className="bg-primary hover:bg-primary/80 text-text">
+                👉 Tak skeiðið nú
+              </Button>
+            </Link>
+            <Link to="/services">
+              <Button
+                variant="outline"
+                size="lg"
+                className="text-primary border border-primary"
+              >
+                📖 Síggj okkara tænastur
+              </Button>
+            </Link>
+          </div>
+        </div>
+      </section>
 
       {/* Who We Are / Trust Builder */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-black/20">
+      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-primary/10">
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl font-bold mb-8 text-center dark:text-white">Hvør stendur aftanfyri?</h2>
-          <div className="prose prose-lg mx-auto dark:prose-invert text-gray-600 dark:text-gray-300">
+          <h2 className="text-3xl font-bold mb-8 text-center">Hvør stendur aftanfyri?</h2>
+          <div className="prose prose-lg mx-auto text-text/80">
             <p>
-              Eg eiti <strong>Gunnleygur Clementsen</strong>, og tað er nokk eingin sum hevur spælt meira við ritvit amboð í Føroya enn eg.
+              Eg eiti <strong>Gunnleygur Clementsen</strong>, og tað er nokk eingin sum
+              hefur spælt meira við ritvit amboð í Føroya enn eg.
             </p>
-            <ul className="list-none mt-6">
+            <ul className="list-none mt-6 space-y-2">
               <li>
-                🧠 <strong>Eg havi brúkt ChatGPT so at siga hvønn dag síðan 2022</strong>, fyrst tá ið eg arbeiddi sum el-verkfrøðingur í Danmark. Og í dag ígjøgnum mína fyritøku sum bara arbeiður við ritvit øki.
+                🧠 <strong>Eg havi brúkt ChatGPT so at siga hvønn dag síðan 2022</strong>,
+                fyrst tá ið eg arbeiddi sum el-verkfrøðingur í Danmark. Og í dag
+                ígjøgnum mína fyritøku sum bara arbeiður við ritvit øki.
               </li>
               <li>
-                📈 <strong>Eg havi fylgt við í menningini av ritvit í meira enn 10 ár</strong> og roynt fleiri hundra ritvit-amboð – eisini tá ið tey ikki nýttaðu nakað.
+                📈{" "}
+                <strong>
+                  Eg havi fylgt við í menningini av ritvit í meira enn 10 ár
+                </strong>{" "}
+                og roynt fleiri hundra ritvit-amboð – eisini tá ið tey ikki nýttaðu
+                nakað.
               </li>
               <li>
-                ⚡ <strong>Eg stovnaði Tøkni Tænastuna</strong> fyri at hjálpa føroyskum fyritøkum at gagnnýta møguleikarnar við ritvit.
+                ⚡ <strong>Eg stovnaði Tøkni Tænastuna</strong> fyri at hjálpa
+                føroyskum fyritøkum at gagnnýta møguleikarnar við ritvit.
               </li>
               <li>
-                📌 <strong>Eg leggi dent á praktiskar loysnir</strong> – tú lærir ikki teori, men hvussu tú kanst brúka ritvit til at spara tíð í gerandisdegnum og gera arbeiði stuttligari.
+                📌{" "}
+                <strong>Eg leggi dent á praktiskar loysnir</strong> – tú lærir ikki
+                teori, men hvussu tú kanst brúka ritvit til at spara tíð í
+                gerandisdegnum og gera arbeiði stuttligari.
               </li>
             </ul>
             <p className="mt-4">
-              <strong>Ritvit er ikki framtíðin – tað er nútíðin.</strong> So fá fingurin úr reyvuni og kom ígongd.
+              <strong>Ritvit er ikki framtíðin – tað er nútíðin.</strong> So fá
+              fingurin úr reyvuni og kom ígongd.
             </p>
           </div>
         </div>
       </section>
 
-
       {/* Contact Section */}
       <section className="py-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl font-bold mb-8 text-center dark:text-white">Skula vit taka eitt prát?</h2>
+          <h2 className="text-3xl font-bold mb-8 text-center">Skula vit taka eitt prát?</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {/* Contact Details */}
-            <div className="glass-card p-8">
+            <div className="bg-primary/10 p-8 border border-border backdrop-blur-sm rounded-lg">
               <h3 className="text-xl font-semibold mb-4">Fá samband her:</h3>
-              <div className="space-y-4">
+              <div className="space-y-4 text-text/80">
                 <div className="flex items-center gap-3">
-                  <Mail className="w-5 h-5 text-purple-600" />
+                  <Mail className="w-5 h-5 text-primary" />
                   <span>info@ritvit.fo</span>
                 </div>
                 <div className="flex items-center gap-3">
-                  <Phone className="w-5 h-5 text-purple-600" />
+                  <Phone className="w-5 h-5 text-primary" />
                   <span>+298 919444</span>
                 </div>
-                <div className="flex items-center gap-3 hover:text-purple-400 transition-colors">
-                  <a href="https://www.facebook.com/profile.php?id=61557593776267" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5 text-purple-600">
-                      <path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm3 8h-1.35c-.538 0-.65.221-.65.778v1.222h2l-.209 2h-1.791v7h-3v-7h-2v-2h2v-2.308c0-1.769.931-2.692 3.029-2.692h1.971v3z"/>
+                <div className="flex items-center gap-3 transition-colors">
+                  <a
+                    href="https://www.facebook.com/profile.php?id=61557593776267"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 hover:text-primary"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      fill="currentColor"
+                      className="w-5 h-5 text-primary"
+                    >
+                      <path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm3 8h-1.35c-.538 0-.65.221-.65.778v1.222h2l-.209 2h-1.791v7h-3v-7h-2v-2h2v-2.308c0-1.769.931-2.692 3.029-2.692h1.971v3z" />
                     </svg>
                     <span>Facebook</span>
                   </a>
                 </div>
-                <div className="flex items-center gap-3 hover:text-purple-400 transition-colors">
-                  <a href="https://linkedin.com/company/t%C3%B8kni-t%C3%A6nastan" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5 text-purple-600">
-                      <path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm-2 16h-2v-6h2v6zm-1-6.891c-.607 0-1.1-.496-1.1-1.109 0-.612.492-1.109 1.1-1.109s1.1.497 1.1 1.109c0 .613-.493 1.109-1.1 1.109zm8 6.891h-1.998v-2.861c0-1.881-2.002-1.722-2.002 0v2.861h-2v-6h2v1.093c.872-1.616 4-1.736 4 1.548v3.359z"/>
+                <div className="flex items-center gap-3 transition-colors">
+                  <a
+                    href="https://linkedin.com/company/t%C3%B8kni-t%C3%A6nastan"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 hover:text-primary"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      fill="currentColor"
+                      className="w-5 h-5 text-primary"
+                    >
+                      <path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm-2 16h-2v-6h2v6zm-1-6.891c-.607 0-1.1-.496-1.1-1.109 0-.612.492-1.109 1.1-1.109s1.1.497 1.1 1.109c0 .613-.493 1.109-1.1 1.109zm8 6.891h-1.998v-2.861c0-1.881-2.002-1.722-2.002 0v2.861h-2v-6h2v1.093c.872-1.616 4-1.736 4 1.548v3.359z" />
                     </svg>
                     <span>LinkedIn</span>
                   </a>
                 </div>
               </div>
             </div>
+
             {/* Contact Form */}
-            <div className="glass-card p-8">
+            <div className="bg-primary/10 p-8 border border-border backdrop-blur-sm rounded-lg">
               <h3 className="text-xl font-semibold mb-4">Send en besked</h3>
               <form className="space-y-4">
                 <div>
-                  <label htmlFor="name" className="block mb-1">Navn:</label>
-                  <input type="text" id="name" name="name" className="w-full p-2 border rounded-md" required />
+                  <label htmlFor="name" className="block mb-1">
+                    Navn:
+                  </label>
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    className="w-full p-2 border border-border rounded-md bg-background text-text"
+                    required
+                  />
                 </div>
                 <div>
-                  <label htmlFor="email" className="block mb-1">E-mail:</label>
-                  <input type="email" id="email" name="email" className="w-full p-2 border rounded-md" required />
+                  <label htmlFor="email" className="block mb-1">
+                    E-mail:
+                  </label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    className="w-full p-2 border border-border rounded-md bg-background text-text"
+                    required
+                  />
                 </div>
                 <div>
-                  <label htmlFor="message" className="block mb-1">Besked:</label>
-                  <textarea id="message" name="message" rows={4} className="w-full p-2 border rounded-md" required></textarea>
+                  <label htmlFor="message" className="block mb-1">
+                    Besked:
+                  </label>
+                  <textarea
+                    id="message"
+                    name="message"
+                    rows={4}
+                    className="w-full p-2 border border-border rounded-md bg-background text-text"
+                    required
+                  ></textarea>
                 </div>
-                <Button type="submit" className="w-full bg-purple-600 hover:bg-purple-700 text-white">
+                <Button
+                  type="submit"
+                  className="w-full bg-primary hover:bg-primary/80 text-text"
+                >
                   Send
                 </Button>
               </form>
@@ -346,52 +415,59 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Style 6: Neon Glow */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-black my-8">
-        <div className="max-w-4xl mx-auto p-12 rounded-2xl border-2 border-purple-500 shadow-[0_0_30px_rgba(147,51,234,0.3)]">
-          <h2 className="text-4xl font-bold mb-8 text-center text-white">
+      {/* Neon Glow Section */}
+      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-text/90 my-8">
+        <div className="max-w-4xl mx-auto p-12 rounded-2xl border-2 border-primary shadow-[0_0_30px_rgba(147,51,234,0.3)] bg-background">
+          <h2 className="text-4xl font-bold mb-8 text-center">
             Tíðin er røtt nú – lat okkum býrja!
           </h2>
-          <p className="text-xl mb-12 text-center text-purple-300">
-            Ritvit er <strong className="text-purple-400">ikki nakað, tú kanst skoyta til viks</strong> – tað hevur longu broytt spælið.
+          <p className="text-xl mb-12 text-center text-primary/80">
+            Ritvit er <strong className="text-primary">ikki nakað, tú kanst skoyta til viks</strong> – tað hevur longu broytt spælið.
           </p>
           <div className="space-y-6 mb-12">
             <Link to="/services" className="block">
-              <div className="flex items-center gap-4 p-4 bg-purple-950 rounded-lg hover:bg-purple-900 transition-colors border border-purple-500">
+              <div className="flex items-center gap-4 p-4 bg-primary/10 rounded-lg hover:bg-primary/20 transition-colors border border-primary">
                 <span className="text-2xl">🎓</span>
-                <div className="text-white">
-                  <h3 className="font-bold text-purple-300">Vilt tú læra ritvit frá grundini?</h3>
+                <div className="text-text">
+                  <h3 className="font-bold text-primary/80">Vilt tú læra ritvit frá grundini?</h3>
                   <p>Tekna teg til okkara skeið</p>
                 </div>
-                <ArrowRight className="ml-auto w-6 h-6 text-purple-400" />
+                <ArrowRight className="ml-auto w-6 h-6 text-primary" />
               </div>
             </Link>
             <Link to="/services" className="block">
-              <div className="flex items-center gap-4 p-4 bg-purple-950 rounded-lg hover:bg-purple-900 transition-colors border border-purple-500">
+              <div className="flex items-center gap-4 p-4 bg-primary/10 rounded-lg hover:bg-primary/20 transition-colors border border-primary">
                 <span className="text-2xl">💼</span>
-                <div className="text-white">
-                  <h3 className="font-bold text-purple-300">Vilt tú innføra ritvit í tína fyritøku?</h3>
+                <div className="text-text">
+                  <h3 className="font-bold text-primary/80">Vilt tú innføra ritvit í tína fyritøku?</h3>
                   <p>Hygg eftir okkara tænastum</p>
                 </div>
-                <ArrowRight className="ml-auto w-6 h-6 text-purple-400" />
+                <ArrowRight className="ml-auto w-6 h-6 text-primary" />
               </div>
             </Link>
             <Link to="/contact" className="block">
-              <div className="flex items-center gap-4 p-4 bg-purple-950 rounded-lg hover:bg-purple-900 transition-colors border border-purple-500">
+              <div className="flex items-center gap-4 p-4 bg-primary/10 rounded-lg hover:bg-primary/20 transition-colors border border-primary">
                 <span className="text-2xl">❓</span>
-                <div className="text-white">
-                  <h3 className="font-bold text-purple-300">Ert tú í iva?</h3>
+                <div className="text-text">
+                  <h3 className="font-bold text-primary/80">Ert tú í iva?</h3>
                   <p>Set teg í samband við okkum</p>
                 </div>
-                <ArrowRight className="ml-auto w-6 h-6 text-purple-400" />
+                <ArrowRight className="ml-auto w-6 h-6 text-primary" />
               </div>
             </Link>
           </div>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
-            <Button size="lg" className="bg-purple-600 hover:bg-purple-700 text-white font-bold shadow-[0_0_20px_rgba(147,51,234,0.5)]">
+            <Button
+              size="lg"
+              className="bg-primary hover:bg-primary/80 text-text font-bold shadow-[0_0_20px_rgba(147,51,234,0.5)]"
+            >
               👉 Keyp skeiðið nú
             </Button>
-            <Button variant="outline" size="lg" className="border-2 border-purple-500 text-purple-300 hover:bg-purple-950">
+            <Button
+              variant="outline"
+              size="lg"
+              className="border-2 border-primary text-primary hover:bg-primary/20"
+            >
               📖 Sí okkara tænastur
             </Button>
           </div>

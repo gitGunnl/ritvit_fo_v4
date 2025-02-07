@@ -15,12 +15,19 @@ const Navigation = () => {
   ];
 
   return (
-    <nav className="fixed w-full bg-black/50 dark:bg-black/50 backdrop-blur-md z-50 border-b border-gray-800">
+    <nav className="fixed w-full bg-background/80 backdrop-blur-md z-50 border-b border-border">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16">
+          {/* Logo */}
           <div className="flex items-center">
             <Link to="/" className="flex items-center">
-              <img src="/logos/logo-header.png" alt="Logo" className="h-10" width="auto" height="40" />
+              <img
+                src="/logos/logo-header.png"
+                alt="Logo"
+                className="h-10"
+                width="auto"
+                height="40"
+              />
             </Link>
           </div>
 
@@ -30,23 +37,29 @@ const Navigation = () => {
               <Link
                 key={item.name}
                 to={item.path}
-                className="text-gray-300 hover:text-purple-400 transition-colors"
+                className="text-text/80 hover:text-primary transition-colors"
               >
                 {item.name}
               </Link>
             ))}
-            <Button className="hover-lift bg-purple-600 hover:bg-purple-700">Get Started</Button>
+            <Button className="hover-lift bg-primary hover:bg-primary/80 text-text border border-primary/50">
+              Get Started
+            </Button>
           </div>
 
-          {/* Mobile Navigation Buttons */}
+          {/* Mobile Navigation Toggle */}
           <div className="md:hidden flex items-center gap-2">
             <Link to="/contact">
-              <Button variant="ghost" className="text-gray-300 hover:text-purple-400">Contact</Button>
+              <Button variant="ghost" className="text-text/80 hover:text-primary">
+                Contact
+              </Button>
             </Link>
-            <Button className="hover-lift bg-purple-600 hover:bg-purple-700">Get Started</Button>
+            <Button className="hover-lift bg-primary hover:bg-primary/80 text-text border border-primary/50">
+              Get Started
+            </Button>
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="text-gray-600 hover:text-gray-900 focus:outline-none ml-2"
+              className="text-text/60 hover:text-text focus:outline-none ml-2"
             >
               {isOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
@@ -57,18 +70,20 @@ const Navigation = () => {
       {/* Mobile Navigation Menu */}
       {isOpen && (
         <div className="md:hidden">
-          <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 border-b">
+          <div className="px-2 pt-2 pb-3 space-y-1 border-b border-border">
             {navItems.map((item, index) => (
               <Link
                 key={`nav-item-${index}`}
                 to={item.path}
-                className="block px-3 py-2 text-white-600 hover:text-gray-900"
+                className="block px-3 py-2 text-text/80 hover:text-text transition-colors"
                 onClick={() => setIsOpen(false)}
               >
                 {item.name}
               </Link>
             ))}
-            <Button className="w-full mt-4">Get Started</Button>
+            <Button className="w-full mt-4 bg-primary hover:bg-primary/80 text-text border border-primary/50">
+              Get Started
+            </Button>
           </div>
         </div>
       )}

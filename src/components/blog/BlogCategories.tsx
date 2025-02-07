@@ -6,7 +6,11 @@ interface BlogCategoriesProps {
   setSelectedCategory: (category: string | null) => void;
 }
 
-const BlogCategories = ({ categories, selectedCategory, setSelectedCategory }: BlogCategoriesProps) => {
+const BlogCategories = ({
+  categories,
+  selectedCategory,
+  setSelectedCategory,
+}: BlogCategoriesProps) => {
   return (
     <div className="flex gap-2 flex-wrap">
       <Button

@@ -2,15 +2,11 @@
 import fs from 'fs';
 
 const filePaths = [
-  'src/pages/blog/[id].tsx',
-  'src/pages/blog/index.tsx',
-  'src/pages/about.tsx',
-  'src/pages/contact.tsx',
-  'src/pages/services.tsx',
-  'src/components/Navigation.tsx',
-  'src/components/Footer.tsx',
-  'src/components/blog/BlogCard.tsx',
-  'blog-template.txt'
+  'src/pages/Index.tsx',
+  'src/pages/not-found.tsx',
+  'src/components/ChatbotButton.tsx',
+  'src/components/blog/BlogCategories.tsx',
+  'src/components/blog/BlogSearch.tsx'
 ];
 
 let outputContent = '';
