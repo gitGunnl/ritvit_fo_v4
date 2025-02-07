@@ -1,11 +1,13 @@
+
 import fs from 'fs';
 
 const filePaths = [
-  'src/pages/blog/index.tsx',
   'src/pages/blog/[id].tsx',
-    'src/data/blogPosts.json',
-    'scripts/add-blog.js',
-    'blog-template.txt'
+  'src/pages/blog/index.tsx',
+  'src/components/Navigation.tsx',
+  'src/components/Footer.tsx',
+  'src/components/blog/BlogCard.tsx',
+  'blog-template.txt'
 ];
 
 let outputContent = '';
