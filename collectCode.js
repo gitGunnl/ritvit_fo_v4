@@ -4,6 +4,9 @@ import fs from 'fs';
 const filePaths = [
   'src/pages/blog/[id].tsx',
   'src/pages/blog/index.tsx',
+  'src/pages/about.tsx',
+  'src/pages/contact.tsx',
+  'src/pages/services.tsx',
   'src/components/Navigation.tsx',
   'src/components/Footer.tsx',
   'src/components/blog/BlogCard.tsx',
