@@ -4,6 +4,7 @@ import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Calendar, Clock, ArrowLeft } from "lucide-react";
 import blogPosts from "@/data/blogPosts.json";
+import RelatedPosts from "@/components/blog/RelatedPosts";
 
 const BlogPost = () => {
   const { id } = useParams();
