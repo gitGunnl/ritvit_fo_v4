@@ -24,7 +24,7 @@
   }
 
   strong {
-    @apply text-text/90;
+    @apply text-text/100 font-medium;
   }
 }
 
