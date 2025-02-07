@@ -145,7 +145,7 @@ const Index = () => {
           <div className="prose prose-lg mx-auto text-text/80 mb-8">
             <Link
               to="/services#chatgpt-course"
-              className="mb-6 block p-4 rounded-lg transition-colors hover:bg-primary/20"
+              className="mb-6 block p-4 rounded-lg transition-colors hover:bg-primary/20 no-underline text-accent"
             >
               <div className="flex flex-col">
                 <p className="mb-1">
@@ -161,7 +161,7 @@ const Index = () => {
             </Link>
             <Link
               to="/services#ai-analysis"
-              className="mb-6 block p-4 rounded-lg transition-colors hover:bg-primary/20"
+              className="mb-6 block p-4 rounded-lg transition-colors hover:bg-primary/20 no-underline text-accent"
             >
               <div className="flex flex-col">
                 <p className="mb-1">
@@ -178,7 +178,7 @@ const Index = () => {
             </Link>
             <Link
               to="/services#workshops"
-              className="mb-6 block p-4 rounded-lg transition-colors hover:bg-primary/20"
+              className="mb-6 block p-4 rounded-lg transition-colors hover:bg-primary/20 no-underline text-accent"
             >
               <div className="flex flex-col">
                 <p className="mb-1">
@@ -195,7 +195,7 @@ const Index = () => {
             </Link>
             <Link
               to="/services#consulting"
-              className="mb-6 block p-4 rounded-lg transition-colors hover:bg-primary/20"
+              className="mb-6 block p-4 rounded-lg transition-colors hover:bg-primary/20 no-underline text-accent"
             >
               <div className="flex flex-col">
                 <p className="mb-1">
