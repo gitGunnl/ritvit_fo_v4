@@ -1,7 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
- 
+
 @layer base {
   :root {
     --background: 210 20% 98%;
@@ -11,27 +11,30 @@
     --border: 210 10% 80%;
   }
 
-}
-
-@layer base {
+  /* Apply the border color to all elements – this sets the default border color */
   * {
     @apply border-border;
   }
+
+  /* Set the global background and text colors using our new semantic classes */
   body {
-    @apply bg-background text-foreground antialiased;
+    @apply bg-background text-text antialiased;
   }
 }
 
+/* A glass-card now uses a subtle primary tint and our defined border color */
 .glass-card {
-  @apply bg-black/40 backdrop-blur-md border border-white/20 shadow-lg transition-all duration-300;
+  @apply bg-primary/10 backdrop-blur-md border border-border shadow-lg transition-all duration-300;
 }
 
+/* For hover and focus states, we now reference our new primary color */
 .hover-lift {
   @apply transition-all duration-300 hover:-translate-y-1 hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-primary/50;
 }
 
+/* The gradient-text now uses our palette by applying a gradient from primary to accent */
 .gradient-text {
-  @apply bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent dark:from-blue-400 dark:via-purple-400 dark:to-pink-400;
+  @apply bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent;
 }
 
 .content-spacing {

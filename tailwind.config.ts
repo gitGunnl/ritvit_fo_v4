@@ -1,3 +1,4 @@
+// tailwind.config.js
 import type { Config } from "tailwindcss";
 
 export default {
@@ -19,38 +20,17 @@ export default {
     },
     extend: {
       colors: {
+        // New color palette based on our CSS variables
         border: "hsl(var(--border))",
-        input: "hsl(var(--input))",
-        ring: "hsl(var(--ring))",
         background: "hsl(var(--background))",
-        foreground: "hsl(var(--foreground))",
+        text: "hsl(var(--text))",
         primary: {
           DEFAULT: "hsl(var(--primary))",
-          foreground: "hsl(var(--primary-foreground))",
-        },
-        secondary: {
-          DEFAULT: "hsl(var(--secondary))",
-          foreground: "hsl(var(--secondary-foreground))",
-        },
-        destructive: {
-          DEFAULT: "hsl(var(--destructive))",
-          foreground: "hsl(var(--destructive-foreground))",
-        },
-        muted: {
-          DEFAULT: "hsl(var(--muted))",
-          foreground: "hsl(var(--muted-foreground))",
+          // Here, primary.foreground is set to use the text color
+          foreground: "hsl(var(--text))",
         },
         accent: {
           DEFAULT: "hsl(var(--accent))",
-          foreground: "hsl(var(--accent-foreground))",
-        },
-        popover: {
-          DEFAULT: "hsl(var(--popover))",
-          foreground: "hsl(var(--popover-foreground))",
-        },
-        card: {
-          DEFAULT: "hsl(var(--card))",
-          foreground: "hsl(var(--card-foreground))",
         },
       },
       borderRadius: {
@@ -99,7 +79,7 @@ export default {
             opacity: "1",
           },
         },
-        "glitch": {
+        glitch: {
           "0%, 100%": {
             transform: "translate(0)",
             "text-shadow": "none",
@@ -119,7 +99,7 @@ export default {
           "80%": {
             transform: "translate(1px, -1px)",
             "text-shadow": "-0.5px -0.5px #00ffff, 0.5px 0.5px #ff00ff",
-          }
+          },
         },
         "intense-glitch": {
           "0%, 100%": {
@@ -145,8 +125,8 @@ export default {
           "90%": {
             transform: "translate(-1px, 1px) skew(3deg)",
             "text-shadow": "1px 1px #00ffff, -1px -1px #ff00ff",
-          }
-        }
+          },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
@@ -156,7 +136,7 @@ export default {
         "glitch-1": "glitch 0.5s cubic-bezier(.25,.46,.45,.94) both",
         "glitch-2": "glitch 0.5s cubic-bezier(.25,.46,.45,.94) both 0.1s",
         "glitch-3": "glitch 0.5s cubic-bezier(.25,.46,.45,.94) both 0.2s",
-        "intense-glitch": "intense-glitch 0.8s cubic-bezier(.25,.46,.45,.94) both"
+        "intense-glitch": "intense-glitch 0.8s cubic-bezier(.25,.46,.45,.94) both",
       },
     },
   },
