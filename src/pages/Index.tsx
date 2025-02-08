@@ -201,31 +201,19 @@ const Index = () => {
 
 
       {/* Urgency / Why Act Now */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto text-center">
-          <h2 className="text-3xl font-bold mb-8">
+      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-primary/5 rounded-3xl">
+        <div className="max-w-4xl mx-auto text-center">
+          <h2 className="text-4xl font-bold mb-12 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
             💡 Ritvit mennist skjótt – ikki sova í tímanum!
           </h2>
-          <ul className="list-disc list-inside text-xl text-text/80 mb-8 space-y-2">
-            <li>
-              <strong>Ritvit er longu her</strong> – fyritøkur, sum læra tað nú, fáa ein
-              stóran fyrimun.
-            </li>
-            <li>
-              <strong>Um tú ikki gert tað, so gera tínir kappingarneytar tað.</strong>
-            </li>
-            <li>
-              <strong>Okkara ritvit-skeið er skjótasta og lættasta leiðin at koma í gongd.</strong>
-            </li>
-            <li>
-              <strong>Fá atgongd til ein ritvit-lærara</strong> sum hjálpir tær á vegnum.
-            </li>
-            <li>
-              <strong>100% vandaleyst</strong> – um skeiði ikki er nøgdandi so fært tú
-              pengarnar aftur.
-            </li>
-          </ul>
-          <div className="flex justify-center gap-4">
+          <p className="text-2xl font-medium text-text/90 mb-6">
+            Ritvit er longu her – fyritøkur, sum læra tað nú, fáa ein stóran fyrimun.
+          </p>
+          <p className="text-xl text-text/80 mb-12 leading-relaxed">
+            Okkara ritvit-skeið er skjótasta og lættasta leiðin at koma í gongd. 
+            Við atgongd til ein ritvit-lærara og 100% peningaafturgjald um tú ikki ert nøgd/ur.
+          </p>
+          <div className="flex justify-center gap-6">
             <Link to="/services">
               <Button size="lg" className="bg-primary hover:bg-primary/80 text-text">
                 👉 Tak skeiðið nú
