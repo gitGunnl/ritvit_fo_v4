@@ -201,19 +201,19 @@ const Index = () => {
 
 
       {/* Urgency / Why Act Now */}
-      <section className="py-16 px-8 bg-gradient-to-br from-primary/10 to-accent/10 rounded-3xl shadow-lg">
+      <section className="py-20 px-8 my-16 mx-4 bg-gradient-to-br from-primary/10 to-accent/10 rounded-3xl shadow-lg">
         <div className="max-w-3xl mx-auto text-center">
-          <h2 className="text-4xl font-bold mb-8 text-primary">
+          <h2 className="text-4xl font-bold mb-10 text-primary">
             💡 Ritvit mennist skjótt – ikki sova í tímanum!
           </h2>
-          <p className="text-xl font-semibold text-text mb-6">
+          <p className="text-xl font-semibold text-text mb-8">
             Ritvit er longu her – fyritøkur, sum læra tað nú, fáa ein stóran fyrimun.
           </p>
-          <p className="text-lg text-text/80 mb-10 leading-relaxed">
+          <p className="text-lg text-text/80 mb-12 leading-relaxed max-w-2xl mx-auto">
             Okkara ritvit-skeið er skjótasta og lættasta leiðin at koma í gongd. 
             Við atgongd til ein ritvit-lærara og 100% peningaafturgjald um tú ikki ert nøgd/ur.
           </p>
-          <div className="flex justify-center space-x-4">
+          <div className="flex justify-center gap-6">
             <Link to="/services">
               <Button size="lg" className="bg-primary hover:bg-primary/80 text-text">
                 👉 Tak skeiðið nú
