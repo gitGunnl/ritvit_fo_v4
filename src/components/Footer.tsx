@@ -62,13 +62,41 @@ const Footer = () => {
 
           <div className="space-y-4">
             <h3 className="text-lg font-semibold text-text">Connect</h3>
-            <div className="flex space-x-4">
-              <a href="#" className="text-text/80 hover:text-primary">
-                Facebook
-              </a>
-              <a href="#" className="text-text/80 hover:text-primary">
-                LinkedIn
-              </a>
+            <div className="space-y-2">
+              <p className="text-text/80">
+                <strong>Telefon:</strong>{" "}
+                <a href="tel:+298919444" className="hover:text-primary">
+                  +298 919444
+                </a>
+              </p>
+              <p className="text-text/80">
+                <strong>E-mail:</strong>{" "}
+                <a href="mailto:info@ritvit.fo" className="hover:text-primary">
+                  info@ritvit.fo
+                </a>
+              </p>
+              <p className="text-text/80">
+                <strong>Facebook:</strong>{" "}
+                <a
+                  href="https://www.facebook.com/profile.php?id=61557593776267"
+                  className="hover:text-primary"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Tøkni Tænastan
+                </a>
+              </p>
+              <p className="text-text/80">
+                <strong>LinkedIn:</strong>{" "}
+                <a
+                  href="https://linkedin.com/company/tøkni-tænastan"
+                  className="hover:text-primary"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Tøkni Tænastan
+                </a>
+              </p>
             </div>
           </div>
         </div>
