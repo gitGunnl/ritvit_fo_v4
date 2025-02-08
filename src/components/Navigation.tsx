@@ -7,11 +7,11 @@ const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const navItems = [
-    { name: "Home", path: "/" },
-    { name: "About", path: "/about" },
-    { name: "Services", path: "/services" },
-    { name: "Blog", path: "/blog" },
-    { name: "Contact", path: "/contact" },
+    { name: "Heim", path: "/" },
+    { name: "Um okkum", path: "/about" },
+    { name: "Tænastur", path: "/services" },
+    { name: "Bloggur", path: "/blog" },
+    { name: "Samband", path: "/contact" },
   ];
 
   return (
