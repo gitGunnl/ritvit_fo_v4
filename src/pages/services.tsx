@@ -47,8 +47,8 @@ export default function Services() {
                 <MessageSquare className="w-16 h-16 text-primary flex-shrink-0" />
                 <div>
                   <div className="flex items-center justify-between mb-4">
-                    <span className="bg-primary text-text text-sm font-bold px-6 py-2 rounded-full border-2 border-primary shadow-[0_0_15px_rgba(147,51,234,0.5)] animate-pulse transform hover:scale-105 transition-all">
-                      🔥 Besta fyrsta stig
+                    <span className="bg-accent text-text text-sm font-bold px-6 py-2 rounded-full border-2 border-accent shadow-[0_0_10px_rgba(147,51,234,0.5)]">
+                      Besta fyrsta stig
                     </span>
                   </div>
                   <h3 className="text-2xl font-semibold mb-3">
