@@ -201,36 +201,33 @@ const Index = () => {
 
 
       {/* Urgency / Why Act Now */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-primary/5 rounded-3xl">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-4xl font-bold mb-12 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+      <section className="py-16 px-8 bg-gradient-to-br from-primary/10 to-accent/10 rounded-3xl shadow-lg">
+        <div className="max-w-3xl mx-auto text-center">
+          <h2 className="text-4xl font-bold mb-8 text-primary">
             💡 Ritvit mennist skjótt – ikki sova í tímanum!
           </h2>
-          <p className="text-2xl font-medium text-text/90 mb-6">
+          <p className="text-xl font-semibold text-text mb-6">
             Ritvit er longu her – fyritøkur, sum læra tað nú, fáa ein stóran fyrimun.
           </p>
-          <p className="text-xl text-text/80 mb-12 leading-relaxed">
+          <p className="text-lg text-text/80 mb-10 leading-relaxed">
             Okkara ritvit-skeið er skjótasta og lættasta leiðin at koma í gongd. 
             Við atgongd til ein ritvit-lærara og 100% peningaafturgjald um tú ikki ert nøgd/ur.
           </p>
-          <div className="flex justify-center gap-6">
+          <div className="flex justify-center space-x-4">
             <Link to="/services">
               <Button size="lg" className="bg-primary hover:bg-primary/80 text-text">
                 👉 Tak skeiðið nú
               </Button>
             </Link>
             <Link to="/services">
-              <Button
-                variant="outline"
-                size="lg"
-                className="text-primary border border-primary"
-              >
+              <Button variant="outline" size="lg" className="text-primary border border-primary">
                 📖 Síggj okkara tænastur
               </Button>
             </Link>
           </div>
         </div>
       </section>
+
 
       {/* Who We Are / Trust Builder */}
       <section className="py-16 px-4 sm:px-6 lg:px-8 bg-primary/10">
