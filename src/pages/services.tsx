@@ -21,13 +21,13 @@ export default function Services() {
           {/* Hero Section */}
           <div className="text-center max-w-3xl mx-auto mb-20">
             <h1 className="text-4xl font-bold mb-6 animate-fade-down">
-              Start Your AI Journey Today
+              Byrja tína ritvit ferð í dag
             </h1>
             <p className="text-lg text-text/80 mb-8">
-              We help Faroese businesses embrace AI technology, starting with
-              practical tools like ChatGPT and Microsoft Copilot. Our structured
-              approach ensures your team can effectively implement AI in their
-              daily work.
+              Vit hjálpa føroyskum fyritøkum at taka ritvit-tøkni til sín, við praktiskum
+              amboðum sum KjattGPT, mynda generering og Microsoft Copilot. Við einari
+              skipaðari tilgongd tryggja vit, at tykkara toymi kann nýta ritvit á ein
+              munagóðan hátt í gerandisdegnum.
             </p>
           </div>
 
@@ -35,13 +35,13 @@ export default function Services() {
           <div className="mb-32">
             <div className="text-center mb-12">
               <span className="bg-primary/10 text-primary text-sm font-medium px-4 py-1 rounded-full border border-primary/50">
-                Best First Step
+                Besta fyrsta stig
               </span>
               <h2 className="text-3xl font-bold text-center mt-4 mb-4">
-                Start Here: Our Flagship Course
+                Byrja her: Okkara net-skeið
               </h2>
               <p className="text-lg text-text/80">
-                The perfect introduction to AI for your business
+                Eitt fullkomið innlit í ritvit til tína fyritøku
               </p>
             </div>
 
@@ -50,21 +50,18 @@ export default function Services() {
                 <MessageSquare className="w-16 h-16 text-primary flex-shrink-0" />
                 <div>
                   <h3 className="text-2xl font-semibold mb-3">
-                    ChatGPT Course
+                    ChatGPT Net-skeið
                   </h3>
                   <p className="text-text/80 mb-6">
-                    Our comprehensive course teaches you how to leverage ChatGPT
-                    effectively in your daily work. Perfect for beginners and
-                    professionals alike. This is where most of our clients start
-                    their AI journey.
+                    Okkara umfatandi skeið lærir teg at brúka KjattGPT effektivt í
+                    gerandisarbeiði. Perfekt til bæði ný byrjandi og yrkisfólk. Flestu av
+                    okkara kundum byrja sína ritvit-ferð her.
                   </p>
                   <div className="flex flex-col sm:flex-row items-center gap-4">
-                    <p className="text-xl font-semibold text-primary">
-                      1.200 DKK
-                    </p>
+                    <p className="text-xl font-semibold text-primary">1.200 DKK</p>
                     <Link to="/contact" className="flex-1 sm:flex-none">
                       <Button className="w-full sm:w-auto bg-primary hover:bg-primary/80 text-text border border-primary/50">
-                        Get Started Today
+                        Byrja í dag
                       </Button>
                     </Link>
                   </div>
@@ -78,35 +75,32 @@ export default function Services() {
             {/* Step 2 */}
             <div className="fade-in">
               <span className="text-sm text-text/60 mb-2 block">
-                Recommended Second Step
+                Mælt til sum næsta stig
               </span>
               <div className="bg-primary/10 backdrop-blur-sm rounded-lg p-8 shadow-lg border border-border">
                 <Lightbulb className="w-12 h-12 text-primary mb-4" />
                 <h3 className="text-2xl font-semibold mb-4">
-                  15 ChatGPT Use Cases
+                  15 hættir at brúka KjattGPT
                 </h3>
                 <p className="text-text/80 mb-6">
-                  Save weeks of discovery time - we provide 15 tailored ways to
-                  use ChatGPT specifically for your work context. This service
-                  helps you identify immediate opportunities for AI
-                  implementation in your workflow.
+                  Spar tær vikur av feilum og skeivum royndum – vit geva tær 15 tillagaðar
+                  mátar at brúka KjattGPT í tínum arbeiði. Hendan tænastan hjálpir tær at
+                  finna beinraktar uppgáur tú kann brúka KjattGPT til í júst tínum arbeiði - í dag.
                 </p>
                 <div className="flex items-center gap-4 mb-4">
-                  <p className="text-xl font-semibold text-primary">
-                    1.200 DKK
-                  </p>
+                  <p className="text-xl font-semibold text-primary">1.200 DKK</p>
                   <Link to="/contact">
                     <Button
                       variant="outline"
                       className="hover-lift border-primary/50 text-primary hover:text-primary/80 hover:border-primary"
                     >
-                      Learn More
+                      Les meira
                     </Button>
                   </Link>
                 </div>
                 <p className="text-text/60 text-sm">
-                  After completing our course, this service helps you identify
-                  specific opportunities for AI implementation in your workflow.
+                  Eftir at hava lokið skeiðið hjálpir henda tænastan tær at finna ítøkiligar
+                  møguleikar at innleiða ritvit í tínum arbeiði.
                 </p>
               </div>
             </div>
@@ -114,34 +108,32 @@ export default function Services() {
             {/* Step 3 */}
             <div className="fade-in">
               <span className="text-sm text-text/60 mb-2 block">
-                For Teams & Organizations
+                Til toymir & fyritøkur
               </span>
               <div className="bg-primary/10 backdrop-blur-sm rounded-lg p-8 shadow-lg border border-border">
                 <Presentation className="w-12 h-12 text-primary mb-4" />
                 <h3 className="text-2xl font-semibold mb-4">
-                  AI Talks & Workshops
+                  Ritvit-fyrilestur & verkstovur
                 </h3>
                 <p className="text-text/80 mb-6">
-                  Inspirational and practical talks for employees and leaders
-                  about AI's potential in your organization. Perfect for
-                  introducing key concepts to multiple employees simultaneously.
+                  Íblásandi og praktiskur fyrilestur til starvsfólk og leiðarar um
+                  møguleikarnar við ritvit í tykkara fyritøku. Fyrilesturing hyggur bæði
+                  uppá hvat ritvit kann og hvat tað ikki kann. Perfekt til at innleiða
+                  evnið fyri fleiri starvsfólkum í senn.
                 </p>
                 <div className="flex items-center gap-4 mb-4">
-                  <p className="text-xl font-semibold text-primary">
-                    10.000 DKK
-                  </p>
+                  <p className="text-xl font-semibold text-primary">18.000 DKK</p>
                   <Link to="/contact">
                     <Button
                       variant="outline"
                       className="hover-lift border-primary/50 text-primary hover:text-primary/80 hover:border-primary"
                     >
-                      Book a Session
+                      Bílegg ein fyrilestur
                     </Button>
                   </Link>
                 </div>
                 <p className="text-text/60 text-sm">
-                  Perfect for organizations wanting to introduce AI concepts to
-                  multiple employees at once.
+                  Perfekt til fyritøkur, sum vilja geva fleiri starvsfólkum innlit í ritvit.
                 </p>
               </div>
             </div>
@@ -149,18 +141,18 @@ export default function Services() {
             {/* Step 4 */}
             <div className="fade-in">
               <span className="text-sm text-text/60 mb-2 block">
-                Hands-on Support
+                Handalig hjálp
               </span>
               <div className="bg-primary/10 backdrop-blur-sm rounded-lg p-8 shadow-lg border border-border">
                 <Users2 className="w-12 h-12 text-primary mb-4" />
                 <h3 className="text-2xl font-semibold mb-4">
-                  AI Implementation Consulting
+                  Ritvit-ráðgeving
                 </h3>
                 <p className="text-text/80 mb-6">
-                  Once your team understands the basics, we provide hands-on
-                  assistance implementing ChatGPT or Copilot in your daily
-                  workflows. We work directly with your employees to ensure
-                  successful adoption.
+                  Tá ið títt toymi hevur fingið grundvitan, veita vit hándsama hjálp til at
+                  innarbeiða KjattGPT ella Copilot í tykkara arbeiðsgongd. Vit arbeiða
+                  beinleiðis saman við tykkara starvsfólki fyri at tryggja at øll fáa sum
+                  mest burturúr hesa nýggju tøkni.
                 </p>
                 <div className="flex items-center gap-4 mb-4">
                   <Link to="/contact">
@@ -168,13 +160,13 @@ export default function Services() {
                       variant="outline"
                       className="hover-lift border-primary/50 text-primary hover:text-primary/80 hover:border-primary"
                     >
-                      Get Support
+                      Fá hjálp
                     </Button>
                   </Link>
                 </div>
                 <p className="text-text/60 text-sm">
-                  Our experts work directly with your team to integrate AI tools
-                  into their specific workflows.
+                  Okkara serfrøði ger tað nógv smidligari at fáa tykkara toymi at innleiða
+                  ritvit-amboð inn í teirra dagliga arbeiði.
                 </p>
               </div>
             </div>
@@ -182,17 +174,17 @@ export default function Services() {
             {/* Step 5 */}
             <div className="fade-in">
               <span className="text-sm text-text/60 mb-2 block">
-                Custom Development
+                Sniðgjørdar loysnir
               </span>
               <div className="bg-primary/10 backdrop-blur-sm rounded-lg p-8 shadow-lg border border-border">
                 <Code className="w-12 h-12 text-primary mb-4" />
                 <h3 className="text-2xl font-semibold mb-4">
-                  Custom AI Automation
+                  Serloysnir til sjálvirkan
                 </h3>
                 <p className="text-text/80 mb-6">
-                  Turn your AI automation ideas into reality with our
-                  development expertise. We help you build custom solutions that
-                  perfectly fit your needs.
+                  Ger tínar ritvit-automatións hugskot til veruleika við okkara
+                  menningarserfrøði. Vit hjálpa tær at byggja sniðgjørdar loysnir, ið hóska til
+                  tín tørv.
                 </p>
                 <div className="flex items-center gap-4 mb-4">
                   <Link to="/contact">
@@ -200,13 +192,14 @@ export default function Services() {
                       variant="outline"
                       className="hover-lift border-primary/50 text-primary hover:text-primary/80 hover:border-primary"
                     >
-                      Discuss Your Project
+                      Fortel okkum títt hugskot
                     </Button>
                   </Link>
                 </div>
                 <p className="text-text/60 text-sm">
-                  Have a specific process you want to automate with AI? We can
-                  help turn your automation ideas into reality.
+                  Hefur tú eina ítøkiliga mannagongd, tú vilt automatisera við ritvit? Ella
+                  hevur tú eitt slóðbrótandi hugskot til hvussu tín vinna kann brúka ritvit á
+                  ein nýggjan hátt? Vit kunnu hjálpa við at gera tínar visjónir til veruleika.
                 </p>
               </div>
             </div>
@@ -215,15 +208,18 @@ export default function Services() {
           {/* Call to Action */}
           <div className="mt-32 text-center max-w-2xl mx-auto">
             <p className="text-lg text-text/80 mb-6">
-              Ready to start your AI journey? Begin with our ChatGPT course
-              today.
+              Vilt tú býrja tína Ritvit-ferð? Byrja við okkara KjattGPT-skeiði í dag.
             </p>
             <Link to="/contact">
-              <Button className="bg-primary hover:bg-primary/80 text-text border border-primary/50" size="lg">
-                Get Started Now
+              <Button
+                className="bg-primary hover:bg-primary/80 text-text border border-primary/50"
+                size="lg"
+              >
+                Byrja nú
               </Button>
             </Link>
           </div>
+
         </div>
       </div>
       <Footer />
