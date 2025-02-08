@@ -118,10 +118,24 @@ export default function Services() {
                   Ritvit-fyrilestur & verkstovur
                 </h3>
                 <p className="text-text/80 mb-6">
-                  Íblásandi og praktiskur fyrilestur til starvsfólk og leiðarar um
-                  møguleikarnar við ritvit í tykkara fyritøku. Fyrilesturing hyggur bæði
-                  uppá hvat ritvit kann og hvat tað ikki kann. Perfekt til at innleiða
-                  evnið fyri fleiri starvsfólkum í senn.
+                  Ritvit er komið – og tað broytir máta okkara at arbeiða uppá. Men hvat merkir tað í veruleikanum? Hvat kann ritvit – og hvat kann tað ikki? Hetta fyrilesturin gevur eina greiða fatan av, hvussu ritvit kann nýtast í gerandisdegnum, so óvissa og ivi verða skift út við forvitni og nýggjar møguleikar.
+                </p>
+                <div className="space-y-2 mb-6">
+                  <div className="flex gap-2">
+                    <span className="text-primary">🔹</span>
+                    <p className="text-text/80"><strong>Minni ógreiðni, meira greiða</strong> – Skil ritvit uttan torskilt tekniskt mál.</p>
+                  </div>
+                  <div className="flex gap-2">
+                    <span className="text-primary">🔹</span>
+                    <p className="text-text/80"><strong>Frá ræðslu til spenning</strong> – Síggj, hvussu ritvit kann vera ein hjálp, ikki ein hóttan.</p>
+                  </div>
+                  <div className="flex gap-2">
+                    <span className="text-primary">🔹</span>
+                    <p className="text-text/80"><strong>Konkret íblástur</strong> – Uppliv, hvussu ritvit kann gera arbeiðið lættari og meir munagott.</p>
+                  </div>
+                </div>
+                <p className="text-text/80 mb-6">
+                  Ein fyrilestur, sum gevur yvirlit, vísir møguleikar og leggur fram praktisk dømi, so tit fara avstað við nýggjari tilgongd til ritvit – og eini sterkari støðu í framtíðini.
                 </p>
                 <div className="flex items-center gap-4 mb-4">
                   <p className="text-xl font-semibold text-primary">18.000 DKK</p>
@@ -130,12 +144,12 @@ export default function Services() {
                       variant="outline"
                       className="hover-lift border-primary/50 text-primary hover:text-primary/80 hover:border-primary"
                     >
-                      Bílegg ein fyrilestur
+                      Bílegg ein fyrilestur nú
                     </Button>
                   </Link>
                 </div>
                 <p className="text-text/60 text-sm">
-                  Perfekt til fyritøkur, sum vilja geva fleiri starvsfólkum innlit í ritvit.
+                  Perfekt til fyritøkur, ið vilja vera á odda við ritviti – uttan óneyðuga ótta ella óvissu.
                 </p>
               </div>
             </div>
