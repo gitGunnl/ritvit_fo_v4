@@ -43,7 +43,7 @@ const Navigation = () => {
               </Link>
             ))}
             <Button className="hover-lift bg-primary hover:bg-primary/80 text-text border border-primary/50">
-              Get Started
+              Býrja nú!
             </Button>
           </div>
 
@@ -51,11 +51,11 @@ const Navigation = () => {
           <div className="md:hidden flex items-center gap-2">
             <Link to="/contact">
               <Button variant="ghost" className="text-text/80 hover:text-primary">
-                Contact
+                Samband
               </Button>
             </Link>
             <Button className="hover-lift bg-primary hover:bg-primary/80 text-text border border-primary/50">
-              Get Started
+              Býrja nú!
             </Button>
             <button
               onClick={() => setIsOpen(!isOpen)}
@@ -82,7 +82,7 @@ const Navigation = () => {
               </Link>
             ))}
             <Button className="w-full mt-4 bg-primary hover:bg-primary/80 text-text border border-primary/50">
-              Get Started
+              Býrja nú!
             </Button>
           </div>
         </div>

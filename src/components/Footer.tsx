@@ -6,10 +6,20 @@ const Footer = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="space-y-4">
-            <h3 className="text-lg font-semibold text-text">Brand</h3>
+            {/* Logo */}
+            <div className="flex items-center">
+              <Link to="/" className="flex items-center">
+                <img
+                  src="/logos/logo-header.png"
+                  alt="Logo"
+                  className="h-10"
+                  width="auto"
+                  height="40"
+                />
+              </Link>
+            </div>
             <p className="text-text/80">
-              Creating exceptional digital experiences through innovative
-              solutions.
+              Ritvit serfrøði í verðinsklassa í Føroyum.
             </p>
           </div>
 
@@ -18,17 +28,17 @@ const Footer = () => {
             <ul className="space-y-2">
               <li>
                 <Link to="/about" className="text-text/80 hover:text-primary">
-                  About Us
+                  Um okkum
                 </Link>
               </li>
               <li>
                 <Link to="/services" className="text-text/80 hover:text-primary">
-                  Services
+                  Tænastur
                 </Link>
               </li>
               <li>
                 <Link to="/contact" className="text-text/80 hover:text-primary">
-                  Contact
+                  Samband
                 </Link>
               </li>
             </ul>
@@ -39,7 +49,7 @@ const Footer = () => {
             <ul className="space-y-2">
               <li>
                 <Link to="/privacy" className="text-text/80 hover:text-primary">
-                  Privacy Policy
+                  Privatlívs politik
                 </Link>
               </li>
               <li>
@@ -54,13 +64,10 @@ const Footer = () => {
             <h3 className="text-lg font-semibold text-text">Connect</h3>
             <div className="flex space-x-4">
               <a href="#" className="text-text/80 hover:text-primary">
-                Twitter
+                Facebook
               </a>
               <a href="#" className="text-text/80 hover:text-primary">
                 LinkedIn
-              </a>
-              <a href="#" className="text-text/80 hover:text-primary">
-                GitHub
               </a>
             </div>
           </div>
@@ -68,7 +75,7 @@ const Footer = () => {
 
         <div className="mt-8 pt-8 border-t border-border">
           <p className="text-center text-text/60">
-            © {new Date().getFullYear()} Brand. All rights reserved.
+            © {new Date().getFullYear()} Tøkni Tænastan. All rights reserved.
           </p>
         </div>
       </div>
