@@ -34,10 +34,7 @@ export default function Services() {
           {/* Main Course Section */}
           <div className="mb-32">
             <div className="text-center mb-12">
-              <span className="bg-primary/10 text-primary text-sm font-medium px-4 py-1 rounded-full border border-primary/50">
-                Besta fyrsta stig
-              </span>
-              <h2 className="text-3xl font-bold text-center mt-4 mb-4">
+              <h2 className="text-3xl font-bold text-center mb-4">
                 Byrja her: Okkara net-skeið
               </h2>
               <p className="text-lg text-text/80">
@@ -49,6 +46,11 @@ export default function Services() {
               <div className="flex flex-col md:flex-row items-start gap-6">
                 <MessageSquare className="w-16 h-16 text-primary flex-shrink-0" />
                 <div>
+                  <div className="flex items-center justify-between mb-4">
+                    <span className="bg-primary text-text text-sm font-bold px-6 py-2 rounded-full border-2 border-primary shadow-[0_0_15px_rgba(147,51,234,0.5)] animate-pulse transform hover:scale-105 transition-all">
+                      🔥 Besta fyrsta stig
+                    </span>
+                  </div>
                   <h3 className="text-2xl font-semibold mb-3">
                     ChatGPT Net-skeið
                   </h3>
