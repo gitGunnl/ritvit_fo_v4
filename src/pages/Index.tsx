@@ -51,7 +51,7 @@ const Index = () => {
               {/* Course Screenshot */}
               <div className="md:w-1/2">
                 <img
-                  src="public/images/course-screenshot.png"
+                  src="/images/course-screenshot.png"
                   alt="Course Screenshot"
                   className="object-cover w-full h-full"
                 />
@@ -60,7 +60,7 @@ const Index = () => {
               <div className="p-8 flex flex-col justify-center md:w-1/2">
                 <div className="flex items-center gap-3 mb-4">
                   <img
-                    src="public/images/ChatGPT-Logo.webp"
+                    src="/images/ChatGPT-Logo.webp"
                     alt="OpenAI Logo"
                     className="w-10 h-10"
                   />
