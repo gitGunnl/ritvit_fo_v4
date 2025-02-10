@@ -19,7 +19,7 @@ export default function About() {
             Vit bera ritvit til Føroyar – og víðari
           </h2>
           <p className="text-xl max-w-3xl mx-auto leading-relaxed text-text/80 animate-fade-down">
-            Ritvit broytir heiminn. Vit syrgja fyri, at Føroyar ikki detta afturúr.
+            Stig fyri stig broytur ritvit heimin. Vit syrgja fyri, at tú ikki dettur afturúr.
           </p>
         </div>
       </section>
@@ -29,31 +29,15 @@ export default function About() {
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto bg-primary/10 backdrop-blur-sm rounded-lg p-8 shadow-xl border border-border animate-fade-up">
             <p className="text-lg mb-4">
-              Vit stovnaðu <strong>Tøkni Tænastuna</strong> av einføldum orsøkum:
+              <strong>Tøkni Tænastan</strong> var stovna av einføldum orsøkum:
             </p>
             <p className="text-lg mb-4">
               <strong>
-                At hjálpa føroyskum fyritøkum at brúka ritvit – uttan stríð, uttan
-                hype, uttan óneyðuga tøkni-snakk.
+                At hjálpa føroyskum fyritøkum at brúka ritvit.
               </strong>
             </p>
             <p className="text-lg mb-4">
-              Veruleikin? <strong>Ritvit er longu her.</strong> Og tey, sum læra at
-              brúka tað fyrst, fáa eitt stórt fyrimun.
-            </p>
-            <p className="text-lg">
-              Tí gera vit ritvit <strong>einfalt, brúkiligt og praktiskt</strong> –
-              so fyritøkur kunnu{" "}
-              <strong>
-                spara tíð, arbeiða smartari og fáa meira frá hondini
-              </strong>.
-            </p>
-            <p className="text-lg mt-4">
-              🚀{" "}
-              <strong>
-                Eingin tøkni-fatan neyðug. Ongar dýrar ráðgevarar. Bara ritvit,
-                sum riggar.
-              </strong>
+              Vit eru nú komin fram til at hettar skal gerast í trimum stigum og vit hjálpa allan vegin.
             </p>
           </div>
         </div>

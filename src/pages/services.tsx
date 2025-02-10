@@ -91,7 +91,13 @@ export default function Services() {
                 <p className="text-text/80 mb-6">
                   Spar tær vikur av feilum og skeivum royndum – vit geva tær 15 tillagaðar
                   mátar at brúka KjattGPT í tínum arbeiði. Hendan tænastan hjálpir tær at
-                  finna beinraktar uppgáur tú kann brúka KjattGPT til í júst tínum arbeiði - í dag.
+                  finna beinraktar uppgábur tú kann brúka KjattGPT til í júst tínum arbeiði - í dag.
+                </p>
+                <p className="text-text/80 mb-6">
+                Hettar gera vit við at taka ein fund, so fortelur tú mær akkruát hvat tú gert og so sigi eg tær akkurát hvat tú kann brúka ChatGPT til. 
+                </p>
+                <p className="text-text/80 mb-6">
+                  Tað tekur 1 til 2 tímar og sparir fleiri vikur av leitan og feilum. 
                 </p>
                 <div className="flex items-center gap-4 mb-4">
                   <p className="text-xl font-semibold text-primary">1.200 DKK</p>
@@ -105,8 +111,7 @@ export default function Services() {
                   </Link>
                 </div>
                 <p className="text-text/60 text-sm">
-                  Eftir at hava lokið skeiðið hjálpir henda tænastan tær at finna ítøkiligar
-                  møguleikar at innleiða ritvit í tínum arbeiði.
+                  Hendan tænastan hjálpir tær at finna beinraktar uppgá
                 </p>
               </div>
             </div>

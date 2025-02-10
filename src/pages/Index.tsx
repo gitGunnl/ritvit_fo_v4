@@ -18,7 +18,7 @@ const Index = () => {
           </h1>
 
           <p className="animate-fade-up mt-2 text-text/80">
-            🚀 <strong>Lær at brúka ritvit upp á fáar dagar – og fá meira tíð til tað, sum veruliga hevur týdning.</strong>
+            🚀 <strong>Lær at brúka ritvit upp á fáar dagar – og fá meira tíð til tað, sum veruliga hevur týdning fyri teg.</strong>
           </p>
 
           {/* Buttons */}
