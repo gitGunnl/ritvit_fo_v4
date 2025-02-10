@@ -42,11 +42,11 @@ export default function Services() {
               </p>
             </div>
 
-            <span className="bg-accent text-text text-sm font-bold px-6 py-2 rounded-full border-2 border-accent shadow-[0_0_10px_rgba(147,51,234,0.5)]">
-              Besta fyrsta stig
-            </span>
-
-            <Card className="p-8 hover-lift animate-fade-up max-w-3xl mx-auto bg-primary/10 border border-border shadow-xl backdrop-blur-sm">
+            <div className="relative max-w-3xl mx-auto">
+              <span className="absolute -top-3 right-4 z-10 bg-accent text-text text-sm font-bold px-6 py-2 rounded-full border-2 border-accent shadow-[0_0_10px_rgba(147,51,234,0.5)] rotate-3">
+                Besta fyrsta stig
+              </span>
+              <Card className="p-8 hover-lift animate-fade-up bg-primary/10 border border-border shadow-xl backdrop-blur-sm">
               <div className="flex flex-col md:flex-row items-start gap-6">
                 <MessageSquare className="w-16 h-16 text-primary flex-shrink-0" />
                 <div>
@@ -73,6 +73,7 @@ export default function Services() {
                 </div>
               </div>
             </Card>
+            </div>
           </div>
 
           {/* Journey Steps */}
