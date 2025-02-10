@@ -118,9 +118,11 @@ export default function Contact() {
             </h2>
             <Form {...form}>
               <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+
+                {/* Name Field */}
                 <FormField
                   control={form.control}
-                  name="name"
+                  name="entry.1179687836"  // Updated field name
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel className="text-text/80">Navn</FormLabel>
@@ -138,9 +140,11 @@ export default function Contact() {
                     </FormItem>
                   )}
                 />
+
+                {/* Email Field */}
                 <FormField
                   control={form.control}
-                  name="email"
+                  name="entry.263197538"  // Updated field name
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel className="text-text/80">Teldupost</FormLabel>
@@ -159,9 +163,11 @@ export default function Contact() {
                     </FormItem>
                   )}
                 />
+
+                {/* Message Field */}
                 <FormField
                   control={form.control}
-                  name="message"
+                  name="entry.240567695"  // Updated field name
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel className="text-text/80">Boð</FormLabel>
@@ -179,6 +185,8 @@ export default function Contact() {
                     </FormItem>
                   )}
                 />
+
+                {/* Submit Button */}
                 <Button
                   type="submit"
                   className="w-full bg-primary hover:bg-primary/80 text-text"
