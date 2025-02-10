@@ -329,7 +329,7 @@ const Index = () => {
 
             {/* Contact Form */}
             <div className="bg-primary/10 p-8 border border-border backdrop-blur-sm rounded-lg">
-              <h3 className="text-xl font-semibold mb-4">Send en besked</h3>
+              <h3 className="text-xl font-semibold mb-4">Send eini boð</h3>
               <form className="space-y-4">
                 <div>
                   <label htmlFor="name" className="block mb-1">
@@ -345,7 +345,7 @@ const Index = () => {
                 </div>
                 <div>
                   <label htmlFor="email" className="block mb-1">
-                    E-mail:
+                    Teldupostur:
                   </label>
                   <input
                     type="email"
@@ -357,7 +357,7 @@ const Index = () => {
                 </div>
                 <div>
                   <label htmlFor="message" className="block mb-1">
-                    Besked:
+                    Boð:
                   </label>
                   <textarea
                     id="message"

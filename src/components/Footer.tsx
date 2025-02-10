@@ -24,7 +24,7 @@ const Footer = () => {
           </div>
 
           <div className="space-y-4">
-            <h3 className="text-lg font-semibold text-text">Company</h3>
+            <h3 className="text-lg font-semibold text-text">Tøkni Tænastan</h3>
             <ul className="space-y-2">
               <li>
                 <Link to="/about" className="text-text/80 hover:text-primary">
@@ -45,7 +45,7 @@ const Footer = () => {
           </div>
 
           <div className="space-y-4">
-            <h3 className="text-lg font-semibold text-text">Legal</h3>
+            <h3 className="text-lg font-semibold text-text">Annað</h3>
             <ul className="space-y-2">
               <li>
                 <Link to="/privacy" className="text-text/80 hover:text-primary">
@@ -61,7 +61,7 @@ const Footer = () => {
           </div>
 
           <div className="space-y-4">
-            <h3 className="text-lg font-semibold text-text">Connect</h3>
+            <h3 className="text-lg font-semibold text-text">Samband</h3>
             <div className="space-y-2">
               <p className="text-text/80">
                 <strong>Telefon:</strong>{" "}
