@@ -22,14 +22,14 @@ const Index = () => {
           </p>
 
           {/* Buttons */}
-          <div className="flex justify-center gap-4 animate-fade-up mt-8">
-            <Link to="/services">
-              <Button size="lg" className="bg-primary hover:bg-primary/80 text-text">
+          <div className="flex flex-col sm:flex-row justify-center gap-4 animate-fade-up mt-8">
+            <Link to="/services" className="w-full sm:w-auto">
+              <Button size="lg" className="w-full sm:w-auto bg-primary hover:bg-primary/80 text-text">
                 👉 Tak okkara netskeið nú
               </Button>
             </Link>
-            <Link to="/about">
-              <Button variant="outline" size="lg" className="text-primary border border-primary">
+            <Link to="/about" className="w-full sm:w-auto">
+              <Button variant="outline" size="lg" className="w-full sm:w-auto text-primary border border-primary">
                 📖 Les meira um skeiði
               </Button>
             </Link>
@@ -116,17 +116,17 @@ const Index = () => {
             <p className="text-lg text-text/80 mb-8">
               📌 <strong>Eyka</strong>: Tú fært eisini ókeypis atgongd til okkara komandi skeið, "Copilot til Føroysk skrivstovufólk"!
             </p>
-            <div className="flex justify-center gap-4">
-              <Link to="/services">
-                <Button size="lg" className="bg-primary hover:bg-primary/80 text-text">
+            <div className="flex flex-col sm:flex-row justify-center gap-4">
+              <Link to="/services" className="w-full sm:w-auto">
+                <Button size="lg" className="w-full sm:w-auto bg-primary hover:bg-primary/80 text-text">
                   👉 Keyp skeiðið nú
                 </Button>
               </Link>
-              <Link to="/services">
+              <Link to="/services" className="w-full sm:w-auto">
                 <Button
                   variant="outline"
                   size="lg"
-                  className="text-primary border border-primary"
+                  className="w-full sm:w-auto text-primary border border-primary"
                 >
                   📖 Lær meira um okkara tænastur
                 </Button>
@@ -213,14 +213,14 @@ const Index = () => {
             Okkara ritvit-skeið er skjótasta og lættasta leiðin at koma í gongd. 
             Við atgongd til ein ritvit-lærara og 100% peningaafturgjald um tú ikki ert nøgd/ur.
           </p>
-          <div className="flex justify-center gap-6">
-            <Link to="/services">
-              <Button size="lg" className="bg-primary hover:bg-primary/80 text-text">
+          <div className="flex flex-col sm:flex-row justify-center gap-6">
+            <Link to="/services" className="w-full sm:w-auto">
+              <Button size="lg" className="w-full sm:w-auto bg-primary hover:bg-primary/80 text-text">
                 👉 Tak skeiðið nú
               </Button>
             </Link>
-            <Link to="/services">
-              <Button variant="outline" size="lg" className="text-primary border border-primary">
+            <Link to="/services" className="w-full sm:w-auto">
+              <Button variant="outline" size="lg" className="w-full sm:w-auto text-primary border border-primary">
                 📖 Síggj okkara tænastur
               </Button>
             </Link>
