@@ -47,32 +47,32 @@ export default function Services() {
                 Besta fyrsta stig
               </span>
               <Card className="p-8 hover-lift animate-fade-up bg-primary/10 border border-border shadow-xl backdrop-blur-sm">
-              <div className="flex flex-col md:flex-row items-start gap-6">
-                <MessageSquare className="w-16 h-16 text-primary flex-shrink-0" />
-                <div>
-                  <span className="inline-block bg-primary text-white text-xs font-semibold px-3 py-1 rounded-full mb-4">Net skeið</span>
-                  <div className="flex items-center justify-between mb-4">
-                  </div>
-                  <h3 className="text-2xl font-semibold mb-3">
-                    Býrjunarskeið í ChatGPT til Føroysk skrivstovufólk
-                  </h3>
-                  <p className="text-text/80 mb-6">
-                    Okkara umfatandi skeið lærir teg at brúka KjattGPT effektivt í
-                    gerandisarbeiði. Perfekt til bæði ný byrjandi og yrkisfólk. Flestu av
-                    okkara kundum byrja sína ritvit-ferð her.
-                  </p>
-                  <div className="flex flex-col sm:flex-row items-center gap-4">
-                    <p className="text-xl font-semibold text-primary">1.200 DKK</p>
-                    <Link to="/contact" className="flex-1 sm:flex-none">
-                      <Button className="w-full sm:w-auto bg-primary hover:bg-primary/80 text-text border border-primary/50">
-                        Byrja í dag
-                      </Button>
-                      
-                    </Link>
+                <div className="flex flex-col md:flex-row items-start gap-6">
+                  <MessageSquare className="w-16 h-16 text-primary flex-shrink-0" />
+                  <div>
+                    <span className="inline-block bg-primary text-white text-xs font-semibold px-3 py-1 rounded-full mb-4">
+                      Net skeið
+                    </span>
+                    <div className="flex items-center justify-between mb-4"></div>
+                    <h3 className="text-2xl font-semibold mb-3">
+                      Býrjunarskeið í ChatGPT til Føroysk skrivstovufólk
+                    </h3>
+                    <p className="text-text/80 mb-6">
+                      Okkara umfatandi skeið lærir teg at brúka KjattGPT effektivt í
+                      gerandisarbeiði. Perfekt til bæði ný byrjandi og yrkisfólk. Flestu av
+                      okkara kundum byrja sína ritvit-ferð her.
+                    </p>
+                    <div className="flex flex-col sm:flex-row items-center gap-4">
+                      <p className="text-xl font-semibold text-primary">1.200 DKK</p>
+                      <Link to="/contact" className="flex-1 sm:flex-none">
+                        <Button className="w-full sm:w-auto bg-primary hover:bg-primary/80 text-text border border-primary/50">
+                          Byrja í dag
+                        </Button>
+                      </Link>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </Card>
+              </Card>
             </div>
           </div>
 
@@ -94,7 +94,7 @@ export default function Services() {
                   finna beinraktar uppgábur tú kann brúka KjattGPT til í júst tínum arbeiði - í dag.
                 </p>
                 <p className="text-text/80 mb-6">
-                Hettar gera vit við at taka ein fund, so fortelur tú mær akkruát hvat tú gert og so sigi eg tær akkurát hvat tú kann brúka ChatGPT til. 
+                  Hettar gera vit við at taka ein fund, so fortelur tú mær akkruát hvat tú gert og so sigi eg tær akkurát hvat tú kann brúka ChatGPT til. 
                 </p>
                 <p className="text-text/80 mb-6">
                   Tað tekur 1 til 2 tímar og sparir fleiri vikur av leitan og feilum. 
@@ -163,7 +163,6 @@ export default function Services() {
                 </p>
               </div>
             </div>
-
 
 
             {/* Step 4 */}
@@ -247,7 +246,6 @@ export default function Services() {
               </Button>
             </Link>
           </div>
-
         </div>
       </div>
       <Footer />
