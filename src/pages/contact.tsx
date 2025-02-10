@@ -111,11 +111,8 @@ export default function Kontakt() {
           {/* Contact Form */}
           <Card className="p-6 bg-primary/10 border border-border hover:border-primary transition-all animate-fade-up">
             <h2 className="text-2xl font-semibold mb-4 text-text/80">
-              Foretrækker du at sende en besked?
+              Vil tú heldur senda eini boð??
             </h2>
-            <p className="mb-6 text-text/80">
-              Brug formularen nedenfor, så kontakter vi dig hurtigst muligt.
-            </p>
             <Form {...form}>
               <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
                 <FormField
@@ -128,7 +125,7 @@ export default function Kontakt() {
                         <div className="relative">
                           <Input
                             {...field}
-                            placeholder="Dit navn"
+                            placeholder="Títt navn"
                             className="pl-10"
                           />
                           <User className="absolute left-3 top-2.5 h-5 w-5 text-primary" />
@@ -143,13 +140,13 @@ export default function Kontakt() {
                   name="email"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel className="text-text/80">E-mail</FormLabel>
+                      <FormLabel className="text-text/80">Teldupost</FormLabel>
                       <FormControl>
                         <div className="relative">
                           <Input
                             {...field}
                             type="email"
-                            placeholder="Din e-mail"
+                            placeholder="Tín teldupostur"
                             className="pl-10"
                           />
                           <Mail className="absolute left-3 top-2.5 h-5 w-5 text-primary" />
@@ -164,12 +161,12 @@ export default function Kontakt() {
                   name="message"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel className="text-text/80">Besked</FormLabel>
+                      <FormLabel className="text-text/80">Boð</FormLabel>
                       <FormControl>
                         <div className="relative">
                           <Textarea
                             {...field}
-                            placeholder="Skriv din besked her"
+                            placeholder="Skriva tíni boð"
                             className="min-h-[150px] pl-10"
                           />
                           <MessageSquare className="absolute left-3 top-2.5 h-5 w-5 text-primary" />
@@ -183,7 +180,7 @@ export default function Kontakt() {
                   type="submit"
                   className="w-full bg-primary hover:bg-primary/80 text-text"
                 >
-                  Send besked
+                  Send boð
                 </Button>
               </form>
             </Form>
