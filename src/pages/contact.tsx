@@ -1,3 +1,4 @@
+
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
@@ -24,9 +25,11 @@ const formSchema = z.object({
   message: z.string().min(10, "Beskeden skal være mindst 10 tegn"),
 });
 
-export default function Kontakt() {
+type FormValues = z.infer<typeof formSchema>;
+
+export default function Contact() {
   const { toast } = useToast();
-  const form = useForm<z.infer<typeof formSchema>>({
+  const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
     defaultValues: {
       name: "",
@@ -35,7 +38,7 @@ export default function Kontakt() {
     },
   });
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
+  function onSubmit(values: FormValues) {
     toast({
       title: "Besked sendt!",
       description: "Vi vender tilbage hurtigst muligt.",
@@ -49,11 +52,11 @@ export default function Kontakt() {
       <div className="py-20">
         <div className="container px-4 mx-auto max-w-2xl">
           <h1 className="text-4xl font-bold text-center mb-6 animate-fade-down bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-                      Set teg í samband við okkum
+            Set teg í samband við okkum
           </h1>
           <p className="text-lg text-center mb-8 text-text/80">
-                      Vit vilja fegin hoyra frá tær! Tú kanst seta teg í samband við okkum beinleiðis umvegis telefon, teldupost ella á sosialum miðlum, ella tú kanst senda okkum
-                      eini boð gjøgnum teigarnar niðanfyri. Vit gleða okkum til at hjálpa tær.
+            Vit vilja fegin hoyra frá tær! Tú kanst seta teg í samband við okkum beinleiðis umvegis telefon, teldupost ella á sosialum miðlum, ella tú kanst senda okkum
+            eini boð gjøgnum teigarnar niðanfyri. Vit gleða okkum til at hjálpa tær.
           </p>
 
           {/* Direct Contact Information */}
@@ -111,7 +114,7 @@ export default function Kontakt() {
           {/* Contact Form */}
           <Card className="p-6 bg-primary/10 border border-border hover:border-primary transition-all animate-fade-up">
             <h2 className="text-2xl font-semibold mb-4 text-text/80">
-              Vil tú heldur senda eini boð??
+              Vil tú heldur senda eini boð?
             </h2>
             <Form {...form}>
               <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
