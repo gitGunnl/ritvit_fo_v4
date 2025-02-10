@@ -338,7 +338,7 @@ const Index = () => {
                   <input
                     type="text"
                     id="name"
-                    name="entry.1179687836"  // Updated field name
+                    name="entry.1179687836"
                     className="w-full p-2 border border-border rounded-md bg-background text-text"
                     required
                     autoComplete="name"
@@ -351,7 +351,7 @@ const Index = () => {
                   <input
                     type="email"
                     id="email"
-                    name="entry.263197538"  // Updated field name
+                    name="entry.263197538"
                     className="w-full p-2 border border-border rounded-md bg-background text-text"
                     required
                     autoComplete="email"
@@ -363,7 +363,7 @@ const Index = () => {
                   </label>
                   <textarea
                     id="message"
-                    name="entry.240567695"  // Updated field name
+                    name="entry.240567695"
                     rows={4}
                     className="w-full p-2 border border-border rounded-md bg-background text-text"
                     required
@@ -378,7 +378,8 @@ const Index = () => {
                 </Button>
               </form>
             </div>
-
+          </div>
+        </div>
       </section>
 
       {/* Neon Glow Section */}
