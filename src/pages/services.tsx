@@ -42,14 +42,16 @@ export default function Services() {
               </p>
             </div>
 
+            <span className="bg-accent text-text text-sm font-bold px-6 py-2 rounded-full border-2 border-accent shadow-[0_0_10px_rgba(147,51,234,0.5)]">
+              Besta fyrsta stig
+            </span>
+
             <Card className="p-8 hover-lift animate-fade-up max-w-3xl mx-auto bg-primary/10 border border-border shadow-xl backdrop-blur-sm">
               <div className="flex flex-col md:flex-row items-start gap-6">
                 <MessageSquare className="w-16 h-16 text-primary flex-shrink-0" />
                 <div>
+                  <span className="inline-block bg-primary text-white text-xs font-semibold px-3 py-1 rounded-full mb-4">Fyrilestur</span>
                   <div className="flex items-center justify-between mb-4">
-                    <span className="bg-accent text-text text-sm font-bold px-6 py-2 rounded-full border-2 border-accent shadow-[0_0_10px_rgba(147,51,234,0.5)]">
-                      Besta fyrsta stig
-                    </span>
                   </div>
                   <h3 className="text-2xl font-semibold mb-3">
                     ChatGPT Net-skeið
@@ -65,6 +67,7 @@ export default function Services() {
                       <Button className="w-full sm:w-auto bg-primary hover:bg-primary/80 text-text border border-primary/50">
                         Byrja í dag
                       </Button>
+                      
                     </Link>
                   </div>
                 </div>
@@ -113,9 +116,10 @@ export default function Services() {
                 Til toymir & fyritøkur
               </span>
               <div className="bg-primary/10 backdrop-blur-sm rounded-lg p-8 shadow-lg border border-border">
+                <span className="inline-block bg-primary text-white text-xs font-semibold px-3 py-1 rounded-full mb-4">Fyrilestur</span>
                 <Presentation className="w-12 h-12 text-primary mb-4" />
                 <h3 className="text-2xl font-semibold mb-4">
-                  Ritvit-fyrilestur & verkstovur
+                  Ritvit: Frá Óvissu til Møguleikar
                 </h3>
                 <p className="text-text/80 mb-6">
                   Ritvit er komið – og tað broytir máta okkara at arbeiða uppá. Men hvat merkir tað í veruleikanum? Hvat kann ritvit – og hvat kann tað ikki? Hetta fyrilesturin gevur eina greiða fatan av, hvussu ritvit kann nýtast í gerandisdegnum, so óvissa og ivi verða skift út við forvitni og nýggjar møguleikar.
@@ -153,6 +157,8 @@ export default function Services() {
                 </p>
               </div>
             </div>
+
+
 
             {/* Step 4 */}
             <div className="fade-in">

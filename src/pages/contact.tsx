@@ -49,12 +49,12 @@ export default function Kontakt() {
       <div className="py-20">
         <div className="container px-4 mx-auto max-w-2xl">
           <h1 className="text-4xl font-bold text-center mb-6 animate-fade-down bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-            Kontakt os
+                      Set teg í samband við okkum
           </h1>
           <p className="text-lg text-center mb-8 text-text/80">
-            Vi vil rigtig gerne høre fra dig! Du kan kontakte os direkte via
-            telefon, e-mail eller på sociale medier, eller du kan sende os en
-            besked via formularen nedenfor. Vi ser frem til at hjælpe dig.
+                      Vit vilja fegin hoyra frá tær! Tú kanst seta teg í samband við okkum beinleiðis
+                      umvegis telefon, teldupost ella á sosialum miðlum, ella tú kanst senda okkum
+                      eini boð gjøgnum teigarnar niðanfyri. Vit gleða okkum til at hjálpa tær.
           </p>
 
           {/* Direct Contact Information */}
