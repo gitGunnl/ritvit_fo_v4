@@ -52,49 +52,48 @@ export default function Kontakt() {
                       Set teg í samband við okkum
           </h1>
           <p className="text-lg text-center mb-8 text-text/80">
-                      Vit vilja fegin hoyra frá tær! Tú kanst seta teg í samband við okkum beinleiðis
-                      umvegis telefon, teldupost ella á sosialum miðlum, ella tú kanst senda okkum
+                      Vit vilja fegin hoyra frá tær! Tú kanst seta teg í samband við okkum beinleiðis umvegis telefon, teldupost ella á sosialum miðlum, ella tú kanst senda okkum
                       eini boð gjøgnum teigarnar niðanfyri. Vit gleða okkum til at hjálpa tær.
           </p>
 
           {/* Direct Contact Information */}
           <div className="bg-primary/10 p-6 rounded-lg mb-12 text-text/80">
-            <h2 className="text-2xl font-semibold mb-4">Kontakt os direkte</h2>
+            <h2 className="text-2xl font-semibold mb-4">Beinleiðis samband:</h2>
             <p className="mb-2">
               <strong>Telefon:</strong>{" "}
-              <a href="tel:+298XXXXXX" className="underline hover:text-primary">
-                +298 XX XX XX
+              <a href="tel:+298 919444" className="underline hover:text-primary">
+                +298 919444
               </a>
             </p>
             <p className="mb-2">
               <strong>E-mail:</strong>{" "}
               <a
-                href="mailto:info@tøkni.tænastan.fo"
+                href="mailto:info@ritvit.fo"
                 className="underline hover:text-primary"
               >
-                info@tøkni.tænastan.fo
+                info@ritvit.fo
               </a>
             </p>
             <p className="mb-2">
               <strong>Facebook:</strong>{" "}
               <a
-                href="https://www.facebook.com/ditfirma"
+                href="https://www.facebook.com/profile.php?id=61557593776267"
                 className="underline hover:text-primary"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                facebook.com/ditfirma
+                Tøkni Tænastan
               </a>
             </p>
             <p>
               <strong>LinkedIn:</strong>{" "}
               <a
-                href="https://www.linkedin.com/company/ditfirma"
+                href="https://linkedin.com/company/tøkni-tænastan"
                 className="underline hover:text-primary"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                linkedin.com/company/ditfirma
+              Tøkni Tænastan
               </a>
             </p>
           </div>

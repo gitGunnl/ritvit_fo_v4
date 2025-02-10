@@ -43,18 +43,18 @@ export default function Services() {
             </div>
 
             <div className="relative max-w-3xl mx-auto">
-              <span className="absolute -top-3 right-4 z-10 bg-accent text-text text-sm font-bold px-6 py-2 rounded-full border-2 border-accent shadow-[0_0_10px_rgba(147,51,234,0.5)] rotate-3">
+              <span className="absolute -top-3 right-4 z-10 bg-accent text-text text-sm font-bold px-6 py-2 rounded-full border-2 border-accent shadow-[0_0_10px_rgba(147,51,234,0.5)]">
                 Besta fyrsta stig
               </span>
               <Card className="p-8 hover-lift animate-fade-up bg-primary/10 border border-border shadow-xl backdrop-blur-sm">
               <div className="flex flex-col md:flex-row items-start gap-6">
                 <MessageSquare className="w-16 h-16 text-primary flex-shrink-0" />
                 <div>
-                  <span className="inline-block bg-primary text-white text-xs font-semibold px-3 py-1 rounded-full mb-4">Fyrilestur</span>
+                  <span className="inline-block bg-primary text-white text-xs font-semibold px-3 py-1 rounded-full mb-4">Net skeið</span>
                   <div className="flex items-center justify-between mb-4">
                   </div>
                   <h3 className="text-2xl font-semibold mb-3">
-                    ChatGPT Net-skeið
+                    Býrjunarskeið í ChatGPT til Føroysk skrivstovufólk
                   </h3>
                   <p className="text-text/80 mb-6">
                     Okkara umfatandi skeið lærir teg at brúka KjattGPT effektivt í
