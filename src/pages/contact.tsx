@@ -38,12 +38,33 @@ export default function Contact() {
     },
   });
 
-  function onSubmit(values: FormValues) {
-    toast({
-      title: "Besked sendt!",
-      description: "Vi vender tilbage hurtigst muligt.",
-    });
-    form.reset();
+  async function onSubmit(values: FormValues) {
+    const formUrl = "https://docs.google.com/forms/d/e/YOUR_FORM_ID/formResponse";
+    
+    try {
+      const formData = new FormData();
+      formData.append("entry.1179687836", values.name);
+      formData.append("entry.263197538", values.email);
+      formData.append("entry.240567695", values.message);
+      
+      await fetch(formUrl, {
+        method: "POST",
+        mode: "no-cors",
+        body: formData,
+      });
+      
+      toast({
+        title: "Besked sendt!",
+        description: "Vi vender tilbage hurtigst muligt.",
+      });
+      form.reset();
+    } catch (error) {
+      toast({
+        title: "Villa!",
+        description: "Tað eydnaðist ikki at senda boðini.",
+        variant: "destructive",
+      });
+    }
   }
 
   return (
