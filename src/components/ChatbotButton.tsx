@@ -5,7 +5,7 @@ import { Card } from "./ui/card";
 import { useIsMobile } from "@/hooks/use-mobile";
 
 // Get OpenAI API key from environment variables
-const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
+const OPENAI_API_KEY = import.meta.env.VITE_OPENAI_API_KEY;
 
 // We'll store the created assistant ID in localStorage under this key.
 const LOCALSTORAGE_ASSISTANT_ID_KEY = "myCompanyAssistantId";
