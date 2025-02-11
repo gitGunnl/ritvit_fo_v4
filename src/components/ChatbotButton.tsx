@@ -6,6 +6,9 @@ import { useIsMobile } from "@/hooks/use-mobile";
 
 // Get OpenAI API key from environment variables
 const OPENAI_API_KEY = import.meta.env.VITE_OPENAI_API_KEY;
+if (!OPENAI_API_KEY) {
+  console.error('OpenAI API key is missing. Please add VITE_OPENAI_API_KEY to your environment variables.');
+}
 
 // We'll store the created assistant ID in localStorage under this key.
 const LOCALSTORAGE_ASSISTANT_ID_KEY = "myCompanyAssistantId";
@@ -258,7 +261,14 @@ const ChatbotButton: React.FC = () => {
   //  Sending user message & updating conversation
   // -------------------------------
   async function handleSendMessage() {
-    if (!userInput.trim() || !assistantId || !threadId) return;
+    if (!userInput.trim() || !assistantId || !threadId) {
+      console.error('Missing required data:', { assistantId, threadId });
+      return;
+    }
+    if (!OPENAI_API_KEY) {
+      console.error('OpenAI API key is missing');
+      return;
+    }
 
     const userText = userInput.trim();
     setUserInput("");
