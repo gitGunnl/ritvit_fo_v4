@@ -4,8 +4,8 @@ import { Button } from "./ui/button";
 import { Card } from "./ui/card";
 import { useIsMobile } from "@/hooks/use-mobile";
 
-// Replace with your actual OpenAI key or, better yet, fetch from a secure backend.
-const OPENAI_API_KEY = "OPENAI_API_KEY";
+// Get OpenAI API key from environment variables
+const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
 
 // We'll store the created assistant ID in localStorage under this key.
 const LOCALSTORAGE_ASSISTANT_ID_KEY = "myCompanyAssistantId";
