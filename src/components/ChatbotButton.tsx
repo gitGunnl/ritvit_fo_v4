@@ -58,7 +58,7 @@ const ChatbotButton: React.FC = () => {
         name: "Company Q&A Bot",
         instructions:
           "You are a helpful assistant that answers questions about our company. Provide concise, friendly answers.",
-        model: "gpt-4o", // or "gpt-4-turbo" if available
+        model: "gpt-4o-mini", // or "gpt-4-turbo" if available
       }),
     });
 
