@@ -1,176 +1,193 @@
-import React from "react";
-import { Button } from "@/components/ui/button";
-import Navigation from "@/components/Navigation";
-import Footer from "@/components/Footer";
-import { Link } from "react-router-dom";
+<!DOCTYPE html>
+<html lang="fo">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tøkni Tænastan</title>
+    <!-- Update the path to your compiled Tailwind CSS file as needed -->
+    <link rel="stylesheet" href="/styles/tailwind.css" />
+  </head>
+  <body class="bg-background text-text font-sans antialiased">
+    <!-- Header -->
+    <header class="bg-primary py-6">
+      <div class="container">
+        <h1 class="text-3xl font-bold text-primary-foreground tracking-in-expand animate-tracking-in-expand">
+          Vælkomin til Tøkni Tænastan
+        </h1>
+        <p class="text-primary-foreground text-lg mt-2">
+          - Vit fáa ritvit til Føroya, stig fyri stig
+        </p>
+      </div>
+    </header>
 
-export default function About() {
-  return (
-    <div className="min-h-screen bg-background text-text">
-      <Navigation />
-
-      {/* Hero Section */}
-      <section className="py-20">
-        <div className="container mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-6xl font-bold mb-4 animate-fade-down">
-            Um okkum
-          </h1>
-          <h2 className="text-2xl md:text-3xl font-semibold mb-6 animate-fade-down text-text/80">
-            Vit bera ritvit til Føroyar – og víðari
-          </h2>
-          <p className="text-xl max-w-3xl mx-auto leading-relaxed text-text/80 animate-fade-down">
-            Stig fyri stig broytur ritvit heimin. Vit syrgja fyri, at tú ikki dettur afturúr.
-          </p>
-        </div>
+    <!-- Main content -->
+    <main class="container my-8 prose prose-lg prose-headings:my-4">
+      <!-- Introductory text -->
+      <section>
+        <p>
+          Ritvit (AI) er ikki longur framtíðin – hon er her, beint nú. Spurningurin er ikki, um ritvit fer at hava ávirkan á tína fyritøku, men hvussu tú best kanst gagnnýta hana. Hjá Tøkni Tænastan hjálpa vit tær við at taka ræðið, so tú kanst brúka ritvit strategiskt og effektivt – uttan at villast í tøkni ella órealistiskum vónum.
+        </p>
       </section>
 
-      {/* Introduktión */}
-      <section className="py-16">
-        <div className="container mx-auto px-4">
-          <div className="max-w-3xl mx-auto bg-primary/10 backdrop-blur-sm rounded-lg p-8 shadow-xl border border-border animate-fade-up">
-            <p className="text-lg mb-4">
-              <strong>Tøkni Tænastan</strong> var stovna av einføldum orsøkum:
-            </p>
-            <p className="text-lg mb-4">
-              <strong>
-                At hjálpa føroyskum fyritøkum at brúka ritvit.
-              </strong>
-            </p>
-            <p className="text-lg mb-4">
-              Vit eru nú komin fram til at hettar skal gerast í trimum stigum og vit hjálpa allan vegin.
-            </p>
-          </div>
-        </div>
+      <hr class="my-8 border-border" />
+
+      <!-- Okkara missión -->
+      <section>
+        <h2 class="text-2xl font-bold">Okkara missión: Ritvit skal vera fyri øll</h2>
+        <p>
+          Ritvit er ikki bara fyri stórar KT-fyritøkur í Silicon Valley. Hon er til tín, tína fyritøku og tín gerandisdag. Okkara mál er einfalt:
+        </p>
+        <ul class="list-disc ml-6">
+          <li>
+            <strong>At gera ritvit lætt at skilja og brúka</strong> – uttan óneyðugan tekniskan jarngong.
+          </li>
+          <li>
+            <strong>At hjálpa fyritøkum at spara tíð og tilfeingi</strong> – uttan stórar íløgur.
+          </li>
+          <li>
+            <strong>At skapa ritvit-loysnir</strong>, sum veruliga virka og geva ítøkilig úrslit.
+          </li>
+        </ul>
+        <p>
+          Vit selja ikki bara "ráðgeving um ritvit". Vit vísa tær, hvussu tú kanst brúka hana effektivt – við einari praktiskari og veruleikakendari tilgongd, sum tryggjar, at tú sært veruligar fyrimunir frá fyrsta degi.
+        </p>
       </section>
 
-      {/* Okkara søga */}
-      <section className="py-16">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-8 animate-fade-down">
-            Okkara søga: Frá forvitni til nýskapan
-          </h2>
-          <div className="max-w-3xl mx-auto bg-primary/10 backdrop-blur-sm rounded-lg p-8 shadow-xl border border-border animate-fade-up">
-            <h3 className="text-2xl font-semibold mb-4">Møt Gunnleyg</h3>
-            <p className="text-lg mb-4">
-              Eg havi altíð verið bergtikin av <strong>nýggjari tøkni</strong> –
-              øllum tí, sum broytir, hvussu vit arbeiða og liva.
-            </p>
-            <p className="text-lg mb-4">
-              Sum verkfrøðingur arbeiddi eg við framkomnum skipanum, men einki
-              fangaði meg sum ritvit.
-            </p>
-            <p className="text-lg mb-4">So ein dag gekk tað upp fyri mær:</p>
-            <ul className="list-disc ml-6 text-lg mb-4">
-              <li>
-                💡 <strong>Ritvit er ikki bara fyri stórar tøkni-risar.</strong>
-              </li>
-              <li>
-                💡 <strong>Ritvit er ikki bara framtíð – tað er nú.</strong>
-              </li>
-              <li>
-                💡{" "}
-                <strong>Ritvit kann nýtast í øllum fyritøkum – eisini í Føroyum.</strong>
-              </li>
-            </ul>
-            <p className="text-lg mb-4">
-              Trupulleikin? <strong>Flestu hava ikki tíð at seta seg inn í tað.</strong>
-            </p>
-            <p className="text-lg mt-4">
-              Tí stovnaði eg <strong>Tøkni Tænastuna</strong> – fyri at byggja brúnna
-              millum <strong>møguleikarnar hjá ritviti</strong> og{" "}
-              <strong>veruligu tørvin hjá føroyskum fyritøkum</strong>.
-            </p>
-            <p className="text-lg mt-4">
-              Nú hjálpa vit fyritøkum at{" "}
-              <strong>
-                sjálvvirka uppgávur, effektivisera arbeiðið og brúka ritvit fult
-                út
-              </strong>{" "}
-              – so tær kunnu fokusera uppá tað, sum veruliga hevur týdning.
-            </p>
-          </div>
-        </div>
+      <hr class="my-8 border-border" />
+
+      <!-- Okkara søga -->
+      <section>
+        <h2 class="text-2xl font-bold">Okkara søga: Frá fascinatión til veruleika</h2>
+        <p>
+          Eg havi altíð verið hugtikin av tøkni – øllum tí, sum kann broyta máta okkara at arbeiða og liva. Sum verkfrøðingur havi eg arbeitt við framkomnum skipanum, men einki hevur fangað mína áhuga sum ritvit.
+        </p>
+        <p>
+          Mín ritvit-ferð byrjaði í 2012, tá eg las <em>Final Jeopardy: Man vs. Machine and the Quest to Know Everything</em>. Hetta lat upp míni eygu fyri, hvussu ritvit ikki bara var framtíðin, men longu tá var í ferð við at broyta heimin. Tá ChatGPT kom út, fór eg beinanvegin at nýta ritvit – og sá skjótt teir stóru møguleikarnar fyri føroyskar fyritøkur.
+        </p>
+        <p>
+          Men eitt var ein trupulleiki: Flestu høvdu hvørki tíð ella møguleika at seta seg inn í ritvit.
+        </p>
+        <p>
+          Tí stovnaði eg Tøkni Tænastan – fyri at byggja eina brúgv millum møguleikar ritvitsins og tær veruligu tørvirnar hjá føroyskum fyritøkum. Vit hjálpa fyritøkum at gera arbeiðsgongdir skjótari, lættari og effektivari – við ritvit sum amboð, sum gevur meining fyri teg.
+        </p>
       </section>
 
-      {/* Okkara visjón */}
-      <section className="py-16">
-        <div className="container mx-auto px-4">
-          <div className="max-w-3xl mx-auto bg-primary/10 backdrop-blur-sm rounded-lg p-8 shadow-xl border border-border animate-fade-up">
-            <h2 className="text-3xl font-bold mb-4">Okkara visjón: Ritvit fyri øll</h2>
-            <p className="text-lg mb-4">
-              Ritvit er ikki bara fyri <strong>Silicon Valley</strong>. Tað er fyri
-              tína fyritøku. Títt toymi. Tína gerandisdag.
-            </p>
-            <p className="text-lg mb-4">
-              Mál okkara hjá <strong>Tøkni Tænastuni</strong> er at:
-            </p>
-            <ul className="list-disc ml-6 text-lg mb-4">
-              <li>
-                ✅ <strong>Gera ritvit lætt og atkomiligt</strong> fyri øll.
-              </li>
-              <li>
-                ✅ <strong>Hjálpa fyritøkum at spara tíð og tilfeingi</strong> – uttan
-                at seta fleiri fólk í starv.
-              </li>
-              <li>
-                ✅ <strong>Skapa ritvit-loysnir, sum veruliga rigga.</strong>
-              </li>
-            </ul>
-            <p className="text-lg">
-              Vit selja ikki bara "ritvit-ráðgeving". Vit{" "}
-              <strong>læra, innføra og byggja</strong> loysnir, sum geva{" "}
-              <strong>verulig úrslit</strong>.
-            </p>
-          </div>
-        </div>
+      <hr class="my-8 border-border" />
+
+      <!-- Hvussu vit hjálpa -->
+      <section>
+        <h2 class="text-2xl font-bold">Hvussu vit hjálpa: Ein stigvís tilgongd</h2>
+        <p>
+          Ritvit kann kennast fløkt, og nógvar fyritøkur seta somu spurningar:
+        </p>
+        <ul class="list-disc ml-6">
+          <li><strong>Hvar skulu vit byrja?</strong></li>
+          <li><strong>Hvussu riggar tað í praksis?</strong></li>
+          <li><strong>Er ritvit ov tekniskt fyri okkum?</strong></li>
+        </ul>
+        <p>
+          Hjá Tøkni Tænastan hava vit ment eina einfalda tilgongd, sum tryggjar, at tíni fyrstu stig við ritvit eru bæði skilagóð og løtt:
+        </p>
+        <ol class="list-decimal ml-6">
+          <li>
+            <strong>Ritvit fyri nýbyrjarar</strong> – Lær tað grundleggjandi, uttan at drukna í tøkni.
+          </li>
+          <li>
+            <strong>Finn 15 ChatGPT-nýtslur til tína fyritøku</strong> – Greið frá, hvussu tú kanst spara tíð og betra um arbeiðið.
+          </li>
+          <li>
+            <strong>Automatiskan í praksis</strong> – Vit hjálpa tær við at innleiða ritvit í verki, so tú sært munin.
+          </li>
+        </ol>
+        <p>
+          Tá ið tað eru smáar, snildar ritvit-loysnir, ið skapa bestu úrslitini – ikki stórar, dýrar verkætlanir, sum ongantíð verða lidnar.
+        </p>
       </section>
 
-      {/* Hvat ger okkum øðrvísi? */}
-      <section className="py-16">
-        <div className="container mx-auto px-4">
-          <div className="max-w-3xl mx-auto bg-primary/10 backdrop-blur-sm rounded-lg p-8 shadow-xl border border-border animate-fade-up">
-            <h2 className="text-3xl font-bold mb-4">Hvat ger okkum øðrvísi?</h2>
-            <p className="text-lg mb-4">
-              Ritvit er <strong>allastaðni</strong>, men flestu fyritøkur stríðast
-              við somu spurningar:
-            </p>
-            <ul className="list-disc ml-6 text-lg mb-4">
-              <li>
-                ❌ <strong>Hvar skulu vit byrja?</strong>
-              </li>
-              <li>
-                ❌ <strong>Hvussu riggar tað í verki?</strong>
-              </li>
-              <li>
-                ❌ <strong>Er ritvit ov trupult fyri okkum?</strong>
-              </li>
-            </ul>
-            <p className="text-lg mb-4">
-              Tað, sum ger okkum øðrvísi:
-            </p>
-            <ul className="list-disc ml-6 text-lg">
-              <li>
-                💡 <strong>Vit tosa títt mál.</strong> Ongar torgreiddar
-                forklaringar – bara greið ráðgeving.
-              </li>
-              <li>
-                🚀 <strong>Vit leggja dent á skjót úrslit.</strong> Tú sært mun
-                beinanvegin.
-              </li>
-              <li>
-                🇫🇴 <strong>Vit kenna føroyska marknaðin.</strong> Vit skilja
-                veruligu avbjóðingarnar.
-              </li>
-              <li>
-                🤖 <strong>Vit brúka sjálvi ritvit hvønn dag.</strong> Tað her er
-                ikki bara teori – vit vita, hvat riggar.
-              </li>
-            </ul>
-          </div>
-        </div>
+      <hr class="my-8 border-border" />
+
+      <!-- Okkara royndir -->
+      <section>
+        <h2 class="text-2xl font-bold">Okkara royndir: Verkætlanir og úrslit</h2>
+        <p>
+          Vit hava longu hjálpt fleiri føroyskum fyritøkum og felagsskapum við ritvit-loysnum. Her eru nøkur dømi:
+        </p>
+        <ul class="list-disc ml-6">
+          <li>
+            <strong>Størsta skeið fyri lærarar í Føroyum</strong> – Vit hjálptu lærarum at brúka ritvit til at spara tíð og betra undirvísingina.
+          </li>
+          <li>
+            <strong>Ráðgeving fyri Eya Architects og Búset</strong> – Ritvit-optimering av arbeiðsgongdum.
+          </li>
+          <li>
+            <strong>Skapandi verkætlanir</strong> – Ritvit-framleidd list til Tonik og ein stóran bakgrund til Tech BBQ.
+          </li>
+          <li>
+            <strong>Ritvit-framleiddar framløgur</strong> – 100% ritvit-framleidd marknaðarføringsvideo víst í Norðurlandahúsinum.
+          </li>
+          <li>
+            <strong>Ritvit-amboð til politikarar og vinnulív</strong> – Hjálpir avgerðartakarum at brúka ritvit strategiskt.
+          </li>
+        </ul>
+        <p>
+          Vit arbeiða bæði við smáum og stórum fyritøkum og tillaga alt til tín tørv.
+        </p>
       </section>
 
-      <Footer />
-    </div>
-  );
-}
+      <hr class="my-8 border-border" />
+
+      <!-- Hví velja okkum -->
+      <section>
+        <h2 class="text-2xl font-bold">Hví velja okkum?</h2>
+        <p>
+          Ritvit kann vera ein víðfevndur skógur av móðutrendum og roksuttum orðum. Vit skera ígjøgnum óneyðugt prát og bjóða tær:
+        </p>
+        <ul class="list-disc ml-6">
+          <li>
+            <strong>Praktiskar og greiðar loysnir</strong> – Eingin óneyðug tøknilýsing, bert nytsam ráðgeving.
+          </li>
+          <li>
+            <strong>Úrslit frá fyrsta degi</strong> – Tú sært munin beinanvegin.
+          </li>
+          <li>
+            <strong>Lokalt førleikastig</strong> – Vit skilja tær serligu avbjóðingarnar og møguleikarnar í Føroyum.
+          </li>
+          <li>
+            <strong>Verulig ritvit-roynd</strong> – Vit brúka ritvit hvønn dag og vita, hvat riggar í praksis.
+          </li>
+        </ul>
+      </section>
+
+      <hr class="my-8 border-border" />
+
+      <!-- Call to action -->
+      <section>
+        <h2 class="text-2xl font-bold">Ert tú klár/ur at taka næsta stig?</h2>
+        <p>
+          Ritvit nýtist ikki at vera ein stór, ótrygg umbroyting. Við røttum leisti kann hon gerast eitt virðismikið amboð, sum ger tína fyritøku meira effektivari og kappingarføra.
+        </p>
+        <ul class="list-disc ml-6">
+          <li>
+            <strong>Tekna teg til okkara skeið</strong> – Fá eina lætta og skilagóða byrjan við ritvit.
+          </li>
+          <li>
+            <strong>Latið okkum finna 15 ritvit-nýtslur til tína fyritøku</strong> – Finn teir skjótastu fyrimunirnar.
+          </li>
+          <li>
+            <strong>Set teg í samband við okkum</strong> – Vit hjálpa tær víðari, stig fyri stig.
+          </li>
+        </ul>
+        <p class="mt-4 font-semibold">
+          Ritvit er framtíðin – men hon er eisini nútíðin. Skal hon gerast partur av tíni fyritøku?
+        </p>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-primary py-4 mt-8">
+      <div class="container text-primary-foreground">
+        <p>&copy; 2025 Tøkni Tænastan. Alle rettigheder forbeholdes.</p>
+      </div>
+    </footer>
+  </body>
+</html>
