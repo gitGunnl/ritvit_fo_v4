@@ -39,7 +39,7 @@ export default function Contact() {
   });
 
   async function onSubmit(values: FormValues) {
-    const formUrl = "https://docs.google.com/forms/d/e/YOUR_FORM_ID/formResponse";
+    const formUrl = "https://docs.google.com/forms/d/e/1FAIpQLSf8FFci-J91suIjxY2xh4GD-DQ-UfZftUNxq3dUdXkgJAjB1Q/formResponse";
     
     try {
       const formData = new FormData();
@@ -49,7 +49,7 @@ export default function Contact() {
       
       await fetch(formUrl, {
         method: "POST",
-        mode: "no-cors",
+        mode: "no-cors", // Required to avoid CORS errors
         body: formData,
       });
       
@@ -61,7 +61,7 @@ export default function Contact() {
     } catch (error) {
       toast({
         title: "Villa!",
-        description: "Tað eydnaðist ikki at senda boðini.",
+        description: "Tað eydnaðist ikki at senda boðini. Royn aftur ella send teldupost til info@ritvit.fo",
         variant: "destructive",
       });
     }
