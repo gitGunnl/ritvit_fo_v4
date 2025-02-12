@@ -430,13 +430,15 @@ const Index = () => {
             >
               👉 Keyp skeiðið nú
             </Button>
-            <Button
-              variant="outline"
-              size="lg"
-              className="border-2 border-primary text-primary hover:bg-primary/20"
-            >
-              📖 Sí okkara tænastur
-            </Button>
+            <Link to="/aboutCourse">
+              <Button
+                variant="outline"
+                size="lg"
+                className="border-2 border-primary text-primary hover:bg-primary/20"
+              >
+                📖 Les meira um skeiðið
+              </Button>
+            </Link>
           </div>
         </div>
       </section>
