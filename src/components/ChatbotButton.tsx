@@ -30,6 +30,7 @@ const ChatbotButton: React.FC = () => {
   // Local conversation messages
   const [messages, setMessages] = useState<ChatMessage[]>([]);
   const [userInput, setUserInput] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   // We'll store the thread ID (we create a new thread if not found in localStorage)
   const [threadId, setThreadId] = useState<string | null>(null);
@@ -212,6 +213,7 @@ const ChatbotButton: React.FC = () => {
 
     const userText = userInput.trim();
     setUserInput("");
+    setIsLoading(true);
 
     // Add the user's message locally
     const newUserMsg: ChatMessage = {
@@ -229,7 +231,9 @@ const ChatbotButton: React.FC = () => {
       // Fetch the updated conversation and update UI
       const updatedMessages = await fetchMessages(threadId);
       setMessages(updatedMessages);
+      setIsLoading(false);
     } catch (err) {
+      setIsLoading(false);
       console.error("Error sending or receiving message:", err);
     }
   }
@@ -288,6 +292,21 @@ const ChatbotButton: React.FC = () => {
               </div>
             )}
             {messages.map((msg) => (
+            )}
+            {isLoading && (
+              <div className="flex gap-2 items-start mb-4">
+                <div className="w-8 h-8 rounded-full bg-gradient-to-r from-primary to-accent flex items-center justify-center text-text text-sm font-bold shadow-md">
+                  AI
+                </div>
+                <div className="flex-1 bg-primary/10 rounded-lg p-3 text-sm text-text border border-border">
+                  <div className="flex gap-1">
+                    <div className="w-2 h-2 bg-text/60 rounded-full animate-bounce [animation-delay:-0.3s]"></div>
+                    <div className="w-2 h-2 bg-text/60 rounded-full animate-bounce [animation-delay:-0.15s]"></div>
+                    <div className="w-2 h-2 bg-text/60 rounded-full animate-bounce"></div>
+                  </div>
+                </div>
+              </div>
+            )}
               <div key={msg.id} className="flex gap-2 items-start mb-4">
                 {msg.role === "assistant" ? (
                   <>
