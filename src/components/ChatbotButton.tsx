@@ -4,14 +4,17 @@ import { Button } from "./ui/button";
 import { Card } from "./ui/card";
 import { useIsMobile } from "@/hooks/use-mobile";
 
-// Get OpenAI API key from environment variables
+// Get OpenAI API key and assistant ID from environment variables
 const OPENAI_API_KEY = import.meta.env.VITE_OPENAI_API_KEY;
+const ASSISTANT_ID = import.meta.env.VITE_ASSISTANT_ID; // Pre‑created assistant ID
+
 if (!OPENAI_API_KEY) {
   console.error('OpenAI API key is missing. Please add VITE_OPENAI_API_KEY to your environment variables.');
 }
+if (!ASSISTANT_ID) {
+  console.error('Assistant ID is missing. Please add VITE_ASSISTANT_ID to your environment variables.');
+}
 
-// We'll store the created assistant ID in localStorage under this key.
-const LOCALSTORAGE_ASSISTANT_ID_KEY = "myCompanyAssistantId";
 // We'll store the active thread ID in localStorage under this key.
 const LOCALSTORAGE_THREAD_ID_KEY = "myCompanyThreadId";
 
@@ -24,59 +27,18 @@ interface ChatMessage {
 
 const ChatbotButton: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
-
-  // Keep a local list of messages for the UI.
+  // Local conversation messages
   const [messages, setMessages] = useState<ChatMessage[]>([]);
-  // Track the current text input
   const [userInput, setUserInput] = useState("");
 
-  // We only want to create or fetch the assistant/thread IDs one time.
-  const [assistantId, setAssistantId] = useState<string | null>(null);
+  // We'll store the thread ID (we create a new thread if not found in localStorage)
   const [threadId, setThreadId] = useState<string | null>(null);
 
   const isMobile = useIsMobile();
   const abortControllerRef = useRef<AbortController | null>(null);
 
   // -------------------------------
-  //  1. Create or Retrieve Assistant
-  // -------------------------------
-  // A function that checks localStorage for an existing assistant ID.
-  // If none is found, we create a new assistant via the API and store it locally.
-  async function getOrCreateAssistant(): Promise<string> {
-    let storedAssistantId = localStorage.getItem(LOCALSTORAGE_ASSISTANT_ID_KEY);
-    if (storedAssistantId) {
-      return storedAssistantId;
-    }
-
-    // Create new assistant
-    const res = await fetch("https://api.openai.com/v1/assistants", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${OPENAI_API_KEY}`,
-        "OpenAI-Beta": "assistants=v2",
-      },
-      body: JSON.stringify({
-        // Give your assistant a name and instructions relevant to your company Q&A
-        name: "Company Q&A Bot",
-        instructions:
-          "You are a helpful assistant that answers questions about our company. Provide concise, friendly answers.",
-        model: "gpt-4-1106-preview",
-      }),
-    });
-
-    if (!res.ok) {
-      throw new Error(`Assistant creation failed: ${res.statusText}`);
-    }
-
-    const data = await res.json();
-    storedAssistantId = data.id;
-    localStorage.setItem(LOCALSTORAGE_ASSISTANT_ID_KEY, storedAssistantId);
-    return storedAssistantId;
-  }
-
-  // -------------------------------
-  //  2. Create or Retrieve a Thread
+  //  Create or Retrieve a Thread
   // -------------------------------
   async function getOrCreateThread(): Promise<string> {
     let storedThreadId = localStorage.getItem(LOCALSTORAGE_THREAD_ID_KEY);
@@ -92,7 +54,6 @@ const ChatbotButton: React.FC = () => {
         Authorization: `Bearer ${OPENAI_API_KEY}`,
         "OpenAI-Beta": "assistants=v2",
       },
-      // No body needed unless you want to pre-seed the thread with messages
       body: JSON.stringify({}),
     });
 
@@ -129,15 +90,10 @@ const ChatbotButton: React.FC = () => {
   }
 
   // -------------------------------
-  //  3. Run the assistant
+  //  Run the assistant
   // -------------------------------
-  // We'll do the "createAndPoll" style approach (which we implement manually)
-  // for a simpler, single-step approach to get the assistant's reply.
   async function runAssistant(threadId: string, assistantId: string) {
-    // In a production environment, you might want to handle cancellations,
-    // timeouts, or streaming. For brevity, we'll do a standard fetch & poll.
-
-    // 3a. Create the run
+    // Create the run (non-streaming)
     const createRunRes = await fetch(`https://api.openai.com/v1/threads/${threadId}/runs`, {
       method: "POST",
       headers: {
@@ -154,13 +110,11 @@ const ChatbotButton: React.FC = () => {
       throw new Error(`Could not create run: ${createRunRes.statusText}`);
     }
     const runData = await createRunRes.json();
-
-    // 3b. Poll until the run is in a terminal state: completed, failed, etc.
     let runStatus = runData.status;
-    let runId = runData.id;
+    const runId = runData.id;
 
+    // Poll until the run finishes
     while (!["completed", "failed", "cancelled", "incomplete"].includes(runStatus)) {
-      // Wait a bit before polling again
       await new Promise((r) => setTimeout(r, 2000));
 
       const runCheck = await fetch(
@@ -181,16 +135,14 @@ const ChatbotButton: React.FC = () => {
       runStatus = updatedRun.status;
     }
 
-    // If runStatus is not 'completed', we can handle or display errors
     if (runStatus !== "completed") {
       throw new Error(`Run ended with status: ${runStatus}`);
     }
-    // That means the assistant has appended messages. We can fetch them.
     return;
   }
 
   // -------------------------------
-  //  4. Fetch the current conversation (messages)
+  //  Fetch the current conversation (messages)
   // -------------------------------
   async function fetchMessages(threadId: string) {
     const res = await fetch(`https://api.openai.com/v1/threads/${threadId}/messages`, {
@@ -206,52 +158,40 @@ const ChatbotButton: React.FC = () => {
     }
     const data = await res.json();
 
-    // data is of shape { data: [ { id, role, content }, ... ] }
-    // content can be an array of { type: "text"/"image_url"/... } objects.
-    // For simplicity, we'll join all "text" parts into one string.
+    // Flatten text parts for a simple UI
     const transformed = data.data.map((m: any) => {
-      // Each message has content: ContentPart[]
-      // We'll just flatten for a simple text UI.
       let textParts = (m.content || [])
         .filter((part: any) => part.type === "text")
         .map((part: any) => part.text.value);
       const contentString = textParts.join("\n");
-
       return {
         id: m.id,
         role: m.role,
         content: contentString,
       } as ChatMessage;
     });
-
     return transformed;
   }
 
   // -------------------------------
-  //  On component mount, ensure we have an assistant & thread
+  //  On component mount, ensure we have a thread
   // -------------------------------
   useEffect(() => {
     let cancel = false;
     (async () => {
       try {
-        const asstId = await getOrCreateAssistant();
-        if (cancel) return;
-        setAssistantId(asstId);
-
         const tId = await getOrCreateThread();
         if (cancel) return;
         setThreadId(tId);
-
-        // Optionally fetch existing messages if any:
+        // Fetch existing messages if any
         const initialMessages = await fetchMessages(tId);
         if (!cancel) {
           setMessages(initialMessages);
         }
       } catch (err) {
-        console.error("Error setting up assistant & thread:", err);
+        console.error("Error setting up thread:", err);
       }
     })();
-
     return () => {
       cancel = true;
     };
@@ -261,8 +201,8 @@ const ChatbotButton: React.FC = () => {
   //  Sending user message & updating conversation
   // -------------------------------
   async function handleSendMessage() {
-    if (!userInput.trim() || !assistantId || !threadId) {
-      console.error('Missing required data:', { assistantId, threadId });
+    if (!userInput.trim() || !ASSISTANT_ID || !threadId) {
+      console.error('Missing required data:', { ASSISTANT_ID, threadId });
       return;
     }
     if (!OPENAI_API_KEY) {
@@ -273,7 +213,7 @@ const ChatbotButton: React.FC = () => {
     const userText = userInput.trim();
     setUserInput("");
 
-    // 1. Add user message to local state
+    // Add the user's message locally
     const newUserMsg: ChatMessage = {
       id: `local-${Date.now()}`,
       role: "user",
@@ -282,18 +222,15 @@ const ChatbotButton: React.FC = () => {
     setMessages((prev) => [...prev, newUserMsg]);
 
     try {
-      // 2. Actually create the user message on the thread
+      // Create user message on the thread
       await createUserMessage(threadId, userText);
-
-      // 3. Run the assistant
-      await runAssistant(threadId, assistantId);
-
-      // 4. Fetch all updated messages
+      // Run the assistant to process the conversation
+      await runAssistant(threadId, ASSISTANT_ID);
+      // Fetch the updated conversation and update UI
       const updatedMessages = await fetchMessages(threadId);
       setMessages(updatedMessages);
     } catch (err) {
       console.error("Error sending or receiving message:", err);
-      // Optionally display an error message in the UI
     }
   }
 
