@@ -3,6 +3,7 @@ import { useState, useRef, useEffect } from 'react';
 import { Button } from './ui/button';
 import { Send, X } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { MAX_MESSAGES } from '@/lib/constants';
 
 interface ChatMessage {
   id: string;

@@ -3,8 +3,6 @@ import { Button } from './ui/button';
 import { MessageSquare } from 'lucide-react';
 import ChatWindow from './ChatWindow';
 
-const MAX_MESSAGES = 10; // Limit conversation history
-
 const ChatbotButton = () => {
   const [isOpen, setIsOpen] = useState(false);
 
