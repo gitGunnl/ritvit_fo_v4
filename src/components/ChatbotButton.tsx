@@ -1,18 +1,7 @@
-import { useState, useRef, useEffect } from 'react';
+import { useState } from 'react';
 import { Button } from './ui/button';
-import { MessageSquare, Send, X } from 'lucide-react';
-
-// Placeholder ChatWindow component -  Needs actual implementation
-const ChatWindow = ({ onClose }) => {
-  return (
-    <div className="absolute bottom-20 right-0 w-96 h-[500px] bg-background border border-border rounded-lg shadow-lg flex flex-col">
-      {/*  Replace this with actual chat window content */}
-      <div>Chat Window Content Here</div>
-      <button onClick={onClose}>Close</button>
-    </div>
-  );
-};
-
+import { MessageSquare } from 'lucide-react';
+import ChatWindow from './ChatWindow';
 
 const MAX_MESSAGES = 10; // Limit conversation history
 
