@@ -5,11 +5,7 @@ import path from 'path';
 // Array of files to collect code from
 const filesToCollect = [
   'src/components/ChatbotButton.tsx',
-  'src/components/Navigation.tsx',
-  'src/components/Footer.tsx',
   'src/pages/Index.tsx',
-  'src/pages/aboutCourse.tsx',
-  'src/pages/services.tsx',
   'src/App.tsx'
 ];
 
