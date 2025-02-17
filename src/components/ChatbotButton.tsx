@@ -38,7 +38,7 @@ const ChatbotButton = () => {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': `Bearer ${process.env.VITE_OPENAI_API_KEY}`
+          'Authorization': `Bearer ${import.meta.env.VITE_OPENAI_API_KEY}`
         },
         body: JSON.stringify({
           model: 'gpt-3.5-turbo',
@@ -78,7 +78,7 @@ const ChatbotButton = () => {
       const errorMessage: ChatMessage = {
         id: (Date.now() + 1).toString(),
         role: 'assistant',
-        content: process.env.VITE_OPENAI_API_KEY 
+        content: import.meta.env.VITE_OPENAI_API_KEY 
           ? 'Sorry, there was an error connecting to the AI service. Please try again.'
           : 'API key not found. Please add VITE_OPENAI_API_KEY to the Secrets tool.'
       };
