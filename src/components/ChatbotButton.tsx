@@ -19,18 +19,30 @@ const ChatbotButton = () => {
     setIsOpen(!isOpen);
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!userInput.trim()) return;
 
-    const newMessage: ChatMessage = {
+    const userMessage: ChatMessage = {
       id: Date.now().toString(),
       role: 'user',
       content: userInput.trim()
     };
 
-    setMessages([...messages, newMessage]);
+    setMessages(prev => [...prev, userMessage]);
     setUserInput('');
+    setIsLoading(true);
+
+    // Simulate bot response after a short delay
+    setTimeout(() => {
+      const botResponse: ChatMessage = {
+        id: (Date.now() + 1).toString(),
+        role: 'assistant',
+        content: 'Thank you for your message! This is a demo response. The chatbot functionality will be implemented soon.'
+      };
+      setMessages(prev => [...prev, botResponse]);
+      setIsLoading(false);
+    }, 1000);
   };
 
   return (
