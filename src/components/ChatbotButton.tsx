@@ -13,7 +13,8 @@ const ChatbotButton = () => {
       <Button
         onClick={() => setIsOpen(!isOpen)}
         size="lg"
-        className="rounded-full w-16 h-16 bg-primary hover:bg-primary/80 transition-transform duration-200 hover:scale-105"
+        className="rounded-full w-16 h-16 bg-primary hover:bg-primary/80 
+                   transition-transform duration-200 hover:scale-105"
       >
         <MessageSquare className="w-6 h-6" />
       </Button>

@@ -6,6 +6,7 @@ import path from 'path';
 const filesToCollect = [
   'src/components/ChatbotButton.tsx',
   'src/pages/Index.tsx',
+  'src/components/ChatWindow.tsx',
   'src/App.tsx'
 ];
 
