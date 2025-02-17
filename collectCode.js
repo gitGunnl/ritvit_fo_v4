@@ -13,18 +13,23 @@ const filesToCollect = [
 ];
 
 // Function to read and format file content
-function collectCode() {
+async function collectCode() {
   let output = '';
   
-  filesToCollect.forEach(filePath => {
-    if (fs.existsSync(filePath)) {
-      const content = fs.readFileSync(filePath, 'utf8');
-      output += `\nurl: rag://rag_source_${filePath}\npath: ${filePath}\n\`\`\`\n${content}\n\`\`\`\n\n`;
+  for (const filePath of filesToCollect) {
+    try {
+      const stat = await fs.stat(filePath);
+      if (stat.isFile()) {
+        const content = await fs.readFile(filePath, 'utf8');
+        output += `\nurl: rag://rag_source_${filePath}\npath: ${filePath}\n\`\`\`\n${content}\n\`\`\`\n\n`;
+      }
+    } catch (error) {
+      console.log(`Skipping ${filePath}: ${error.message}`);
     }
-  });
+  }
   
-  fs.writeFileSync('codeCollection.txt', output);
+  await fs.writeFile('codeCollection.txt', output);
   console.log('Code collection complete!');
 }
 
-collectCode();
+collectCode().catch(console.error);
