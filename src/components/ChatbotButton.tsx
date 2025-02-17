@@ -33,16 +33,57 @@ const ChatbotButton = () => {
     setUserInput('');
     setIsLoading(true);
 
-    // Simulate bot response after a short delay
-    setTimeout(() => {
+    try {
+      const response = await fetch('https://api.openai.com/v1/chat/completions', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${process.env.VITE_OPENAI_API_KEY}`
+        },
+        body: JSON.stringify({
+          model: 'gpt-3.5-turbo',
+          messages: [
+            {
+              role: 'system',
+              content: 'You are a helpful assistant for a course about ChatGPT. Answer questions about the course content, pricing, and schedule. Be concise and friendly.'
+            },
+            ...messages.map(msg => ({
+              role: msg.role,
+              content: msg.content
+            })),
+            {
+              role: 'user',
+              content: userInput.trim()
+            }
+          ],
+          temperature: 0.7,
+          max_tokens: 150
+        })
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to get response');
+      }
+
+      const data = await response.json();
       const botResponse: ChatMessage = {
         id: (Date.now() + 1).toString(),
         role: 'assistant',
-        content: 'Thank you for your message! This is a demo response. The chatbot functionality will be implemented soon.'
+        content: data.choices[0].message.content
       };
+
       setMessages(prev => [...prev, botResponse]);
+    } catch (error) {
+      console.error('Error:', error);
+      const errorMessage: ChatMessage = {
+        id: (Date.now() + 1).toString(),
+        role: 'assistant',
+        content: 'Sorry, I encountered an error. Please try again later.'
+      };
+      setMessages(prev => [...prev, errorMessage]);
+    } finally {
       setIsLoading(false);
-    }, 1000);
+    }
   };
 
   return (
