@@ -1,28 +1,30 @@
 
-import fs from 'fs';
+const fs = require('fs');
+const path = require('path');
 
-const filePaths = [
-  'src/pages/Index.tsx',
-  'src/pages/not-found.tsx',
+// Array of files to collect code from
+const filesToCollect = [
   'src/components/ChatbotButton.tsx',
-  'src/components/blog/BlogCategories.tsx',
-  'src/components/blog/BlogSearch.tsx'
+  'src/pages/Index.tsx',
+  'src/pages/aboutCourse.tsx',
+  'src/pages/services.tsx',
+  'src/App.tsx',
+  '.env'
 ];
 
-let outputContent = '';
-
-filePaths.forEach(filePath => {
-    try {
-        const content = fs.readFileSync(filePath, 'utf8');
-        outputContent += `### ${filePath}\n\`\`\`\n${content}\n\`\`\`\n\n`;
-    } catch (err) {
-        console.error(`Error reading file ${filePath}:`, err);
+// Function to read and format file content
+function collectCode() {
+  let output = '';
+  
+  filesToCollect.forEach(filePath => {
+    if (fs.existsSync(filePath)) {
+      const content = fs.readFileSync(filePath, 'utf8');
+      output += `\nurl: rag://rag_source_${filePath}\npath: ${filePath}\n\`\`\`\n${content}\n\`\`\`\n\n`;
     }
-});
-
-try {
-    fs.writeFileSync('codeCollection.txt', outputContent);
-    console.log('Code collection complete! Check codeCollection.txt');
-} catch (err) {
-    console.error('Error writing output file:', err);
+  });
+  
+  fs.writeFileSync('codeCollection.txt', output);
+  console.log('Code collection complete!');
 }
+
+collectCode();
