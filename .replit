@@ -13,3 +13,14 @@ build = ["sh", "-c", "npm run build"]
 [[ports]]
 localPort = 8080
 externalPort = 3000
+
+[workflows]
+runButton = "Server"
+
+[[workflows.workflow]]
+name = "Server"
+author = 36104266
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "bun run src/server/index.ts"
