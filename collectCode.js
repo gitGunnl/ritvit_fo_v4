@@ -1,6 +1,6 @@
 
-const fs = require('fs');
-const path = require('path');
+import { promises as fs } from 'fs';
+import path from 'path';
 
 // Array of files to collect code from
 const filesToCollect = [
