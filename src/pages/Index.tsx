@@ -4,7 +4,8 @@ import Footer from "@/components/Footer";
 import ChatbotButton from "@/components/ChatbotButton";
 import { ArrowRight, Mail, Phone, MessageSquare, CheckCircle2 } from "lucide-react";
 import { Link } from "react-router-dom";
-import { Form, FormField, FormItem, FormControl, FormMessage, Input } from "@/components/ui/form"; // Added imports
+import { Form, FormField, FormItem, FormControl, FormMessage } from "@/components/ui/form";
+import { Input } from "@/components/ui/input"; // Added imports
 
 
 const Index = () => {
