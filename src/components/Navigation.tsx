@@ -41,9 +41,11 @@ const Navigation = () => {
                 {item.name}
               </Link>
             ))}
-            <Button className="hover-lift bg-primary hover:bg-primary/80 text-text border border-primary/50">
-              Býrja nú!
-            </Button>
+            <Link to="/aboutCourse">
+              <Button className="hover-lift bg-primary hover:bg-primary/80 text-text border border-primary/50">
+                Býrja nú!
+              </Button>
+            </Link>
           </div>
 
           {/* Mobile Navigation Toggle */}
@@ -53,9 +55,11 @@ const Navigation = () => {
                 Samband
               </Button>
             </Link>
-            <Button className="hover-lift bg-primary hover:bg-primary/80 text-text border border-primary/50">
-              Býrja nú!
-            </Button>
+            <Link to="/aboutCourse">
+              <Button className="hover-lift bg-primary hover:bg-primary/80 text-text border border-primary/50">
+                Býrja nú!
+              </Button>
+            </Link>
             <button
               onClick={() => setIsOpen(!isOpen)}
               className="text-text/60 hover:text-text focus:outline-none ml-2"
@@ -80,9 +84,11 @@ const Navigation = () => {
                 {item.name}
               </Link>
             ))}
-            <Button className="w-full mt-4 bg-primary hover:bg-primary/80 text-text border border-primary/50">
-              Býrja nú!
-            </Button>
+            <Link to="/aboutCourse">
+              <Button className="w-full mt-4 bg-primary hover:bg-primary/80 text-text border border-primary/50">
+                Býrja nú!
+              </Button>
+            </Link>
           </div>
         </div>
       )}

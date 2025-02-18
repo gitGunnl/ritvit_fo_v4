@@ -28,7 +28,7 @@ const Index = () => {
                 👉 Tak okkara netskeið nú
               </Button>
             </Link>
-            <Link to="/about" className="w-full sm:w-auto">
+            <Link to="/aboutCourse" className="w-full sm:w-auto">
               <Button variant="outline" size="lg" className="w-full sm:w-auto text-primary border border-primary">
                 📖 Les meira um skeiði
               </Button>
@@ -148,7 +148,7 @@ const Index = () => {
               <div>
                 <p className="font-bold">Ert tú nýbyrjari?</p>
                 <p>
-                  <Link to="/services#chatgpt-course" className="text-accent hover:underline">
+                  <Link to="/aboutCourse" className="text-accent hover:underline">
                     <strong>Tak okkara ChatGPT-skeið</strong> – skjótasti og lættasti háttur at koma í gongd.
                   </Link>
                 </p>
