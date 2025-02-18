@@ -6,13 +6,7 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import ChatbotButton from "@/components/ChatbotButton";
 import { Button } from "@/components/ui/button";
-import { CheckCircle2, Mail } from "lucide-react";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
-import { z } from "zod";
-import { Form, FormControl, FormField, FormItem, FormMessage } from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
-import { useToast } from "@/hooks/use-toast";
+import { CheckCircle2 } from "lucide-react";
 
 /**
  * Data sets that were in the old Jinja templates – now arrays we can .map over in React
@@ -229,57 +223,7 @@ const whatYouGet = [
 /**
  * Main component
  */
-const formSchema = z.object({
-  name: z.string(),
-  email: z.string().email("Vinarliga skriva inn eina galdandi teldupost-adressu"),
-  message: z.string(),
-});
-
-type FormValues = z.infer<typeof formSchema>;
-
 const AboutCourse: React.FC = () => {
-  const { toast } = useToast();
-  const form = useForm<FormValues>({
-    resolver: zodResolver(formSchema),
-    defaultValues: {
-      name: "Skeið",
-      email: "",
-      message: "Eg vil til skeið",
-    },
-  });
-
-  async function onSubmit(values: FormValues) {
-    try {
-      const response = await fetch('/api/contact', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(values)
-      });
-
-      if (!response.ok) {
-        throw new Error('Failed to submit form');
-      }
-
-      toast({
-        title: "Takk fyri áhugan!",
-        description: "Vit venda aftur til tín sum skjótast.",
-      });
-      form.reset({
-        name: "Skeið",
-        email: "",
-        message: "Eg vil til skeið"
-      });
-    } catch (error) {
-      toast({
-        title: "Villa!",
-        description: "Tað eydnaðist ikki at senda boðini. Royn aftur ella send teldupost til info@ritvit.fo",
-        variant: "destructive",
-      });
-    }
-  }
-
   // React state for the countdown text
   const [countdown, setCountdown] = useState("");
 
@@ -634,55 +578,19 @@ const AboutCourse: React.FC = () => {
               Vit arbeiða við at gera eitt spennandi skeið til tín. 
               Skriva teg upp fyri at fáa boð, tá ið skeiðið er tøkt.
             </p>
-            <Form {...form}>
-  <form onSubmit={form.handleSubmit(onSubmit)}>
-              <form className="space-y-4">
-                <FormField
-                  control={form.control}
-                  name="name"
-                  defaultValue="Skeið"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormControl>
-                        <Input {...field} type="text" placeholder="Navn" disabled className="cursor-not-allowed"/>
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-                <FormField
-                  control={form.control}
-                  name="email"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormControl>
-                        <div className="relative">
-                          <Input {...field} type="email" placeholder="Tín teldupostur" className="pl-10" />
-                          <Mail className="absolute left-3 top-2.5 h-5 w-5 text-primary" />
-                        </div>
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-                <FormField
-                  control={form.control}
-                  name="message"
-                  defaultValue="Eg vil til skeið"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormControl>
-                        <Input {...field} type="text" placeholder="Boð" disabled className="cursor-not-allowed"/>
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-                <Button type="submit" className="w-full bg-primary hover:bg-primary/80 text-text">
-                  Skriva meg upp
-                </Button>
-              </form>
-            </Form>
+            <form className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+              <input
+                type="email"
+                placeholder="Teldupostur"
+                className="px-4 py-2 rounded-lg border border-border bg-background w-full sm:w-auto"
+              />
+              <Button
+                size="lg"
+                className="bg-primary hover:bg-primary/80 text-text font-bold w-full sm:w-auto"
+              >
+                Skriva meg upp
+              </Button>
+            </form>
           </div>
 
           {/* Original pricing section (commented out) */}
