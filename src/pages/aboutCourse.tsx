@@ -7,6 +7,16 @@ import Footer from "@/components/Footer";
 import ChatbotButton from "@/components/ChatbotButton";
 import { Button } from "@/components/ui/button";
 import { CheckCircle2 } from "lucide-react";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { z } from "zod";
+import { Form, FormControl, FormField, FormItem, FormMessage } from "@/components/ui/form";
+import { Input } from "@/components/ui/input";
+import { useToast } from "@/hooks/use-toast";
+
+const formSchema = z.object({
+  email: z.string().email("Vinarliga skriva ein galdandi teldupost")
+});
 
 /**
  * Data sets that were in the old Jinja templates – now arrays we can .map over in React
@@ -224,6 +234,42 @@ const whatYouGet = [
  * Main component
  */
 const AboutCourse: React.FC = () => {
+  const { toast } = useToast();
+  const form = useForm<z.infer<typeof formSchema>>({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      email: ""
+    }
+  });
+
+  async function onSubmit(values: z.infer<typeof formSchema>) {
+    try {
+      const response = await fetch('/api/signup', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(values)
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to sign up');
+      }
+
+      toast({
+        title: "Takk fyri áhugan!",
+        description: "Vit senda tær boð, tá ið skeiðið er tøkt.",
+      });
+      form.reset();
+    } catch (error) {
+      toast({
+        title: "Villa!",
+        description: "Tað eydnaðist ikki at skriva seg upp. Royn aftur seinni.",
+        variant: "destructive",
+      });
+    }
+  }
+
   // React state for the countdown text
   const [countdown, setCountdown] = useState("");
 
@@ -348,19 +394,29 @@ const AboutCourse: React.FC = () => {
             Vit arbeiða við at gera eitt spennandi skeið til tín. 
             Skriva teg upp fyri at fáa boð, tá ið skeiðið er tøkt.
           </p>
-          <form className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <input
-              type="email"
-              placeholder="Teldupostur"
-              className="px-4 py-2 rounded-lg border border-border bg-background w-full sm:w-auto"
-            />
-            <Button
-              size="lg"
-              className="bg-primary hover:bg-primary/80 text-text font-bold w-full sm:w-auto"
-            >
-              Skriva meg upp
-            </Button>
-          </form>
+          <Form {...form}>
+            <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+              <FormField
+                control={form.control}
+                name="email"
+                render={({ field }) => (
+                  <FormItem className="w-full sm:w-auto">
+                    <FormControl>
+                      <Input {...field} type="email" placeholder="Teldupostur" />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <Button 
+                type="submit"
+                size="lg"
+                className="bg-primary hover:bg-primary/80 text-text font-bold w-full sm:w-auto"
+              >
+                Skriva meg upp
+              </Button>
+            </form>
+          </Form>
         </div>
       </section>
 
