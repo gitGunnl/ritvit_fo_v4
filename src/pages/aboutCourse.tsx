@@ -348,19 +348,15 @@ const AboutCourse: React.FC = () => {
             Vit arbeiða við at gera eitt spennandi skeið til tín. 
             Skriva teg upp fyri at fáa boð, tá ið skeiðið er tøkt.
           </p>
-          <form className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <input
-              type="email"
-              placeholder="Teldupostur"
-              className="px-4 py-2 rounded-lg border border-border bg-background w-full sm:w-auto"
-            />
-            <Button
-              size="lg"
-              className="bg-primary hover:bg-primary/80 text-text font-bold w-full sm:w-auto"
-            >
-              Skriva meg upp
-            </Button>
-          </form>
+          <iframe 
+            src="https://docs.google.com/forms/d/e/1FAIpQLSfDtowxpOMTXaccvE49FM-e-LC9Hb6-pWO-E8Rr2jyOlgJnLg/viewform?embedded=true" 
+            width="100%" 
+            height="400" 
+            style={{border: 0}}
+            className="mt-4"
+          >
+            Loading…
+          </iframe>
         </div>
       </section>
 
@@ -578,19 +574,15 @@ const AboutCourse: React.FC = () => {
               Vit arbeiða við at gera eitt spennandi skeið til tín. 
               Skriva teg upp fyri at fáa boð, tá ið skeiðið er tøkt.
             </p>
-            <form className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <input
-                type="email"
-                placeholder="Teldupostur"
-                className="px-4 py-2 rounded-lg border border-border bg-background w-full sm:w-auto"
-              />
-              <Button
-                size="lg"
-                className="bg-primary hover:bg-primary/80 text-text font-bold w-full sm:w-auto"
-              >
-                Skriva meg upp
-              </Button>
-            </form>
+            <iframe 
+              src="https://docs.google.com/forms/d/e/1FAIpQLSfDtowxpOMTXaccvE49FM-e-LC9Hb6-pWO-E8Rr2jyOlgJnLg/viewform?embedded=true" 
+              width="100%" 
+              height="400" 
+              style={{border: 0}}
+              className="mt-4"
+            >
+              Loading…
+            </iframe>
           </div>
 
           {/* Original pricing section (commented out) */}
