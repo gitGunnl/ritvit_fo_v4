@@ -19,7 +19,7 @@ const Navigation = () => {
         <div className="flex justify-between h-16">
           {/* Logo */}
           <div className="flex items-center">
-            <Link to="/" className="flex items-center">
+            <Link to="/" className="flex items-center gap-3">
               <img
                 src="/logos/logo-header.png"
                 alt="Logo"
@@ -27,6 +27,7 @@ const Navigation = () => {
                 width="auto"
                 height="40"
               />
+              <span className="text-lg font-semibold text-primary">Tøkni Tænastan</span>
             </Link>
           </div>
 
