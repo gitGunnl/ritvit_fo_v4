@@ -280,7 +280,7 @@ const AboutCourse: React.FC = () => {
                   strokeLinejoin="round"
                 />
               </svg>
-              <span>100% nøgdsemi binding</span>
+              <span>100% nøgdsemi, ella pengarnir aftur</span>
             </div>
 
             <div className="flex items-center justify-center space-x-2 text-primary font-medium">

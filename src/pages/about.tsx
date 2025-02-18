@@ -47,7 +47,7 @@ export default function About() {
       <section className="py-16">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold text-center mb-8 animate-fade-down">
-            Okkara søga: Ein roynd uppá 100 nýskapan
+            Okkara søga: Nýskapan
           </h2>
           <div className="max-w-3xl mx-auto bg-primary/10 backdrop-blur-sm rounded-lg p-8 shadow-xl border border-border animate-fade-up">
             <h3 className="text-2xl font-semibold mb-4"></h3>
@@ -96,7 +96,7 @@ export default function About() {
       <section className="py-16">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto bg-primary/10 backdrop-blur-sm rounded-lg p-8 shadow-xl border border-border animate-fade-up">
-            <h2 className="text-3xl font-bold mb-4">Okkara visjón: Ritvit fyri øll</h2>
+            <h2 className="text-3xl font-bold mb-4">Okkara visjón: Ritvit til øll</h2>
             <p className="text-lg mb-4">
               Ritvit er ikki bara fyri <strong>Silicon Valley</strong>. Tað er fyri
               tína fyritøku. Títt toymi. Tína gerandisdag.
