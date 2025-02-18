@@ -6,7 +6,10 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 const router = express.Router();
-const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
+const openai = new OpenAI({ 
+  apiKey: process.env.OPENAI_API_KEY,
+  dangerouslyAllowBrowser: false 
+});
 
 router.post('/chat', async (req, res) => {
   try {
