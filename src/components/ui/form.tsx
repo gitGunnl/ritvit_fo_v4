@@ -1,26 +1,26 @@
+
+"use client"
+
 import * as React from "react"
 import * as LabelPrimitive from "@radix-ui/react-label"
 import { Slot } from "@radix-ui/react-slot"
 import {
   Controller,
-  ControllerProps,
-  FieldPath,
-  FieldValues,
   FormProvider,
   useFormContext,
-  useFieldArray,
+  useForm,
 } from "react-hook-form"
 
 import { cn } from "@/lib/utils"
 import { Label } from "@/components/ui/label"
+import { Input } from "@/components/ui/input"
 
 const Form = FormProvider
 
 type FormFieldContextValue<
-  TFieldValues extends FieldValues = FieldValues,
-  TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>
+  TFieldValues extends Record<string, any> = Record<string, any>
 > = {
-  name: TName
+  name: string
 }
 
 const FormFieldContext = React.createContext<FormFieldContextValue>(
@@ -28,11 +28,10 @@ const FormFieldContext = React.createContext<FormFieldContextValue>(
 )
 
 const FormField = <
-  TFieldValues extends FieldValues = FieldValues,
-  TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>
+  TFieldValues extends Record<string, any> = Record<string, any>
 >({
   ...props
-}: ControllerProps<TFieldValues, TName>) => {
+}: any) => {
   return (
     <FormFieldContext.Provider value={{ name: props.name }}>
       <Controller {...props} />
@@ -166,6 +165,7 @@ const FormMessage = React.forwardRef<
 FormMessage.displayName = "FormMessage"
 
 export {
+  useForm,
   useFormField,
   Form,
   FormItem,
@@ -174,4 +174,5 @@ export {
   FormDescription,
   FormMessage,
   FormField,
+  Input,
 }
