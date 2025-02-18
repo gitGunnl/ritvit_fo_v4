@@ -1,33 +1,40 @@
 
-import { promises as fs } from 'fs';
-import path from 'path';
+const fs = require('fs');
+const path = require('path');
 
-// Array of files to collect code from
 const filesToCollect = [
-  'src/components/ChatbotButton.tsx',
-  'src/pages/Index.tsx',
+  // Frontend chat components
   'src/components/ChatWindow.tsx',
-  'src/App.tsx'
+  'src/components/ChatbotButton.tsx',
+  
+  // Backend API files
+  'src/server/api.ts',
+  'src/server/index.ts',
+  
+  // Configuration files
+  'vite.config.ts',
+  
+  // Main app files that integrate chat
+  'src/App.tsx',
+  'src/main.tsx',
+  
+  // Constants and utils that might affect chat
+  'src/lib/constants.ts',
+  'src/lib/utils.ts'
 ];
 
-// Function to read and format file content
-async function collectCode() {
+function collectCode() {
   let output = '';
   
-  for (const filePath of filesToCollect) {
-    try {
-      const stat = await fs.stat(filePath);
-      if (stat.isFile()) {
-        const content = await fs.readFile(filePath, 'utf8');
-        output += `\nurl: rag://rag_source_${filePath}\npath: ${filePath}\n\`\`\`\n${content}\n\`\`\`\n\n`;
-      }
-    } catch (error) {
-      console.log(`Skipping ${filePath}: ${error.message}`);
+  filesToCollect.forEach(filePath => {
+    if (fs.existsSync(filePath)) {
+      output += `\nurl: rag://rag_source_${filePath}\npath: ${filePath}\n\`\`\`\n`;
+      output += fs.readFileSync(filePath, 'utf8');
+      output += '\n\`\`\`\n\n';
     }
-  }
+  });
   
-  await fs.writeFile('codeCollection.txt', output);
-  console.log('Code collection complete!');
+  fs.writeFileSync('codeCollection.txt', output);
 }
 
-collectCode().catch(console.error);
+collectCode();
