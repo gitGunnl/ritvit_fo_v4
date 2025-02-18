@@ -32,7 +32,7 @@ router.post('/chat', async (req, res) => {
     console.error('OpenAI API Error:', error);
     res.status(500).json({ 
       error: 'Failed to get AI response',
-      details: process.env.NODE_ENV === 'development' ? error.message : undefined 
+      details: error?.message || 'Unknown error occurred'
     });
   }
 });
