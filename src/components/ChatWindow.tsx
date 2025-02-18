@@ -92,10 +92,10 @@ const ChatWindow = ({ onClose }: ChatWindowProps) => {
   };
 
   return (
-    <div className="absolute bottom-20 right-0 w-96 h-[500px] 
+    <div className="fixed bottom-20 right-4 w-[calc(100vw-2rem)] sm:w-96 h-[500px] 
                     bg-background border border-border 
                     rounded-lg shadow-lg flex flex-col 
-                    animate-in slide-in-from-bottom-5">
+                    animate-in slide-in-from-bottom-5 max-w-[96vw]">
       <div className="p-4 border-b border-border flex justify-between items-center">
         <h3 className="font-semibold">Ritvit kjatt hjálp 🤖</h3>
         <Button variant="ghost" size="icon" onClick={onClose}>
