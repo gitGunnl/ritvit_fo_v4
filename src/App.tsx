@@ -9,6 +9,7 @@ import Services from "./pages/services";
 import Contact from "./pages/contact";
 import BlogIndex from "./pages/blog";
 import BlogPost from "./pages/blog/[id]";
+import AboutCourse from "./pages/aboutCourse";
 
 const queryClient = new QueryClient();
 
@@ -25,6 +26,7 @@ const App = () => (
           <Route path="/contact" element={<Contact />} />
           <Route path="/blog" element={<BlogIndex />} />
           <Route path="/blog/:id" element={<BlogPost />} />
+          <Route path="/aboutCourse" element={<AboutCourse />} />
         </Routes>
       </BrowserRouter>
     </TooltipProvider>
