@@ -19,7 +19,7 @@ const ChatWindow = ({ onClose }: ChatWindowProps) => {
   const [messages, setMessages] = useState<ChatMessage[]>([{
     id: 'welcome',
     role: 'assistant',
-    content: 'Vælkomin! Hvussu kann eg hjálpa tær í dag?'
+    content: 'Hey! Hvussu kann eg hjálpa tær í dag?'
   }]);
   const [userInput, setUserInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
