@@ -43,7 +43,7 @@ const Navigation = () => {
             ))}
             <Link to="/aboutCourse">
               <Button className="hover-lift bg-primary hover:bg-primary/80 text-text border border-primary/50">
-                Býrja nú!
+                Býrja á skeið nú!
               </Button>
             </Link>
           </div>
@@ -57,7 +57,7 @@ const Navigation = () => {
             </Link>
             <Link to="/aboutCourse">
               <Button className="hover-lift bg-primary hover:bg-primary/80 text-text border border-primary/50">
-                Býrja nú!
+                Býrja á skeið nú!
               </Button>
             </Link>
             <button
@@ -86,7 +86,7 @@ const Navigation = () => {
             ))}
             <Link to="/aboutCourse">
               <Button className="w-full mt-4 bg-primary hover:bg-primary/80 text-text border border-primary/50">
-                Býrja nú!
+                Býrja á skeið nú!
               </Button>
             </Link>
           </div>
