@@ -342,30 +342,25 @@ const AboutCourse: React.FC = () => {
 
       {/* Price and CTA */}
       <section className="text-center px-4 space-y-6 mb-16 animate-fade-up">
-        {/* Subtle container using a tinted background + border */}
         <div className="max-w-2xl mx-auto p-8 rounded-xl shadow-xl border border-border bg-primary/10">
-          <div className="flex items-center justify-center space-x-2 mb-6">
-            <CheckCircle2 className="w-6 h-6 text-primary" />
-            <p className="text-xl">
-              Eftirsum vit júst hava sjósett skeiði, so er prísurin kutaður í helvt!
-            </p>
-          </div>
-          <div className="mb-6">
-            <span className="line-through text-2xl text-text/50">1800 DKK</span>
-            <span className="text-4xl font-bold text-text ml-4">900 DKK</span>
-          </div>
-          <Link to="/register">
+          <h3 className="text-2xl font-bold mb-6">Skeiðið kemur skjótt!</h3>
+          <p className="text-xl mb-8 text-text/80">
+            Vit arbeiða við at gera eitt spennandi skeið til tín. 
+            Skriva teg upp fyri at fáa boð, tá ið skeiðið er tøkt.
+          </p>
+          <form className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+            <input
+              type="email"
+              placeholder="Teldupostur"
+              className="px-4 py-2 rounded-lg border border-border bg-background w-full sm:w-auto"
+            />
             <Button
               size="lg"
-              className="bg-primary hover:bg-primary/80 text-text font-bold py-4 px-8 text-xl"
+              className="bg-primary hover:bg-primary/80 text-text font-bold w-full sm:w-auto"
             >
-              Keyp skeiðið nú – og fá ágóðan av ChatGPT longu í dag!
+              Skriva meg upp
             </Button>
-          </Link>
-          <p className="mt-4 text-lg text-text/80">
-            Tryggja tær besta prísin í dag, prísurin ferð upp aftur um{" "}
-            <span className="font-semibold">{countdown}</span>
-          </p>
+          </form>
         </div>
       </section>
 
