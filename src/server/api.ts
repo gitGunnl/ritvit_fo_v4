@@ -9,68 +9,63 @@ const router = express.Router();
 const openai = new OpenAI({ 
   apiKey: process.env.OPENAI_API_KEY,
   dangerouslyAllowBrowser: false,
-  timeout: 10000, // 10 second timeout
-  maxRetries: 3    // Retry failed requests up to 3 times
 });
 
-const MAX_RETRIES = 3;
-const TIMEOUT = 10000;
+const ASSISTANT_ID = process.env.OPENAI_ASSISTANT_ID;
 
-async function withTimeout(promise: Promise<any>, ms: number) {
-  const timeout = new Promise((_, reject) => {
-    setTimeout(() => reject(new Error('Request timed out')), ms);
-  });
-  return Promise.race([promise, timeout]);
-}
+async function getAssistantResponse(messages: any[]) {
+  try {
+    // Create a thread
+    const thread = await openai.beta.threads.create();
+    
+    // Add the latest message to the thread
+    await openai.beta.threads.messages.create(thread.id, {
+      role: "user",
+      content: messages[messages.length - 1].content
+    });
 
-async function makeOpenAIRequest(messages: any[]) {
-  let lastError = null;
-  
-  for (let attempt = 0; attempt < MAX_RETRIES; attempt++) {
-    try {
-      return await withTimeout(
-        openai.chat.completions.create({
-          model: 'gpt-3.5-turbo',
-          messages: [
-            {
-              role: 'system',
-              content: 'You are a helpful assistant for a course about ChatGPT. Answer questions about the course content, pricing, and schedule. Be concise and friendly.'
-            },
-            ...messages
-          ],
-          temperature: 0.7,
-          max_tokens: 150
-        }),
-        TIMEOUT
-      );
-    } catch (error: any) {
-      lastError = error;
-      if (error.message === 'Request timed out' || attempt === MAX_RETRIES - 1) {
-        throw error;
+    // Run the assistant
+    const run = await openai.beta.threads.runs.create(thread.id, {
+      assistant_id: ASSISTANT_ID!
+    });
+
+    // Poll for completion
+    let runStatus = await openai.beta.threads.runs.retrieve(thread.id, run.id);
+    while (runStatus.status !== 'completed') {
+      if (runStatus.status === 'failed' || runStatus.status === 'cancelled') {
+        throw new Error(`Run ${runStatus.status}`);
       }
-      // Wait before retrying (exponential backoff)
-      await new Promise(resolve => setTimeout(resolve, Math.pow(2, attempt) * 1000));
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      runStatus = await openai.beta.threads.runs.retrieve(thread.id, run.id);
     }
+
+    // Get messages
+    const messages_list = await openai.beta.threads.messages.list(thread.id);
+    const lastMessage = messages_list.data[0];
+
+    if (!lastMessage || !lastMessage.content[0]) {
+      throw new Error('No response received');
+    }
+
+    return lastMessage.content[0].text.value;
+  } catch (error) {
+    throw error;
   }
-  throw lastError;
 }
 
 router.post('/chat', async (req, res) => {
   try {
     const { messages } = req.body;
-    const completion = await makeOpenAIRequest(messages);
+    const response = await getAssistantResponse(messages);
     
-    res.json({ message: completion.choices[0].message.content });
-  } catch (error) {
-    // Log full error details only in development
+    res.json({ message: response });
+  } catch (error: any) {
     if (process.env.NODE_ENV !== 'production') {
       console.error('OpenAI API Error:', error);
     } else {
-      // Log minimal info in production
       console.error('OpenAI API Error occurred');
     }
     
-    // Send generic error to client in production
     res.status(500).json({ 
       error: process.env.NODE_ENV === 'production' 
         ? 'An error occurred. Please try again later.'
