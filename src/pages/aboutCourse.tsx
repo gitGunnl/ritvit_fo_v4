@@ -634,7 +634,8 @@ const AboutCourse: React.FC = () => {
               Vit arbeiða við at gera eitt spennandi skeið til tín. 
               Skriva teg upp fyri at fáa boð, tá ið skeiðið er tøkt.
             </p>
-            <Form onSubmit={onSubmit}>
+            <Form {...form}>
+  <form onSubmit={form.handleSubmit(onSubmit)}>
               <form className="space-y-4">
                 <FormField
                   control={form.control}
