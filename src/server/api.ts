@@ -29,10 +29,19 @@ router.post('/chat', async (req, res) => {
 
     res.json({ message: completion.choices[0].message.content });
   } catch (error) {
-    console.error('OpenAI API Error:', error);
+    // Log full error details only in development
+    if (process.env.NODE_ENV !== 'production') {
+      console.error('OpenAI API Error:', error);
+    } else {
+      // Log minimal info in production
+      console.error('OpenAI API Error occurred');
+    }
+    
+    // Send generic error to client in production
     res.status(500).json({ 
-      error: 'Failed to get AI response',
-      details: error?.message || 'Unknown error occurred'
+      error: process.env.NODE_ENV === 'production' 
+        ? 'An error occurred. Please try again later.'
+        : `Failed to get AI response: ${error?.message || 'Unknown error'}`
     });
   }
 });
