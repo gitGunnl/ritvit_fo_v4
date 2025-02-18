@@ -1,4 +1,3 @@
-
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
@@ -39,20 +38,20 @@ export default function Contact() {
   });
 
   async function onSubmit(values: FormValues) {
-    const formUrl = "https://docs.google.com/forms/d/e/1FAIpQLSf8FFci-J91suIjxY2xh4GD-DQ-UfZftUNxq3dUdXkgJAjB1Q/formResponse";
-    
+
     try {
-      const formData = new FormData();
-      formData.append("entry.1179687836", values.name);
-      formData.append("entry.263197538", values.email);
-      formData.append("entry.240567695", values.message);
-      
-      await fetch(formUrl, {
-        method: "POST",
-        mode: "no-cors", // Required to avoid CORS errors
-        body: formData,
-      });
-      
+        const response = await fetch('/api/contact', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(values)
+        });
+
+        if (!response.ok) {
+          throw new Error('Failed to submit form');
+        }
+
       toast({
         title: "Besked sendt!",
         description: "Vi vender tilbage hurtigst muligt.",
@@ -143,7 +142,7 @@ export default function Contact() {
                 {/* Name Field */}
                 <FormField
                   control={form.control}
-                  name="entry.1179687836"  // Updated field name
+                  name="name"
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel className="text-text/80">Navn</FormLabel>
@@ -165,7 +164,7 @@ export default function Contact() {
                 {/* Email Field */}
                 <FormField
                   control={form.control}
-                  name="entry.263197538"  // Updated field name
+                  name="email"
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel className="text-text/80">Teldupost</FormLabel>
@@ -188,7 +187,7 @@ export default function Contact() {
                 {/* Message Field */}
                 <FormField
                   control={form.control}
-                  name="entry.240567695"  // Updated field name
+                  name="message"
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel className="text-text/80">Boð</FormLabel>
