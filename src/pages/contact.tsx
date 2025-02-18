@@ -21,7 +21,7 @@ import Footer from "@/components/Footer";
 const formSchema = z.object({
   name: z.string().min(2, "Navnet skal være mindst 2 tegn"),
   email: z.string().email("Indtast venligst en gyldig e-mail-adresse"),
-  message: z.string().min(10, "Beskeden skal være mindst 10 tegn"),
+  message: z.string(),
 });
 
 type FormValues = z.infer<typeof formSchema>;
