@@ -97,7 +97,7 @@ const ChatWindow = ({ onClose }: ChatWindowProps) => {
                     rounded-lg shadow-lg flex flex-col 
                     animate-in slide-in-from-bottom-5">
       <div className="p-4 border-b border-border flex justify-between items-center">
-        <h3 className="font-semibold">Chat Support</h3>
+        <h3 className="font-semibold">Ritvit kjatt hjálp 🤖</h3>
         <Button variant="ghost" size="icon" onClick={onClose}>
           <X className="w-4 h-4" />
         </Button>
@@ -147,7 +147,7 @@ const ChatWindow = ({ onClose }: ChatWindowProps) => {
             type="text"
             value={userInput}
             onChange={e => setUserInput(e.target.value)}
-            placeholder="Type a message..."
+            placeholder="Skriva eini boð..."
             className="flex-1 rounded-md border border-border
                        bg-background px-3 py-2 text-sm"
             disabled={isLoading}
