@@ -11,12 +11,14 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { Form, FormControl, FormField, FormItem, FormMessage } from "@/components/ui/form";
-import { Input } from "@/components/ui/input"; //Corrected import statement
+import { Input } from "@/components/ui/input";
 import { useToast } from "@/hooks/use-toast";
 
 const formSchema = z.object({
   email: z.string().email("Vinarliga skriva ein galdandi teldupost")
 });
+
+type FormValues = z.infer<typeof formSchema>;
 
 /**
  * Data sets that were in the old Jinja templates – now arrays we can .map over in React
@@ -235,11 +237,12 @@ const whatYouGet = [
  */
 const AboutCourse: React.FC = () => {
   const { toast } = useToast();
-  const form = useForm<z.infer<typeof formSchema>>({
+  const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
     defaultValues: {
       email: ""
-    }
+    },
+    mode: "onBlur"
   });
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
