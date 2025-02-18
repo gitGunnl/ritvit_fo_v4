@@ -1,3 +1,4 @@
+
 import { useState, useRef, useEffect } from 'react';
 import { Button } from './ui/button';
 import { Send, X } from 'lucide-react';
@@ -19,7 +20,6 @@ const ChatWindow = ({ onClose }: ChatWindowProps) => {
   const [userInput, setUserInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
 
-  // For auto-scrolling to the latest message
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -32,14 +32,12 @@ const ChatWindow = ({ onClose }: ChatWindowProps) => {
     e.preventDefault();
     if (!userInput.trim()) return;
 
-    // Prepare new user message
     const userMessage: ChatMessage = {
       id: Date.now().toString(),
       role: 'user',
       content: userInput.trim()
     };
 
-    // Insert the new user message locally first
     const updatedMessages = [...messages, userMessage];
     const truncatedMessages =
       updatedMessages.length > MAX_MESSAGES
@@ -51,7 +49,6 @@ const ChatWindow = ({ onClose }: ChatWindowProps) => {
     setIsLoading(true);
 
     try {
-      // Send the updated conversation to your backend
       const response = await fetch('/api/chat', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -75,7 +72,6 @@ const ChatWindow = ({ onClose }: ChatWindowProps) => {
         content: data.message || ''
       };
 
-      // Append assistant response, then truncate again if needed
       setMessages(prev => {
         const newMessages = [...prev, botResponse];
         return newMessages.length > MAX_MESSAGES
@@ -99,9 +95,7 @@ const ChatWindow = ({ onClose }: ChatWindowProps) => {
     <div className="absolute bottom-20 right-0 w-96 h-[500px] 
                     bg-background border border-border 
                     rounded-lg shadow-lg flex flex-col 
-                    animate-in slide-in-from-bottom-5"
-    >
-      {/* Header */}
+                    animate-in slide-in-from-bottom-5">
       <div className="p-4 border-b border-border flex justify-between items-center">
         <h3 className="font-semibold">Chat Support</h3>
         <Button variant="ghost" size="icon" onClick={onClose}>
@@ -109,7 +103,6 @@ const ChatWindow = ({ onClose }: ChatWindowProps) => {
         </Button>
       </div>
 
-      {/* Messages */}
       <div className="flex-1 overflow-y-auto p-4 space-y-4">
         {messages.map(msg => (
           <div
@@ -136,14 +129,11 @@ const ChatWindow = ({ onClose }: ChatWindowProps) => {
             <div className="bg-muted rounded-lg p-3">
               <div className="flex gap-1">
                 <div className="w-2 h-2 bg-primary/60 rounded-full 
-                                animate-bounce [animation-delay:-0.3s]"
-                ></div>
+                                animate-bounce [animation-delay:-0.3s]"></div>
                 <div className="w-2 h-2 bg-primary/60 rounded-full 
-                                animate-bounce [animation-delay:-0.15s]"
-                ></div>
+                                animate-bounce [animation-delay:-0.15s]"></div>
                 <div className="w-2 h-2 bg-primary/60 rounded-full 
-                                animate-bounce"
-                ></div>
+                                animate-bounce"></div>
               </div>
             </div>
           </div>
@@ -151,7 +141,6 @@ const ChatWindow = ({ onClose }: ChatWindowProps) => {
         <div ref={messagesEndRef} />
       </div>
 
-      {/* Input Box & Submit */}
       <form onSubmit={handleSubmit} className="p-4 border-t border-border">
         <div className="flex gap-2">
           <input
