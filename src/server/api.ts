@@ -84,6 +84,7 @@ router.post('/signup', async (req, res) => {
     
     const formData = new FormData();
     formData.append("entry.263197538", email);
+    formData.append("entry.240567695", "Course signup");
     
     const response = await fetch(
       'https://docs.google.com/forms/d/e/1FAIpQLSf8FFci-J91suIjxY2xh4GD-DQ-UfZftUNxq3dUdXkgJAjB1Q/formResponse',
