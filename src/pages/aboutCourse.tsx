@@ -7,9 +7,16 @@ import Footer from "@/components/Footer";
 import ChatbotButton from "@/components/ChatbotButton";
 import { Button } from "@/components/ui/button";
 import { CheckCircle2 } from "lucide-react";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { z } from "zod";
+import { Form, FormControl, FormField, FormItem, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { useToast } from "@/hooks/use-toast";
 
+const formSchema = z.object({
+  email: z.string().email("Vinarliga skriva ein galdandi teldupost")
+});
 
 /**
  * Data sets that were in the old Jinja templates – now arrays we can .map over in React
@@ -228,7 +235,63 @@ const whatYouGet = [
  */
 const AboutCourse: React.FC = () => {
   const { toast } = useToast();
-  //Form handling removed
+  const form = useForm<z.infer<typeof formSchema>>({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      email: ""
+    }
+  });
+
+  async function onSubmit(values: z.infer<typeof formSchema>) {
+    try {
+      const response = await fetch('/api/signup', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(values)
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to sign up');
+      }
+
+      toast({
+        title: "Takk fyri áhugan!",
+        description: "Vit senda tær boð, tá ið skeiðið er tøkt.",
+      });
+      form.reset();
+    } catch (error) {
+      toast({
+        title: "Villa!",
+        description: "Tað eydnaðist ikki at skriva seg upp. Royn aftur seinni.",
+        variant: "destructive",
+      });
+    }
+  }
+
+  // React state for the countdown text
+  const [countdown, setCountdown] = useState("");
+
+  // Equivalent to the old countdown <script>
+  useEffect(() => {
+    function updateCountdown() {
+      const now = new Date();
+      const midnight = new Date();
+      midnight.setHours(24, 0, 0, 0); // set time to next midnight
+      const diff = midnight.getTime() - now.getTime();
+
+      const hours = Math.floor(diff / (1000 * 60 * 60));
+      const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      setCountdown(`${hours} tímar og ${minutes} minuttir`);
+    }
+
+    updateCountdown();
+    const interval = setInterval(updateCountdown, 60000);
+
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <div className="min-h-screen flex flex-col bg-background text-text">
       {/* Navigation */}
@@ -331,8 +394,29 @@ const AboutCourse: React.FC = () => {
             Vit arbeiða við at gera eitt spennandi skeið til tín. 
             Skriva teg upp fyri at fáa boð, tá ið skeiðið er tøkt.
           </p>
-          {/* Form removed */}
-          <p>Placeholder for signup section</p>
+          <Form {...form}>
+            <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+              <FormField
+                control={form.control}
+                name="email"
+                render={({ field }) => (
+                  <FormItem className="w-full sm:w-auto">
+                    <FormControl>
+                      <Input {...field} type="email" placeholder="Teldupostur" />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <Button 
+                type="submit"
+                size="lg"
+                className="bg-primary hover:bg-primary/80 text-text font-bold w-full sm:w-auto"
+              >
+                Skriva meg upp
+              </Button>
+            </form>
+          </Form>
         </div>
       </section>
 
@@ -550,9 +634,52 @@ const AboutCourse: React.FC = () => {
               Vit arbeiða við at gera eitt spennandi skeið til tín. 
               Skriva teg upp fyri at fáa boð, tá ið skeiðið er tøkt.
             </p>
-            {/* Form removed */}
-            <p>Placeholder for signup section</p>
+            <form className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+              <input
+                type="email"
+                placeholder="Teldupostur"
+                className="px-4 py-2 rounded-lg border border-border bg-background w-full sm:w-auto"
+              />
+              <Button
+                size="lg"
+                className="bg-primary hover:bg-primary/80 text-text font-bold w-full sm:w-auto"
+              >
+                Skriva meg upp
+              </Button>
+            </form>
           </div>
+
+          {/* Original pricing section (commented out) */}
+          {/* <div className="relative bg-background rounded-3xl shadow-xl p-10 text-center overflow-hidden border border-border">
+            <div className="absolute top-0 right-0 bg-primary text-text text-sm font-semibold px-4 py-2 rounded-bl-3xl">
+              -50% Avsláttur!
+            </div>
+
+            <p className="text-xl text-text/80 mb-3">Vanligur prísur:</p>
+            <p className="text-2xl text-text/50 line-through">1800 DKK</p>
+            <p className="text-text text-5xl font-extrabold mt-2">
+              <span className="text-primary">900</span> DKK
+            </p>
+            <p className="text-lg text-text/80 mt-2">
+              Avmarkað tilboð til <span className="font-semibold">31. Februar</span>
+            </p>
+
+            <Link to="/register">
+              <Button
+                size="lg"
+                className="mt-6 bg-primary text-text font-bold py-4 px-8 rounded-full text-xl hover:scale-105 transition-all duration-300"
+              >
+                Keyp Skeiðið Nú
+              </Button>
+            </Link>
+
+            <div className="flex items-center justify-center space-x-2 mt-6 text-text/80">
+              <CheckCircle2 className="w-6 h-6 text-primary" />
+              <p className="text-lg font-semibold">
+                100% nøgdsemi ella pengarnir aftur
+              </p>
+            </div>
+          </div> */}
         </div>
       </section>
 
