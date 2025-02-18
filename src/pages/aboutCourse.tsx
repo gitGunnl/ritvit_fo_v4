@@ -572,7 +572,29 @@ const AboutCourse: React.FC = () => {
           <h2 className="text-4xl md:text-5xl font-bold text-text mb-6">
             Kostnaður
           </h2>
-          <div className="relative bg-background rounded-3xl shadow-xl p-10 text-center overflow-hidden border border-border">
+          <div className="max-w-2xl mx-auto p-8 rounded-xl shadow-xl border border-border bg-primary/10">
+            <h3 className="text-2xl font-bold mb-6">Skeiðið kemur skjótt!</h3>
+            <p className="text-xl mb-8 text-text/80">
+              Vit arbeiða við at gera eitt spennandi skeið til tín. 
+              Skriva teg upp fyri at fáa boð, tá ið skeiðið er tøkt.
+            </p>
+            <form className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+              <input
+                type="email"
+                placeholder="Teldupostur"
+                className="px-4 py-2 rounded-lg border border-border bg-background w-full sm:w-auto"
+              />
+              <Button
+                size="lg"
+                className="bg-primary hover:bg-primary/80 text-text font-bold w-full sm:w-auto"
+              >
+                Skriva meg upp
+              </Button>
+            </form>
+          </div>
+
+          {/* Original pricing section (commented out) */}
+          {/* <div className="relative bg-background rounded-3xl shadow-xl p-10 text-center overflow-hidden border border-border">
             <div className="absolute top-0 right-0 bg-primary text-text text-sm font-semibold px-4 py-2 rounded-bl-3xl">
               -50% Avsláttur!
             </div>
@@ -596,13 +618,12 @@ const AboutCourse: React.FC = () => {
             </Link>
 
             <div className="flex items-center justify-center space-x-2 mt-6 text-text/80">
-              {/* If you want a “green” check, you could just keep it as an accent color or primary. */}
               <CheckCircle2 className="w-6 h-6 text-primary" />
               <p className="text-lg font-semibold">
                 100% nøgdsemi ella pengarnir aftur
               </p>
             </div>
-          </div>
+          </div> */}
         </div>
       </section>
 
