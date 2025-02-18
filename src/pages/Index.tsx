@@ -4,7 +4,6 @@ import Footer from "@/components/Footer";
 import ChatbotButton from "@/components/ChatbotButton";
 import { ArrowRight, Mail, Phone, MessageSquare, CheckCircle2 } from "lucide-react";
 import { Link } from "react-router-dom";
-import { Form, FormField, FormItem, FormControl, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input"; // Added imports
 
 
@@ -124,54 +123,7 @@ const Index = () => {
             <p className="text-lg text-text/80 mb-8">
               📌 <strong>Eyka</strong>: Tú fært eisini ókeypis atgongd til okkara komandi skeið, "Copilot til Føroysk skrivstovufólk"!
             </p>
-            <Form onSubmit={onSubmit}> {/* New form for course signup */}
-              <form className="space-y-4">
-                <FormField
-                  control={form.control}
-                  name="name"
-                  defaultValue="Skeið"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormControl>
-                        <Input {...field} type="text" placeholder="Navn" disabled className="cursor-not-allowed"/>
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-                <FormField
-                  control={form.control}
-                  name="email"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormControl>
-                        <div className="relative">
-                          <Input {...field} type="email" placeholder="Tín teldupostur" className="pl-10" />
-                          <Mail className="absolute left-3 top-2.5 h-5 w-5 text-primary" />
-                        </div>
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-                <FormField
-                  control={form.control}
-                  name="message"
-                  defaultValue="Eg vil til skeið"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormControl>
-                        <Input {...field} type="text" placeholder="Boð" disabled className="cursor-not-allowed"/>
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-                <Button type="submit" className="w-full bg-primary hover:bg-primary/80 text-text">
-                  Skriva meg upp
-                </Button>
-              </form>
-            </Form>
+            {/*Removed Form Here*/}
           </div>
         </div>
       </section>
@@ -189,7 +141,7 @@ const Index = () => {
                 <div>
                   <p className="font-bold">Ert tú nýbyrjari?</p>
                   <p>
-                    <strong>Tak okkara ChatGPT-skeið</strong> – skjótasti og lættasti háttur at koma í gongd.
+                    <strong>Tak okkara ChatGPT-skeið</strong> – skjótasti og lættasta háttur at koma í gongd.
                   </p>
                 </div>
               </li>
@@ -464,12 +416,14 @@ const Index = () => {
             </Link>
           </div>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
-            <Button
-              size="lg"
-              className="bg-primary hover:bg-primary/80 text-text font-bold shadow-[0_0_20px_rgba(147,51,234,0.5)]"
-            >
-              👉 Keyp skeiðið nú
-            </Button>
+            <Link to="/aboutCourse">
+              <Button
+                size="lg"
+                className="bg-primary hover:bg-primary/80 text-text font-bold shadow-[0_0_20px_rgba(147,51,234,0.5)]"
+              >
+                👉 Keyp skeiðið nú
+              </Button>
+            </Link>
             <Link to="/aboutCourse">
               <Button
                 variant="outline"
