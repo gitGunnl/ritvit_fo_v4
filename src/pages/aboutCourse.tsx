@@ -9,6 +9,7 @@ import { Button } from "@/components/ui/button";
 import { CheckCircle2 } from "lucide-react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { Form, FormControl, FormField, FormItem, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
@@ -241,8 +242,7 @@ const AboutCourse: React.FC = () => {
     resolver: zodResolver(formSchema),
     defaultValues: {
       email: ""
-    },
-    mode: "onBlur"
+    }
   });
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
