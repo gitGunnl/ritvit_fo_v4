@@ -53,8 +53,8 @@ export default function Contact() {
         }
 
       toast({
-        title: "Besked sendt!",
-        description: "Vi vender tilbage hurtigst muligt.",
+        title: "Boðini eru send!",
+        description: "Vit venda aftur sum skjótast.",
       });
       form.reset();
     } catch (error) {
