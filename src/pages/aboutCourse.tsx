@@ -228,6 +228,11 @@ const AboutCourse: React.FC = () => {
 
   // React state for the countdown text
   const [countdown, setCountdown] = useState("");
+  const signupUrl = "https://docs.google.com/forms/d/e/1FAIpQLSfDtowxpOMTXaccvE49FM-e-LC9Hb6-pWO-E8Rr2jyOlgJnLg/viewform?usp=sf_link";
+
+  const openSignupForm = () => {
+    window.open(signupUrl, '_blank', 'noopener,noreferrer');
+  };
 
   // Equivalent to the old countdown <script>
   useEffect(() => {
@@ -354,6 +359,7 @@ const AboutCourse: React.FC = () => {
             <Button 
               size="lg"
               className="bg-primary hover:bg-primary/80 text-text font-bold w-full sm:w-auto"
+              onClick={openSignupForm}
             >
               Skriva meg upp
             </Button>
@@ -579,6 +585,7 @@ const AboutCourse: React.FC = () => {
               <Button
                 size="lg"
                 className="bg-primary hover:bg-primary/80 text-text font-bold w-full sm:w-auto"
+                onClick={openSignupForm}
               >
                 Skriva meg upp
               </Button>
