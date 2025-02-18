@@ -1,6 +1,6 @@
 
-const fs = require('fs');
-const path = require('path');
+import { promises as fs } from 'fs';
+import path from 'path';
 
 const filesToCollect = [
   // Frontend chat components
@@ -23,18 +23,18 @@ const filesToCollect = [
   'src/lib/utils.ts'
 ];
 
-function collectCode() {
+async function collectCode() {
   let output = '';
   
-  filesToCollect.forEach(filePath => {
-    if (fs.existsSync(filePath)) {
+  for (const filePath of filesToCollect) {
+    if (await fs.access(filePath).then(() => true).catch(() => false)) {
       output += `\nurl: rag://rag_source_${filePath}\npath: ${filePath}\n\`\`\`\n`;
-      output += fs.readFileSync(filePath, 'utf8');
+      output += await fs.readFile(filePath, 'utf8');
       output += '\n\`\`\`\n\n';
     }
-  });
+  }
   
-  fs.writeFileSync('codeCollection.txt', output);
+  await fs.writeFile('codeCollection.txt', output);
 }
 
 collectCode();
