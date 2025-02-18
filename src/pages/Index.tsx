@@ -143,50 +143,50 @@ const Index = () => {
             Vit hjálpa tær í gongd við ritvit – uttan mun til hvat støði tú ert á
           </h2>
           <ul className="space-y-4 mb-8">
-            <li className="flex items-start p-4 border rounded-lg hover:bg-primary/20 transition">
-              <span className="text-3xl mr-4">📌</span>
-              <div>
-                <p className="font-bold">Ert tú nýbyrjari?</p>
-                <p>
-                  <Link to="/aboutCourse" className="text-accent hover:underline">
+            <Link to="/aboutCourse" className="block">
+              <li className="flex items-start p-4 border rounded-lg hover:bg-primary/20 transition cursor-pointer">
+                <span className="text-3xl mr-4">📌</span>
+                <div>
+                  <p className="font-bold">Ert tú nýbyrjari?</p>
+                  <p>
                     <strong>Tak okkara ChatGPT-skeið</strong> – skjótasti og lættasti háttur at koma í gongd.
-                  </Link>
-                </p>
-              </div>
-            </li>
-            <li className="flex items-start p-4 border rounded-lg hover:bg-primary/20 transition">
-              <span className="text-3xl mr-4">📌</span>
-              <div>
-                <p className="font-bold">Vilt tú bara finna útav hvussu ritvit kann hjálpa júst tær?</p>
-                <p>
-                  <Link to="/services#ai-analysis" className="text-accent hover:underline">
+                  </p>
+                </div>
+              </li>
+            </Link>
+            <Link to="/services#ai-analysis" className="block">
+              <li className="flex items-start p-4 border rounded-lg hover:bg-primary/20 transition cursor-pointer">
+                <span className="text-3xl mr-4">📌</span>
+                <div>
+                  <p className="font-bold">Vilt tú bara finna útav hvussu ritvit kann hjálpa júst tær?</p>
+                  <p>
                     <strong>Vit finna 15 ting júst tú kann brúka ChatGPT til!</strong> - so kemur tú ígong á besta hátt.
-                  </Link>
-                </p>
-              </div>
-            </li>
-            <li className="flex items-start p-4 border rounded-lg hover:bg-primary/20 transition">
-              <span className="text-3xl mr-4">📌</span>
-              <div>
-                <p className="font-bold">Vilt tú hava praktiska venjing?</p>
-                <p>
-                  <Link to="/services#workshops" className="text-accent hover:underline">
+                  </p>
+                </div>
+              </li>
+            </Link>
+            <Link to="/services#workshops" className="block">
+              <li className="flex items-start p-4 border rounded-lg hover:bg-primary/20 transition cursor-pointer">
+                <span className="text-3xl mr-4">📌</span>
+                <div>
+                  <p className="font-bold">Vilt tú hava praktiska venjing?</p>
+                  <p>
                     <strong>Verkstovur & fyrilestrar</strong> – Vit vísa øllum tínum toymi, hvussu ritvit kann gera mun fyri tykkum.
-                  </Link>
-                </p>
-              </div>
-            </li>
-            <li className="flex items-start p-4 border rounded-lg hover:bg-primary/20 transition">
-              <span className="text-3xl mr-4">📌</span>
-              <div>
-                <p className="font-bold">Ella vilt tú sjálvirka arbeiðsgongdir?</p>
-                <p>
-                  <Link to="/services#consulting" className="text-accent hover:underline">
+                  </p>
+                </div>
+              </li>
+            </Link>
+            <Link to="/services#consulting" className="block">
+              <li className="flex items-start p-4 border rounded-lg hover:bg-primary/20 transition cursor-pointer">
+                <span className="text-3xl mr-4">📌</span>
+                <div>
+                  <p className="font-bold">Ella vilt tú sjálvirka arbeiðsgongdir?</p>
+                  <p>
                     <strong>Ráðgeving</strong> – Vit hjálpa tær at fáa ritvit at gera tað keðiliga arbeiði.
-                  </Link>
-                </p>
-              </div>
-            </li>
+                  </p>
+                </div>
+              </li>
+            </Link>
           </ul>
           <div className="text-center">
             <Link to="/services">
