@@ -1,0 +1,24 @@
+[vite] connecting...
+[vite] connected.
+form is not defined
+at Index (https://0f4f21cb-8423-4bbc-957e-6c178ae2f770-00-cw17va4ry4r7.worf.replit.dev:3000/src/pages/Index.tsx:310:24)
+at renderWithHooks (https://0f4f21cb-8423-4bbc-957e-6c178ae2f770-00-cw17va4ry4r7.worf.replit.dev:3000/node_modules/.vite/deps/chunk-WERSD76P.js?v=508bb732:11548:26)
+at mountIndeterminateComponent (https://0f4f21cb-8423-4bbc-957e-6c178ae2f770-00-cw17va4ry4r7.worf.replit.dev:3000/node_modules/.vite/deps/chunk-WERSD76P.js?v=508bb732:14926:21)
+at beginWork (https://0f4f21cb-8423-4bbc-957e-6c178ae2f770-00-cw17va4ry4r7.worf.replit.dev:3000/node_modules/.vite/deps/chunk-WERSD76P.js?v=508bb732:15914:22)
+at HTMLUnknownElement.callCallback2 (https://0f4f21cb-8423-4bbc-957e-6c178ae2f770-00-cw17va4ry4r7.worf.replit.dev:3000/node_modules/.vite/deps/chunk-WERSD76P.js?v=508bb732:3674:22)
+at Object.invokeGuardedCallbackDev (https://0f4f21cb-8423-4bbc-957e-6c178ae2f770-00-cw17va4ry4r7.worf.replit.dev:3000/node_modules/.vite/deps/chunk-WERSD76P.js?v=508bb732:3699:24)
+at invokeGuardedCallback (https://0f4f21cb-8423-4bbc-957e-6c178ae2f770-00-cw17va4ry4r7.worf.replit.dev:3000/node_modules/.vite/deps/chunk-WERSD76P.js?v=508bb732:3733:39)
+at beginWork$1 (https://0f4f21cb-8423-4bbc-957e-6c178ae2f770-00-cw17va4ry4r7.worf.replit.dev:3000/node_modules/.vite/deps/chunk-WERSD76P.js?v=508bb732:19765:15)
+at performUnitOfWork (https://0f4f21cb-8423-4bbc-957e-6c178ae2f770-00-cw17va4ry4r7.worf.replit.dev:3000/node_modules/.vite/deps/chunk-WERSD76P.js?v=508bb732:19198:20)
+at workLoopSync (https://0f4f21cb-8423-4bbc-957e-6c178ae2f770-00-cw17va4ry4r7.worf.replit.dev:3000/node_modules/.vite/deps/chunk-WERSD76P.js?v=508bb732:19137:13)
+form is not defined
+The above error occurred in the <Index> component:
+
+    at Index (https://0f4f21cb-8423-4bbc-957e-6c178ae2f770-00-cw17va4ry4r7.worf.replit.dev:3000/src/pages/Index.tsx:310:24)
+    at RenderedRoute (https://0f4f21cb-8423-4bbc-957e-6c178ae2f770-00-cw17va4ry4r7.worf.replit.dev:3000/node_modules/.vite/deps/react-router-dom.js?v=508bb732:4069:5)
+    at Routes (https://0f4f21cb-8423-4bbc-957e-6c178ae2f770-00-cw17va4ry4r7.worf.replit.dev:3000/node_modules/.vite/deps/react-router-dom.js?v=508bb732:4508:5)
+    at Router (https://0f4f21cb-8423-4bbc-957e-6c178ae2f770-00-cw17va4ry4r7.worf.replit.dev:3000/node_modules/.vite/deps/react-router-dom.js?v=508bb732:4451:15)
+    at BrowserRouter (https://0f4f21cb-8423-4bbc-957e-6c178ae2f770-00-cw17va4ry4r7.worf.replit.dev:3000/node_modules/.vite/deps/react-router-dom.js?v=508bb732:5196:5)
+    at Provider (https://0f4f21cb-8423-4bbc-957e-6c178ae2f770-00-cw17va4ry4r7.worf.replit.dev:3000/node_modules/.vite/deps/chunk-POMFYOLQ.js?v=508bb732:42:15)
+    at TooltipProvider (https://0f4f21cb-8423-4bbc-957e-6c178ae2f770-00-cw17va4ry4r7.worf.replit.dev:3000/node_modules/.vite/deps/@radix-ui_react-tooltip.js?v=508bb732:2295:5)
+    at QueryClientProvider (https://0f4f21cb-8423-4bbc-957e-6c178ae2f770-00-cw17va4ry4r7.worf.replit.dev:3000/node_modules/.vite/deps/@tanstack_react-query.js?v=508bb732:2794:3)
