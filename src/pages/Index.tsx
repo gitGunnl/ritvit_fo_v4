@@ -8,10 +8,11 @@ import { Input } from "@/components/ui/input"; // Added imports
 
 
 const Index = () => {
-  const onSubmit = (data) => {
-    // Handle form submission here.  Replace with your actual submission logic.
-    console.log("Form submitted:", data);
-  };
+  const signupUrl = "https://docs.google.com/forms/d/e/1FAIpQLSfDtowxpOMTXaccvE49FM-e-LC9Hb6-pWO-E8Rr2jyOlgJnLg/viewform?usp=sf_link";
+
+const openSignupForm = () => {
+  window.open(signupUrl, '_blank', 'noopener,noreferrer');
+};
 
   return (
     <div className="min-h-screen flex flex-col bg-background text-text">
@@ -30,11 +31,13 @@ const Index = () => {
 
           {/* Buttons */}
           <div className="flex flex-col sm:flex-row justify-center gap-4 animate-fade-up mt-8">
-            <Link to="/services" className="w-full sm:w-auto">
-              <Button size="lg" className="w-full sm:w-auto bg-primary hover:bg-primary/80 text-text">
-                👉 Tak okkara netskeið nú
-              </Button>
-            </Link>
+            <Button
+              size="lg"
+              className="w-full sm:w-auto bg-primary hover:bg-primary/80 text-text"
+              onClick={openSignupForm}
+            >
+              👉 Skriva meg upp
+            </Button>
             <Link to="/aboutCourse" className="w-full sm:w-auto">
               <Button variant="outline" size="lg" className="w-full sm:w-auto text-primary border border-primary">
                 📖 Les meira um skeiði
@@ -420,8 +423,9 @@ const Index = () => {
               <Button
                 size="lg"
                 className="bg-primary hover:bg-primary/80 text-text font-bold shadow-[0_0_20px_rgba(147,51,234,0.5)]"
+                onClick={openSignupForm}
               >
-                👉 Keyp skeiðið nú
+                👉 Skriva meg upp
               </Button>
             </Link>
             <Link to="/aboutCourse">
