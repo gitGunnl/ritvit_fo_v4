@@ -4,15 +4,8 @@ import Footer from "@/components/Footer";
 import ChatbotButton from "@/components/ChatbotButton";
 import { ArrowRight, Mail, Phone, MessageSquare, CheckCircle2 } from "lucide-react";
 import { Link } from "react-router-dom";
-import { Form, FormField, FormItem, FormControl, FormMessage, Input } from "@/components/ui/form"; // Added imports
-
 
 const Index = () => {
-  const onSubmit = (data) => {
-    // Handle form submission here.  Replace with your actual submission logic.
-    console.log("Form submitted:", data);
-  };
-
   return (
     <div className="min-h-screen flex flex-col bg-background text-text">
       <Navigation />
@@ -123,54 +116,22 @@ const Index = () => {
             <p className="text-lg text-text/80 mb-8">
               📌 <strong>Eyka</strong>: Tú fært eisini ókeypis atgongd til okkara komandi skeið, "Copilot til Føroysk skrivstovufólk"!
             </p>
-            <Form onSubmit={onSubmit}> {/* New form for course signup */}
-              <form className="space-y-4">
-                <FormField
-                  control={form.control}
-                  name="name"
-                  defaultValue="Skeið"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormControl>
-                        <Input {...field} type="text" placeholder="Navn" disabled className="cursor-not-allowed"/>
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-                <FormField
-                  control={form.control}
-                  name="email"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormControl>
-                        <div className="relative">
-                          <Input {...field} type="email" placeholder="Tín teldupostur" className="pl-10" />
-                          <Mail className="absolute left-3 top-2.5 h-5 w-5 text-primary" />
-                        </div>
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-                <FormField
-                  control={form.control}
-                  name="message"
-                  defaultValue="Eg vil til skeið"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormControl>
-                        <Input {...field} type="text" placeholder="Boð" disabled className="cursor-not-allowed"/>
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-                <Button type="submit" className="w-full bg-primary hover:bg-primary/80 text-text">
-                  Skriva meg upp
+            <div className="flex flex-col sm:flex-row justify-center gap-4">
+              <Link to="/services" className="w-full sm:w-auto">
+                <Button size="lg" className="w-full sm:w-auto bg-primary hover:bg-primary/80 text-text">
+                  👉 Keyp skeiðið nú
                 </Button>
-              </form>
-            </Form>
+              </Link>
+              <Link to="/services" className="w-full sm:w-auto">
+                <Button
+                  variant="outline"
+                  size="lg"
+                  className="w-full sm:w-auto text-primary border border-primary"
+                >
+                  📖 Lær meira um okkara tænastur
+                </Button>
+              </Link>
+            </div>
           </div>
         </div>
       </section>
