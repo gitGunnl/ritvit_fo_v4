@@ -27,7 +27,7 @@ const Navigation = () => {
                 width="auto"
                 height="40"
               />
-              <span className="text-lg font-semibold text-primary">Tøkni Tænastan</span>
+              <span className="text-xl font-semibold text-white">Tøkni Tænastan</span>
             </Link>
           </div>
 

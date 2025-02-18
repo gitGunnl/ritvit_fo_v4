@@ -76,7 +76,7 @@ const Index = () => {
             {/* End of Course Card */}
 
             <p className="text-xl text-text/80 mb-8">
-              Hetta skeiðið er <strong>skjótasti mátin at koma í gongd við ritvit</strong> – og serliga lagað til føroysk skrivstovufólk!
+              Hetta skeiðið er skjótasti háttur at koma í gongd við ritvit – og serliga lagað til føroysk skrivstovufólk!
             </p>
             <div className="space-y-4 mb-8">
               <div className="flex items-center gap-3">
