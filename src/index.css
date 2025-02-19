@@ -4,11 +4,11 @@
 
 @layer base {
   :root {
-    --background: 220 20% 10%;   /* Very dark, navy-inspired background */
-    --text:       210 15% 90%;    /* Soft, light text for readability */
-    --primary:    200 80% 50%;    /* Crisp blue for primary elements */
-    --accent:     40 100% 60%;    /* Bright amber accent for emphasis */
-    --border:     220 20% 20%;    /* Subtle, slightly lighter border */
+    --background: 240 25% 15%;   /* Deep, midnight-inspired background */
+    --text:       210 20% 95%;   /* Clear, bright text for better readability */
+    --primary:    210 85% 55%;   /* Bright blue for primary elements */
+    --accent:     45 100% 65%;   /* Vibrant amber accent for emphasis */
+    --border:     220 25% 25%;   /* Distinct, slightly more pronounced border */
   }
 
   /* Apply the border color to all elements – this sets the default border color */

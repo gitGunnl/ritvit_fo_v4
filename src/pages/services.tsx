@@ -43,7 +43,7 @@ export default function Services() {
             </div>
 
             <div className="relative max-w-3xl mx-auto">
-              <span className="absolute -top-3 right-4 z-10 bg-accent text-text text-sm font-bold px-6 py-2 rounded-full border-2 border-accent shadow-[0_0_10px_rgba(147,51,234,0.5)]">
+              <span className="absolute -top-3 right-4 z-10 bg-accent text-background text-sm font-bold px-6 py-2 rounded-full border-2 border-accent shadow-[0_0_10px_rgba(147,51,234,0.5)]">
                 Besta fyrsta stig
               </span>
               <Card className="p-8 hover-lift animate-fade-up bg-primary/10 border border-border shadow-xl backdrop-blur-sm">

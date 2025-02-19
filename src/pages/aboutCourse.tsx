@@ -265,7 +265,7 @@ const AboutCourse: React.FC = () => {
             Ger títt arbeiðið stuttligari og skjótari við ChatGPT
           </h1>
           <p className="text-xl max-w-2xl mx-auto mb-8 text-text/80">
-            Tak tað fyrsta stigi til at læra hvussu hendan spennandi nýggja tøknin riggar.
+            Tak tað fyrsta og besta stigi til at læra hvussu hendan spennandi nýggja tøknin riggar.
           </p>
 
           {/* Trust Indicators */}
@@ -403,7 +403,7 @@ const AboutCourse: React.FC = () => {
           <div className="bg-border/10 rounded-xl p-8 shadow-xl flex flex-col md:flex-row gap-8 items-center">
             <div className="w-48 h-48 relative rounded-full overflow-hidden shadow-lg">
               <img
-                src="/images/headshot.jpg"
+                src="dist/images/headshot.jpg"
                 alt="Gunnleygur Clementsen"
                 className="object-cover w-full h-full"
               />

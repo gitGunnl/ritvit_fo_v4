@@ -36,7 +36,7 @@ const openSignupForm = () => {
               className="w-full sm:w-auto bg-primary hover:bg-primary/80 text-text"
               onClick={openSignupForm}
             >
-              👉 Skriva meg upp
+              👉 Skriva meg upp til net skeið
             </Button>
             <Link to="/aboutCourse" className="w-full sm:w-auto">
               <Button variant="outline" size="lg" className="w-full sm:w-auto text-primary border border-primary">
