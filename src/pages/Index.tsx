@@ -18,200 +18,29 @@ const openSignupForm = () => {
     <div className="min-h-screen flex flex-col bg-background text-text">
       <Navigation />
 
-      {/* Hero Section 1 - Split Layout with Image */}
-      <section className="min-h-[90vh] flex items-center relative">
-        <div className="absolute inset-0 bg-gradient-to-r from-background via-background to-transparent z-10"></div>
-        <div className="absolute right-0 top-0 w-1/2 h-full hidden lg:block">
-          <img src="/images/sample_landscape.jfif" alt="AI Technology" className="w-full h-full object-cover" />
-        </div>
-        <div className="container mx-auto px-4 z-20">
-          <div className="max-w-2xl">
-            <h1 className="text-5xl lg:text-7xl font-bold mb-6 leading-tight animate-fade-up">
-              <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent">Ritvit</span> er framtíðin.<br />
-              Ver við frá byrjan.
-            </h1>
-            <p className="text-xl mb-8 text-text/80 animate-fade-up [animation-delay:200ms]">
-              Lær at brúka ChatGPT og onnur ritvit amboð til at gera títt arbeiði skjótari, betri og stuttligari.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 animate-fade-up [animation-delay:400ms]">
-              <Button
-                size="lg"
-                className="bg-primary hover:bg-primary/80 text-text"
-                onClick={openSignupForm}
-              >
-                Byrja títt ritvit ævintýr 🚀
-              </Button>
-              <Link to="/aboutCourse">
-                <Button variant="outline" size="lg" className="border-primary text-primary">
-                  Les meira um skeiðið →
-                </Button>
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
-
-{/* Hero Section 2 - Centered with Floating Elements */}
-      <section className="min-h-[90vh] flex items-center justify-center relative bg-[radial-gradient(circle_at_center,_var(--primary)_0%,_transparent_65%)]">
-        <div className="absolute inset-0 opacity-30">
-          <div className="absolute top-20 left-20 w-32 h-32 bg-primary/20 rounded-full blur-3xl animate-pulse"></div>
-          <div className="absolute bottom-20 right-20 w-32 h-32 bg-accent/20 rounded-full blur-3xl animate-pulse [animation-delay:1s]"></div>
-        </div>
-        <div className="max-w-4xl mx-auto text-center px-4">
-          <div className="inline-block mb-6 px-6 py-2 bg-primary/10 rounded-full animate-fade-down">
-            <span className="text-primary">Nýtt skeið byrjar skjótt!</span>
-          </div>
-          <h1 className="text-4xl sm:text-6xl lg:text-7xl font-bold mb-6 animate-fade-up leading-tight">
-            Ger títt arbeiði <span className="text-primary">10x skjótari</span> við ritviti
+      {/* Hero Section */}
+      <section className="pt-32 pb-16 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+        <div className="max-w-7xl mx-auto text-center">
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight mb-2 animate-fade-up">
+            Steðga at spilla tíð upp á uppgávur, sum ritvit kann gera fyri teg!
           </h1>
-          <p className="text-xl mb-8 text-text/80 animate-fade-up [animation-delay:200ms]">
-            Lær at brúka ChatGPT og Microsoft Copilot á ein máta, sum ger tín gerandisdag lættari og meira produktivan.
+
+          <p className="animate-fade-up mt-2 text-text/80">
+            🚀 <strong>Lær at brúka ritvit upp á fáar dagar – og fá meira tíð til tað, sum veruliga hevur týdning fyri teg.</strong>
           </p>
-          <div className="flex flex-col sm:flex-row justify-center gap-4 animate-fade-up [animation-delay:400ms]">
+
+          {/* Buttons */}
+          <div className="flex flex-col sm:flex-row justify-center gap-4 animate-fade-up mt-8">
             <Button
               size="lg"
-              className="bg-primary hover:bg-primary/80 text-text group transition-all duration-300"
+              className="w-full sm:w-auto bg-primary hover:bg-primary/80 text-text"
               onClick={openSignupForm}
             >
-              <span className="group-hover:translate-x-1 transition-transform">
-                Skriva teg upp nú →
-              </span>
+              👉 Skriva meg upp til net skeið
             </Button>
-            <Link to="/aboutCourse">
-              <Button variant="outline" size="lg" className="border-primary text-primary">
-                Vita meira
-              </Button>
-            </Link>
-          </div>
-        </div>
-      </section>
-
-{/* Hero Section 3 - Minimalist with Numbers */}
-      <section className="pt-32 pb-16 px-4">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <h1 className="text-5xl lg:text-6xl font-bold mb-8 leading-tight animate-fade-up">
-                Ritvit kann spara tær
-                <div className="text-8xl text-primary mt-2">73%</div>
-                av tíni tíð
-              </h1>
-              <div className="flex flex-col sm:flex-row gap-4 animate-fade-up [animation-delay:200ms]">
-                <Button
-                  size="lg"
-                  className="bg-primary hover:bg-primary/80 text-text"
-                  onClick={openSignupForm}
-                >
-                  Fá tína tíð aftur
-                </Button>
-                <Link to="/aboutCourse">
-                  <Button variant="outline" size="lg" className="border-primary text-primary">
-                    Hvussu virkar tað?
-                  </Button>
-                </Link>
-              </div>
-            </div>
-            <div className="grid grid-cols-2 gap-4 animate-fade-left">
-              <div className="bg-primary/10 p-6 rounded-lg">
-                <div className="text-4xl font-bold text-primary mb-2">500+</div>
-                <div className="text-text/80">Nøgd kundar</div>
-              </div>
-              <div className="bg-primary/10 p-6 rounded-lg">
-                <div className="text-4xl font-bold text-primary mb-2">24/7</div>
-                <div className="text-text/80">Atgongd</div>
-              </div>
-              <div className="bg-primary/10 p-6 rounded-lg">
-                <div className="text-4xl font-bold text-primary mb-2">100%</div>
-                <div className="text-text/80">Nøgdsemi</div>
-              </div>
-              <div className="bg-primary/10 p-6 rounded-lg">
-                <div className="text-4xl font-bold text-primary mb-2">14+</div>
-                <div className="text-text/80">Tímar spard</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-{/* Hero Section 4 - Modern Card Layout */}
-      <section className="pt-32 pb-16 px-4 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-primary/5 to-transparent"></div>
-        <div className="max-w-7xl mx-auto relative">
-          <div className="grid lg:grid-cols-5 gap-8">
-            <div className="lg:col-span-3 bg-background/50 backdrop-blur-sm p-8 rounded-2xl border border-primary/20 animate-fade-right">
-              <h1 className="text-4xl lg:text-6xl font-bold mb-6 leading-tight">
-                Ger teg kláran til <span className="text-primary">framtíðar arbeiðsmarknaðin</span>
-              </h1>
-              <p className="text-lg mb-8 text-text/80">
-                Ritvit er ikki longur framtíðin - tað er nútíðin. Lær at brúka tey bestu amboðini til at gerast meira effektivur.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4">
-                <Button
-                  size="lg"
-                  className="bg-primary hover:bg-primary/80 text-text"
-                  onClick={openSignupForm}
-                >
-                  Kom í gongd nú →
-                </Button>
-                <Link to="/aboutCourse">
-                  <Button variant="outline" size="lg" className="border-primary text-primary">
-                    Um skeiðið
-                  </Button>
-                </Link>
-              </div>
-            </div>
-            <div className="lg:col-span-2 grid gap-4 animate-fade-left">
-              <img src="/images/sample_portrait.jpg" alt="AI Technology" className="w-full h-48 object-cover rounded-xl" />
-              <div className="bg-primary/10 p-6 rounded-xl">
-                <h3 className="text-xl font-semibold mb-2">Hvat lærir tú?</h3>
-                <ul className="space-y-2">
-                  <li className="flex items-center gap-2">
-                    <span className="text-primary">✓</span> ChatGPT til gerandisdagin
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <span className="text-primary">✓</span> Microsoft Copilot
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <span className="text-primary">✓</span> Produktivitets teknikkir
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-{/* Hero Section 5 - Dynamic Gradient */}
-      <section className="min-h-[90vh] flex items-center justify-center relative">
-        <div className="absolute inset-0 bg-[linear-gradient(45deg,var(--primary)_0%,transparent_70%)]"></div>
-        <div className="absolute inset-0">
-          <img src="/images/sample_square.jfif" alt="Background" className="w-full h-full object-cover mix-blend-overlay opacity-20" />
-        </div>
-        <div className="max-w-4xl mx-auto text-center px-4 relative z-10">
-          <div className="inline-block animate-bounce-slow">
-            <img src="/logos/logo-header.png" alt="Logo" className="h-20 mb-8" />
-          </div>
-          <h1 className="text-5xl lg:text-7xl font-bold mb-6 animate-fade-up">
-            Blív ein <span className="text-primary">ritvit serfrøðingur</span>
-          </h1>
-          <p className="text-xl mb-12 text-text/80 animate-fade-up [animation-delay:200ms] max-w-2xl mx-auto">
-            Ver við til at forma framtíðina við ritviti. Lær at brúka tey bestu amboðini í dag.
-          </p>
-          <div className="flex flex-col sm:flex-row justify-center gap-6 animate-fade-up [animation-delay:400ms]">
-            <Button
-              size="lg"
-              className="bg-primary hover:bg-primary/80 text-text px-8 py-6 text-lg"
-              onClick={openSignupForm}
-            >
-              Byrja títt ritvit ævintýr í dag
-            </Button>
-            <Link to="/aboutCourse">
-              <Button 
-                variant="outline" 
-                size="lg" 
-                className="border-primary text-primary px-8 py-6 text-lg hover:bg-primary/10"
-              >
-                Les meira um skeiðið
+            <Link to="/aboutCourse" className="w-full sm:w-auto">
+              <Button variant="outline" size="lg" className="w-full sm:w-auto text-primary border border-primary">
+                📖 Les meira um skeiði
               </Button>
             </Link>
           </div>
