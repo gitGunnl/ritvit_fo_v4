@@ -83,11 +83,16 @@ const ChatWindow = ({ onClose }: ChatWindowProps) => {
           : newMessages;
       });
     } catch (err: any) {
-      console.error('Error:', err);
+      console.error('Chat Error:', {
+        message: err.message,
+        response: err.response,
+        status: err.status
+      });
+      
       const errorMessage: ChatMessage = {
         id: (Date.now() + 1).toString(),
         role: 'assistant',
-        content: `Error: ${err.message}. Please try again later.`
+        content: `Error: ${err.message || 'Failed to connect to chat service'}. Please ensure the chat service is properly configured and try again.`
       };
       setMessages(prev => [...prev, errorMessage]);
     } finally {
