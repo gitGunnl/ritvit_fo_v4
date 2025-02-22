@@ -1,0 +1,55 @@
+A **404 Not Found** response for `https://ritvit.fo/api/chat` means your production site **doesn’t actually have a server route** at `/api/chat`—or at least it isn’t being recognized. In other words, the server (or hosting platform) you’ve deployed to isn’t serving that endpoint.
+
+### Why This Happens
+
+1. **Static-Only Deployment:** If you’re hosting on a platform or configuration that only serves static files (HTML/CSS/JS) and doesn’t run server code, then `/api/chat` won’t exist.  
+2. **Incorrect File/Folder Structure (Next.js or similar):** If you’re using Next.js, your API route should be in `pages/api/chat.ts` (for the older Pages router) or `app/api/chat/route.ts` (for the App Router). If it’s in the wrong place or incorrectly named, the route won’t get deployed.  
+3. **Missing Serverless Function Config:** If your platform supports serverless functions (e.g., Vercel, Netlify), you have to ensure that your `api/chat` function is actually recognized and deployed.  
+4. **Custom Server or Reverse Proxy Issues:** If you’re running your own server (e.g., Express), you must define a POST endpoint at `/api/chat`. Or if you have a reverse proxy (NGINX, Apache) in front, it might not be forwarding `/api/chat` to your Node server.  
+5. **Multiple Deployments or Wrong Domain:** You might have your client on `ritvit.fo` but the actual server logic is deployed elsewhere, so the route at `ritvit.fo/api/chat` isn’t set up.
+
+### How to Fix It
+
+1. **Confirm You Have an Actual Route Handler:**  
+   - If you’re using Next.js with the **Pages router**:
+     - Create a file at `pages/api/chat.ts` (or `.js`) exporting a handler, e.g.:
+       ```ts
+       export default function handler(req, res) {
+         // handle chat logic
+         res.status(200).json({ message: 'Hello from /api/chat' });
+       }
+       ```
+   - If you’re using the **App Router** in Next.js 13+:
+     - Create `app/api/chat/route.ts` (or `.js`):
+       ```ts
+       import { NextResponse } from 'next/server';
+       export async function POST(request: Request) {
+         // handle chat logic
+         return NextResponse.json({ message: 'Hello from /api/chat' });
+       }
+       ```
+   - Deploy, and verify you can open `https://ritvit.fo/api/chat` in the browser (you should see something like a 200 response or a “Method not allowed” if you only handle POST).
+
+2. **Check Your Deployment Setup:**  
+   - **Vercel** or **Netlify**: Make sure your project is recognized as a Next.js (or Node) app, and that serverless functions are enabled.  
+   - **Custom Server**: If you’re using Express or another framework, define a POST route:
+     ```js
+     app.post('/api/chat', (req, res) => {
+       // handle chat
+       res.send({ message: 'Hello from /api/chat' });
+     });
+     ```
+   - **Static Hosting**: If you’re uploading a plain HTML/JS bundle (like a static export from Next.js) to a service that doesn’t run Node, you won’t have any API routes at all. You’d need a separate backend or serverless function.
+
+3. **Test Locally and in Production:**  
+   - **Locally**: If you run `npm run dev` or `npm run start`, can you reach `http://localhost:3000/api/chat`?  
+   - **In Production**: After deployment, open the same path: `https://ritvit.fo/api/chat`. If it’s still 404, the route isn’t there.
+
+4. **Check DNS / Domain Mappings:**  
+   - Ensure that `ritvit.fo` is pointing to the same host that serves your API. If your Node app is actually hosted on a different service or subdomain, you might need a proxy or a different domain for the API.
+
+---
+
+### Bottom Line
+
+A **404** indicates there is **no** backend endpoint responding at `/api/chat`. Either you haven’t deployed your server/API routes, or you’re on a static host that doesn’t support Node functions. Once you deploy the correct serverless function or server route, the 404 should go away and your chat should work.
