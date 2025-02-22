@@ -1,6 +1,6 @@
 
 import express from 'express';
-import { Configuration, OpenAIApi } from 'openai';
+import OpenAI from 'openai';
 
 const router = express.Router();
 
@@ -12,22 +12,20 @@ router.post('/', async (req, res) => {
       throw new Error('OpenAI API key not configured');
     }
     
-    const configuration = new Configuration({
+    const openai = new OpenAI({
       apiKey: process.env.OPENAI_API_KEY,
     });
     
-    const openai = new OpenAIApi(configuration);
-    
     console.log('Sending request to OpenAI:', { message });
     
-    const completion = await openai.createChatCompletion({
+    const completion = await openai.chat.completions.create({
       model: "gpt-3.5-turbo",
       messages: [{ role: "user", content: message }],
       temperature: 0.7,
       max_tokens: 500,
     });
 
-    const reply = completion.data.choices[0]?.message?.content;
+    const reply = completion.choices[0]?.message?.content;
     
     if (!reply) {
       throw new Error('No response generated from OpenAI');
