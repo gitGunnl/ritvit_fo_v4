@@ -55,6 +55,14 @@ async function getAssistantResponse(messages: any[]) {
 
 router.post('/chat', async (req, res) => {
   try {
+    console.log('Chat API Request:', {
+      timestamp: new Date().toISOString(),
+      messageCount: req.body.messages?.length || 0,
+      hasApiKey: !!process.env.OPENAI_API_KEY,
+      apiKeyPrefix: process.env.OPENAI_API_KEY?.slice(0, 5),
+      assistantId: process.env.OPENAI_ASSISTANT_ID,
+    });
+
     // Verify environment variables
     if (!process.env.OPENAI_API_KEY) {
       throw new Error('OpenAI API key is not configured');
@@ -64,15 +72,21 @@ router.post('/chat', async (req, res) => {
     }
 
     const { messages } = req.body;
+    console.log('Calling OpenAI Assistant...');
     const response = await getAssistantResponse(messages);
+    console.log('OpenAI Assistant response received');
     
     res.json({ message: response });
   } catch (error: any) {
     console.error('Chat API Error:', {
+      timestamp: new Date().toISOString(),
+      error: error.name,
       message: error.message,
       stack: process.env.NODE_ENV !== 'production' ? error.stack : undefined,
       assistantId: process.env.OPENAI_ASSISTANT_ID ? 'configured' : 'missing',
-      apiKey: process.env.OPENAI_API_KEY ? 'configured' : 'missing'
+      apiKey: process.env.OPENAI_API_KEY ? 'configured' : 'missing',
+      statusCode: error.status || error.statusCode,
+      requestId: error.headers?.['x-request-id'],
     });
     
     res.status(500).json({ 
