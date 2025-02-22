@@ -191,3 +191,39 @@ const ChatWindow = ({ onClose }: ChatWindowProps) => {
 };
 
 export default ChatWindow;
+import React from 'react';
+
+interface ChatWindowProps {
+  messages?: Array<{
+    id: string;
+    content: string;
+    role: 'user' | 'assistant';
+  }>;
+}
+
+const ChatWindow: React.FC<ChatWindowProps> = ({ messages = [] }) => {
+  return (
+    <div className="flex flex-col space-y-4 p-4">
+      {messages.map((message) => (
+        <div
+          key={message.id}
+          className={`flex ${
+            message.role === 'user' ? 'justify-end' : 'justify-start'
+          }`}
+        >
+          <div
+            className={`rounded-lg px-4 py-2 max-w-sm ${
+              message.role === 'user'
+                ? 'bg-primary text-primary-foreground'
+                : 'bg-muted'
+            }`}
+          >
+            {message.content}
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+};
+
+export default ChatWindow;
