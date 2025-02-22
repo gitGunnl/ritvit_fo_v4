@@ -1,12 +1,3 @@
-
-import { useState, useEffect, useRef } from 'react';
-import { cn } from '@/lib/utils';
-import { Button } from '@/components/ui/button';
-import { Send } from 'lucide-react';
-
-let retried = false;
-
-
 import { useState, useRef, useEffect } from 'react';
 import { Button } from './ui/button';
 import { Send, X } from 'lucide-react';
@@ -36,6 +27,7 @@ const ChatWindow = ({ onClose }: ChatWindowProps) => {
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   };
+
   useEffect(() => {
     scrollToBottom();
   }, [messages]);
@@ -51,10 +43,9 @@ const ChatWindow = ({ onClose }: ChatWindowProps) => {
     };
 
     const updatedMessages = [...messages, userMessage];
-    const truncatedMessages =
-      updatedMessages.length > MAX_MESSAGES
-        ? updatedMessages.slice(-MAX_MESSAGES)
-        : updatedMessages;
+    const truncatedMessages = updatedMessages.length > MAX_MESSAGES
+      ? updatedMessages.slice(-MAX_MESSAGES)
+      : updatedMessages;
 
     setMessages(truncatedMessages);
     setUserInput('');
@@ -91,19 +82,7 @@ const ChatWindow = ({ onClose }: ChatWindowProps) => {
           : newMessages;
       });
     } catch (err: any) {
-      console.error('Chat Error:', {
-        message: err.message,
-        response: err.response,
-        status: err.status
-      });
-      
-      // Retry once on connection errors
-      if (err.message.includes('Failed to connect') && !retried) {
-        retried = true;
-        await new Promise(resolve => setTimeout(resolve, 1000));
-        return handleSubmit(e);
-      }
-      
+      console.error('Chat Error:', err);
       const errorMessage: ChatMessage = {
         id: (Date.now() + 1).toString(),
         role: 'assistant',
@@ -111,58 +90,40 @@ const ChatWindow = ({ onClose }: ChatWindowProps) => {
       };
       setMessages(prev => [...prev, errorMessage]);
     } finally {
-      retried = false;
       setIsLoading(false);
     }
   };
 
   return (
-    <div className="fixed bottom-20 right-4 w-[calc(100vw-2rem)] sm:w-96 h-[500px] 
-                    bg-background border border-border 
-                    rounded-lg shadow-lg flex flex-col 
-                    animate-in slide-in-from-bottom-5 max-w-[96vw]">
-      <div className="p-4 border-b border-border flex justify-between items-center">
-        <h3 className="font-semibold">Ritvit kjatt hjálp 🤖</h3>
+    <div className="fixed bottom-20 right-4 w-96 max-w-[calc(100vw-2rem)] bg-background rounded-lg shadow-lg border border-border overflow-hidden">
+      <div className="flex justify-between items-center p-4 border-b border-border">
+        <h2 className="font-semibold">Chat</h2>
         <Button variant="ghost" size="icon" onClick={onClose}>
           <X className="w-4 h-4" />
         </Button>
       </div>
 
-      <div className="flex-1 overflow-y-auto p-4 space-y-4">
-        {messages.map(msg => (
+      <div className="h-[400px] overflow-y-auto">
+        {messages.map((message) => (
           <div
-            key={msg.id}
+            key={message.id}
             className={cn(
-              'flex',
-              msg.role === 'user' ? 'justify-end' : 'justify-start'
+              'flex p-4',
+              message.role === 'user' ? 'justify-end' : 'justify-start'
             )}
           >
             <div
               className={cn(
-                'max-w-[80%] rounded-lg p-3 animate-in slide-in-from-bottom-1',
-                msg.role === 'user'
+                'rounded-lg px-4 py-2 max-w-[80%]',
+                message.role === 'user'
                   ? 'bg-primary text-primary-foreground'
                   : 'bg-muted'
               )}
             >
-              {msg.content}
+              {message.content}
             </div>
           </div>
         ))}
-        {isLoading && (
-          <div className="flex justify-start">
-            <div className="bg-muted rounded-lg p-3">
-              <div className="flex gap-1">
-                <div className="w-2 h-2 bg-primary/60 rounded-full 
-                                animate-bounce [animation-delay:-0.3s]"></div>
-                <div className="w-2 h-2 bg-primary/60 rounded-full 
-                                animate-bounce [animation-delay:-0.15s]"></div>
-                <div className="w-2 h-2 bg-primary/60 rounded-full 
-                                animate-bounce"></div>
-              </div>
-            </div>
-          </div>
-        )}
         <div ref={messagesEndRef} />
       </div>
 
@@ -173,8 +134,7 @@ const ChatWindow = ({ onClose }: ChatWindowProps) => {
             value={userInput}
             onChange={e => setUserInput(e.target.value)}
             placeholder="Skriva eini boð..."
-            className="flex-1 rounded-md border border-border
-                       bg-background px-3 py-2 text-sm"
+            className="flex-1 rounded-md border border-border bg-background px-3 py-2 text-sm"
             disabled={isLoading}
           />
           <Button
@@ -186,42 +146,6 @@ const ChatWindow = ({ onClose }: ChatWindowProps) => {
           </Button>
         </div>
       </form>
-    </div>
-  );
-};
-
-export default ChatWindow;
-import React from 'react';
-
-interface ChatWindowProps {
-  messages?: Array<{
-    id: string;
-    content: string;
-    role: 'user' | 'assistant';
-  }>;
-}
-
-const ChatWindow: React.FC<ChatWindowProps> = ({ messages = [] }) => {
-  return (
-    <div className="flex flex-col space-y-4 p-4">
-      {messages.map((message) => (
-        <div
-          key={message.id}
-          className={`flex ${
-            message.role === 'user' ? 'justify-end' : 'justify-start'
-          }`}
-        >
-          <div
-            className={`rounded-lg px-4 py-2 max-w-sm ${
-              message.role === 'user'
-                ? 'bg-primary text-primary-foreground'
-                : 'bg-muted'
-            }`}
-          >
-            {message.content}
-          </div>
-        </div>
-      ))}
     </div>
   );
 };
