@@ -1,4 +1,12 @@
 
+import { useState, useEffect, useRef } from 'react';
+import { cn } from '@/lib/utils';
+import { Button } from '@/components/ui/button';
+import { Send } from 'lucide-react';
+
+let retried = false;
+
+
 import { useState, useRef, useEffect } from 'react';
 import { Button } from './ui/button';
 import { Send, X } from 'lucide-react';
@@ -89,13 +97,21 @@ const ChatWindow = ({ onClose }: ChatWindowProps) => {
         status: err.status
       });
       
+      // Retry once on connection errors
+      if (err.message.includes('Failed to connect') && !retried) {
+        retried = true;
+        await new Promise(resolve => setTimeout(resolve, 1000));
+        return handleSubmit(e);
+      }
+      
       const errorMessage: ChatMessage = {
         id: (Date.now() + 1).toString(),
         role: 'assistant',
-        content: `Error: ${err.message || 'Failed to connect to chat service'}. Please ensure the chat service is properly configured and try again.`
+        content: `Error: ${err.message || 'Failed to connect to chat service'}. Please try again in a moment.`
       };
       setMessages(prev => [...prev, errorMessage]);
     } finally {
+      retried = false;
       setIsLoading(false);
     }
   };
