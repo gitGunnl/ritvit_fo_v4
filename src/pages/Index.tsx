@@ -18,29 +18,31 @@ const openSignupForm = () => {
     <div className="min-h-screen flex flex-col bg-background text-text">
       <Navigation />
 
-      {/* Hero Section */}
-      <section className="pt-32 pb-16 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
-        <div className="max-w-7xl mx-auto text-center">
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight mb-2 animate-fade-up">
-            Steðga at spilla tíð upp á uppgávur, sum ritvit kann gera fyri teg!
+      {/* Hero Section 2 - Centered with Floating Elements */}
+      <section className="min-h-[90vh] flex items-center justify-center relative bg-[radial-gradient(circle_at_center,_var(--primary)_0%,_transparent_65%)]">
+        <div className="max-w-4xl mx-auto text-center px-4">
+          <div className="inline-block mb-6 px-6 py-2 bg-primary/10 rounded-full animate-fade-down">
+            <span className="text-primary">Nýtt skeið byrjar skjótt!</span>
+          </div>
+          <h1 className="text-4xl sm:text-6xl lg:text-7xl font-bold mb-6 animate-fade-up leading-tight">
+            Steðga at spilla tíð upp á uppgávur, sum <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent">ritvit</span> kann gera fyri teg!
           </h1>
-
-          <p className="animate-fade-up mt-2 text-text/80">
-            🚀 <strong>Lær at brúka ritvit upp á fáar dagar – og fá meira tíð til tað, sum veruliga hevur týdning fyri teg.</strong>
+          <p className="text-xl mb-8 text-text/80 animate-fade-up [animation-delay:200ms]">
+            Lær at brúka ritvit upp á fáar dagar – og fá meira tíð til tað, sum veruliga hevur týdning fyri teg.
           </p>
-
-          {/* Buttons */}
-          <div className="flex flex-col sm:flex-row justify-center gap-4 animate-fade-up mt-8">
+          <div className="flex flex-col sm:flex-row justify-center gap-4 animate-fade-up [animation-delay:400ms]">
             <Button
               size="lg"
-              className="w-full sm:w-auto bg-primary hover:bg-primary/80 text-text"
+              className="bg-primary hover:bg-primary/80 text-text group transition-all duration-300"
               onClick={openSignupForm}
             >
-              👉 Skriva meg upp til net skeið
+              <span className="group-hover:translate-x-1 transition-transform">
+                Skriva teg upp til net skeið →
+              </span>
             </Button>
-            <Link to="/aboutCourse" className="w-full sm:w-auto">
-              <Button variant="outline" size="lg" className="w-full sm:w-auto text-primary border border-primary">
-                📖 Les meira um skeiði
+            <Link to="/aboutCourse">
+              <Button variant="outline" size="lg" className="border-primary text-primary">
+                Les meira um skeiði
               </Button>
             </Link>
           </div>
