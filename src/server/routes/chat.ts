@@ -11,7 +11,7 @@ router.post('/', async (req, res) => {
     if (!process.env.OPENAI_API_KEY) {
       throw new Error('OpenAI API key not configured');
     }
-
+    
     const openai = new OpenAI({
       apiKey: process.env.OPENAI_API_KEY,
     });
@@ -22,11 +22,13 @@ router.post('/', async (req, res) => {
     });
 
     res.json({ 
-      reply: completion.choices[0]?.message?.content || 'No response generated'
+      message: completion.choices[0]?.message?.content || 'No response generated'
     });
-  } catch (error) {
+  } catch (error: any) {
     console.error('Chat API Error:', error);
-    res.status(500).json({ error: 'Failed to process chat request' });
+    res.status(500).json({ 
+      error: error.message || 'Failed to process chat request' 
+    });
   }
 });
 
