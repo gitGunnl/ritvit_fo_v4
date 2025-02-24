@@ -6,7 +6,7 @@ const router = express.Router();
 
 router.post('/', async (req, res) => {
   try {
-    const { message } = req.body;
+    const { messages } = req.body;
     
     const apiKey = process.env.OPENAI_API_KEY;
     if (!apiKey) {
@@ -17,13 +17,23 @@ router.post('/', async (req, res) => {
       });
     }
     
+    if (!messages || !Array.isArray(messages) || !messages.length) {
+      return res.status(400).json({
+        error: 'Invalid request',
+        details: 'Messages array is required'
+      });
+    }
+    
     const openai = new OpenAI({
       apiKey: apiKey,
     });
     
     const completion = await openai.chat.completions.create({
       model: "gpt-3.5-turbo",
-      messages: [{ role: "user", content: message }],
+      messages: messages.map(msg => ({
+        role: msg.role,
+        content: msg.content || ''
+      })),
     });
 
     res.json({ 
