@@ -1,5 +1,5 @@
 import express from 'express';
-import { Configuration, OpenAIApi } from 'openai';
+import OpenAI from 'openai';
 
 const router = express.Router();
 
@@ -7,23 +7,21 @@ router.post('/chat', async (req, res) => {
   try {
     const { messages } = req.body;
 
-    const configuration = new Configuration({
+    const openai = new OpenAI({
       apiKey: process.env.OPENAI_API_KEY,
     });
 
-    const openai = new OpenAIApi(configuration);
-
-    const completion = await openai.createChatCompletion({
+    const completion = await openai.chat.completions.create({
       model: "gpt-3.5-turbo",
       messages: messages || [],
     });
 
     res.json({ 
-      reply: completion.data.choices[0]?.message?.content || 'No response generated'
+      message: completion.choices[0]?.message?.content || 'No response generated'
     });
   } catch (error) {
     console.error('Chat API Error:', error);
-    res.status(500).json({ error: 'Failed to process chat request', details: error.message });
+    res.status(500).json({ error: 'Failed to process chat request' });
   }
 });
 
