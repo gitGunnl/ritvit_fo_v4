@@ -8,12 +8,17 @@ router.post('/', async (req, res) => {
   try {
     const { message } = req.body;
     
-    if (!process.env.OPENAI_API_KEY) {
-      throw new Error('OpenAI API key not configured');
+    const apiKey = process.env.OPENAI_API_KEY;
+    if (!apiKey) {
+      console.error('OpenAI API key missing - please set it in Replit Secrets');
+      return res.status(500).json({ 
+        error: 'API configuration error',
+        details: 'OpenAI API key not configured' 
+      });
     }
     
     const openai = new OpenAI({
-      apiKey: process.env.OPENAI_API_KEY,
+      apiKey: apiKey,
     });
     
     const completion = await openai.chat.completions.create({
