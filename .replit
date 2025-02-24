@@ -18,7 +18,7 @@ localPort = 8080
 externalPort = 3000
 
 [workflows]
-runButton = "Dev"
+runButton = "Run"
 
 [[workflows.workflow]]
 name = "Server"
@@ -35,11 +35,3 @@ author = 36104266
 [[workflows.workflow.tasks]]
 task = "shell.exec"
 args = "bun run dev & bun --watch src/server/index.ts"
-
-[[workflows.workflow]]
-name = "Dev"
-author = 36104266
-
-[[workflows.workflow.tasks]]
-task = "shell.exec"
-args = "node src/server/index.ts"
