@@ -12,7 +12,9 @@ const app = express();
 const port = process.env.PORT || 3000;
 
 app.use(cors({
-  origin: true,
+  origin: process.env.NODE_ENV === 'production' 
+    ? true 
+    : ['http://localhost:5173', 'http://localhost:3000', 'https://*.replit.dev'],
   credentials: true
 }));
 app.use(express.json());
