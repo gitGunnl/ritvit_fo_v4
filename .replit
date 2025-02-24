@@ -8,7 +8,6 @@ channel = "stable-24_05"
 deploymentTarget = "static"
 publicDir = "dist"
 build = ["sh", "-c", "npm run build"]
-run = ["sh", "-c", "node src/server/index.ts"]
 
 [[ports]]
 localPort = 3000
@@ -19,7 +18,7 @@ localPort = 8080
 externalPort = 3000
 
 [workflows]
-runButton = "API Server"
+runButton = "Dev"
 
 [[workflows.workflow]]
 name = "Server"
@@ -44,11 +43,3 @@ author = 36104266
 [[workflows.workflow.tasks]]
 task = "shell.exec"
 args = "node src/server/index.ts"
-
-[[workflows.workflow]]
-name = "API Server"
-author = 36104266
-
-[[workflows.workflow.tasks]]
-task = "shell.exec"
-args = "node src/server/dist-api.js"

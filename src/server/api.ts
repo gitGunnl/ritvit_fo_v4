@@ -53,10 +53,6 @@ async function getAssistantResponse(messages: any[]) {
   }
 }
 
-import { Router } from 'express';
-
-const router = Router();
-
 router.post('/chat', async (req, res) => {
   try {
     console.log('Chat API Request:', {
