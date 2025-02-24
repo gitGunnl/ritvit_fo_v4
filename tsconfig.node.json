@@ -4,11 +4,9 @@
     "composite": true,
     "skipLibCheck": true,
     "module": "ESNext",
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "allowSyntheticDefaultImports": true,
-    "strict": true,
-    "outDir": "./dist",
-    "esModuleInterop": true
+    "strict": true
   },
   "include": ["src/server/**/*.ts", "vite.config.ts"]
 }

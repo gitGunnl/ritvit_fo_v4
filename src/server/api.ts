@@ -1,3 +1,4 @@
+
 import express from 'express';
 import { OpenAI } from 'openai';
 import dotenv from 'dotenv';
@@ -16,7 +17,7 @@ async function getAssistantResponse(messages: any[]) {
   try {
     // Create a thread
     const thread = await openai.beta.threads.create();
-
+    
     // Add the latest message to the thread
     await openai.beta.threads.messages.create(thread.id, {
       role: "user",
@@ -78,7 +79,7 @@ router.post('/chat', async (req, res) => {
     console.log('Calling OpenAI Assistant...');
     const response = await getAssistantResponse(messages);
     console.log('OpenAI Assistant response received');
-
+    
     res.json({ message: response });
   } catch (error: any) {
     console.error('Chat API Error:', {
@@ -91,7 +92,7 @@ router.post('/chat', async (req, res) => {
       statusCode: error.status || error.statusCode,
       requestId: error.headers?.['x-request-id'],
     });
-
+    
     res.status(500).json({ 
       error: process.env.NODE_ENV === 'production' 
         ? 'An error occurred. Please try again later.'
@@ -107,12 +108,12 @@ export default router;
 router.post('/contact', async (req, res) => {
   try {
     const { name, email, message } = req.body;
-
+    
     const formData = new FormData();
     formData.append("entry.1179687836", name);
     formData.append("entry.263197538", email);
     formData.append("entry.240567695", message);
-
+    
     const response = await fetch(
       'https://docs.google.com/forms/d/e/1FAIpQLSf8FFci-J91suIjxY2xh4GD-DQ-UfZftUNxq3dUdXkgJAjB1Q/formResponse',
       {

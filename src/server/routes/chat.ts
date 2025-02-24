@@ -1,24 +1,50 @@
+
 import express from 'express';
-import { OpenAI } from 'openai';
+import OpenAI from 'openai';
 
 const router = express.Router();
-const openai = new OpenAI();
 
 router.post('/', async (req, res) => {
   try {
-    const { messages } = req.body;
-
+    const { message } = req.body;
+    
+    if (!process.env.OPENAI_API_KEY) {
+      throw new Error('OpenAI API key not configured');
+    }
+    
+    const openai = new OpenAI({
+      apiKey: process.env.OPENAI_API_KEY,
+    });
+    
+    console.log('Sending request to OpenAI:', { message });
+    
     const completion = await openai.chat.completions.create({
-      messages: messages,
       model: "gpt-3.5-turbo",
+      messages: [{ role: "user", content: message }],
+      temperature: 0.7,
+      max_tokens: 500,
     });
 
-    res.json({ message: completion.choices[0].message });
+    const reply = completion.choices[0]?.message?.content;
+    
+    if (!reply) {
+      throw new Error('No response generated from OpenAI');
+    }
+
+    console.log('Received response from OpenAI:', { reply });
+    res.json({ reply });
+    
   } catch (error: any) {
-    console.error('Chat error:', error);
+    console.error('Chat API Error:', {
+      message: error.message,
+      stack: error.stack,
+      status: error.status || error.statusCode,
+      timestamp: new Date().toISOString()
+    });
+    
     res.status(500).json({ 
       error: process.env.NODE_ENV === 'production' 
-        ? 'An error occurred' 
+        ? 'An error occurred while processing your request' 
         : error.message 
     });
   }
