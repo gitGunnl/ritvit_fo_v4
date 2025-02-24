@@ -3,6 +3,11 @@ import cors from 'cors';
 import api from './api';
 import chatRouter from './routes/chat';
 
+// Verify OpenAI API key is set
+if (!process.env.OPENAI_API_KEY) {
+  console.warn('Warning: OPENAI_API_KEY not found in Secrets');
+}
+
 const app = express();
 const port = process.env.PORT || 3000;
 
