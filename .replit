@@ -51,4 +51,4 @@ author = 36104266
 
 [[workflows.workflow.tasks]]
 task = "shell.exec"
-args = "node src/server/dist-api.js"
+args = "tsc && node src/server/dist-api.js"
