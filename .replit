@@ -51,4 +51,4 @@ author = 36104266
 
 [[workflows.workflow.tasks]]
 task = "shell.exec"
-args = "npx ts-node src/server/api.ts"
+args = "node src/server/dist-api.js"
