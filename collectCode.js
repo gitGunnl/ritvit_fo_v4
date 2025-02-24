@@ -1,4 +1,8 @@
 
+import { readFileSync, writeFileSync } from 'fs';
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
+
 const fileList = [
   'src/components/ChatWindow.tsx',
   'src/components/ChatbotButton.tsx',
@@ -12,14 +16,12 @@ const fileList = [
   'tsconfig.json'
 ];
 
-const fs = require('fs');
-
 function collectCode() {
   let codeCollection = '';
   
   fileList.forEach(filePath => {
     try {
-      const content = fs.readFileSync(filePath, 'utf8');
+      const content = readFileSync(filePath, 'utf8');
       codeCollection += `\nFile: ${filePath}\n`;
       codeCollection += '```\n';
       codeCollection += content;
@@ -29,7 +31,7 @@ function collectCode() {
     }
   });
   
-  fs.writeFileSync('codeCollection.txt', codeCollection);
+  writeFileSync('codeCollection.txt', codeCollection);
 }
 
 collectCode();
