@@ -1,7 +1,7 @@
 import express from 'express';
 import cors from 'cors';
-import api from './api';
-import chatRouter from './routes/chat';
+import api from './api.ts';
+import chatRouter from './routes/chat.ts';
 
 const app = express();
 const port = process.env.PORT || 3000;
