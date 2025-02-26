@@ -1,6 +1,10 @@
 
 import express from 'express';
-import OpenAI from 'openai';
+import { OpenAI } from 'openai';
+import dotenv from 'dotenv';
+
+// Load environment variables
+dotenv.config();
 
 const router = express.Router();
 
@@ -42,7 +46,8 @@ router.post('/', async (req, res) => {
   } catch (error: any) {
     console.error('Chat API Error:', error);
     res.status(500).json({ 
-      error: error.message || 'Failed to process chat request' 
+      error: 'Error processing chat request',
+      details: error.message || 'Unknown error'
     });
   }
 });
