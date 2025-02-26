@@ -65,7 +65,7 @@ const ChatWindow = ({ onClose }: ChatWindowProps) => {
 
       if (!response.ok) {
         const errorData = await response.json().catch(() => ({}));
-        throw new Error(errorData.details || 'Failed to get response');
+        throw new Error(errorData.details || 'Failed to get response. Please check your network connection or try again later.');
       }
 
       const data = await response.json();
@@ -86,7 +86,7 @@ const ChatWindow = ({ onClose }: ChatWindowProps) => {
       const errorMessage: ChatMessage = {
         id: (Date.now() + 1).toString(),
         role: 'assistant',
-        content: `Error: ${err.message || 'Failed to connect to chat service'}. Please try again in a moment.`
+        content: `Error: ${err.message || 'Failed to connect to chat service. Please try again later.'}`
       };
       setMessages(prev => [...prev, errorMessage]);
     } finally {
