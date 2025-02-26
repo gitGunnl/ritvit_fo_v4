@@ -1,6 +1,10 @@
 
 import express from 'express';
-import OpenAI from 'openai';
+import { OpenAI } from 'openai';
+import dotenv from 'dotenv';
+
+// Load environment variables
+dotenv.config();
 
 const router = express.Router();
 
@@ -8,6 +12,7 @@ router.post('/', async (req, res) => {
   try {
     const { messages } = req.body;
     
+    // Get API key from environment variables
     const apiKey = process.env.OPENAI_API_KEY;
     if (!apiKey) {
       console.error('OpenAI API key missing - please set it in Replit Secrets');
@@ -24,16 +29,28 @@ router.post('/', async (req, res) => {
       });
     }
     
+    // Initialize OpenAI client
     const openai = new OpenAI({
       apiKey: apiKey,
     });
     
+    // Ensure messages are properly formatted
+    const formattedMessages = messages.map(msg => ({
+      role: msg.role,
+      content: msg.content || ''
+    }));
+    
+    // Add a system message if none exists
+    if (!formattedMessages.some(msg => msg.role === 'system')) {
+      formattedMessages.unshift({
+        role: 'system',
+        content: 'You are a helpful assistant that provides information about AI courses and services.'
+      });
+    }
+    
     const completion = await openai.chat.completions.create({
       model: "gpt-3.5-turbo",
-      messages: messages.map(msg => ({
-        role: msg.role,
-        content: msg.content || ''
-      })),
+      messages: formattedMessages,
     });
 
     res.json({ 
