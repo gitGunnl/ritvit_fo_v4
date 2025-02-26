@@ -36,10 +36,7 @@ router.post('/', async (req, res) => {
     // Process with chat completions API
     const completion = await openai.chat.completions.create({
       model: "gpt-3.5-turbo",
-      messages: messages.map(msg => ({
-        role: msg.role,
-        content: msg.content || ''
-      })),
+      messages: messages || [],
     });
 
     res.json({ 
