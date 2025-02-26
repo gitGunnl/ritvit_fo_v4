@@ -8,6 +8,11 @@ import chatRouter from './routes/chat';
 // Load environment variables
 dotenv.config();
 
+// Log server startup info (without sensitive data)
+console.log('Environment:', process.env.NODE_ENV);
+console.log('API Keys configured:', process.env.OPENAI_API_KEY ? 'Yes' : 'No');
+console.log('Assistant ID configured:', process.env.OPENAI_ASSISTANT_ID ? 'Yes' : 'No');
+
 const app = express();
 const port = process.env.PORT || 3000;
 
