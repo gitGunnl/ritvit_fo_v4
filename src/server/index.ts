@@ -9,6 +9,7 @@ import chatRouter from './routes/chat';
 dotenv.config();
 
 // Log server startup info (without sensitive data)
+console.log('Server starting...');
 console.log('Environment:', process.env.NODE_ENV);
 console.log('API Keys configured:', process.env.OPENAI_API_KEY ? 'Yes' : 'No');
 console.log('Assistant ID configured:', process.env.OPENAI_ASSISTANT_ID ? 'Yes' : 'No');
@@ -38,5 +39,6 @@ if (process.env.NODE_ENV === 'production') {
 
 // Start server
 app.listen(port, '0.0.0.0', () => {
-  console.log(`Server running on port ${port}`);
+  console.log(`Server running at http://0.0.0.0:${port}`);
+  console.log(`Chat API endpoint: http://0.0.0.0:${port}/api/chat`);
 });
