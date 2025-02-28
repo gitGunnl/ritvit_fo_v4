@@ -24,8 +24,9 @@ app.use(cors({
 }));
 app.use(express.json());
 
-// API routes
-app.use('/api/chat', chatRouter);
+// API routes - make sure these are defined before static files
+app.use('/chat', chatRouter); // Route without /api prefix
+app.use('/api/chat', chatRouter); // Keep original route for backward compatibility
 
 // Serve static files in production
 if (process.env.NODE_ENV === 'production') {
@@ -33,6 +34,10 @@ if (process.env.NODE_ENV === 'production') {
   app.use(express.static(distPath));
   
   app.get('*', (req, res) => {
+    // Don't handle API routes with this catch-all
+    if (req.path.startsWith('/api/') || req.path === '/chat') {
+      return;
+    }
     res.sendFile(path.join(distPath, 'index.html'));
   });
 }

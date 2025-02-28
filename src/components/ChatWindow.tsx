@@ -52,6 +52,7 @@ const ChatWindow = ({ onClose }: ChatWindowProps) => {
     setIsLoading(true);
 
     try {
+      // Use relative path that works in both development and production
       const response = await fetch('/api/chat', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
