@@ -7,7 +7,7 @@ channel = "stable-24_05"
 [deployment]
 deploymentTarget = "cloudrun"
 build = ["sh", "-c", "npm run build"]
-run = ["sh", "-c", "NODE_ENV=production node src/server/index.js"]
+run = ["sh", "-c", "npm start"]
 
 [[deployment.rewrites]]
 from = "/*"
