@@ -1,3 +1,4 @@
+
 import express from 'express';
 import { OpenAI } from 'openai';
 
@@ -16,32 +17,26 @@ router.post('/', async (req, res) => {
       });
     }
 
-    // Validate messages array
-    if (!messages || !Array.isArray(messages) || !messages.length) {
-      return res.status(400).json({
-        error: 'Invalid request',
-        details: 'Messages array is required'
-      });
-    }
-
-    // Initialize OpenAI client
     const openai = new OpenAI({
       apiKey: process.env.OPENAI_API_KEY,
     });
 
-    // Process with chat completions API
     const completion = await openai.chat.completions.create({
       model: "gpt-3.5-turbo",
-      messages: messages,
+      messages: messages.map(msg => ({
+        role: msg.role,
+        content: msg.content
+      })),
     });
 
     res.json({ 
       message: completion.choices[0]?.message?.content || 'No response generated'
     });
-  } catch (error) {
+  } catch (error: any) {
     console.error('Chat API Error:', error);
     res.status(500).json({ 
-      error: error.message || 'Failed to process chat request' 
+      error: 'Failed to process chat request',
+      details: error.message || 'Unknown error' 
     });
   }
 });
