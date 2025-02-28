@@ -1,12 +1,10 @@
-
 import express from 'express';
 import cors from 'cors';
 import path from 'path';
-import dotenv from 'dotenv';
+// Removed: import dotenv from 'dotenv';
 import chatRouter from './routes/chat';
 
-// Load environment variables
-dotenv.config();
+// Removed: dotenv.config();
 
 // Log server startup info (without sensitive data)
 console.log('Server starting...');
@@ -32,7 +30,7 @@ app.use('/api/chat', chatRouter); // Keep original route for backward compatibil
 if (process.env.NODE_ENV === 'production') {
   const distPath = path.join(__dirname, '../../dist');
   app.use(express.static(distPath));
-  
+
   app.get('*', (req, res, next) => {
     // Don't handle API routes with this catch-all
     if (req.path.startsWith('/api/')) {

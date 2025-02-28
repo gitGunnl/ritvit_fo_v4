@@ -1,9 +1,5 @@
 import express from 'express';
 import { OpenAI } from 'openai';
-import dotenv from 'dotenv';
-
-// Load environment variables
-dotenv.config();
 
 const router = express.Router();
 
@@ -11,12 +7,12 @@ router.post('/', async (req, res) => {
   try {
     const { messages } = req.body;
 
-    // Check if API key is configured
+    // Check if API key is configured in Replit Secrets
     if (!process.env.OPENAI_API_KEY) {
       console.error('OpenAI API key missing - please set it in Replit Secrets');
       return res.status(500).json({ 
         error: 'API configuration error',
-        details: 'OpenAI API key not configured' 
+        details: 'OpenAI API key not configured. Please add OPENAI_API_KEY in Replit Secrets.' 
       });
     }
 

@@ -83,10 +83,17 @@ const ChatWindow = ({ onClose }: ChatWindowProps) => {
       });
     } catch (err: any) {
       console.error('Chat Error:', err);
+      let errorContent = `Error: ${err.message || 'Failed to connect to chat service'}. Please try again in a moment.`;
+
+      // Provide more helpful message for API key errors
+      if (err.message && err.message.includes('API key')) {
+        errorContent = "The chatbot is currently unavailable because the API key hasn't been configured. Please contact the site administrator.";
+      }
+
       const errorMessage: ChatMessage = {
         id: (Date.now() + 1).toString(),
         role: 'assistant',
-        content: `Error: ${err.message || 'Failed to connect to chat service. Please try again later.'}`
+        content: errorContent
       };
       setMessages(prev => [...prev, errorMessage]);
     } finally {
