@@ -52,11 +52,8 @@ const ChatWindow = ({ onClose }: ChatWindowProps) => {
     setIsLoading(true);
 
     try {
-      // Always use absolute URL with current origin to ensure consistent behavior in all environments
-      const baseUrl = window.location.origin;
-      console.log('Making chat request to:', `${baseUrl}/api/chat`);
-
-      const response = await fetch(`${baseUrl}/api/chat`, {
+      console.log('Sending chat request to /api/chat');
+      const response = await fetch('/api/chat', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -67,12 +64,17 @@ const ChatWindow = ({ onClose }: ChatWindowProps) => {
         })
       });
 
+      console.log('Response status:', response.status);
+
       if (!response.ok) {
         const errorData = await response.json().catch(() => ({}));
-        throw new Error(errorData.details || 'Failed to get response. Please check your network connection or try again later.');
+        console.error('API Error details:', errorData);
+        throw new Error(errorData.details || `Server responded with ${response.status}`);
       }
 
       const data = await response.json();
+      console.log('Received response from chatbot');
+
       const botResponse: ChatMessage = {
         id: (Date.now() + 1).toString(),
         role: 'assistant',
@@ -90,7 +92,7 @@ const ChatWindow = ({ onClose }: ChatWindowProps) => {
       const errorMessage: ChatMessage = {
         id: (Date.now() + 1).toString(),
         role: 'assistant',
-        content: `Error: ${err.message || 'Failed to connect to chat service. Please try again later.'}`
+        content: `Error: ${err.message || 'Failed to connect to chat service'}. Please try again in a moment.`
       };
       setMessages(prev => [...prev, errorMessage]);
     } finally {

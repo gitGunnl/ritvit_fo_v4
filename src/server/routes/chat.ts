@@ -1,4 +1,3 @@
-
 import express from 'express';
 import OpenAI from 'openai';
 
@@ -7,10 +6,10 @@ const router = express.Router();
 router.post('/', async (req, res) => {
   try {
     const { messages } = req.body;
-    
+
     // Log the received data (without sensitive information)
     console.log('Chat request received. Messages count:', messages?.length || 0);
-    
+
     // Check if API key is configured
     if (!process.env.OPENAI_API_KEY) {
       console.error('OpenAI API key missing - please set it in Replit Secrets');
@@ -50,16 +49,11 @@ router.post('/', async (req, res) => {
     res.json({ 
       message: completion.choices[0]?.message?.content || 'No response generated'
     });
-  } catch (error) {
+  } catch (error: any) {
     console.error('Chat API Error:', error);
-    // Send more detailed error information in development
-    const errorDetails = process.env.NODE_ENV === 'production' 
-      ? 'An error occurred processing your request' 
-      : error.message || 'Unknown error';
-      
     res.status(500).json({ 
-      error: 'Failed to process chat request',
-      details: errorDetails
+      error: error.message || 'Failed to process chat request',
+      details: error.stack
     });
   }
 });
