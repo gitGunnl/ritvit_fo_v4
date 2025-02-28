@@ -37,4 +37,4 @@ author = 36104266
 
 [[workflows.workflow.tasks]]
 task = "shell.exec"
-args = "bun run dev & bun --watch src/server/index.ts"
+args = "npm run dev & npm run start"
