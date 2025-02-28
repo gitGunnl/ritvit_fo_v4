@@ -2,11 +2,7 @@
 import express from 'express';
 import cors from 'cors';
 import path from 'path';
-import dotenv from 'dotenv';
 import chatRouter from './routes/chat';
-
-// Load environment variables
-dotenv.config();
 
 // Log server startup info (without sensitive data)
 console.log('Server starting...');

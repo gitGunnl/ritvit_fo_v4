@@ -52,7 +52,12 @@ const ChatWindow = ({ onClose }: ChatWindowProps) => {
     setIsLoading(true);
 
     try {
-      const response = await fetch('/api/chat', {
+      // Use absolute URL in production, relative URL in development
+      const baseUrl = window.location.hostname.includes('replit.dev') || window.location.hostname === 'localhost' 
+        ? '' 
+        : `${window.location.origin}`;
+
+      const response = await fetch(`${baseUrl}/api/chat`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
