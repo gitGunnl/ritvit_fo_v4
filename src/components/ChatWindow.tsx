@@ -52,15 +52,10 @@ const ChatWindow = ({ onClose }: ChatWindowProps) => {
     setIsLoading(true);
 
     try {
-      // Determine base URL based on environment.  Handles various deployment scenarios.
-      let baseUrl = '';
-      if (window.location.hostname === 'localhost' || window.location.hostname.includes('replit.dev')) {
-        baseUrl = ''; // Development - assumes API server is on the same origin
-      } else {
-        baseUrl = window.location.origin; // Production - API server is at the same origin
-      }
-
-
+      // Always use absolute URL with current origin to ensure consistent behavior in all environments
+      const baseUrl = window.location.origin;
+      console.log('Making chat request to:', `${baseUrl}/api/chat`);
+      
       const response = await fetch(`${baseUrl}/api/chat`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },

@@ -14,7 +14,13 @@ console.log('Assistant ID configured:', process.env.OPENAI_ASSISTANT_ID ? 'Yes' 
 if (!process.env.OPENAI_API_KEY) {
   console.warn('⚠️ WARNING: OPENAI_API_KEY not found in environment variables');
   console.warn('Please set it in the Secrets tab in Replit');
+} else {
+  console.log('✅ OPENAI_API_KEY is configured correctly');
 }
+
+// Log deployment environment
+const isProduction = process.env.NODE_ENV === 'production';
+console.log(`Running in ${isProduction ? 'PRODUCTION' : 'DEVELOPMENT'} mode`);
 
 const app = express();
 const port = process.env.PORT || 3000;
