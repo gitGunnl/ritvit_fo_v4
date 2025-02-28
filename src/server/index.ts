@@ -10,13 +10,21 @@ console.log('Environment:', process.env.NODE_ENV);
 console.log('API Keys configured:', process.env.OPENAI_API_KEY ? 'Yes' : 'No');
 console.log('Assistant ID configured:', process.env.OPENAI_ASSISTANT_ID ? 'Yes' : 'No');
 
+// Log important warning if API key is missing
+if (!process.env.OPENAI_API_KEY) {
+  console.warn('⚠️ WARNING: OPENAI_API_KEY not found in environment variables');
+  console.warn('Please set it in the Secrets tab in Replit');
+}
+
 const app = express();
 const port = process.env.PORT || 3000;
 
 // Middleware
 app.use(cors({
-  origin: true,
-  credentials: true
+  origin: '*',  // Allow all origins for simplicity
+  credentials: true,
+  methods: ['GET', 'POST', 'OPTIONS'], // Explicitly allow these methods
+  allowedHeaders: ['Content-Type', 'Authorization']
 }));
 app.use(express.json());
 

@@ -52,10 +52,14 @@ const ChatWindow = ({ onClose }: ChatWindowProps) => {
     setIsLoading(true);
 
     try {
-      // Use absolute URL in production, relative URL in development
-      const baseUrl = window.location.hostname.includes('replit.dev') || window.location.hostname === 'localhost' 
-        ? '' 
-        : `${window.location.origin}`;
+      // Determine base URL based on environment.  Handles various deployment scenarios.
+      let baseUrl = '';
+      if (window.location.hostname === 'localhost' || window.location.hostname.includes('replit.dev')) {
+        baseUrl = ''; // Development - assumes API server is on the same origin
+      } else {
+        baseUrl = window.location.origin; // Production - API server is at the same origin
+      }
+
 
       const response = await fetch(`${baseUrl}/api/chat`, {
         method: 'POST',
