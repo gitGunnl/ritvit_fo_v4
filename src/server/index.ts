@@ -96,6 +96,7 @@ app.get('*', (req, res) => {
 
 // Start the server
 app.listen(port, '0.0.0.0', () => {
-  console.log(`Server running on port ${port}`);
+  console.log(`Server running on port ${port} (0.0.0.0)`);
+  console.log(`Server should be accessible externally`);
   console.log(`Static files served from: ${staticPath}`);
 });
