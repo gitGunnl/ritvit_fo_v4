@@ -1,3 +1,4 @@
+
 import { useState, useRef, useEffect } from 'react';
 import { Button } from './ui/button';
 import { Send, X } from 'lucide-react';
@@ -43,20 +44,16 @@ const ChatWindow = ({ onClose }: ChatWindowProps) => {
     };
 
     const updatedMessages = [...messages, userMessage];
-    const truncatedMessages = updatedMessages.length > MAX_MESSAGES
-      ? updatedMessages.slice(-MAX_MESSAGES)
-      : updatedMessages;
-
-    setMessages(truncatedMessages);
+    setMessages(updatedMessages);
     setUserInput('');
     setIsLoading(true);
 
     try {
-      const response = await fetch('/api/chat', {
+      const response = await fetch('/chat', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          messages: truncatedMessages.map(msg => ({
+          messages: updatedMessages.map(msg => ({
             role: msg.role,
             content: msg.content
           }))
@@ -64,36 +61,23 @@ const ChatWindow = ({ onClose }: ChatWindowProps) => {
       });
 
       if (!response.ok) {
-        const errorData = await response.json().catch(() => ({}));
-        throw new Error(errorData.details || 'Failed to get response. Please check your network connection or try again later.');
+        throw new Error('Failed to get response from server');
       }
 
       const data = await response.json();
       const botResponse: ChatMessage = {
         id: (Date.now() + 1).toString(),
         role: 'assistant',
-        content: data.message || ''
+        content: data.message || 'No response generated'
       };
 
-      setMessages(prev => {
-        const newMessages = [...prev, botResponse];
-        return newMessages.length > MAX_MESSAGES
-          ? newMessages.slice(-MAX_MESSAGES)
-          : newMessages;
-      });
+      setMessages(prev => [...prev, botResponse]);
     } catch (err: any) {
       console.error('Chat Error:', err);
-      let errorContent = `Error: ${err.message || 'Failed to connect to chat service'}. Please try again in a moment.`;
-
-      // Provide more helpful message for API key errors
-      if (err.message && err.message.includes('API key')) {
-        errorContent = "The chatbot is currently unavailable because the API key hasn't been configured. Please contact the site administrator.";
-      }
-
       const errorMessage: ChatMessage = {
         id: (Date.now() + 1).toString(),
         role: 'assistant',
-        content: errorContent
+        content: `Error: ${err.message || 'Failed to connect to chat service'}. Please try again in a moment.`
       };
       setMessages(prev => [...prev, errorMessage]);
     } finally {
