@@ -8,7 +8,7 @@ channel = "stable-24_05"
 [deployment]
 deploymentTarget = "cloudrun"
 build = ["sh", "-c", "npm run build"]
-run = ["sh", "-c", "node src/server/index.js"]
+run = ["sh", "-c", "npm run start"]
 
 [[ports]]
 localPort = 3000
@@ -18,14 +18,10 @@ externalPort = 80
 localPort = 3001
 
 [[ports]]
-localPort = 3002
-externalPort = 3002
-
-[[ports]]
 localPort = 8080
 
 [workflows]
-runButton = "Build and Run"
+runButton = "Run"
 
 [[workflows.workflow]]
 name = "Server"
@@ -42,11 +38,3 @@ author = 36104266
 [[workflows.workflow.tasks]]
 task = "shell.exec"
 args = "bun run dev & bun --watch src/server/index.ts"
-
-[[workflows.workflow]]
-name = "Build and Run"
-author = 36104266
-
-[[workflows.workflow.tasks]]
-task = "shell.exec"
-args = "npm run build && node src/server/index.js"
