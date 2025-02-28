@@ -1,5 +1,6 @@
+
 import express from 'express';
-import { OpenAI } from 'openai';
+import OpenAI from 'openai';
 
 const router = express.Router();
 
@@ -13,9 +14,9 @@ router.post('/', async (req, res) => {
     // Check if API key is configured
     if (!process.env.OPENAI_API_KEY) {
       console.error('OpenAI API key missing - please set it in Replit Secrets');
-      return res.status(500).json({ 
-        error: 'API configuration error',
-        details: 'OpenAI API key not configured. Please add it to Replit Secrets with the key: OPENAI_API_KEY' 
+      return res.status(500).json({
+        error: 'API Configuration Error',
+        details: 'OpenAI API key is not configured'
       });
     }
 
@@ -28,7 +29,6 @@ router.post('/', async (req, res) => {
       });
     }
 
-    // Initialize OpenAI client
     const openai = new OpenAI({
       apiKey: process.env.OPENAI_API_KEY,
     });
