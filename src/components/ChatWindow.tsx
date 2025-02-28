@@ -55,7 +55,7 @@ const ChatWindow = ({ onClose }: ChatWindowProps) => {
       // Always use absolute URL with current origin to ensure consistent behavior in all environments
       const baseUrl = window.location.origin;
       console.log('Making chat request to:', `${baseUrl}/api/chat`);
-      
+
       const response = await fetch(`${baseUrl}/api/chat`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
