@@ -1,4 +1,3 @@
-
 import { useState, useRef, useEffect } from 'react';
 import { Button } from './ui/button';
 import { Send, X } from 'lucide-react';
@@ -44,16 +43,20 @@ const ChatWindow = ({ onClose }: ChatWindowProps) => {
     };
 
     const updatedMessages = [...messages, userMessage];
-    setMessages(updatedMessages);
+    const truncatedMessages = updatedMessages.length > MAX_MESSAGES
+      ? updatedMessages.slice(-MAX_MESSAGES)
+      : updatedMessages;
+
+    setMessages(truncatedMessages);
     setUserInput('');
     setIsLoading(true);
 
     try {
-      const response = await fetch('/chat', {
+      const response = await fetch('/api/chat', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          messages: updatedMessages.map(msg => ({
+          messages: truncatedMessages.map(msg => ({
             role: msg.role,
             content: msg.content
           }))
@@ -61,23 +64,29 @@ const ChatWindow = ({ onClose }: ChatWindowProps) => {
       });
 
       if (!response.ok) {
-        throw new Error('Failed to get response from server');
+        const errorData = await response.json().catch(() => ({}));
+        throw new Error(errorData.details || 'Failed to get response. Please check your network connection or try again later.');
       }
 
       const data = await response.json();
       const botResponse: ChatMessage = {
         id: (Date.now() + 1).toString(),
         role: 'assistant',
-        content: data.message || 'No response generated'
+        content: data.message || ''
       };
 
-      setMessages(prev => [...prev, botResponse]);
+      setMessages(prev => {
+        const newMessages = [...prev, botResponse];
+        return newMessages.length > MAX_MESSAGES
+          ? newMessages.slice(-MAX_MESSAGES)
+          : newMessages;
+      });
     } catch (err: any) {
       console.error('Chat Error:', err);
       const errorMessage: ChatMessage = {
         id: (Date.now() + 1).toString(),
         role: 'assistant',
-        content: `Error: ${err.message || 'Failed to connect to chat service'}. Please try again in a moment.`
+        content: `Error: ${err.message || 'Failed to connect to chat service. Please try again later.'}`
       };
       setMessages(prev => [...prev, errorMessage]);
     } finally {

@@ -1,47 +1,51 @@
-
 import express from 'express';
 import { OpenAI } from 'openai';
+import dotenv from 'dotenv';
+
+// Load environment variables
+dotenv.config();
 
 const router = express.Router();
 
 router.post('/', async (req, res) => {
   try {
     const { messages } = req.body;
-    
-    if (!messages || !Array.isArray(messages)) {
-      return res.status(400).json({ 
+
+    // Check if API key is configured
+    if (!process.env.OPENAI_API_KEY) {
+      console.error('OpenAI API key missing - please set it in Replit Secrets');
+      return res.status(500).json({ 
+        error: 'API configuration error',
+        details: 'OpenAI API key not configured' 
+      });
+    }
+
+    // Validate messages array
+    if (!messages || !Array.isArray(messages) || !messages.length) {
+      return res.status(400).json({
         error: 'Invalid request',
         details: 'Messages array is required'
       });
     }
-    
-    if (!process.env.OPENAI_API_KEY) {
-      return res.status(500).json({
-        error: 'Server configuration error',
-        details: 'OpenAI API key not configured'
-      });
-    }
-    
+
+    // Initialize OpenAI client
     const openai = new OpenAI({
       apiKey: process.env.OPENAI_API_KEY,
     });
-    
+
+    // Process with chat completions API
     const completion = await openai.chat.completions.create({
       model: "gpt-3.5-turbo",
-      messages: messages.map(msg => ({
-        role: msg.role,
-        content: msg.content
-      })),
+      messages: messages || [],
     });
 
     res.json({ 
       message: completion.choices[0]?.message?.content || 'No response generated'
     });
-  } catch (error: any) {
+  } catch (error) {
     console.error('Chat API Error:', error);
     res.status(500).json({ 
-      error: 'Failed to process chat request',
-      details: error.message || 'Unknown error'
+      error: error.message || 'Failed to process chat request' 
     });
   }
 });

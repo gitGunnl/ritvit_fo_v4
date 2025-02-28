@@ -1,11 +1,3 @@
-// '@/types/blog.ts'
-export interface BlogPost {
-  id: number;
-  title: string;
-  category: string;
-  // Add other relevant properties as needed
-}
-
 
 import { type BlogPost } from "@/types/blog";
 import BlogCard from "./BlogCard";
