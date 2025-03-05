@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import ChatbotButton from "@/components/ChatbotButton";
+import HeroChat from "@/components/HeroChat";
 import { ArrowRight, Mail, Phone, MessageSquare, CheckCircle2 } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Input } from "@/components/ui/input"; // Added imports
@@ -59,6 +60,9 @@ const openSignupForm = () => {
           </div>
         </div>
       </section>
+      
+      {/* New Hero Section with Chat Animation */}
+      <HeroChat />
 
       {/* Course Introduction / Core Offer */}
       <section className="py-24 px-4 sm:px-6 lg:px-8 bg-background/30">
