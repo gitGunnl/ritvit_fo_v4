@@ -55,7 +55,18 @@ app.post('/api/contact', async (req, res) => {
   }
 });
 
-// Serve static files from the React app
+// Serve static files from the React app build directory
+const staticPath = path.join(__dirname, '..', '..', 'dist');
+app.use(express.static(staticPath));
+
+// For any other route, serve the React app (SPA fallback)
+app.get('*', (req, res) => {
+  res.sendFile(path.join(staticPath, 'index.html'));
+});
+
+app.listen(port, '0.0.0.0', () => {
+  console.log(`Server running on port ${port}`);
+});
 const staticPath = path.join(__dirname, '..', '..', 'dist');
 app.use(express.static(staticPath));
 
