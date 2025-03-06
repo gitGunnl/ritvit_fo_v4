@@ -2,7 +2,7 @@
 import React, { useEffect, useState, useRef } from "react";
 
 // A helper to detect & embed clickable link for ritvit.fo.
-function parseLineForLink(line: string) {
+function parseLineForLink(line) {
   // Regex capturing https://ritvit.fo in a group.
   const linkRegex = /(https?:\/\/ritvit\.fo)/g;
   const parts = line.split(linkRegex);
@@ -52,17 +52,15 @@ const chatSequence = [
   }
 ];
 
-interface DisplayedMessage {
-  role: "user" | "assistant";
-  text: string;
-  partialText: string;
-  done: boolean;
-}
-
-const HeroChat: React.FC = () => {
+const HeroChat = () => {
   // The messages to display on screen:
   // Each is { role: 'user'|'assistant', text, partialText, done }
-  const [displayedMessages, setDisplayedMessages] = useState<DisplayedMessage[]>([]);
+  const [displayedMessages, setDisplayedMessages] = useState<Array<{
+    role: string;
+    text: string;
+    partialText: string;
+    done: boolean;
+  }>>([]);
 
   // We only want to start the conversation once.
   const conversationStartedRef = useRef(false);
@@ -120,128 +118,117 @@ const HeroChat: React.FC = () => {
   // Streams the assistant message at chatSequence[index].
   function startStreaming(index: number) {
     const fullText = chatSequence[index].text;
+    const words = fullText.split(/(\s+)/); // Split by whitespace but keep it
+    let currentWordIndex = 0;
 
-    // Replace newlines so we can preserve line breaks after splitting on spaces.
-    const replacedText = fullText.replace(/\n/g, " \n ");
-    const words = replacedText.split(/\s+/).filter((w) => w.length > 0);
-
-    let i = 0;
-    const intervalId = setInterval(() => {
-      i++;
-      setDisplayedMessages((prev) => {
-        const updated = [...prev];
-        const lastIndex = updated.length - 1;
-        if (lastIndex < 0) return updated;
-        const lastMsg = updated[lastIndex];
-
-        // If for some reason it's not assistant or is done, bail.
-        if (lastMsg.role !== "assistant" || lastMsg.done) {
-          return updated;
-        }
-
-        // Build partial from first i words.
-        const partial = words.slice(0, i).join(" ");
-
-        updated[lastIndex] = {
-          ...lastMsg,
-          partialText: partial.replace(/ \n /g, "\n"),
-        };
-
-        return updated;
-      });
-
-      if (i === words.length) {
-        // Streaming done.
-        clearInterval(intervalId);
-        // Mark message as done.
-        setDisplayedMessages((prev) => {
-          const updated = [...prev];
-          const lastIndex = updated.length - 1;
-          if (lastIndex >= 0 && updated[lastIndex].role === "assistant") {
-            updated[lastIndex] = {
-              ...updated[lastIndex],
-              done: true
-            };
+    // Function to add one word at a time
+    function streamNextWord() {
+      if (currentWordIndex >= words.length) {
+        // All words added, mark as done
+        setDisplayedMessages(prev => prev.map((msg, i) => {
+          if (i === prev.length - 1) {
+            return { ...msg, done: true };
           }
-          return updated;
-        });
-        // Move on after a short delay.
+          return msg;
+        }));
+
+        // Move to the next message after a delay
         setTimeout(() => {
           showNextMessage(index + 1);
         }, 1000);
+        return;
       }
-    }, 80);
+
+      // Add the next word
+      setDisplayedMessages(prev => {
+        const updatedMessages = [...prev];
+        const lastMsg = updatedMessages[updatedMessages.length - 1];
+        lastMsg.partialText += words[currentWordIndex];
+        return updatedMessages;
+      });
+
+      // Schedule the next word
+      currentWordIndex++;
+      setTimeout(streamNextWord, 40); // Adjust speed as needed
+    }
+
+    // Start the streaming
+    streamNextWord();
   }
 
+  // Function to render messages with proper formatting
+  const renderMessageContent = (text: string) => {
+    // Split by newlines and process each line
+    return text.split('\n').map((line, lineIndex) => {
+      // Check if line starts with "- " for bullet points
+      if (line.startsWith('- ')) {
+        return (
+          <li key={lineIndex} className="ml-5 list-disc">
+            {parseLineForLink(line.substring(2))}
+          </li>
+        );
+      }
+      
+      // Regular lines
+      return (
+        <React.Fragment key={lineIndex}>
+          {parseLineForLink(line)}
+          {lineIndex < text.split('\n').length - 1 && <br />}
+        </React.Fragment>
+      );
+    });
+  };
+
   return (
-    <section className="min-h-[90vh] flex items-center justify-center relative bg-gradient-to-br from-background to-primary/10 overflow-hidden">
-      <style jsx>{`
-        @keyframes fadeIn {
-          0% {
-            opacity: 0;
-            transform: translateY(4px);
-          }
-          100% {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-        .animate-fadeIn {
-          animation: fadeIn 0.5s forwards;
-        }
-      `}</style>
-
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--primary)_0%,_transparent_65%)] opacity-80 animate-pulse [animation-duration:8s]"></div>
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_right,_var(--accent)_0%,_transparent_70%)] opacity-30 mix-blend-overlay"></div>
-
-      <div className="mx-auto w-full max-w-xl p-6 z-10">
-        <div className="text-center mb-8">
-          <h2 className="text-3xl font-bold mb-4 text-primary">Se hvordan ChatGPT kan hjælpe dig</h2>
-          <p className="text-xl text-text/80">En demonstration af hvordan AI kan svare på dine spørgsmål</p>
-        </div>
-        <div className="bg-background/80 backdrop-blur-md text-text rounded-lg shadow-lg p-5 space-y-4 overflow-y-auto border border-primary/30">
-          {displayedMessages.map((message, index) => {
-            const isUser = message.role === "user";
-            const label = isUser ? "Dig" : "ChatGPT";
-
-            // We'll display partialText for assistant messages, or the entire user text.
-            const displayedText = message.partialText;
-
-            // Split on literal "\n" for line breaks.
-            const lines = displayedText.split("\n");
-
-            return (
-              <div
-                key={index}
-                className={`transition-opacity duration-500 opacity-0 animate-fadeIn ${
-                  isUser ? "text-right" : "text-left"
-                }`}
+    <section className="py-20 px-4 bg-gradient-to-b from-background/80 to-background">
+      <div className="max-w-4xl mx-auto">
+        <h2 className="text-3xl font-bold mb-10 text-center">See how <span className="text-primary">ritvit</span> can help you</h2>
+        
+        <div className="bg-background/60 border border-border rounded-xl shadow-lg p-4 md:p-6 backdrop-blur-sm">
+          <div className="flex flex-col gap-4 mb-4">
+            {displayedMessages.map((message, index) => (
+              <div 
+                key={index} 
+                className={`flex ${message.role === 'user' ? 'justify-end' : 'justify-start'} animate-fade-up [animation-delay:200ms]`}
               >
-                <div className="mb-1 text-xs text-text/60">{label}</div>
-                <div
-                  className={`inline-block max-w-xs px-4 py-2 rounded-lg ${
-                    isUser
-                      ? "bg-primary text-primary-foreground"
-                      : "bg-muted text-text"
+                <div 
+                  className={`max-w-[80%] p-4 rounded-lg ${
+                    message.role === 'user' 
+                      ? 'bg-primary/10 border border-primary/30' 
+                      : 'bg-background border border-border'
                   }`}
                 >
-                  {lines.map((line, idx) => {
-                    // parseLineForLink returns an array of text/link fragments.
-                    const chunks = parseLineForLink(line);
-                    return (
-                      <p key={idx} className="mb-1">
-                        {Array.isArray(chunks)
-                          ? chunks.map((chunk, cIdx) => (
-                              <React.Fragment key={cIdx}>{chunk}</React.Fragment>
-                            ))
-                          : chunks}
-                      </p>
-                    );
-                  })}
+                  <div className="prose prose-sm dark:prose-invert">
+                    {renderMessageContent(message.partialText)}
+                    {!message.done && (
+                      <span className="inline-block w-2 h-4 bg-primary/50 ml-1 animate-pulse"></span>
+                    )}
+                  </div>
                 </div>
               </div>
-            );
-          })}
+            ))}
+          </div>
+          
+          <div className="border-t border-border pt-4 mt-4">
+            <div className="relative">
+              <input
+                type="text"
+                disabled
+                placeholder="Type your message..."
+                className="w-full p-3 pr-12 rounded-md border border-border bg-background/50 focus:outline-none focus:ring-1 focus:ring-primary"
+              />
+              <button 
+                disabled
+                className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-primary/10 p-2 rounded-md"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-primary">
+                  <line x1="22" y1="2" x2="11" y2="13"></line>
+                  <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                </svg>
+              </button>
+            </div>
+            <p className="text-center text-sm mt-3 text-text/60">This is a demonstration of what you can learn in our course!</p>
+          </div>
         </div>
       </div>
     </section>
