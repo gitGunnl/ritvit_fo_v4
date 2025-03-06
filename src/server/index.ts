@@ -64,20 +64,25 @@ app.get('*', (req, res) => {
   res.sendFile(path.join(staticPath, 'index.html'));
 });
 
-app.listen(port, '0.0.0.0', () => {
+const server = app.listen(port, '0.0.0.0', () => {
   console.log(`Server running on port ${port}`);
 });
-const staticPath = path.join(__dirname, '..', '..', 'dist');
-app.use(express.static(staticPath));
 
-// SPA fallback
-app.get('*', (req, res) => {
-  res.sendFile(path.join(staticPath, 'index.html'));
-});
+// Handle termination signals properly
+const handleShutdown = () => {
+  console.log('Server shutting down...');
+  server.close(() => {
+    console.log('Server closed successfully');
+    process.exit(0);
+  });
 
-// Start the server
-app.listen(port, '0.0.0.0', () => {
-  console.log(`Server running on port ${port} (0.0.0.0)`);
-  console.log(`Server should be accessible externally`);
-  console.log(`Static files served from: ${staticPath}`);
-});
+  // Force close after 5 seconds if graceful shutdown fails
+  setTimeout(() => {
+    console.error('Could not close connections in time, forcefully shutting down');
+    process.exit(1);
+  }, 5000);
+};
+
+process.on('SIGINT', handleShutdown);
+process.on('SIGTERM', handleShutdown);
+process.on('SIGUSR2', handleShutdown); // For Nodemon restarts
