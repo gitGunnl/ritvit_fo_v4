@@ -65,7 +65,8 @@ app.get('*', (req, res) => {
 });
 
 const server = app.listen(port, '0.0.0.0', () => {
-  console.log(`Server running on port ${port}`);
+  console.log(`Server running on port ${port} (0.0.0.0)`);
+  console.log(`Server should be accessible via the Webview`);
 });
 
 // Handle termination signals properly
