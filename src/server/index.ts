@@ -69,7 +69,41 @@ const server = app.listen(port, '0.0.0.0', () => {
   console.log(`Server should be accessible via the Webview`);
 });
 
-// Handle termination signals properly
+// Enhance termination signal handling for more reliable shutdown
+process.on('SIGINT', () => {
+  console.log('Received SIGINT. Shutting down gracefully...');
+  shutdown();
+});
+
+process.on('SIGTERM', () => {
+  console.log('Received SIGTERM. Shutting down gracefully...');
+  shutdown();
+});
+
+// This catches nodemon restarts
+process.on('SIGUSR2', () => {
+  console.log('Received SIGUSR2. Shutting down gracefully...');
+  shutdown();
+});
+
+// Improved shutdown function
+function shutdown() {
+  console.log('Server shutting down...');
+  server.close((err) => {
+    if (err) {
+      console.error('Error during server close:', err);
+      process.exit(1);
+    }
+    console.log('Server closed successfully');
+    process.exit(0);
+  });
+
+  // Force close after 5 seconds if graceful shutdown fails
+  setTimeout(() => {
+    console.error('Could not close connections in time, forcefully shutting down');
+    process.exit(1);
+  }, 5000);
+}
 const handleShutdown = () => {
   console.log('Server shutting down...');
   server.close(() => {
