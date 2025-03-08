@@ -53,4 +53,4 @@ author = 36104266
 
 [[workflows.workflow.tasks]]
 task = "shell.exec"
-args = "npm run dev & bun run src/server/index.ts"
+args = "npm run dev & bun run src/server/index.ts; echo 'Press Ctrl+C to stop'"
