@@ -65,41 +65,10 @@ app.get('*', (req, res) => {
 });
 
 const server = app.listen(port, '0.0.0.0', () => {
-  console.log(`Server running on port ${port} (0.0.0.0)`);
-  console.log(`Server should be accessible via the Webview`);
+  console.log(`Server running on port ${port}`);
 });
 
-// Enhance termination signal handling for more reliable shutdown
-process.on('SIGINT', () => {
-  console.log('Received SIGINT. Shutting down gracefully...');
-  forceShutdown();
-});
-
-process.on('SIGTERM', () => {
-  console.log('Received SIGTERM. Shutting down gracefully...');
-  forceShutdown();
-});
-
-// This catches nodemon restarts
-process.on('SIGUSR2', () => {
-  console.log('Received SIGUSR2. Shutting down gracefully...');
-  forceShutdown();
-});
-
-// Force shutdown immediately (more reliable in Replit environment)
-function forceShutdown() {
-  console.log('Force shutting down server...');
-  try {
-    server.close();
-    console.log('Server closed successfully');
-  } catch (err) {
-    console.error('Error during server close:', err);
-  }
-  // Force exit immediately to ensure the process terminates
-  process.exit(0);
-}
-
-// Legacy shutdown function (keeping for backwards compatibility)
+// Handle termination signals properly
 const handleShutdown = () => {
   console.log('Server shutting down...');
   server.close(() => {

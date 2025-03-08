@@ -45,12 +45,4 @@ author = 36104266
 
 [[workflows.workflow.tasks]]
 task = "shell.exec"
-args = "npm run dev"
-
-[[workflows.workflow]]
-name = "Server Only"
-author = 36104266
-
-[[workflows.workflow.tasks]]
-task = "shell.exec"
-args = "node src/server/index.ts"
+args = "npm run dev & npm run start"
