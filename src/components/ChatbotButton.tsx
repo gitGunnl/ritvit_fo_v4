@@ -1,11 +1,10 @@
 
+import { useState } from 'react';
+import { Button } from './ui/button';
+import { MessageSquare } from 'lucide-react';
 import ChatWindow from './ChatWindow';
 
 const ChatbotButton = () => {
-  // Temporarily disabled
-  return null;
-  
-  /* Original code kept for reference
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -22,7 +21,6 @@ const ChatbotButton = () => {
       </Button>
     </div>
   );
-  */
 };
 
 export default ChatbotButton;
