@@ -14,6 +14,7 @@ import AboutCourse from "./pages/aboutCourse";
 const queryClient = new QueryClient();
 
 const App = () => (
+  <div className="min-h-screen bg-background">
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
       <Toaster />
@@ -31,6 +32,7 @@ const App = () => (
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>
+  </div>
 );
 
 export default App;
