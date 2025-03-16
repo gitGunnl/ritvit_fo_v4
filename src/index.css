@@ -5,31 +5,61 @@
 @layer base {
   :root {
     --background: 240 25% 15%;   /* Deep, midnight-inspired background */
-    --text: 210 20% 95%;   /* Clear, bright text for better readability */
-    --primary: 210 85% 55%;   /* Bright blue for primary elements */
-    --accent: 45 100% 65%;   /* Vibrant amber accent for emphasis */
-    --border: 220 25% 25%;   /* Distinct, slightly more pronounced border */
-    --radius: 0.5rem;
+    --text:       210 20% 95%;   /* Clear, bright text for better readability */
+    --primary:    210 85% 55%;   /* Bright blue for primary elements */
+    --accent:     45 100% 65%;   /* Vibrant amber accent for emphasis */
+    --border:     220 25% 25%;   /* Distinct, slightly more pronounced border */
   }
-}
 
-@layer base {
+  /* Apply the border color to all elements – this sets the default border color */
   * {
     @apply border-border;
   }
+
+  /* Set the global background and text colors using our new semantic classes */
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-text antialiased;
+  }
+
+  strong {
+    @apply font-semibold text-[1.1em];
+  }
+
+  /* Override prose text colors to match our theme */
+  .prose strong,
+  .prose blockquote,
+  .prose em,
+  .prose code,
+  .prose a,
+  .prose h3,
+  .prose h4,
+  .prose thead th {
+    @apply text-inherit;
+  }
+
+  .prose p,
+  .prose ul,
+  .prose ol,
+  .prose li {
+    @apply text-text/80;
+  }
+
+  .prose blockquote {
+    @apply border-l-4 border-text/20;
   }
 }
 
+/* A glass-card now uses a subtle primary tint and our defined border color */
 .glass-card {
   @apply bg-primary/10 backdrop-blur-md border border-border shadow-lg transition-all duration-300;
 }
 
+/* For hover and focus states, we now reference our new primary color */
 .hover-lift {
   @apply transition-all duration-300 hover:-translate-y-1 hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-primary/50;
 }
 
+/* The gradient-text now uses our palette by applying a gradient from primary to accent */
 .gradient-text {
   @apply bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent;
 }
