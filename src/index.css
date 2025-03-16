@@ -4,62 +4,68 @@
 
 @layer base {
   :root {
-    --background: 240 25% 15%;   /* Deep, midnight-inspired background */
-    --text:       210 20% 95%;   /* Clear, bright text for better readability */
-    --primary:    210 85% 55%;   /* Bright blue for primary elements */
-    --accent:     45 100% 65%;   /* Vibrant amber accent for emphasis */
-    --border:     220 25% 25%;   /* Distinct, slightly more pronounced border */
+    --background: 0 0% 100%;
+    --foreground: 224 71.4% 4.1%;
+    --card: 0 0% 100%;
+    --card-foreground: 224 71.4% 4.1%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 224 71.4% 4.1%;
+    --primary: 220.9 39.3% 11%;
+    --primary-foreground: 210 20% 98%;
+    --secondary: 220 14.3% 95.9%;
+    --secondary-foreground: 220.9 39.3% 11%;
+    --muted: 220 14.3% 95.9%;
+    --muted-foreground: 220 8.9% 46.1%;
+    --accent: 220 14.3% 95.9%;
+    --accent-foreground: 220.9 39.3% 11%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 20% 98%;
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: 224 71.4% 4.1%;
+    --radius: 0.5rem;
   }
 
-  /* Apply the border color to all elements – this sets the default border color */
-  * {
-    @apply border-border;
-  }
-
-  /* Set the global background and text colors using our new semantic classes */
-  body {
-    @apply bg-background text-text antialiased;
-  }
-
-  strong {
-    @apply font-semibold text-[1.1em];
-  }
-
-  /* Override prose text colors to match our theme */
-  .prose strong,
-  .prose blockquote,
-  .prose em,
-  .prose code,
-  .prose a,
-  .prose h3,
-  .prose h4,
-  .prose thead th {
-    @apply text-inherit;
-  }
-
-  .prose p,
-  .prose ul,
-  .prose ol,
-  .prose li {
-    @apply text-text/80;
-  }
-
-  .prose blockquote {
-    @apply border-l-4 border-text/20;
+  .dark {
+    --background: 224 71.4% 4.1%;
+    --foreground: 210 20% 98%;
+    --card: 224 71.4% 4.1%;
+    --card-foreground: 210 20% 98%;
+    --popover: 224 71.4% 4.1%;
+    --popover-foreground: 210 20% 98%;
+    --primary: 210 20% 98%;
+    --primary-foreground: 220.9 39.3% 11%;
+    --secondary: 215 27.9% 16.9%;
+    --secondary-foreground: 210 20% 98%;
+    --muted: 215 27.9% 16.9%;
+    --muted-foreground: 217.9 10.6% 64.9%;
+    --accent: 215 27.9% 16.9%;
+    --accent-foreground: 210 20% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 20% 98%;
+    --border: 215 27.9% 16.9%;
+    --input: 215 27.9% 16.9%;
+    --ring: 216 12.2% 83.9%;
   }
 }
 
-/* A glass-card now uses a subtle primary tint and our defined border color */
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
 .glass-card {
   @apply bg-primary/10 backdrop-blur-md border border-border shadow-lg transition-all duration-300;
 }
 
-/* For hover and focus states, we now reference our new primary color */
 .hover-lift {
   @apply transition-all duration-300 hover:-translate-y-1 hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-primary/50;
 }
 
-/* The gradient-text now uses our palette by applying a gradient from primary to accent */
 .gradient-text {
   @apply bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent;
 }

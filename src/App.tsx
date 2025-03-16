@@ -34,3 +34,27 @@ const App = () => (
 );
 
 export default App;
+import { Suspense, lazy } from 'react'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import './App.css'
+
+const ScenarioTrainer = lazy(() => import('./pages/scenario-trainer/App'))
+
+function App() {
+  return (
+    <Router>
+      <Routes>
+        <Route 
+          path="/scenario-trainer/*" 
+          element={
+            <Suspense fallback={<div>Loading...</div>}>
+              <ScenarioTrainer />
+            </Suspense>
+          } 
+        />
+      </Routes>
+    </Router>
+  )
+}
+
+export default App
