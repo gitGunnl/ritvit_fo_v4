@@ -13,7 +13,6 @@ import BlogPost from "./pages/blog/[id]"
 import AboutCourse from "./pages/aboutCourse"
 import './App.css'
 
-const ScenarioTrainer = lazy(() => import('./pages/scenario-trainer/App'))
 const queryClient = new QueryClient()
 
 const App = () => (
@@ -30,14 +29,6 @@ const App = () => (
           <Route path="/blog" element={<BlogIndex />} />
           <Route path="/blog/:id" element={<BlogPost />} />
           <Route path="/aboutCourse" element={<AboutCourse />} />
-          <Route 
-            path="/scenario-trainer/*" 
-            element={
-              <Suspense fallback={<div>Loading...</div>}>
-                <ScenarioTrainer />
-              </Suspense>
-            } 
-          />
         </Routes>
       </Router>
     </TooltipProvider>
