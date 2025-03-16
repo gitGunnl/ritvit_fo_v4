@@ -1,0 +1,65 @@
+'ll help outline what the other project needs to prepare for integrating this Scenario Trainer codebase. Here's what they need to do:
+
+First, they need to ensure their project has all the required dependencies. They should add these to their package.json:
+{
+  "dependencies": {
+    "@radix-ui/react-accordion": "^1.2.1",
+    "@radix-ui/react-dialog": "^1.1.2",
+    "@radix-ui/react-toast": "^1.2.2",
+    "@tanstack/react-query": "^5.60.5",
+    "tailwind-merge": "^2.5.4",
+    "tailwindcss-animate": "^1.0.7"
+  }
+}
+They need to configure their tailwind.config.js/ts to include the same color schemes and configurations we use. They should merge these settings into their existing Tailwind config:
+{
+  darkMode: ["class"],
+  theme: {
+    extend: {
+      colors: {
+        background: "hsl(var(--background))",
+        foreground: "hsl(var(--foreground))",
+        card: {
+          DEFAULT: "hsl(var(--card))",
+          foreground: "hsl(var(--card-foreground))"
+        },
+        // ... other color configurations
+      }
+    }
+  },
+  plugins: [
+    require("tailwindcss-animate"),
+    require("@tailwindcss/typography")
+  ]
+}
+Set up their routing structure:
+// In their main router file
+import { lazy, Suspense } from 'react';
+const ScenarioTrainer = lazy(() => import('./scenarioTrainer/App'));
+// In their routes configuration
+{
+  path: '/scenario-trainer/*',
+  element: (
+    <Suspense fallback={<div>Loading...</div>}>
+      <ScenarioTrainer />
+    </Suspense>
+  )
+}
+Prepare their project structure:
+src/
+  scenarioTrainer/  <-- This is where our code will go
+  components/
+  pages/
+  ...rest of their existing structure
+They need to ensure their Vite (or bundler) configuration can handle:
+TypeScript
+Path aliases (we use @/ for src)
+CSS/PostCSS processing
+Environment variables
+Make sure they have the Google Sheets API configuration ready if they plan to use that functionality:
+Google Cloud project set up
+API credentials ready
+Environment variables for Google authentication
+That's what they need to prepare. Once ready, we can proceed with the actual migration of our code into their structure.
+
+Let them know they should confirm once these preparations are complete, and we can then proceed with the actual file migration and integration.
