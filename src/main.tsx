@@ -5,14 +5,20 @@ import { BrowserRouter } from 'react-router-dom';
 import App from './App';
 import './index.css';
 
-const rootElement = document.getElementById('root');
-if (!rootElement) throw new Error('Failed to find root element');
+const mount = () => {
+  const rootElement = document.getElementById('root');
+  if (!rootElement) throw new Error('Failed to find root element');
 
-const root = createRoot(rootElement);
-root.render(
-  <React.StrictMode>
+  const root = createRoot(rootElement);
+  root.render(
     <BrowserRouter>
       <App />
     </BrowserRouter>
-  </React.StrictMode>
-);
+  );
+};
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', mount);
+} else {
+  mount();
+}
