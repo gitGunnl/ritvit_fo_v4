@@ -12,10 +12,10 @@ export default defineConfig({
   },
   server: {
     host: '0.0.0.0',
-    port: process.env.PORT ? parseInt(process.env.PORT) : 8080,
+    port: 8080,
     proxy: {
       '/api': {
-        target: 'http://0.0.0.0:3000',
+        target: 'http://0.0.0.0:3001',
         changeOrigin: true
       }
     }
