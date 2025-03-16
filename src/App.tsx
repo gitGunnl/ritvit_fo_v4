@@ -1,5 +1,4 @@
 
-import { Suspense, lazy } from 'react'
 import { Toaster } from "@/components/ui/toaster"
 import { Toaster as Sonner } from "@/components/ui/sonner"
 import { TooltipProvider } from "@/components/ui/tooltip"
@@ -13,8 +12,6 @@ import BlogIndex from "./pages/blog"
 import BlogPost from "./pages/blog/[id]"
 import AboutCourse from "./pages/aboutCourse"
 import './App.css'
-
-const ScenarioTrainer = lazy(() => import('./pages/scenario-trainer/App'))
 const queryClient = new QueryClient()
 
 const App = () => (
@@ -31,14 +28,6 @@ const App = () => (
           <Route path="/blog" element={<BlogIndex />} />
           <Route path="/blog/:id" element={<BlogPost />} />
           <Route path="/aboutCourse" element={<AboutCourse />} />
-          <Route 
-            path="/scenario-trainer/*" 
-            element={
-              <Suspense fallback={<div>Loading...</div>}>
-                <ScenarioTrainer />
-              </Suspense>
-            } 
-          />
         </Routes>
       </Router>
     </TooltipProvider>
