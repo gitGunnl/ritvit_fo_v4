@@ -81,3 +81,33 @@ app.listen(port, '0.0.0.0', () => {
   console.log(`Server should be accessible externally`);
   console.log(`Static files served from: ${staticPath}`);
 });
+import express from 'express';
+import path from 'path';
+import { fileURLToPath } from 'url';
+import dotenv from 'dotenv';
+
+// Load environment variables
+dotenv.config();
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+// Initialize express
+const app = express();
+const PORT = process.env.PORT || 8080;
+
+// Serve static files from the dist directory
+app.use(express.static(path.join(__dirname, '../../dist')));
+
+// API routes can be added here
+// app.get('/api/example', (req, res) => { ... });
+
+// For any other route, serve the index.html (for SPA)
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../../dist/index.html'));
+});
+
+// Start server
+app.listen(PORT, '0.0.0.0', () => {
+  console.log(`Server listening on http://0.0.0.0:${PORT}`);
+});
