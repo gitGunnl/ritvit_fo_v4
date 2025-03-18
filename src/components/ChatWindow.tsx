@@ -52,8 +52,8 @@ const ChatWindow = ({ onClose }: ChatWindowProps) => {
     setIsLoading(true);
 
     try {
-      console.log('Sending chat request to /api/chat');
-      const response = await fetch('/api/chat', {
+      console.log('Sending chat request to /chat');
+      const response = await fetch('/chat', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

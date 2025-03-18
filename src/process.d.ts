@@ -1,14 +1,9 @@
 
+/// <reference types="node" />
+
 declare namespace NodeJS {
   interface ProcessEnv {
     NODE_ENV: 'development' | 'production' | 'test';
-    VITE_SOME_KEY?: string;
-    // Add other environment variables as needed
+    PORT?: string;
   }
-}
-
-declare var process: NodeJS.Process;
-
-interface NodeJS.Process {
-  env: NodeJS.ProcessEnv;
 }
