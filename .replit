@@ -10,7 +10,7 @@ run = ["sh", "-c", "node --import 'data:text/javascript,import { register } from
 
 [[ports]]
 localPort = 8080
-externalPort = 3000
+externalPort = 80
 
 [workflows]
 runButton = "Run"
