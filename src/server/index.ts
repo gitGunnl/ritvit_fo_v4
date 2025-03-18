@@ -1,3 +1,4 @@
+
 import express from 'express';
 import path from 'path';
 import { fileURLToPath } from 'url';
@@ -13,17 +14,16 @@ const __dirname = path.dirname(__filename);
 const app = express();
 const port = process.env.PORT || 8080;
 
+// Serve static files from the dist directory
 const staticPath = path.join(__dirname, '..', '..', 'dist');
 app.use(express.static(staticPath));
 
-// SPA fallback
+// SPA fallback - serve index.html for all routes
 app.get('*', (req, res) => {
   res.sendFile(path.join(staticPath, 'index.html'));
 });
 
-// Start the server
 app.listen(port, '0.0.0.0', () => {
-  console.log(`Server running on port ${port} (0.0.0.0)`);
-  console.log(`Server should be accessible externally`);
+  console.log(`Server running on port ${port}`);
   console.log(`Static files served from: ${staticPath}`);
 });
