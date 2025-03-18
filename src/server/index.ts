@@ -1,4 +1,3 @@
-
 import express from 'express';
 import path from 'path';
 import { fileURLToPath } from 'url';
@@ -12,6 +11,20 @@ const __dirname = path.dirname(__filename);
 
 // Initialize express
 const app = express();
+
+// Diagnostic logging
+console.log('Server starting...');
+console.log('Environment check:', {
+  PORT: process.env.PORT,
+  NODE_ENV: process.env.NODE_ENV,
+  OPENAI_CONFIG: !!process.env.OPENAI_API_KEY && !!process.env.OPENAI_ASSISTANT_ID
+});
+
+app.use((req, res, next) => {
+  console.log(`${req.method} ${req.path}`);
+  next();
+});
+
 const port = process.env.PORT || 8080;
 
 // Serve static files from the dist directory
@@ -26,25 +39,4 @@ app.get('*', (req, res) => {
 app.listen(port, '0.0.0.0', () => {
   console.log(`Server running on port ${port}`);
   console.log(`Static files served from: ${staticPath}`);
-});
-import express from 'express';
-import path from 'path';
-import { fileURLToPath } from 'url';
-
-const PORT = process.env.PORT || 8080;
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-
-const app = express();
-
-// Serve static files from the dist directory
-app.use(express.static(path.resolve(__dirname, '../../dist')));
-
-// Always send index.html for any request (SPA support)
-app.get('*', (req, res) => {
-  res.sendFile(path.resolve(__dirname, '../../dist/index.html'));
-});
-
-app.listen(PORT, '0.0.0.0', () => {
-  console.log(`Server is running on port ${PORT}`);
 });
