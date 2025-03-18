@@ -1,6 +1,4 @@
-
 modules = ["nodejs-20", "web"]
-run = "npm run dev"
 
 [nix]
 channel = "stable-24_05"
@@ -11,37 +9,15 @@ build = ["sh", "-c", "npm run build"]
 run = ["sh", "-c", "npm run start"]
 
 [[ports]]
-localPort = 3000
-externalPort = 80
-
-[[ports]]
-localPort = 3001
-
-[[ports]]
 localPort = 8080
-
-[[ports]]
-localPort = 8081
-externalPort = 8081
-
-[[ports]]
-localPort = 8082
 externalPort = 3000
 
 [workflows]
 runButton = "Run"
 
 [[workflows.workflow]]
-name = "Server"
-author = 36104266
-
-[[workflows.workflow.tasks]]
-task = "shell.exec"
-args = "bun run src/server/index.ts"
-
-[[workflows.workflow]]
 name = "Run"
-author = 36104266
+mode = "sequential"
 
 [[workflows.workflow.tasks]]
 task = "shell.exec"
