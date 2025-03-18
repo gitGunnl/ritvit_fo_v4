@@ -1,4 +1,3 @@
-
 import React from 'react';
 import Navigation from "@/components/Navigation";
 import { Button } from "@/components/ui/button";
@@ -8,7 +7,6 @@ const ScenarioTrainer = () => {
   return (
     <div className="min-h-screen bg-background text-text">
       <Navigation />
-      
       {/* Hero Section */}
       <div className="relative min-h-[80vh] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
@@ -29,14 +27,6 @@ const ScenarioTrainer = () => {
             <p className="mt-6 text-xl text-muted-foreground max-w-3xl mx-auto animate-fade-up">
               Transform passive learning into active skill development. Practice real workplace scenarios with AI-driven roleplay, anytime, anywhere.
             </p>
-            <div className="flex justify-center gap-4 animate-fade-up">
-              <Button size="lg" className="h-12 px-8">
-                Try Free Demo <ArrowRight className="ml-2" />
-              </Button>
-              <Button variant="outline" size="lg" className="h-12 px-8">
-                Learn More
-              </Button>
-            </div>
           </div>
         </div>
       </div>
