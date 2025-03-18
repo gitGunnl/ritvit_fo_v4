@@ -27,6 +27,11 @@ const ScenarioTrainer = () => {
             <p className="mt-6 text-xl text-muted-foreground max-w-3xl mx-auto animate-fade-up">
               Transform passive learning into active skill development. Practice real workplace scenarios with AI-driven roleplay, anytime, anywhere.
             </p>
+            <div className="mt-8 p-4 bg-primary/5 rounded-lg border border-border max-w-3xl mx-auto">
+              <p className="text-lg text-text/80">
+                This is a research and development project exploring the possibilities of AI-driven scenario training. We're actively working on launching an MVP (Minimum Viable Product) to bring this innovative learning approach to you as soon as possible.
+              </p>
+            </div>
           </div>
         </div>
       </div>
