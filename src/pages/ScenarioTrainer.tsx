@@ -1,5 +1,6 @@
 
 import React from "react";
+console.log("ScenarioTrainer module loaded");
 import { useNavigate } from "react-router-dom";
 
 export default function ScenarioTrainer() {

@@ -28,7 +28,15 @@ const App = () => (
           <Route path="/blog" element={<BlogIndex />} />
           <Route path="/blog/:id" element={<BlogPost />} />
           <Route path="/aboutCourse" element={<AboutCourse />} />
-          <Route path="/scenariotrainer" element={<ScenarioTrainer />} /> {/* Added route */}
+          <Route 
+            path="/scenariotrainer" 
+            element={
+              <>
+                {console.log("Attempting to render ScenarioTrainer")}
+                <ScenarioTrainer />
+              </>
+            } 
+          />
         </Routes>
       </BrowserRouter>
     </TooltipProvider>
