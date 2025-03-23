@@ -32,15 +32,16 @@ externalPort = 8081
 localPort = 8082
 externalPort = 3000
 
-# Workflow configuration for development
 [workflows]
-runButton = "Dev"
+runButton = "Run Dev Server"
 
 [[workflows.workflow]]
-name = "Dev"
+name = "Run Dev Server"
 author = 36104266
 mode = "sequential"
 
 [[workflows.workflow.tasks]]
 task = "shell.exec"
-args = ["npm", "run", "dev", "--", "--port", "3001", "--host", "0.0.0.0", "--strictPort"]
+args = "npm run dev -- --port 3001 --host 0.0.0.0 --strictPort"
+
+
