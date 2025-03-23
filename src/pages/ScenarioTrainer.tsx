@@ -5,11 +5,10 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { CheckCircle, Zap, Users, Sparkles, Shield, BarChart, Clock, MessageSquare } from "lucide-react";
 
 export default function ScenarioTrainer() {
-  // Animation variants
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: { 
-      opacity: 1, 
+      opacity: 1,
       transition: { 
         staggerChildren: 0.15,
         delayChildren: 0.3
@@ -27,7 +26,6 @@ export default function ScenarioTrainer() {
     visible: { opacity: 1, transition: { duration: 0.8 } }
   };
 
-  // Scenario examples data
   const scenarios = [
     {
       title: "Customer Complaint Resolution",
@@ -46,7 +44,6 @@ export default function ScenarioTrainer() {
     }
   ];
 
-  // Benefits data
   const benefits = [
     {
       title: "Practice Anytime",
@@ -72,47 +69,29 @@ export default function ScenarioTrainer() {
 
   return (
     <div className="bg-background min-h-screen">
-      {/* Hero Section */}
       <motion.section 
         className="relative py-24 overflow-hidden"
         initial="hidden"
         animate="visible"
         variants={containerVariants}
       >
-        <div className="absolute inset-0 z-0 bg-gradient-to-b from-primary/10 to-background/5"></div>
         <div className="container mx-auto px-4 relative z-10">
-          <div className="flex flex-col lg:flex-row items-center justify-between gap-12">
-            <motion.div variants={itemVariants} className="lg:w-1/2">
-              <h1 className="text-5xl md:text-6xl font-bold text-foreground tracking-tight mb-6">
-                <span className="text-primary">Scenario Trainer</span>
-                <br />
-                <span className="text-4xl md:text-5xl">Interactive Skills Training That Works</span>
-              </h1>
-              <p className="text-xl text-muted-foreground mb-8 leading-relaxed">
-                Transform passive learning into practical skills with AI-driven roleplay. Practice real workplace scenarios anytime, receive instant feedback, and develop confidence faster.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4">
-                <Button size="lg" className="bg-primary hover:bg-primary/90 text-white font-medium">
-                  Try Free Demo
-                </Button>
-                <Button size="lg" variant="outline" className="border-primary text-primary hover:bg-primary/10">
-                  Learn More
-                </Button>
-              </div>
-            </motion.div>
-            <motion.div variants={itemVariants} className="lg:w-1/2 flex justify-center">
-              <div className="bg-card p-6 rounded-xl shadow-xl border border-border">
-                <img 
-                  src="/images/scenario-demo.svg" 
-                  alt="Scenario Trainer Demo" 
-                  className="w-full h-auto rounded-lg"
-                  onError={(e) => {
-                    e.currentTarget.src = "https://placehold.co/600x400/2563eb/ffffff?text=AI-Driven+Training";
-                  }}
-                />
-              </div>
-            </motion.div>
-          </div>
+          <motion.div variants={itemVariants} className="text-center max-w-3xl mx-auto">
+            <h1 className="text-5xl md:text-6xl font-bold text-foreground tracking-tight mb-6">
+              <span className="text-primary">Scenario Trainer</span>
+            </h1>
+            <p className="text-xl text-muted-foreground mb-8">
+              Transform passive learning into practical skills with AI-driven roleplay. Practice real workplace scenarios anytime, receive instant feedback, and develop confidence faster.
+            </p>
+            <div className="flex flex-col sm:flex-row justify-center gap-4">
+              <Button size="lg" className="bg-primary hover:bg-primary/90 text-white font-medium">
+                Try Free Demo
+              </Button>
+              <Button size="lg" variant="outline" className="border-primary text-primary hover:bg-primary/10">
+                Learn More
+              </Button>
+            </div>
+          </motion.div>
         </div>
       </motion.section>
 
