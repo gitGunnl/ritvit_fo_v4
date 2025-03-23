@@ -5,8 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "start": "ts-node src/server/index.ts",
-    "build": "tsc && vite build",
+    "start": "NODE_OPTIONS=\"--loader ts-node/esm\" node src/server/index.ts",
+    "build": "tsc --project tsconfig.server.json && vite build",
     "build:dev": "vite build --mode development",
     "lint": "eslint .",
     "preview": "vite preview --host 0.0.0.0 --port ${PORT:-3000}"
