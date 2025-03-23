@@ -1,20 +1,25 @@
 
+# Main configuration
 modules = ["nodejs-20", "web"]
 
+# Nix package manager configuration
 [nix]
 channel = "stable-24_05"
 
+# Deployment configuration
 [deployment]
 deploymentTarget = "cloudrun"
 build = ["sh", "-c", "npm run build"]
 run = ["sh", "-c", "npm run start"]
 
+# Port configuration
 [[ports]]
 localPort = 3000
 externalPort = 80
 
 [[ports]]
 localPort = 3001
+externalPort = 3001
 
 [[ports]]
 localPort = 8080
@@ -27,6 +32,7 @@ externalPort = 8081
 localPort = 8082
 externalPort = 3000
 
+# Workflow configuration for development
 [workflows]
 runButton = "Dev"
 
@@ -37,4 +43,4 @@ mode = "sequential"
 
 [[workflows.workflow.tasks]]
 task = "shell.exec"
-args = "npm run dev -- --port 3001 --host 0.0.0.0 --strictPort"
+args = ["npm", "run", "dev", "--", "--port", "3001", "--host", "0.0.0.0", "--strictPort"]
