@@ -10,7 +10,6 @@ import Contact from "./pages/contact";
 import BlogIndex from "./pages/blog";
 import BlogPost from "./pages/blog/[id]";
 import AboutCourse from "./pages/aboutCourse";
-import ScenarioTrainer from "./pages/ScenarioTrainer"; // Added import
 
 const queryClient = new QueryClient();
 
@@ -28,7 +27,6 @@ const App = () => (
           <Route path="/blog" element={<BlogIndex />} />
           <Route path="/blog/:id" element={<BlogPost />} />
           <Route path="/aboutCourse" element={<AboutCourse />} />
-          <Route path="/scenariotrainer" element={<ScenarioTrainer />} /> {/* Added route */}
         </Routes>
       </BrowserRouter>
     </TooltipProvider>
