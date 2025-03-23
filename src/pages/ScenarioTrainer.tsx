@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Button } from "@/components/ui/button";
@@ -17,7 +16,7 @@ export default function ScenarioTrainer() {
       } 
     }
   };
-  
+
   const itemVariants = {
     hidden: { y: 20, opacity: 0 },
     visible: { y: 0, opacity: 1, transition: { duration: 0.5 } }
@@ -101,38 +100,16 @@ export default function ScenarioTrainer() {
                 </Button>
               </div>
             </motion.div>
-            
-            <motion.div variants={itemVariants} className="lg:w-1/2">
-              <div className="relative bg-card rounded-xl shadow-2xl overflow-hidden border border-border">
-                <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-primary via-accent to-primary"></div>
-                <div className="p-8">
-                  <div className="flex items-center mb-4">
-                    <div className="w-3 h-3 rounded-full bg-destructive mr-2"></div>
-                    <div className="w-3 h-3 rounded-full bg-yellow-500 mr-2"></div>
-                    <div className="w-3 h-3 rounded-full bg-green-500 mr-2"></div>
-                    <div className="ml-2 text-sm font-mono text-muted-foreground">Scenario: Sales Negotiation</div>
-                  </div>
-                  <div className="space-y-4 font-mono">
-                    <div className="bg-primary/10 p-4 rounded-lg text-sm">
-                      <p className="text-primary font-semibold mb-1">Customer:</p>
-                      <p>Your pricing is much higher than your competitors. I'm considering going with them instead.</p>
-                    </div>
-                    
-                    <div className="bg-muted p-4 rounded-lg text-sm">
-                      <p className="text-accent font-semibold mb-1">You:</p>
-                      <p>I understand your concern about the price difference. Our solution includes premium features that add significant value, like 24/7 support and customized reporting...</p>
-                    </div>
-                    
-                    <div className="bg-primary/10 p-4 rounded-lg text-sm">
-                      <p className="text-primary font-semibold mb-1">Customer:</p>
-                      <p>Those features sound nice, but I'm not sure they're worth the extra cost for our needs.</p>
-                    </div>
-                    
-                    <div className="border-b border-dashed border-border p-2">
-                      <p className="text-muted-foreground text-center text-sm">Your response...</p>
-                    </div>
-                  </div>
-                </div>
+            <motion.div variants={itemVariants} className="lg:w-1/2 flex justify-center">
+              <div className="bg-card p-6 rounded-xl shadow-xl border border-border">
+                <img 
+                  src="/images/scenario-demo.svg" 
+                  alt="Scenario Trainer Demo" 
+                  className="w-full h-auto rounded-lg"
+                  onError={(e) => {
+                    e.currentTarget.src = "https://placehold.co/600x400/2563eb/ffffff?text=AI-Driven+Training";
+                  }}
+                />
               </div>
             </motion.div>
           </div>
@@ -154,7 +131,7 @@ export default function ScenarioTrainer() {
               Most workplace training relies on passive learning. Scenario Trainer changes that with active, AI-driven practice that builds real skills.
             </p>
           </motion.div>
-          
+
           <motion.div 
             variants={itemVariants}
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
@@ -189,7 +166,7 @@ export default function ScenarioTrainer() {
               Practice handling common workplace situations in a safe environment, with AI that provides realistic responses and helpful feedback.
             </p>
           </motion.div>
-          
+
           <motion.div variants={itemVariants} className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {scenarios.map((scenario, index) => (
               <Card key={index} className="bg-card border border-border hover:shadow-xl transition-all duration-300 group">
@@ -211,42 +188,9 @@ export default function ScenarioTrainer() {
         </div>
       </motion.section>
 
-      {/* Testimonial Section */}
+      {/* Features Section */}
       <motion.section 
-        className="py-20 bg-primary/5"
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-        variants={fadeIn}
-      >
-        <div className="container mx-auto px-4">
-          <div className="max-w-3xl mx-auto text-center">
-            <div className="mb-6">
-              <span className="inline-block">
-                {[...Array(5)].map((_, i) => (
-                  <span key={i} className="text-yellow-500 text-2xl">★</span>
-                ))}
-              </span>
-            </div>
-            <blockquote className="text-2xl font-medium italic mb-8">
-              "Scenario Trainer has transformed our onboarding process. New hires are handling customer interactions with confidence in half the time it used to take. The immediate feedback loop is invaluable."
-            </blockquote>
-            <div className="flex items-center justify-center">
-              <div className="h-12 w-12 rounded-full bg-primary/20 flex items-center justify-center text-primary font-bold text-xl">
-                MR
-              </div>
-              <div className="ml-4 text-left">
-                <p className="font-semibold">Mariam Rodriguez</p>
-                <p className="text-muted-foreground">Training Manager, TechSolutions Inc.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </motion.section>
-
-      {/* Features Grid */}
-      <motion.section 
-        className="py-24"
+        className="py-20 bg-muted/30"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
@@ -254,28 +198,16 @@ export default function ScenarioTrainer() {
       >
         <div className="container mx-auto px-4">
           <motion.div variants={itemVariants} className="text-center mb-16">
-            <h2 className="text-3xl font-bold mb-4">Key Features</h2>
+            <h2 className="text-3xl font-bold mb-4">Powerful Features</h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Everything you need to deliver effective, practical training at scale.
+              Our platform provides everything you need to create effective, engaging training experiences.
             </p>
           </motion.div>
-          
-          <motion.div variants={itemVariants} className="grid grid-cols-1 md:grid-cols-2 gap-8">
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <Card className="bg-card border border-border">
               <CardHeader>
-                <Zap className="h-10 w-10 text-primary mb-2" />
-                <CardTitle>Immediate, Actionable Feedback</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-muted-foreground">
-                  After each interaction, receive detailed feedback on your performance, highlighting strengths and suggesting improvements. Learn and adjust in real-time, accelerating skill development.
-                </p>
-              </CardContent>
-            </Card>
-            
-            <Card className="bg-card border border-border">
-              <CardHeader>
-                <Users className="h-10 w-10 text-primary mb-2" />
+                <BarChart className="h-10 w-10 text-primary mb-2" />
                 <CardTitle>Industry-Specific Scenarios</CardTitle>
               </CardHeader>
               <CardContent>
@@ -284,7 +216,7 @@ export default function ScenarioTrainer() {
                 </p>
               </CardContent>
             </Card>
-            
+
             <Card className="bg-card border border-border">
               <CardHeader>
                 <Sparkles className="h-10 w-10 text-primary mb-2" />
@@ -296,7 +228,7 @@ export default function ScenarioTrainer() {
                 </p>
               </CardContent>
             </Card>
-            
+
             <Card className="bg-card border border-border">
               <CardHeader>
                 <Shield className="h-10 w-10 text-primary mb-2" />
@@ -304,11 +236,11 @@ export default function ScenarioTrainer() {
               </CardHeader>
               <CardContent>
                 <p className="text-muted-foreground">
-                  GDPR compliant with minimal data retention. All training interactions are encrypted during transfer and storage, ensuring your team's practice remains private and secure.
+                  Your data stays secure with end-to-end encryption and GDPR compliance. We never use your training interactions to train our models.
                 </p>
               </CardContent>
             </Card>
-          </motion.div>
+          </div>
         </div>
       </motion.section>
 
