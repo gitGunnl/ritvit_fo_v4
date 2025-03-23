@@ -132,8 +132,7 @@ const ScenarioTrainer: FC = () => {
               {
                 title: "Interactive AI Roleplay",
                 description:
-                  "Engage in dynamic, realistic scenarios—from negotiations to crisis management and even sports visualization—with AI-driven characters.
-                  "
+                  "Engage in dynamic, realistic scenarios—from negotiations to crisis management and even sports visualization—with AI-driven characters."
               },
               {
                 title: "Personalized Performance Evaluation",
