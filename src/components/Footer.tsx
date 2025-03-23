@@ -61,7 +61,7 @@ const Footer = () => {
           </div>
 
           <div className="space-y-4">
-            <h3 className="text-lg font-semibold text-text">Saxxmband</h3>
+            <h3 className="text-lg font-semibold text-text">Samband</h3>
             <div className="space-y-2">
               <p className="text-text/80">
                 <strong>Telefon:</strong>{" "}
