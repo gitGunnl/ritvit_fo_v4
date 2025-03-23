@@ -41,6 +41,11 @@ const Footer = () => {
                   Samband
                 </Link>
               </li>
+              <li>
+                <Link to="/scenariotrainer" className="text-text/80 hover:text-primary">
+                  Scenario Trainer
+                </Link>
+              </li>
             </ul>
           </div>
 
