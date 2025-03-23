@@ -1,4 +1,3 @@
-
 import express from 'express';
 import path from 'path';
 import { fileURLToPath } from 'url';
@@ -6,7 +5,7 @@ import dotenv from 'dotenv';
 import cors from 'cors';
 
 // Import routes
-import chatRouter from './routes/chat.js';
+import * as chatRouter from './routes/chat';
 import apiRouter from './routes/api.js';
 
 dotenv.config();

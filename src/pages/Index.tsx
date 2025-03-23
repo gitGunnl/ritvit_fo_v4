@@ -520,7 +520,7 @@ const openSignupForm = () => {
         </div>
       </section>
 
-      <ChatbotButton />
+      {/* <ChatbotButton /> */}
       <Footer />
     </div>
   );

@@ -11,5 +11,8 @@
     "noEmit": false,
     "allowImportingTsExtensions": false
   },
-  "include": ["src/server/**/*"]
+  "include": ["src/server/**/*"],
+  "ts-node": {
+    "esm": true
+  }
 }
