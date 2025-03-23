@@ -32,7 +32,11 @@ const App = () => (
             path="/scenariotrainer" 
             element={
               <>
-                {console.log("Route matched: /scenariotrainer")}
+                {console.log("DEBUG - Route attempted to render:", {
+                  path: "/scenariotrainer",
+                  component: ScenarioTrainer?.name,
+                  location: window.location.pathname
+                })}
                 <ScenarioTrainer />
               </>
             } 

@@ -1,8 +1,17 @@
 
 import React, { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 export default function ScenarioTrainer() {
+  const location = useLocation();
+  
+  useEffect(() => {
+    console.log("DEBUG - ScenarioTrainer mounted:", {
+      pathname: location.pathname,
+      component: "ScenarioTrainer",
+      timestamp: new Date().toISOString()
+    });
+  }, []);
   useEffect(() => {
     console.log("ScenarioTrainer component mounted");
   }, []);
