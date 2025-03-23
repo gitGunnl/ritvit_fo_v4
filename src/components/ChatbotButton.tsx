@@ -1,7 +1,6 @@
-import ChatWindow from './ChatWindow';
 
+// This component has been removed as it's no longer needed
 const ChatbotButton = () => {
-  // Chat interface disabled - using Replit Secrets for configuration
   return null;
 };
 
