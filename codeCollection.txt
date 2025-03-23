@@ -55,7 +55,6 @@ const ChatWindow = ({ onClose }: ChatWindowProps) => {
     setIsLoading(true);
 
     try {
-      console.log('Sending chat request to /chat');
       const response = await fetch('/chat', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -67,17 +66,12 @@ const ChatWindow = ({ onClose }: ChatWindowProps) => {
         })
       });
 
-      console.log('Response status:', response.status);
-
       if (!response.ok) {
         const errorData = await response.json().catch(() => ({}));
-        console.error('API Error details:', errorData);
-        throw new Error(errorData.details || `Server responded with ${response.status}`);
+        throw new Error(errorData.details || 'Failed to get response');
       }
 
       const data = await response.json();
-      console.log('Received response from chatbot');
-
       const botResponse: ChatMessage = {
         id: (Date.now() + 1).toString(),
         role: 'assistant',
@@ -164,156 +158,31 @@ export default ChatWindow;
 
 File: src/components/ChatbotButton.tsx
 ```
+import { useState } from 'react';
+import { Button } from './ui/button';
+import { MessageSquare } from 'lucide-react';
 import ChatWindow from './ChatWindow';
 
 const ChatbotButton = () => {
-  // Chat interface disabled - using Replit Secrets for configuration
-  return null;
-};
+  const [isOpen, setIsOpen] = useState(false);
 
-export default ChatbotButton;
-```
-
-File: src/components/Footer.tsx
-```
-import { Link } from "react-router-dom";
-
-const Footer = () => {
   return (
-    <footer className="bg-background/80 backdrop-blur-md border-t border-border">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-          <div className="space-y-4">
-            {/* Logo */}
-            <div className="flex items-center">
-              <Link to="/" className="flex items-center">
-                <img
-                  src="/logos/logo-header.png"
-                  alt="Logo"
-                  className="h-10"
-                  width="auto"
-                  height="40"
-                />
-              </Link>
-            </div>
-            <p className="text-text/80">
-              Ritvit serfrøði í verðinsklassa í Føroyum.
-            </p>
-          </div>
+    <div className="fixed bottom-4 right-4 z-50">
+      {isOpen && <ChatWindow onClose={() => setIsOpen(false)} />}
 
-          <div className="space-y-4">
-            <h3 className="text-lg font-semibold text-text">Tøkni Tænastan</h3>
-            <ul className="space-y-2">
-              <li>
-                <Link to="/about" className="text-text/80 hover:text-primary">
-                  Um okkum
-                </Link>
-              </li>
-              <li>
-                <Link to="/services" className="text-text/80 hover:text-primary">
-                  Tænastur
-                </Link>
-              </li>
-              <li>
-                <Link to="/contact" className="text-text/80 hover:text-primary">
-                  Samband
-                </Link>
-              </li>
-            </ul>
-          </div>
-
-          <div className="space-y-4">
-            <h3 className="text-lg font-semibold text-text">Annað</h3>
-            <ul className="space-y-2">
-              <li>
-                <Link to="/privacy" className="text-text/80 hover:text-primary">
-                  Privatlívs politik
-                </Link>
-              </li>
-              <li>
-                <Link to="/terms" className="text-text/80 hover:text-primary">
-                  Terms of Service
-                </Link>
-              </li>
-            </ul>
-          </div>
-
-          <div className="space-y-4">
-            <h3 className="text-lg font-semibold text-text">Samband</h3>
-            <div className="space-y-2">
-              <p className="text-text/80">
-                <strong>Telefon:</strong>{" "}
-                <a href="tel:+298919444" className="hover:text-primary">
-                  +298 919444
-                </a>
-              </p>
-              <p className="text-text/80">
-                <strong>E-mail:</strong>{" "}
-                <a href="mailto:info@ritvit.fo" className="hover:text-primary">
-                  info@ritvit.fo
-                </a>
-              </p>
-              <div className="flex gap-4">
-                <a
-                  href="https://www.facebook.com/profile.php?id=61557593776267"
-                  className="hover:text-primary"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 24 24"
-                    fill="currentColor"
-                    className="w-8 h-8 text-primary"
-                  >
-                    <path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm3 8h-1.35c-.538 0-.65.221-.65.778v1.222h2l-.209 2h-1.791v7h-3v-7h-2v-2h2v-2.308c0-1.769.931-2.692 3.029-2.692h1.971v3z" />
-                  </svg>
-                </a>
-                <a
-                  href="https://linkedin.com/company/tøkni-tænastan"
-                  className="hover:text-primary"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 24 24"
-                    fill="currentColor"
-                    className="w-8 h-8 text-primary"
-                  >
-                    <path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm-2 16h-2v-6h2v6zm-1-6.891c-.607 0-1.1-.496-1.1-1.109 0-.612.492-1.109 1.1-1.109s1.1.497 1.1 1.109c0 .613-.493 1.109-1.1 1.109zm8 6.891h-1.998v-2.861c0-1.881-2.002-1.722-2.002 0v2.861h-2v-6h2v1.093c.872-1.616 4-1.736 4 1.548v3.359z" />
-                  </svg>
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div className="mt-8 pt-8 border-t border-border">
-          <p className="text-center text-text/60">
-            © {new Date().getFullYear()} Tøkni Tænastan. All rights reserved.
-          </p>
-        </div>
-      </div>
-    </footer>
+      <Button
+        onClick={() => setIsOpen(!isOpen)}
+        size="lg"
+        className="rounded-full w-16 h-16 bg-primary hover:bg-primary/80 
+                   transition-transform duration-200 hover:scale-105"
+      >
+        <MessageSquare className="w-6 h-6" />
+      </Button>
+    </div>
   );
 };
 
-export default Footer;
-
-```
-
-File: src/components/ui/collapsible.tsx
-```
-import * as CollapsiblePrimitive from "@radix-ui/react-collapsible"
-
-const Collapsible = CollapsiblePrimitive.Root
-
-const CollapsibleTrigger = CollapsiblePrimitive.CollapsibleTrigger
-
-const CollapsibleContent = CollapsiblePrimitive.CollapsibleContent
-
-export { Collapsible, CollapsibleTrigger, CollapsibleContent }
+export default ChatbotButton;
 
 ```
 
@@ -327,18 +196,43 @@ export const MAX_MESSAGES = 10; // Maximum number of messages in chat history
 File: src/server/api.ts
 ```
 import express from 'express';
+import OpenAI from 'openai';
 
 const router = express.Router();
+
+router.post('/chat', async (req, res) => {
+  try {
+    const { messages } = req.body;
+
+    const openai = new OpenAI({
+      apiKey: process.env.OPENAI_API_KEY,
+    });
+
+    const completion = await openai.chat.completions.create({
+      model: "gpt-3.5-turbo",
+      messages: messages || [],
+    });
+
+    res.json({ 
+      message: completion.choices[0]?.message?.content || 'No response generated'
+    });
+  } catch (error) {
+    console.error('Chat API Error:', error);
+    res.status(500).json({ error: 'Failed to process chat request' });
+  }
+});
+
+export default router;
 
 router.post('/contact', async (req, res) => {
   try {
     const { name, email, message } = req.body;
-
+    
     const formData = new FormData();
     formData.append("entry.1179687836", name);
     formData.append("entry.263197538", email);
     formData.append("entry.240567695", message);
-
+    
     const response = await fetch(
       'https://docs.google.com/forms/d/e/1FAIpQLSf8FFci-J91suIjxY2xh4GD-DQ-UfZftUNxq3dUdXkgJAjB1Q/formResponse',
       {
@@ -356,35 +250,31 @@ router.post('/contact', async (req, res) => {
     });
   }
 });
-
-export default router;
 ```
 
 File: src/server/routes/chat.ts
 ```
+
 import express from 'express';
 import OpenAI from 'openai';
-import dotenv from 'dotenv';
-
-dotenv.config();
 
 const router = express.Router();
 
 router.post('/', async (req, res) => {
   try {
-    const { messages } = req.body;
-
+    const { message } = req.body;
+    
     if (!process.env.OPENAI_API_KEY) {
       throw new Error('OpenAI API key not configured');
     }
-
+    
     const openai = new OpenAI({
       apiKey: process.env.OPENAI_API_KEY,
     });
-
+    
     const completion = await openai.chat.completions.create({
       model: "gpt-3.5-turbo",
-      messages: messages || [],
+      messages: [{ role: "user", content: message }],
     });
 
     res.json({ 
@@ -393,58 +283,35 @@ router.post('/', async (req, res) => {
   } catch (error: any) {
     console.error('Chat API Error:', error);
     res.status(500).json({ 
-      error: error.message || 'Failed to process chat request',
-      details: error.toString()
+      error: error.message || 'Failed to process chat request' 
     });
   }
 });
 
 export default router;
+
 ```
 
 File: src/server/index.ts
 ```
 import express from 'express';
-import path from 'path';
-import { fileURLToPath } from 'url';
-import dotenv from 'dotenv';
+import cors from 'cors';
+import api from './api';
+import chatRouter from './routes/chat';
 
-// Load environment variables
-dotenv.config();
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-
-// Initialize express
 const app = express();
+const port = process.env.PORT || 3000;
 
-// Diagnostic logging
-console.log('Server starting...');
-console.log('Environment check:', {
-  PORT: process.env.PORT,
-  NODE_ENV: process.env.NODE_ENV,
-  OPENAI_CONFIG: !!process.env.OPENAI_API_KEY && !!process.env.OPENAI_ASSISTANT_ID
-});
-
-app.use((req, res, next) => {
-  console.log(`${req.method} ${req.path}`);
-  next();
-});
-
-const port = process.env.PORT || 8080;
-
-// Serve static files from the dist directory
-const staticPath = path.join(__dirname, '..', '..', 'dist');
-app.use(express.static(staticPath));
-
-// SPA fallback - serve index.html for all routes
-app.get('*', (req, res) => {
-  res.sendFile(path.join(staticPath, 'index.html'));
-});
+app.use(cors({
+  origin: true,
+  credentials: true
+}));
+app.use(express.json());
+app.use('/api', api);
+app.use('/api/chat', chatRouter);
 
 app.listen(port, '0.0.0.0', () => {
   console.log(`Server running on port ${port}`);
-  console.log(`Static files served from: ${staticPath}`);
 });
 ```
 
@@ -470,41 +337,30 @@ const openSignupForm = () => {
     <div className="min-h-screen flex flex-col bg-background text-text">
       <Navigation />
 
-      {/* Hero Section - Enhanced with Animations */}
-      <section className="min-h-[90vh] flex items-center justify-center relative overflow-hidden">
-        {/* Animated background effect */}
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--primary)_0%,_transparent_65%)] opacity-80 animate-pulse [animation-duration:8s]"></div>
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_right,_var(--accent)_0%,_transparent_70%)] opacity-30 mix-blend-overlay"></div>
-        
-        <div className="max-w-4xl mx-auto text-center px-4 z-10">
-          <div className="inline-block mb-8 px-8 py-3 bg-primary/20 backdrop-blur-sm rounded-full animate-fade-down border border-primary/30 shadow-lg shadow-primary/10">
-            <span className="text-primary font-semibold tracking-wide">Nýtt skeið byrjar skjótt!</span>
+      {/* Hero Section 2 - Centered with Floating Elements */}
+      <section className="min-h-[90vh] flex items-center justify-center relative bg-[radial-gradient(circle_at_center,_var(--primary)_0%,_transparent_65%)]">
+        <div className="max-w-4xl mx-auto text-center px-4">
+          <div className="inline-block mb-6 px-6 py-2 bg-primary/10 rounded-full animate-fade-down">
+            <span className="text-primary">Nýtt skeið byrjar skjótt!</span>
           </div>
-          <h1 className="text-4xl sm:text-6xl lg:text-7xl font-bold mb-8 animate-fade-up leading-tight drop-shadow-md">
-            Steðga at spilla tíð upp á uppgávur, sum 
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary via-primary/90 to-accent px-2 whitespace-nowrap">ritvit</span> 
-            kann gera fyri teg!
+          <h1 className="text-4xl sm:text-6xl lg:text-7xl font-bold mb-6 animate-fade-up leading-tight">
+            Steðga at spilla tíð upp á uppgávur, sum <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent">ritvit</span> kann gera fyri teg!
           </h1>
-          <p className="text-xl mb-10 text-text/90 animate-fade-up [animation-delay:200ms] max-w-3xl mx-auto">
+          <p className="text-xl mb-8 text-text/80 animate-fade-up [animation-delay:200ms]">
             Lær at brúka ritvit upp á fáar dagar – og fá meira tíð til tað, sum veruliga hevur týdning fyri teg.
           </p>
-          <div className="flex flex-col sm:flex-row justify-center gap-6 animate-fade-up [animation-delay:400ms]">
+          <div className="flex flex-col sm:flex-row justify-center gap-4 animate-fade-up [animation-delay:400ms]">
             <Button
               size="lg"
-              className="bg-primary hover:bg-primary/90 text-text group transition-all duration-300 shadow-lg shadow-primary/20 border border-primary/80 px-8 py-6"
+              className="bg-primary hover:bg-primary/80 text-text group transition-all duration-300"
               onClick={openSignupForm}
             >
-              <span className="group-hover:translate-x-2 transition-transform flex items-center gap-2">
-                Skriva teg upp til net skeið
-                <ArrowRight className="w-5 h-5 inline-block" />
+              <span className="group-hover:translate-x-1 transition-transform">
+                Skriva teg upp til net skeið →
               </span>
             </Button>
             <Link to="/aboutCourse">
-              <Button 
-                variant="outline" 
-                size="lg" 
-                className="border-2 border-primary/70 text-primary hover:bg-primary/10 px-8 py-6 backdrop-blur-sm"
-              >
+              <Button variant="outline" size="lg" className="border-primary text-primary">
                 Les meira um skeiði
               </Button>
             </Link>
@@ -513,115 +369,84 @@ const openSignupForm = () => {
       </section>
 
       {/* Course Introduction / Core Offer */}
-      <section className="py-24 px-4 sm:px-6 lg:px-8 bg-background/30">
+      <section className="py-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
-          {/* Glass-like card with enhanced styling */}
-          <div className="bg-primary/10 p-8 md:p-12 relative overflow-hidden border border-primary/30 backdrop-blur-sm rounded-xl shadow-xl shadow-primary/5">
-            {/* Decorative element */}
-            <div className="absolute top-0 right-0 h-40 w-40 bg-accent/10 rounded-full blur-3xl opacity-50 -translate-y-1/2 translate-x-1/4"></div>
-            
-            <h2 className="text-3xl md:text-4xl font-bold mb-8 relative z-10 drop-shadow-sm">
+          {/* Glass-like card */}
+          <div className="bg-primary/10 p-8 md:p-12 relative overflow-hidden border border-border backdrop-blur-sm rounded-lg">
+            <h2 className="text-3xl font-bold mb-6">
               Byrja við tí týdningarmesta: Lær at brúka ChatGPT
             </h2>
 
-            {/* Course Card - Enhanced */}
-            <div className="flex flex-col md:flex-row mb-12 bg-primary/5 border-2 border-primary/20 backdrop-blur-sm rounded-xl hover-lift overflow-hidden shadow-lg transition-all duration-500 hover:shadow-primary/20">
-              {/* Course Screenshot with overlay effect */}
-              <div className="md:w-1/2 relative group">
-                <div className="absolute inset-0 bg-gradient-to-r from-primary/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10"></div>
+            {/* Course Card */}
+            <div className="flex flex-col md:flex-row mb-8 bg-primary/10 border border-primary/20 backdrop-blur-sm rounded-lg hover-lift overflow-hidden">
+              {/* Course Screenshot */}
+              <div className="md:w-1/2">
                 <img
                   src="/images/course-screenshot.png"
                   alt="Course Screenshot"
-                  className="object-cover w-full h-full transition-transform duration-700 group-hover:scale-105"
+                  className="object-cover w-full h-full"
                 />
               </div>
-              {/* Course Info - Enhanced */}
-              <div className="p-8 md:p-10 flex flex-col justify-center md:w-1/2 bg-background/40">
-                <div className="flex items-center gap-4 mb-6">
-                  <div className="p-2 bg-background/50 rounded-full shadow-inner">
-                    <img
-                      src="/images/ChatGPT-Logo.webp"
-                      alt="OpenAI Logo"
-                      className="w-12 h-12 object-contain"
-                    />
-                  </div>
-                  <h3 className="text-2xl font-semibold bg-gradient-to-r from-primary via-primary/90 to-accent text-transparent bg-clip-text">
+              {/* Course Info */}
+              <div className="p-8 flex flex-col justify-center md:w-1/2">
+                <div className="flex items-center gap-3 mb-4">
+                  <img
+                    src="/images/ChatGPT-Logo.webp"
+                    alt="OpenAI Logo"
+                    className="w-10 h-10"
+                  />
+                  <h3 className="text-2xl font-semibold bg-gradient-to-r from-primary to-accent text-transparent bg-clip-text">
                     Byrjunarskeið í ChatGPT til Føroysk Skrivstovufólk
                   </h3>
                 </div>
-                <p className="text-text/80 text-lg leading-relaxed">
+                <p className="text-text/80">
                   Lær at brúka ChatGPT gjøgnum eitt serligt samansett skeið – serliga lagað til føroysk skrivstovufólk.
                 </p>
               </div>
             </div>
-            {/* End of Enhanced Course Card */}
+            {/* End of Course Card */}
 
-            <p className="text-xl text-text/90 mb-10 leading-relaxed">
+            <p className="text-xl text-text/80 mb-8">
               Hetta skeiðið er skjótasti háttur at koma í gongd við ritvit – og serliga lagað til føroysk skrivstovufólk!
             </p>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
-              <div className="flex items-start gap-4 p-4 rounded-lg bg-background/50 border border-primary/20 hover:border-primary/40 transition-all hover:shadow-md group">
-                <div className="bg-primary/20 p-3 rounded-full mt-1 group-hover:bg-primary/30 transition-colors">
-                  <CheckCircle2 className="w-6 h-6 text-primary" />
-                </div>
-                <div>
-                  <h4 className="font-bold text-lg text-primary/90 mb-1">Spar tímar hvønn mána</h4>
-                  <p className="text-text/80">Lær hvussu tú kann spara tímar hvønn mána – ímeðan tú ger arbeiði stuttligari.</p>
-                </div>
-              </div>
-              
-              <div className="flex items-start gap-4 p-4 rounded-lg bg-background/50 border border-primary/20 hover:border-primary/40 transition-all hover:shadow-md group">
-                <div className="bg-primary/20 p-3 rounded-full mt-1 group-hover:bg-primary/30 transition-colors">
-                  <CheckCircle2 className="w-6 h-6 text-primary" />
-                </div>
-                <div>
-                  <h4 className="font-bold text-lg text-primary/90 mb-1">Lær í tínum egna tempo</h4>
-                  <p className="text-text/80">Online, fleksibult og lætt at skilja – tilpassað tær.</p>
-                </div>
-              </div>
-              
-              <div className="flex items-start gap-4 p-4 rounded-lg bg-background/50 border border-primary/20 hover:border-primary/40 transition-all hover:shadow-md group">
-                <div className="bg-primary/20 p-3 rounded-full mt-1 group-hover:bg-primary/30 transition-colors">
-                  <CheckCircle2 className="w-6 h-6 text-primary" />
-                </div>
-                <div>
-                  <h4 className="font-bold text-lg text-primary/90 mb-1">Tann besti sparringspartnarin</h4>
-                  <p className="text-text/80">Tú fert ikki at minnast hvussu lívið uttan ChatGPT plagdi at vera.</p>
-                </div>
-              </div>
-              
-              <div className="flex items-start gap-4 p-4 rounded-lg bg-background/50 border border-primary/20 hover:border-primary/40 transition-all hover:shadow-md group">
-                <div className="bg-primary/20 p-3 rounded-full mt-1 group-hover:bg-primary/30 transition-colors">
-                  <CheckCircle2 className="w-6 h-6 text-primary" />
-                </div>
-                <div>
-                  <h4 className="font-bold text-lg text-primary/90 mb-1">Ritvit lærari</h4>
-                  <p className="text-text/80">Fá atgongd til ein ritvit-lærara, sum vegleiðir teg alla leiðina.</p>
-                </div>
-              </div>
-              
-              <div className="flex items-start gap-4 p-4 rounded-lg bg-background/50 border border-primary/20 hover:border-primary/40 transition-all hover:shadow-md group md:col-span-2">
-                <div className="bg-primary/20 p-3 rounded-full mt-1 group-hover:bg-primary/30 transition-colors">
-                  <CheckCircle2 className="w-6 h-6 text-primary" />
-                </div>
-                <div>
-                  <h4 className="font-bold text-lg text-primary/90 mb-1">100% vandaleyst</h4>
-                  <p className="text-text/80">Pengarnir aftur um skeið ikki er nøgdsamt – vit vilja at tú ert nøgd/ur.</p>
-                </div>
-              </div>
-            </div>
-            
-            <div className="bg-accent/10 border border-accent/30 p-6 rounded-lg mb-10 shadow-inner">
-              <p className="text-lg mb-2">
-                <strong className="text-text">Skeiðið ger teg kláran at brúka ritvit frá fyrsta degi – uttan tekniskan forkunnleika.</strong>
-              </p>
-              <p className="text-lg flex items-center gap-2">
-                <span className="text-2xl">📌</span> 
+            <div className="space-y-4 mb-8">
+              <div className="flex items-center gap-3">
+                <CheckCircle2 className="w-6 h-6 text-primary" />
                 <span>
-                  <strong className="text-accent">Eyka bonus:</strong> Tú fært eisini ókeypis atgongd til okkara komandi skeið, "Copilot til Føroysk skrivstovufólk"!
+                  <strong>Lær hvussu tú kann spara tímar hvønn mána</strong> – ímeðan tú ger arbeiði stuttligari.
                 </span>
-              </p>
+              </div>
+              <div className="flex items-center gap-3">
+                <CheckCircle2 className="w-6 h-6 text-primary" />
+                <span>
+                  <strong>Lær í tínum egna tempo</strong> – online, fleksibult og lætt at skilja.
+                </span>
+              </div>
+              <div className="flex items-center gap-3">
+                <CheckCircle2 className="w-6 h-6 text-primary" />
+                <span>
+                  <strong>Tann besti sparringspartnarin</strong> – tú fert ikki at minnast hvussu lívið uttan ChatGPT plagdi at vera.
+                </span>
+              </div>
+              <div className="flex items-center gap-3">
+                <CheckCircle2 className="w-6 h-6 text-primary" />
+                <span>
+                  <strong>Ritvit lærari</strong> – Fá atgongd til ein ritvit-lærara, sum vegleiðir teg alla leiðina.
+                </span>
+              </div>
+              <div className="flex items-center gap-3">
+                <CheckCircle2 className="w-6 h-6 text-primary" />
+                <span>
+                  <strong>100% vandaleyst</strong> – pengarnir aftur um skeið ikki er nøgdsamt.
+                </span>
+              </div>
             </div>
+            <p className="text-lg text-text/80 mb-8">
+              <strong>Skeiðið ger teg kláran at brúka ritvit frá fyrsta degi – uttan tekniskan forkunnleika.</strong>
+            </p>
+            <p className="text-lg text-text/80 mb-8">
+              📌 <strong>Eyka</strong>: Tú fært eisini ókeypis atgongd til okkara komandi skeið, "Copilot til Føroysk skrivstovufólk"!
+            </p>
             {/*Removed Form Here*/}
           </div>
         </div>
@@ -762,40 +587,30 @@ const openSignupForm = () => {
         </div>
       </section>
 
-      {/* Contact Section - Enhanced */}
-      <section className="py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-background to-background/80">
+      {/* Contact Section */}
+      <section className="py-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-4">Skula vit taka eitt prát?</h2>
-            <p className="text-text/70 max-w-xl mx-auto">Fá skjóta vegleiðing um, hvussu vit kunnu hjálpa tær at loysa tínar avbjóðingar við ritvit</p>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-            {/* Contact Details - Enhanced */}
-            <div className="bg-primary/10 p-8 border border-primary/30 backdrop-blur-sm rounded-xl shadow-lg hover:shadow-primary/5 transition-all duration-300">
-              <h3 className="text-2xl font-semibold mb-6 border-b border-border pb-3">Fá samband her:</h3>
-              <div className="space-y-6 text-text/80">
-                <a href="mailto:info@ritvit.fo" className="flex items-center gap-4 p-3 hover:bg-primary/10 rounded-lg transition-colors group">
-                  <div className="p-3 bg-primary/20 rounded-full group-hover:bg-primary/30 transition-colors">
-                    <Mail className="w-5 h-5 text-primary" />
-                  </div>
-                  <span className="text-lg group-hover:text-primary transition-colors">info@ritvit.fo</span>
-                </a>
-                
-                <a href="tel:+298919444" className="flex items-center gap-4 p-3 hover:bg-primary/10 rounded-lg transition-colors group">
-                  <div className="p-3 bg-primary/20 rounded-full group-hover:bg-primary/30 transition-colors">
-                    <Phone className="w-5 h-5 text-primary" />
-                  </div>
-                  <span className="text-lg group-hover:text-primary transition-colors">+298 919444</span>
-                </a>
-                
-                <a
-                  href="https://www.facebook.com/profile.php?id=61557593776267"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-4 p-3 hover:bg-primary/10 rounded-lg transition-colors group"
-                >
-                  <div className="p-3 bg-primary/20 rounded-full group-hover:bg-primary/30 transition-colors">
+          <h2 className="text-3xl font-bold mb-8 text-center">Skula vit taka eitt prát?</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {/* Contact Details */}
+            <div className="bg-primary/10 p-8 border border-border backdrop-blur-sm rounded-lg">
+              <h3 className="text-xl font-semibold mb-4">Fá samband her:</h3>
+              <div className="space-y-4 text-text/80">
+                <div className="flex items-center gap-3">
+                  <Mail className="w-5 h-5 text-primary" />
+                  <span>info@ritvit.fo</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <Phone className="w-5 h-5 text-primary" />
+                  <span>+298 919444</span>
+                </div>
+                <div className="flex items-center gap-3 transition-colors">
+                  <a
+                    href="https://www.facebook.com/profile.php?id=61557593776267"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 hover:text-primary"
+                  >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       viewBox="0 0 24 24"
@@ -804,17 +619,16 @@ const openSignupForm = () => {
                     >
                       <path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm3 8h-1.35c-.538 0-.65.221-.65.778v1.222h2l-.209 2h-1.791v7h-3v-7h-2v-2h2v-2.308c0-1.769.931-2.692 3.029-2.692h1.971v3z" />
                     </svg>
-                  </div>
-                  <span className="text-lg group-hover:text-primary transition-colors">Facebook</span>
-                </a>
-                
-                <a
-                  href="https://linkedin.com/company/t%C3%B8kni-t%C3%A6nastan"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-4 p-3 hover:bg-primary/10 rounded-lg transition-colors group"
-                >
-                  <div className="p-3 bg-primary/20 rounded-full group-hover:bg-primary/30 transition-colors">
+                    <span>Facebook</span>
+                  </a>
+                </div>
+                <div className="flex items-center gap-3 transition-colors">
+                  <a
+                    href="https://linkedin.com/company/t%C3%B8kni-t%C3%A6nastan"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 hover:text-primary"
+                  >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       viewBox="0 0 24 24"
@@ -823,63 +637,60 @@ const openSignupForm = () => {
                     >
                       <path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm-2 16h-2v-6h2v6zm-1-6.891c-.607 0-1.1-.496-1.1-1.109 0-.612.492-1.109 1.1-1.109s1.1.497 1.1 1.109c0 .613-.493 1.109-1.1 1.109zm8 6.891h-1.998v-2.861c0-1.881-2.002-1.722-2.002 0v2.861h-2v-6h2v1.093c.872-1.616 4-1.736 4 1.548v3.359z" />
                     </svg>
-                  </div>
-                  <span className="text-lg group-hover:text-primary transition-colors">LinkedIn</span>
-                </a>
+                    <span>LinkedIn</span>
+                  </a>
+                </div>
               </div>
             </div>
 
-            {/* Contact Form - Enhanced */}
-            <div className="bg-primary/10 p-8 border border-primary/30 backdrop-blur-sm rounded-xl shadow-lg">
-              <h3 className="text-2xl font-semibold mb-6 border-b border-border pb-3">Send eini boð</h3>
-              <form className="space-y-5">
+            {/* Contact Form */}
+            <div className="bg-primary/10 p-8 border border-border backdrop-blur-sm rounded-lg">
+              <h3 className="text-xl font-semibold mb-4">Send eini boð</h3>
+              <form className="space-y-4">
                 <div>
-                  <label htmlFor="name" className="block mb-2 font-medium text-text/90">
+                  <label htmlFor="name" className="block mb-1">
                     Navn:
                   </label>
-                  <Input
+                  <input
                     type="text"
                     id="name"
                     name="entry.1179687836"
-                    className="w-full p-3 border border-primary/30 rounded-lg bg-background/70 text-text focus:border-primary focus:ring-1 focus:ring-primary/50 transition-all"
+                    className="w-full p-2 border border-border rounded-md bg-background text-text"
                     required
                     autoComplete="name"
                   />
                 </div>
                 <div>
-                  <label htmlFor="email" className="block mb-2 font-medium text-text/90">
+                  <label htmlFor="email" className="block mb-1">
                     Teldupostur:
                   </label>
-                  <Input
+                  <input
                     type="email"
                     id="email"
                     name="entry.263197538"
-                    className="w-full p-3 border border-primary/30 rounded-lg bg-background/70 text-text focus:border-primary focus:ring-1 focus:ring-primary/50 transition-all"
+                    className="w-full p-2 border border-border rounded-md bg-background text-text"
                     required
                     autoComplete="email"
                   />
                 </div>
                 <div>
-                  <label htmlFor="message" className="block mb-2 font-medium text-text/90">
+                  <label htmlFor="message" className="block mb-1">
                     Boð:
                   </label>
                   <textarea
                     id="message"
                     name="entry.240567695"
-                    rows={5}
-                    className="w-full p-3 border border-primary/30 rounded-lg bg-background/70 text-text focus:border-primary focus:ring-1 focus:ring-primary/50 transition-all resize-none"
+                    rows={4}
+                    className="w-full p-2 border border-border rounded-md bg-background text-text"
                     required
                     autoComplete="off"
                   ></textarea>
                 </div>
                 <Button
                   type="submit"
-                  className="w-full bg-primary hover:bg-primary/90 text-text py-6 font-semibold shadow-lg shadow-primary/20 transition-all hover:translate-y-[-2px]"
+                  className="w-full bg-primary hover:bg-primary/80 text-text"
                 >
-                  <span className="flex items-center justify-center gap-2">
-                    <MessageSquare className="w-5 h-5" /> 
-                    Send boð
-                  </span>
+                  Send
                 </Button>
               </form>
             </div>
@@ -887,84 +698,62 @@ const openSignupForm = () => {
         </div>
       </section>
 
-      {/* Enhanced Neon Glow Section */}
-      <section className="py-24 px-4 sm:px-6 lg:px-8 bg-text/95 my-16 relative overflow-hidden">
-        {/* Background animated elements */}
-        <div className="absolute top-0 left-0 w-full h-full overflow-hidden opacity-20 pointer-events-none">
-          <div className="absolute top-[-10%] left-[-10%] w-[60%] h-[60%] bg-primary/30 rounded-full blur-[100px] animate-pulse" style={{animationDuration: '15s'}}></div>
-          <div className="absolute bottom-[-20%] right-[-10%] w-[70%] h-[70%] bg-accent/30 rounded-full blur-[100px] animate-pulse" style={{animationDuration: '20s'}}></div>
-        </div>
-        
-        <div className="max-w-4xl mx-auto p-12 md:p-16 rounded-3xl border-2 border-primary shadow-[0_0_50px_rgba(147,51,234,0.4)] bg-background/95 backdrop-blur-lg relative z-10">
-          {/* Corner accent */}
-          <div className="absolute top-0 right-0 w-32 h-32 bg-primary/10 rounded-full blur-3xl opacity-80"></div>
-          
-          <h2 className="text-4xl md:text-5xl font-bold mb-8 text-center bg-clip-text text-transparent bg-gradient-to-r from-primary to-primary/80">
+      {/* Neon Glow Section */}
+      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-text/90 my-8">
+        <div className="max-w-4xl mx-auto p-12 rounded-2xl border-2 border-primary shadow-[0_0_30px_rgba(147,51,234,0.3)] bg-background">
+          <h2 className="text-4xl font-bold mb-8 text-center">
             Tíðin er røtt nú – lat okkum býrja!
           </h2>
-          
-          <p className="text-xl md:text-2xl mb-12 text-center text-text">
-            Ritvit er <strong className="text-primary animate-pulse">ikki nakað, tú kanst skoyta til viks</strong> – tað hevur longu broytt spælið.
+          <p className="text-xl mb-12 text-center text-primary/80">
+            Ritvit er <strong className="text-primary">ikki nakað, tú kanst skoyta til viks</strong> – tað hevur longu broytt spælið.
           </p>
-          
           <div className="space-y-6 mb-12">
             <Link to="/services" className="block">
-              <div className="flex items-center gap-4 p-5 bg-primary/10 rounded-xl hover:bg-primary/20 transition-all duration-300 border-2 border-primary/50 hover:border-primary hover:shadow-lg hover:shadow-primary/20 hover:translate-x-1 group">
-                <div className="p-2 bg-background/50 rounded-full">
-                  <span className="text-3xl">🎓</span>
+              <div className="flex items-center gap-4 p-4 bg-primary/10 rounded-lg hover:bg-primary/20 transition-colors border border-primary">
+                <span className="text-2xl">🎓</span>
+                <div className="text-text">
+                  <h3 className="font-bold text-primary/80">Vilt tú læra ritvit frá grundini?</h3>
+                  <p>Tekna teg til okkara skeið</p>
                 </div>
-                <div className="text-text flex-1">
-                  <h3 className="font-bold text-xl text-primary/90 group-hover:text-primary transition-colors">Vilt tú læra ritvit frá grundini?</h3>
-                  <p className="text-text/80">Tekna teg til okkara skeið</p>
-                </div>
-                <ArrowRight className="w-7 h-7 text-primary opacity-70 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
+                <ArrowRight className="ml-auto w-6 h-6 text-primary" />
               </div>
             </Link>
-            
             <Link to="/services" className="block">
-              <div className="flex items-center gap-4 p-5 bg-primary/10 rounded-xl hover:bg-primary/20 transition-all duration-300 border-2 border-primary/50 hover:border-primary hover:shadow-lg hover:shadow-primary/20 hover:translate-x-1 group">
-                <div className="p-2 bg-background/50 rounded-full">
-                  <span className="text-3xl">💼</span>
+              <div className="flex items-center gap-4 p-4 bg-primary/10 rounded-lg hover:bg-primary/20 transition-colors border border-primary">
+                <span className="text-2xl">💼</span>
+                <div className="text-text">
+                  <h3 className="font-bold text-primary/80">Vilt tú innføra ritvit í tína fyritøku?</h3>
+                  <p>Hygg eftir okkara tænastum</p>
                 </div>
-                <div className="text-text flex-1">
-                  <h3 className="font-bold text-xl text-primary/90 group-hover:text-primary transition-colors">Vilt tú innføra ritvit í tína fyritøku?</h3>
-                  <p className="text-text/80">Hygg eftir okkara tænastum</p>
-                </div>
-                <ArrowRight className="w-7 h-7 text-primary opacity-70 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
+                <ArrowRight className="ml-auto w-6 h-6 text-primary" />
               </div>
             </Link>
-            
             <Link to="/contact" className="block">
-              <div className="flex items-center gap-4 p-5 bg-primary/10 rounded-xl hover:bg-primary/20 transition-all duration-300 border-2 border-primary/50 hover:border-primary hover:shadow-lg hover:shadow-primary/20 hover:translate-x-1 group">
-                <div className="p-2 bg-background/50 rounded-full">
-                  <span className="text-3xl">❓</span>
+              <div className="flex items-center gap-4 p-4 bg-primary/10 rounded-lg hover:bg-primary/20 transition-colors border border-primary">
+                <span className="text-2xl">❓</span>
+                <div className="text-text">
+                  <h3 className="font-bold text-primary/80">Ert tú í iva?</h3>
+                  <p>Set teg í samband við okkum</p>
                 </div>
-                <div className="text-text flex-1">
-                  <h3 className="font-bold text-xl text-primary/90 group-hover:text-primary transition-colors">Ert tú í iva?</h3>
-                  <p className="text-text/80">Set teg í samband við okkum</p>
-                </div>
-                <ArrowRight className="w-7 h-7 text-primary opacity-70 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
+                <ArrowRight className="ml-auto w-6 h-6 text-primary" />
               </div>
             </Link>
           </div>
-          
-          <div className="flex flex-col sm:flex-row justify-center gap-6">
+          <div className="flex flex-col sm:flex-row justify-center gap-4">
             <Link to="/aboutCourse">
               <Button
                 size="lg"
-                className="bg-primary hover:bg-primary/90 text-text font-bold text-lg py-7 px-8 shadow-[0_0_30px_rgba(147,51,234,0.6)] hover:shadow-[0_0_40px_rgba(147,51,234,0.8)] transition-all duration-300 animate-pulse hover:animate-none"
+                className="bg-primary hover:bg-primary/80 text-text font-bold shadow-[0_0_20px_rgba(147,51,234,0.5)]"
                 onClick={openSignupForm}
               >
-                <span className="flex items-center gap-2">
-                  👉 Skriva meg upp <ArrowRight className="w-5 h-5" />
-                </span>
+                👉 Skriva meg upp
               </Button>
             </Link>
             <Link to="/aboutCourse">
               <Button
                 variant="outline"
                 size="lg"
-                className="border-2 border-primary text-primary hover:bg-primary/20 text-lg py-7 px-8 transition-all duration-300"
+                className="border-2 border-primary text-primary hover:bg-primary/20"
               >
                 📖 Les meira um skeiðið
               </Button>
@@ -982,459 +771,7 @@ const openSignupForm = () => {
 export default Index;
 ```
 
-File: src/pages/about.tsx
-```
-import React from "react";
-import { Button } from "@/components/ui/button";
-import Navigation from "@/components/Navigation";
-import Footer from "@/components/Footer";
-import { Link } from "react-router-dom";
-
-export default function About() {
-  return (
-    <div className="min-h-screen bg-background text-text">
-      <Navigation />
-
-      {/* Hero Section */}
-      <section className="py-20">
-        <div className="container mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-6xl font-bold mb-4 animate-fade-down">
-            Um okkum
-          </h1>
-          <h2 className="text-2xl md:text-3xl font-semibold mb-6 animate-fade-down text-text/80">
-            Vit bera ritvit til Føroyar – og víðari
-          </h2>
-          <p className="text-xl max-w-3xl mx-auto leading-relaxed text-text/80 animate-fade-down">
-            Stig fyri stig broytur ritvit heimin. Vit syrgja fyri, at tú ikki dettur afturúr.
-          </p>
-        </div>
-      </section>
-
-      {/* Introduktión */}
-      <section className="py-16">
-        <div className="container mx-auto px-4">
-          <div className="max-w-3xl mx-auto bg-primary/10 backdrop-blur-sm rounded-lg p-8 shadow-xl border border-border animate-fade-up">
-            <p className="text-lg mb-4">
-              <strong>Tøkni Tænastan</strong> var stovna av einføldum orsøkum:
-            </p>
-            <p className="text-lg mb-4">
-              <strong>
-                At hjálpa føroyskum fyritøkum at brúka ritvit.
-              </strong>
-            </p>
-            <p className="text-lg mb-4">
-              Vit eru nú komin fram til at hettar skal gerast í trimum stigum og vit hjálpa allan vegin.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* Okkara søga */}
-      <section className="py-16">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-8 animate-fade-down">
-            Okkara søga: Nýskapan
-          </h2>
-          <div className="max-w-3xl mx-auto bg-primary/10 backdrop-blur-sm rounded-lg p-8 shadow-xl border border-border animate-fade-up">
-            <h3 className="text-2xl font-semibold mb-4"></h3>
-            <p className="text-lg mb-4">
-              Eg havi altíð verið bergtikin av <strong>nýggjari tøkni</strong> –
-              øllum tí, sum broytir, hvussu vit arbeiða og liva.
-            </p>
-            <p className="text-lg mb-4">
-              Sum verkfrøðingur arbeiddi eg við framkomnum skipanum, men einki
-              fangaði meg sum ritvit.
-            </p>
-            <p className="text-lg mb-4">So ein dag gekk tað upp fyri mær:</p>
-            <ul className="list-disc ml-6 text-lg mb-4">
-              <li>
-                💡 <strong>Ritvit er ikki bara fyri stórar tøkni-risar.</strong>
-              </li>
-              <li>
-                💡 <strong>Ritvit er ikki bara framtíð – tað er nú.</strong>
-              </li>
-              <li>
-                💡{" "}
-                <strong>Ritvit kann nýtast í øllum fyritøkum – eisini í Føroyum.</strong>
-              </li>
-            </ul>
-            <p className="text-lg mb-4">
-              Trupulleikin? <strong>Flestu hava ikki tíð at seta seg inn í tað.</strong>
-            </p>
-            <p className="text-lg mt-4">
-              Tí stovnaði eg <strong>Tøkni Tænastuna</strong> – fyri at byggja brúnna
-              millum <strong>møguleikarnar hjá ritviti</strong> og{" "}
-              <strong>veruligu tørvin hjá føroyskum fyritøkum</strong>.
-            </p>
-            <p className="text-lg mt-4">
-              Nú hjálpa vit fyritøkum at{" "}
-              <strong>
-                sjálvvirka uppgávur, effektivisera arbeiðið og brúka ritvit fult
-                út
-              </strong>{" "}
-              – so tær kunnu fokusera uppá tað, sum veruliga hevur týdning.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* Okkara visjón */}
-      <section className="py-16">
-        <div className="container mx-auto px-4">
-          <div className="max-w-3xl mx-auto bg-primary/10 backdrop-blur-sm rounded-lg p-8 shadow-xl border border-border animate-fade-up">
-            <h2 className="text-3xl font-bold mb-4">Okkara visjón: Ritvit til øll</h2>
-            <p className="text-lg mb-4">
-              Ritvit er ikki bara fyri <strong>Silicon Valley</strong>. Tað er fyri
-              tína fyritøku. Títt toymi. Tína gerandisdag.
-            </p>
-            <p className="text-lg mb-4">
-              Mál okkara hjá <strong>Tøkni Tænastuni</strong> er at:
-            </p>
-            <ul className="list-disc ml-6 text-lg mb-4">
-              <li>
-                ✅ <strong>Gera ritvit lætt og atkomiligt</strong> fyri øll.
-              </li>
-              <li>
-                ✅ <strong>Hjálpa fyritøkum at spara tíð og tilfeingi</strong> – uttan
-                at seta fleiri fólk í starv.
-              </li>
-              <li>
-                ✅ <strong>Skapa ritvit-loysnir, sum veruliga rigga.</strong>
-              </li>
-            </ul>
-            <p className="text-lg">
-              Vit selja ikki bara "ritvit-ráðgeving". Vit{" "}
-              <strong>læra, innføra og byggja</strong> loysnir, sum geva{" "}
-              <strong>verulig úrslit</strong>.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* Hvat ger okkum øðrvísi? */}
-      <section className="py-16">
-        <div className="container mx-auto px-4">
-          <div className="max-w-3xl mx-auto bg-primary/10 backdrop-blur-sm rounded-lg p-8 shadow-xl border border-border animate-fade-up">
-            <h2 className="text-3xl font-bold mb-4">Hvat ger okkum øðrvísi?</h2>
-            <p className="text-lg mb-4">
-              Ritvit er <strong>allastaðni</strong>, men flestu fyritøkur stríðast
-              við somu spurningar:
-            </p>
-            <ul className="list-disc ml-6 text-lg mb-4">
-              <li>
-                ❌ <strong>Hvar skulu vit byrja?</strong>
-              </li>
-              <li>
-                ❌ <strong>Hvussu riggar tað í verki?</strong>
-              </li>
-              <li>
-                ❌ <strong>Er ritvit ov trupult fyri okkum?</strong>
-              </li>
-            </ul>
-            <p className="text-lg mb-4">
-              Tað, sum ger okkum øðrvísi:
-            </p>
-            <ul className="list-disc ml-6 text-lg">
-              <li>
-                💡 <strong>Vit tosa títt mál.</strong> Ongar torgreiddar
-                forklaringar – bara greið ráðgeving.
-              </li>
-              <li>
-                🚀 <strong>Vit leggja dent á skjót úrslit.</strong> Tú sært mun
-                beinanvegin.
-              </li>
-              <li>
-                🇫🇴 <strong>Vit kenna føroyska marknaðin.</strong> Vit skilja
-                veruligu avbjóðingarnar.
-              </li>
-              <li>
-                🤖 <strong>Vit brúka sjálvi ritvit hvønn dag.</strong> Tað her er
-                ikki bara teori – vit vita, hvat riggar.
-              </li>
-            </ul>
-          </div>
-        </div>
-      </section>
-
-      <Footer />
-    </div>
-  );
-}
-
-```
-
-File: src/data/blogPosts.json
-```
-[
-  {
-    "id": "celestial-whale",
-    "title": "Celestial Whale: The Myth of Whale-Shaped Stars",
-    "excerpt": "Discover how ancient cultures envisioned celestial whales swimming across the night sky.",
-    "date": "2025-06-01",
-    "readTime": "6 min read",
-    "category": "Mythology",
-    "imageUrl": "/blog/celestial-whale.jpg",
-    "content": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n  <meta charset=\"UTF-8\" />\n  <meta name=\"viewport\" content=\"width=device-width,initial-scale=1\" />\n  <title>Celestial Whale</title>\n  <script>\n    /* \n     Example using your color classes (bg-background, text-text, etc.).\n     Tailwind classes assume you have these classes set up in your config.\n    */\n  </script>\n</head>\n<body class=\"bg-background text-text min-h-screen flex flex-col items-center p-4\">\n\n  <!-- Header Section with Gradient and Primary Text -->\n  <header class=\"w-full bg-gradient-to-r from-primary to-accent p-6 mb-8 rounded-lg shadow-lg\">\n    <h1 class=\"text-3xl font-bold text-text/90 text-center\">Celestial Whale</h1>\n    <p class=\"text-center text-text/60 mt-2\">The Myth of Whale-Shaped Stars</p>\n  </header>\n\n  <main class=\"max-w-3xl w-full border border-border/40 p-6 rounded-lg bg-background/10 shadow-lg\">\n    <section class=\"mb-8\">\n      <img src=\"/images/sample_landscape.jfif\" alt=\"A cosmic whale constellation\" class=\"rounded-md border border-border mb-4\" />\n      <p class=\"leading-7 mb-4\">\n        Since ancient times, cultures from the Polynesians to the Greeks have shared tales of whale-shaped\n        constellations gliding among the stars. Some believed these celestial giants could protect sailors\n        from treacherous waters, guiding them home under shimmering, cosmic echoes of Earth’s largest mammals.\n      </p>\n      <p class=\"leading-7 mb-4\">\n        In <span class=\"bg-accent text-background px-2 py-1 rounded\">Polynesian legends</span>, the Celestial Whale \n        was said to swallow the sun at dusk, releasing it again at dawn. Modern astronomers see parallels \n        in the shape of certain star clusters, fueling new interest in these age-old myths.\n      </p>\n    </section>\n\n    <hr class=\"border-border/60 mb-8\" />\n\n    <section>\n      <h2 class=\"text-xl font-semibold text-primary mb-4\">A Cosmic Guardian</h2>\n      <p class=\"mb-4\">\n        Believers in the Celestial Whale often claimed it guarded lost sailors at night, offering \n        them both protection and direction. Though the myth faded with time, star charts still hint \n        at aquatic forms swirling in galaxies far beyond our own.\n      </p>\n      <blockquote class=\"bg-background/20 p-4 border-l-4 border-primary italic mb-4\">\n        “Look upon the sky, dear voyager, and behold the whale that shelters you from the cosmic tide.”\n      </blockquote>\n      <p>\n        Whether real or imagined, the whale-shaped constellation remains a symbol of hope and \n        the wonder of our vast universe.\n      </p>\n    </section>\n  </main>\n</body>\n</html>"
-  },
-  {
-    "id": "neon-pyramids",
-    "title": "Neon Pyramids of the Future: A Cyber-Egyptian Tale",
-    "excerpt": "A futuristic glimpse where ancient Egyptian mystique meets neon-lit sci-fi wonders.",
-    "date": "2025-07-01",
-    "readTime": "7 min read",
-    "category": "Futurism",
-    "imageUrl": "/blog/neon-pyramids.jpg",
-    "content": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n  <meta charset=\"UTF-8\">\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n  <title>Neon Pyramids</title>\n</head>\n<body class=\"bg-background text-text\">\n\n  <div class=\"max-w-4xl mx-auto my-8 p-6 border-4 border-border rounded-xl bg-background/10 shadow-2xl\">\n    <!-- Hero Section with a pulsating accent bar -->\n    <div class=\"mb-6 text-center\">\n      <h1 class=\"text-4xl font-extrabold text-primary\">Neon Pyramids of the Future</h1>\n      <p class=\"mt-2 text-accent/70 font-semibold\">\n        Where Ancient Mystique Meets Cyberpunk\n      </p>\n      <div class=\"h-2 bg-accent rounded-full animate-pulse mt-4\"></div>\n    </div>\n\n    <!-- Image (Portrait) -->\n    <img \n      src=\"/images/sample_portrait.jpg\" \n      alt=\"Neon-lit futuristic pyramid\" \n      class=\"mx-auto border-2 border-border shadow-lg rounded mb-6\"\n    />\n\n    <section class=\"space-y-4\">\n      <p>\n        In the glittering sands of a futuristic Cairo, <span class=\"text-accent font-semibold\">neon pyramids</span> now \n        replace the stone relics of old. Hovering solar cruisers hum across the desert sky, and digital hieroglyphics \n        dance across tomb walls. This cyber-Egyptian world pulses with energy, both ancient and new.\n      </p>\n      <p>\n        Legend says that the <span class=\"bg-primary text-background px-2 py-1 rounded\">Pharaohs of Tomorrow</span> have \n        awakened, bringing with them a knowledge bridging millennia. Local traders whisper stories of secret AI oracles \n        hidden within these updated pyramids, offering answers to those bold enough to decode digital scarabs.\n      </p>\n      <blockquote class=\"bg-background/20 border-l-4 border-accent px-4 py-2 italic\">\n        “Beneath the neon glow, the old gods stir, adapting to the future that was once prophesied in stone.”\n      </blockquote>\n    </section>\n\n    <hr class=\"my-8 border-border/50\" />\n\n    <section class=\"space-y-4\">\n      <h2 class=\"text-2xl font-bold text-accent\">Ancient Tech & New Horizons</h2>\n      <p>\n        Scholars from around the globe flock to experience these luminous ruins. Some say \n        the pyramids themselves have harnessed solar flares to power entire city grids, \n        weaving ancient energy with post-modern design. \n      </p>\n      <p>\n        Others, more daring, climb the pyramid exteriors at sunset, chasing the final golden \n        rays as they shift into neon luminescence. It's a world where cutting-edge meets \n        primeval brilliance, rewriting the story of civilization itself.\n      </p>\n    </section>\n  </div>\n</body>\n</html>"
-  },
-  {
-    "id": "haunted-tea-gardens",
-    "title": "Haunted Tea Gardens: Spirits of the Ancient Brew",
-    "excerpt": "A blend of tranquil Japanese tea tradition and eerie ghost stories from the bamboo groves.",
-    "date": "2025-08-15",
-    "readTime": "5 min read",
-    "category": "Folklore",
-    "imageUrl": "/blog/haunted-tea-gardens.jpg",
-    "content": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n  <meta charset=\"UTF-8\" />\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\" />\n  <title>Haunted Tea Gardens</title>\n</head>\n<body class=\"bg-background text-text\">\n\n  <!-- Container -->\n  <div class=\"max-w-2xl mx-auto my-10 p-6 border border-border rounded-md bg-background/20 shadow-lg\">\n\n    <!-- Title & Intro -->\n    <div class=\"text-center mb-8\">\n      <h1 class=\"text-3xl font-bold text-primary\">Haunted Tea Gardens</h1>\n      <p class=\"text-accent/70\">Spirits of the Ancient Brew</p>\n    </div>\n\n    <!-- Sample Image (Square) -->\n    <img \n      src=\"/images/sample_square.jfif\" \n      alt=\"A mysterious tea garden at dusk\" \n      class=\"w-full h-auto mb-6 border border-border rounded shadow-md\"\n    />\n\n    <p class=\"mb-4\">\n      Tucked away in mist-shrouded bamboo forests, certain Japanese tea gardens harbor legends \n      as old as the shogunate. During the twilight hour, locals speak of ghostly apparitions \n      emerging among the meticulously raked gravel and stepping stones. Some say <strong class=\"text-primary\">kitsune</strong> \n      appear, luring unsuspecting visitors deeper into the moonlit grove.\n    </p>\n\n    <p class=\"mb-4\">\n      The <span class=\"bg-accent text-background px-2 py-1 rounded-md\">rustle of bamboo</span> is said to be more \n      than just the wind – it might be ancestral spirits paying homage to the centuries-old \n      art of tea ceremony. Once you step inside these <em>haunted tea gardens</em>, reality \n      and folklore seem to blur, drawing you into Japan’s storied past with each subtle gust \n      of incense smoke.\n    </p>\n\n    <hr class=\"my-8 border-border/50\" />\n\n    <blockquote class=\"border-l-4 border-primary pl-4 text-text/70 italic mb-8\">\n      “The tea tasted of sorrow and memory, each sip echoing a lifetime lost beneath the silent bamboo.”\n    </blockquote>\n\n    <p class=\"mb-4\">\n      Yet for many spiritual seekers, this eerie serenity is precisely the appeal. In the hush \n      of the garden, one can reflect on the fragility of life, the weight of history, and the \n      hope found in each brewed cup.\n    </p>\n\n  </div>\n</body>\n</html>"
-  },
-  {
-    "id": "solar-flare-equinox",
-    "title": "Solar-Flare Equinox: Surviving the Desert of Light",
-    "excerpt": "When the sun intensifies and the dunes spark like fire, can you endure the Desert of Light?",
-    "date": "2025-09-10",
-    "readTime": "8 min read",
-    "category": "Adventure",
-    "imageUrl": "/blog/solar-flare-equinox.jpg",
-    "content": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n  <meta charset=\"UTF-8\" />\n  <meta name=\"viewport\" content=\"width=device-width,initial-scale=1\" />\n  <title>Solar-Flare Equinox</title>\n</head>\n<body class=\"bg-background text-text\">\n\n  <div class=\"container max-w-4xl mx-auto p-8\">\n    \n    <!-- Title and Subhead with accent gradient -->\n    <header class=\"mb-8\">\n      <h1 class=\"text-4xl font-black text-primary mb-2\">Solar-Flare Equinox</h1>\n      <p class=\"text-accent text-lg mb-4 italic\">Surviving the Desert of Light</p>\n      <div class=\"h-2 bg-gradient-to-r from-primary/60 to-accent/60 rounded-full\"></div>\n    </header>\n\n    <!-- Intro Section -->\n    <section class=\"border border-border p-6 rounded bg-background/10 mb-8\">\n      <img \n        src=\"/images/sample_landscape.jfif\" \n        alt=\"Sun-scorched desert\" \n        class=\"mb-6 border border-border rounded\"\n      />\n      <p class=\"mb-4\">\n        In the remote dunes of the Sunfall Desert, a phenomenon known as the <strong>Solar-Flare Equinox</strong> \n        occurs every fifty years. For a single blazing day, the sun’s intensity spikes unpredictably, \n        turning the white sands into fields of <span class=\"bg-accent text-background px-2 py-1 rounded\">shimmering glass</span> \n        and forcing even the hardiest travelers to take desperate measures.\n      </p>\n      <p>\n        Survival lore claims that hidden cisterns lie beneath ancient desert temples, \n        offering both shade and water. But with temperatures soaring to unimaginable \n        heights, is any refuge truly safe?\n      </p>\n    </section>\n\n    <hr class=\"border-border/40 mb-8\" />\n\n    <!-- Danger & Strategy Section -->\n    <section class=\"mb-8\">\n      <h2 class=\"text-2xl font-semibold text-primary mb-2\">When the Sand Burns</h2>\n      <p class=\"mb-4\">\n        Local nomads describe a <em>\"burning horizon\"</em> effect, where the sky \n        distorts in waves, making it nearly impossible to judge distances. \n        Compasses malfunction. Electronic devices fry under solar radiation. \n        Yet, each Solar-Flare Equinox draws daring explorers in search of \n        <span class=\"text-accent\">starlight crystals</span> rumored to appear in superheated dunes.\n      </p>\n      <ul class=\"list-disc list-inside mb-4\">\n        <li class=\"mb-1\">Carry water in insulated vessels with reflective exteriors.</li>\n        <li class=\"mb-1\">Map the location of hidden desert tombs for midday shelter.</li>\n        <li class=\"mb-1\">Wear protective garments layered with <strong>mylar-like cloaks</strong>.</li>\n      </ul>\n      <blockquote class=\"border-l-4 border-accent pl-4 text-text/80 italic\">\n        “I once saw the sand glow brighter than any fire under that sky. \n        We huddled in a ruin for hours, listening to the wind howl like a solar furnace.”\n      </blockquote>\n    </section>\n\n    <hr class=\"border-border/40 mb-8\" />\n\n    <!-- Conclusion Section -->\n    <section>\n      <h2 class=\"text-2xl font-bold text-accent\">A Blazing Test of Endurance</h2>\n      <p class=\"mb-4\">\n        The Solar-Flare Equinox is more than a test of physical limits—it's a journey into \n        nature’s most unforgiving crucible. Those who survive emerge changed: \n        sun-scorched pilgrims with stories of <strong>liquid light</strong> \n        dancing atop the dunes. \n      </p>\n      <p>\n        So, if you dare to traverse the <em>Desert of Light</em> when the sun \n        ignites the horizon, remember: survival is not guaranteed, but the \n        legend you forge may outshine the blazing sky.\n      </p>\n    </section>\n  </div>\n</body>\n</html>"
-  },
-  {
-    "id": "aurora-equinox",
-    "title": "Aurora & Equinox: The Night the Polar Lights Kiss the Sea",
-    "excerpt": "A once-in-a-century celestial ballet where the Northern Lights descend upon midnight waves.",
-    "date": "2025-10-05",
-    "readTime": "9 min read",
-    "category": "Nature",
-    "imageUrl": "/blog/aurora-equinox.jpg",
-    "content": "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n  <meta charset=\"UTF-8\" />\n  <meta name=\"viewport\" content=\"width=device-width,initial-scale=1\" />\n  <title>Aurora & Equinox</title>\n</head>\n<body class=\"bg-background text-text\">\n\n  <!-- Outer Container -->\n  <div class=\"max-w-3xl mx-auto py-8 px-4\">\n    <!-- Header with accent band -->\n    <div class=\"mb-8 text-center\">\n      <h1 class=\"text-3xl font-black text-primary mb-2\">Aurora & Equinox</h1>\n      <p class=\"text-accent/70 italic\">The Night the Polar Lights Kiss the Sea</p>\n      <div class=\"h-1 bg-accent mt-4 w-1/2 mx-auto rounded\"></div>\n    </div>\n\n    <!-- Content Card -->\n    <div class=\"bg-background/10 border border-border p-6 rounded-xl shadow-md space-y-6\">\n      <img \n        src=\"/images/sample_portrait.jpg\" \n        alt=\"Aurora reflecting on ocean waves\" \n        class=\"border border-border rounded w-full\"\n      />\n\n      <p>\n        Once every century, polar scientists predict an event so rare that it feels \n        more like fantasy than forecast. They call it the <strong class=\"text-primary\">Aurora & Equinox</strong>—a \n        night when the Northern Lights descend far enough to dance upon midnight waves \n        in the North Atlantic. Coastal villages from Greenland to Norway become front-row \n        seats to this kaleidoscopic show, where curtains of <span class=\"bg-primary text-background px-2 py-1 rounded\">emerald \n        and violet</span> shimmer along the horizon.\n      </p>\n\n      <blockquote class=\"border-l-4 border-primary pl-4 italic text-text/70\">\n        “It was as if the sky itself had spilled onto the ocean, painting the water in \n        cosmic watercolor hues.”\n      </blockquote>\n\n      <p>\n        Local fishermen share stories of fish seeming entranced by the celestial glow, \n        schooling closer to the surface as if mesmerized by the lights. Children run along \n        beaches at midnight, catching glimpses of <span class=\"text-accent\">“reflected auroras”</span> \n        shimmering in tidal pools. Meanwhile, stargazers scramble for cameras, capturing \n        the luminous arcs dancing above and below the horizon line.\n      </p>\n\n      <hr class=\"border-border/50\" />\n\n      <h2 class=\"text-xl font-semibold text-primary\">Why Does It Happen?</h2>\n      <p>\n        The phenomenon is believed to occur when solar winds align perfectly with a \n        planetary equinox, tilting Earth’s magnetic field just enough to push auroral \n        activity unusually south. For one night, the ocean becomes a stage for heaven’s \n        own light show, fleeting yet unforgettable.\n      </p>\n\n      <p>\n        Scientists warn we might not see such an event again for a hundred years. But \n        in that singular moment, the boundary between sea and sky blurs—a testament to \n        our planet’s capacity for beauty, wonder, and rare cosmic surprises.\n      </p>\n    </div>\n  </div>\n</body>\n</html>"
-  }
-]
-```
-
-File: scripts/addBlog.mjs
-```
-#!/usr/bin/env node
-/**
- * addBlog.mjs
- *
- * This script adds new blog posts from a template file into the system’s JSON data file.
- *
- * How to use:
- * 1. Create (or update) a file named "blog-template.txt" in the project root. In this file, you can
- *    include one or more blog posts. Each post must use YAML-style front matter (delimited by ---)
- *    followed by its HTML content. Separate multiple posts with a delimiter line that contains exactly
- *    three (or more) equals signs (e.g., "===") on a line by itself.
- *
- * Example blog post entry:
- *
- *   --- 
- *   title: "Smart Fiskeri på Færøerne: Hvordan AI Kan Sikre Fremtidens Fiskeri - Example 1"
- *   id: smart-fiskeri-example-1
- *   excerpt: "Example 1: Minimal Dark Theme with a Clean, Centered Layout"
- *   date: "2024-03-01"
- *   readTime: "8 min read"
- *   category: "Documentation"
- *   imageUrl: "/blog/fiskeri-example-1.jpg"
- *   ---
- *   <!DOCTYPE html>
- *   <html lang="da">
- *   <head>
- *     <!-- HTML content with Tailwind styling goes here -->
- *   </head>
- *   <body>
- *     <!-- ... -->
- *   </body>
- *   </html>
- *   ===
- *
- * (You can then add additional posts after the delimiter using the same format.)
- *
- * 2. Run the script using Node (ensure your package.json has "type": "module"):
- *
- *      node scripts/addBlog.mjs
- *
- * The script will:
- *   - Read the "blog-template.txt" file.
- *   - Split the content into separate posts using the delimiter (a line with "===").
- *   - For each post, parse the YAML-style front matter and HTML content.
- *   - Generate an ID (slug) from the title if no id is provided.
- *   - Append each new blog post to the JSON file at "src/data/blogPosts.json" (creating the file if needed).
- *   - Clear the template file once processing is complete.
- *
- * Enjoy adding new blog posts with custom styling!
- */
-
-import { promises as fs } from 'fs';
-import path from 'path';
-import { fileURLToPath } from 'url';
-
-// Helper to get __dirname in ES modules
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-
-// Paths for the template and JSON data
-const TEMPLATE_PATH = path.join(__dirname, '../blog-template.txt');
-const BLOGS_JSON_PATH = path.join(__dirname, '../src/data/blogPosts.json');
-
-// Simple function to slugify the title (if no id provided)
-function slugify(text) {
-  return text
-    .toString()
-    .toLowerCase()
-    .trim()
-    .replace(/[\s\W-]+/g, '-')
-    .replace(/^-+|-+$/g, '');
-}
-
-// Parse a single blog post block from the template.
-// Expects the block to start with YAML-style front matter delimited by --- markers.
-function parseTemplate(content) {
-  const lines = content.split('\n');
-  if (lines[0].trim() !== '---') {
-    throw new Error('Template block must start with front matter delimited by ---');
-  }
-  let frontMatter = {};
-  let i = 1;
-  // Read until the next '---'
-  while (i < lines.length && lines[i].trim() !== '---') {
-    const line = lines[i];
-    const index = line.indexOf(':');
-    if (index > -1) {
-      const key = line.slice(0, index).trim();
-      let value = line.slice(index + 1).trim();
-      // Remove optional surrounding quotes
-      value = value.replace(/^"(.*)"$/, '$1');
-      frontMatter[key] = value;
-    }
-    i++;
-  }
-  // Skip the closing '---'
-  i++;
-  const blogContent = lines.slice(i).join('\n').trim();
-  return { frontMatter, blogContent };
-}
-
-async function addBlogPosts() {
-  // Read the template file.
-  let templateContent;
-  try {
-    templateContent = await fs.readFile(TEMPLATE_PATH, 'utf-8');
-  } catch (err) {
-    console.error(`Error reading ${TEMPLATE_PATH}:`, err);
-    process.exit(1);
-  }
-
-  if (!templateContent.trim()) {
-    console.log('No blog post content found in template. Exiting.');
-    return;
-  }
-
-  // Split the template content into individual post blocks.
-  // The delimiter is a line containing three or more equals signs.
-  const postBlocks = templateContent.split(/\n\s*===+\s*\n/);
-  if (!postBlocks.length) {
-    console.log('No valid post blocks found in the template. Exiting.');
-    return;
-  }
-
-  // Read the existing JSON data (if the file does not exist, start with an empty array)
-  let blogPosts = [];
-  try {
-    const jsonData = await fs.readFile(BLOGS_JSON_PATH, 'utf-8');
-    blogPosts = JSON.parse(jsonData);
-  } catch (err) {
-    console.warn(`Could not read ${BLOGS_JSON_PATH} (it may not exist yet). Starting with an empty array.`);
-  }
-
-  let newPostsCount = 0;
-  for (const block of postBlocks) {
-    const trimmedBlock = block.trim();
-    if (!trimmedBlock) continue;
-
-    let frontMatter, blogContent;
-    try {
-      ({ frontMatter, blogContent } = parseTemplate(trimmedBlock));
-    } catch (err) {
-      console.error('Error parsing a post block:', err);
-      continue;
-    }
-
-    // Ensure required fields are present.
-    const requiredFields = ['title', 'excerpt', 'date', 'readTime', 'category', 'imageUrl'];
-    const missingField = requiredFields.find(field => !frontMatter[field]);
-    if (missingField) {
-      console.error(`Missing required field in front matter: ${missingField}. Skipping this post.`);
-      continue;
-    }
-    if (!frontMatter.id) {
-      frontMatter.id = slugify(frontMatter.title);
-      console.log(`No id provided. Generated id: ${frontMatter.id}`);
-    }
-
-    // Check if a post with the same id already exists.
-    if (blogPosts.find((post) => post.id === frontMatter.id)) {
-      console.error(`A blog post with id "${frontMatter.id}" already exists. Skipping this post.`);
-      continue;
-    }
-
-    // Build the new blog post object.
-    const newBlogPost = {
-      id: frontMatter.id,
-      title: frontMatter.title,
-      excerpt: frontMatter.excerpt,
-      date: frontMatter.date,
-      readTime: frontMatter.readTime,
-      category: frontMatter.category,
-      imageUrl: frontMatter.imageUrl,
-      content: blogContent,
-    };
-
-    blogPosts.push(newBlogPost);
-    newPostsCount++;
-    console.log(`Added blog post "${newBlogPost.title}".`);
-  }
-
-  // Write the updated JSON data if any new posts were added.
-  if (newPostsCount > 0) {
-    try {
-      await fs.writeFile(BLOGS_JSON_PATH, JSON.stringify(blogPosts, null, 2), 'utf-8');
-      console.log(`Successfully added ${newPostsCount} new blog post(s) to ${BLOGS_JSON_PATH}`);
-    } catch (err) {
-      console.error('Error writing to JSON file:', err);
-      process.exit(1);
-    }
-  } else {
-    console.log('No new posts were added.');
-  }
-
-  // Clear the template file.
-  try {
-    await fs.writeFile(TEMPLATE_PATH, '', 'utf-8');
-    console.log(`Template file ${TEMPLATE_PATH} cleared.`);
-  } catch (err) {
-    console.error('Error clearing the template file:', err);
-    process.exit(1);
-  }
-}
-
-addBlogPosts();
-
-```
-
-File: .env
-```
-
-# This file is no longer needed - use Replit Secrets instead
-
-```
+Error reading .env: ENOENT: no such file or directory, open '.env'
 
 File: package.json
 ```
@@ -1445,11 +782,10 @@ File: package.json
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "start": "node --import 'data:text/javascript,import { register } from \"node:module\"; import { pathToFileURL } from \"node:url\"; register(\"ts-node/esm\", pathToFileURL(\"./\"));' src/server/index.ts",
-    "build": "tsc && vite build",
+    "build": "vite build",
     "build:dev": "vite build --mode development",
     "lint": "eslint .",
-    "preview": "vite preview --host 0.0.0.0 --port ${PORT:-3000}"
+    "preview": "vite preview"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.0",
@@ -1504,7 +840,6 @@ File: package.json
     "sonner": "^1.5.0",
     "tailwind-merge": "^2.5.2",
     "tailwindcss-animate": "^1.0.7",
-    "ts-node": "^10.9.2",
     "vaul": "^0.9.3",
     "zod": "^3.23.8"
   },
@@ -1528,6 +863,7 @@ File: package.json
     "vite": "^5.4.1"
   }
 }
+
 ```
 
 File: tsconfig.json
@@ -1551,183 +887,5 @@ File: tsconfig.json
     "strictNullChecks": false
   }
 }
-
-```
-
-File: .replit
-```
-modules = ["nodejs-20", "web"]
-
-[nix]
-channel = "stable-24_05"
-
-[deployment]
-deploymentTarget = "cloudrun"
-build = ["sh", "-c", "npm run build"]
-run = ["sh", "-c", "node --import 'data:text/javascript,import { register } from \"node:module\"; import { pathToFileURL } from \"node:url\"; register(\"ts-node/esm\", pathToFileURL(\"./\"));' src/server/index.ts"]
-
-[[ports]]
-localPort = 8080
-externalPort = 80
-
-[workflows]
-runButton = "Run"
-
-[[workflows.workflow]]
-name = "Run"
-mode = "sequential"
-
-[[workflows.workflow.tasks]]
-task = "shell.exec"
-args = "npm run dev & npm run start"
-
-```
-
-File: README.md
-```
-# AI Innovation in the Faroe Islands
-
-Welcome to the official repository of the first dedicated AI company in the Faroe Islands. We're pioneering the integration of artificial intelligence into Faroese businesses, starting with practical tools like ChatGPT and Microsoft Copilot.
-
-## 🎯 Our Mission
-
-To help Faroese businesses embrace AI technology through:
-- Practical AI training and workshops
-- Custom AI implementation consulting
-- Development of AI-powered solutions
-- Building a strong tech community in the Faroe Islands
-
-## 🚀 Getting Started
-
-### Prerequisites
-
-- Node.js (v18 or higher) - [Install Node.js](https://nodejs.org/)
-- npm (comes with Node.js)
-
-### Installation
-
-```bash
-# Clone the repository
-git clone (https://github.com/gitGunnl/modern-foundation-oasis.git)
-
-# Navigate to the project directory
-cd <project-directory>
-
-# Install dependencies
-npm install
-
-# Start the development server
-npm run dev
-```
-
-## 🛠 Tech Stack
-
-This project is built with modern technologies:
-
-- **React** - A JavaScript library for building user interfaces
-- **TypeScript** - Adds static typing to JavaScript
-- **Vite** - Next generation frontend tooling
-- **Tailwind CSS** - A utility-first CSS framework
-- **shadcn/ui** - High-quality UI components
-- **React Router** - For client-side routing
-- **Lucide Icons** - Beautiful open-source icons
-- **React Query** - For efficient data fetching and caching
-
-## 📦 Project Structure
-
-```
-src/
-├── components/        # Reusable UI components
-├── pages/            # Page components and routes
-├── hooks/            # Custom React hooks
-├── lib/              # Utility functions and helpers
-├── styles/           # Global styles and Tailwind config
-└── types/            # TypeScript type definitions
-```
-
-## 🎨 Features
-
-- **Modern Design**: Responsive, mobile-first design with a clean and professional aesthetic
-- **Performance**: Built with Vite for lightning-fast development and production builds
-- **Type Safety**: Full TypeScript support for better development experience
-- **Component Library**: Leveraging shadcn/ui for consistent, accessible components
-- **Routing**: Client-side routing with React Router
-- **State Management**: Efficient state management with React Query
-
-## 🌟 Services
-
-1. **ChatGPT Course**
-   - Comprehensive training for beginners and professionals
-   - Practical implementation strategies
-   - Real-world use cases
-
-2. **AI Implementation**
-   - Custom solutions for businesses
-   - Integration support
-   - Workflow optimization
-
-3. **Workshops & Training**
-   - On-site training sessions
-   - Team workshops
-   - Customized learning paths
-
-## 🔧 Development
-
-### Available Scripts
-
-```bash
-# Start development server
-npm run dev
-
-# Build for production
-npm run build
-
-# Preview production build
-npm run preview
-
-# Run type checking
-npm run typecheck
-
-# Run linting
-npm run lint
-```
-
-### Code Style
-
-This project uses:
-- ESLint for code linting
-- Prettier for code formatting
-- TypeScript for type checking
-
-## 🤝 Contributing
-
-We welcome contributions! Please follow these steps:
-
-1. Fork the repository
-2. Create a new branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
-
-## 📝 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## 📞 Contact
-
-- Website: [Your Website]
-- Email: [Your Email]
-- LinkedIn: [Your LinkedIn]
-
-## 🙏 Acknowledgments
-
-Special thanks to:
-- The Faroese business community for embracing innovation
-- Our early adopters and supporters
-- The open-source community for the amazing tools we use
-
----
-
-Built with ❤️ in the Faroe Islands 🇫🇴
 
 ```

@@ -1,4 +1,6 @@
+
 modules = ["nodejs-20", "web"]
+run = "npm run dev"
 
 [nix]
 channel = "stable-24_05"
@@ -6,19 +8,33 @@ channel = "stable-24_05"
 [deployment]
 deploymentTarget = "cloudrun"
 build = ["sh", "-c", "npm run build"]
-run = ["sh", "-c", "node dist/server/index.js"]
+run = ["sh", "-c", "npm run start"]
+
+[[ports]]
+localPort = 3000
+externalPort = 80
+
+[[ports]]
+localPort = 3001
 
 [[ports]]
 localPort = 8080
-externalPort = 80
 
 [workflows]
 runButton = "Run"
 
 [[workflows.workflow]]
-name = "Run"
-mode = "sequential"
+name = "Server"
+author = 36104266
 
 [[workflows.workflow.tasks]]
 task = "shell.exec"
-args = "npm run build && npm run start"
+args = "bun run src/server/index.ts"
+
+[[workflows.workflow]]
+name = "Run"
+author = 36104266
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "bun run dev & bun --watch src/server/index.ts"

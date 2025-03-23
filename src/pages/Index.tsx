@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
+import ChatbotButton from "@/components/ChatbotButton";
 import { ArrowRight, Mail, Phone, MessageSquare, CheckCircle2 } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Input } from "@/components/ui/input"; // Added imports
@@ -520,7 +521,7 @@ const openSignupForm = () => {
         </div>
       </section>
 
-      {/* <ChatbotButton /> */}
+      <ChatbotButton />
       <Footer />
     </div>
   );

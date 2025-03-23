@@ -1,31 +1,28 @@
 
-// This component has been removed as it's no longer needed
+import ChatWindow from './ChatWindow';
+
 const ChatbotButton = () => {
+  // Temporarily disabled
   return null;
-};
+  
+  /* Original code kept for reference
+  const [isOpen, setIsOpen] = useState(false);
 
-export default ChatbotButton;
-import React from 'react';
-import { Button } from '@/components/ui/button';
-import { MessageCircle } from 'lucide-react';
-
-interface ChatbotButtonProps {
-  onClick?: () => void;
-  className?: string;
-}
-
-export function ChatbotButton({ onClick, className = '' }: ChatbotButtonProps) {
   return (
-    <Button 
-      onClick={onClick} 
-      className={`fixed bottom-4 right-4 rounded-full p-3 ${className}`}
-      variant="default"
-      size="icon"
-      aria-label="Open chat"
-    >
-      <MessageCircle className="h-6 w-6" />
-    </Button>
+    <div className="fixed bottom-4 right-4 z-50">
+      {isOpen && <ChatWindow onClose={() => setIsOpen(false)} />}
+
+      <Button
+        onClick={() => setIsOpen(!isOpen)}
+        size="lg"
+        className="rounded-full w-16 h-16 bg-primary hover:bg-primary/80 
+                   transition-transform duration-200 hover:scale-105"
+      >
+        <MessageSquare className="w-6 h-6" />
+      </Button>
+    </div>
   );
-}
+  */
+};
 
 export default ChatbotButton;
