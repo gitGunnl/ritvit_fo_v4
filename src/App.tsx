@@ -11,57 +11,28 @@ import BlogIndex from "./pages/blog";
 import BlogPost from "./pages/blog/[id]";
 import AboutCourse from "./pages/aboutCourse";
 import ScenarioTrainer from "./pages/ScenarioTrainer"; // Added import
-import TestPage from "./pages/TestPage"; // Added import
 
 const queryClient = new QueryClient();
 
-const App = () => {
-  console.log("App component rendering");
-  
-  return (
+const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
       <Toaster />
       <Sonner />
       <BrowserRouter>
         <Routes>
-          {/* Temporarily comment out the problematic Index route */}
-          {/* <Route path="/" element={<Index />} /> */}
-          {/* Add a temporary default route that works */}
-          <Route path="/" element={
-            <div className="p-8">
-              <h1 className="text-2xl font-bold mb-4">Test Home</h1>
-              <p>Navigate to: <a href="/test" className="text-blue-500 underline">/test</a> or <a href="/scenariotrainer" className="text-blue-500 underline">/scenariotrainer</a></p>
-            </div>
-          } />
+          <Route path="/" element={<Index />} />
           <Route path="/about" element={<About />} />
           <Route path="/services" element={<Services />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/blog" element={<BlogIndex />} />
           <Route path="/blog/:id" element={<BlogPost />} />
           <Route path="/aboutCourse" element={<AboutCourse />} />
-          <Route path="/test" element={<TestPage />} />
-          <Route 
-            path="/scenariotrainer" 
-            element={
-              <>
-                {console.log("DEBUG - Route attempted to render:", {
-                  path: "/scenariotrainer",
-                  component: ScenarioTrainer?.name,
-                  location: window.location.pathname
-                })}
-                <ScenarioTrainer />
-              </>
-            } 
-          />
+          <Route path="/scenariotrainer" element={<ScenarioTrainer />} /> {/* Added route */}
         </Routes>
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>
-  );
-};
-
-// Log app initialization
-console.log("App.tsx module loaded");
+);
 
 export default App;
