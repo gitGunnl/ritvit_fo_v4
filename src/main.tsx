@@ -21,9 +21,31 @@ try {
     return false;
   };
 
-  createRoot(document.getElementById("root")!).render(<App />);
-  console.log("App successfully rendered");
-  console.error("APP RENDERED - SHOULD BE VISIBLE IN CONSOLE");
+  // Try to render the most basic app possible to debug
+  try {
+    const BasicApp = () => {
+      return (
+        <div style={{padding: "20px"}}>
+          <h1 style={{marginBottom: "20px"}}>Basic App Working</h1>
+          <a href="/test" style={{color: "blue", marginRight: "10px"}}>Test Page</a>
+          <a href="/scenariotrainer" style={{color: "blue"}}>Scenario Trainer</a>
+        </div>
+      );
+    };
+    
+    // Try to render the full app, but fall back to BasicApp if it fails
+    try {
+      createRoot(document.getElementById("root")!).render(<App />);
+      console.log("Full App successfully rendered");
+    } catch (innerError) {
+      console.error("Failed to render full App, falling back to BasicApp:", innerError);
+      createRoot(document.getElementById("root")!).render(<BasicApp />);
+    }
+    
+    console.error("RENDERING COMPLETE - THIS SHOULD BE VISIBLE IN CONSOLE");
+  } catch (outerError) {
+    console.error("Failed to render even the BasicApp:", outerError);
+  }
 } catch (error) {
   console.error("Failed to render App:", error);
   // Try to render a fallback UI

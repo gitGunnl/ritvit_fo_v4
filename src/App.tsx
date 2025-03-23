@@ -11,6 +11,7 @@ import BlogIndex from "./pages/blog";
 import BlogPost from "./pages/blog/[id]";
 import AboutCourse from "./pages/aboutCourse";
 import ScenarioTrainer from "./pages/ScenarioTrainer"; // Added import
+import TestPage from "./pages/TestPage"; // Added import
 
 const queryClient = new QueryClient();
 

@@ -1,34 +1,19 @@
-
 import React, { useEffect } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
-
-// Log module loading
-console.log("ScenarioTrainer.tsx module loaded");
 
 export default function ScenarioTrainer() {
-  // Immediate logging
-  console.log("ScenarioTrainer function called");
-  
-  const location = useLocation();
-  console.log("Current location:", location);
-  
+  console.log("ScenarioTrainer rendering");
+
   useEffect(() => {
-    // Use alert to make sure we see this even if console is filtered
-    alert("ScenarioTrainer component mounted");
-    
-    console.log("DEBUG - ScenarioTrainer mounted:", {
-      pathname: location.pathname,
-      component: "ScenarioTrainer",
-      timestamp: new Date().toISOString()
-    });
-  }, [location]);
-  
-  // Log rendering
-  console.log("ScenarioTrainer component rendering");
-  
+    console.log("ScenarioTrainer mounted");
+    console.error("SCENARIO TRAINER MOUNTED - THIS SHOULD BE VISIBLE");
+  }, []);
+
   return (
     <div className="min-h-screen flex items-center justify-center bg-background">
-      <h1 className="text-6xl font-bold">test</h1>
+      <div className="text-center p-8 max-w-md">
+        <h1 className="text-4xl font-bold mb-4">Scenario Trainer</h1>
+        <p className="text-lg mb-4">This is a minimal implementation of the Scenario Trainer page.</p>
+      </div>
     </div>
   );
 }
