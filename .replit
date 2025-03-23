@@ -20,8 +20,12 @@ localPort = 3001
 [[ports]]
 localPort = 8080
 
+[[ports]]
+localPort = 8081
+externalPort = 8081
+
 [workflows]
-runButton = "Run"
+runButton = "Dev"
 
 [[workflows.workflow]]
 name = "Server"
@@ -38,3 +42,34 @@ author = 36104266
 [[workflows.workflow.tasks]]
 task = "shell.exec"
 args = "bun run dev & bun --watch src/server/index.ts"
+
+[[workflows.workflow]]
+name = "Frontend"
+author = 36104266
+mode = "sequential"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "bun run dev"
+
+[[workflows.workflow]]
+name = "Backend"
+author = 36104266
+mode = "sequential"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "bun run src/server/index.ts"
+
+[[workflows.workflow]]
+name = "Dev"
+author = 36104266
+mode = "parallel"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "bun run dev"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "bun --watch src/server/index.ts"
