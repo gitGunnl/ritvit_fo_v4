@@ -6,14 +6,21 @@ import { dirname } from 'path';
 const fileList = [
   'src/components/ChatWindow.tsx',
   'src/components/ChatbotButton.tsx',
+  'src/components/Footer.tsx',
+  'src/components/ui/collapsible.tsx',
   'src/lib/constants.ts',
   'src/server/api.ts',
   'src/server/routes/chat.ts',
   'src/server/index.ts',
   'src/pages/Index.tsx',
+  'src/pages/about.tsx',
+  'src/data/blogPosts.json',
+  'scripts/addBlog.mjs',
   '.env',
   'package.json',
-  'tsconfig.json'
+  'tsconfig.json',
+  '.replit',
+  'README.md'
 ];
 
 function collectCode() {
