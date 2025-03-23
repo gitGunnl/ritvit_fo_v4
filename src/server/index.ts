@@ -1,42 +1,47 @@
+
 import express from 'express';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import dotenv from 'dotenv';
+import cors from 'cors';
 
-// Load environment variables
+// Import routes
+import chatRouter from './routes/chat.js';
+import apiRouter from './routes/api.js';
+
 dotenv.config();
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-// Initialize express
 const app = express();
+
+// Enable CORS
+app.use(cors());
+
+// Parse JSON
+app.use(express.json());
 
 // Diagnostic logging
 console.log('Server starting...');
-console.log('Environment check:', {
-  PORT: process.env.PORT,
-  NODE_ENV: process.env.NODE_ENV,
-  OPENAI_CONFIG: !!process.env.OPENAI_API_KEY && !!process.env.OPENAI_ASSISTANT_ID
-});
 
-app.use((req, res, next) => {
-  console.log(`${req.method} ${req.path}`);
-  next();
-});
-
-const port = process.env.PORT || 8080;
-
-// Serve static files from the dist directory
+const port = process.env.PORT || 3000;
 const staticPath = path.join(__dirname, '..', '..', 'dist');
+
+console.log(`Static path: ${staticPath}`);
+
+// Serve static files
 app.use(express.static(staticPath));
 
-// SPA fallback - serve index.html for all routes
+// Mount routes
+app.use('/chat', chatRouter);
+app.use('/api', apiRouter);
+
+// SPA fallback
 app.get('*', (req, res) => {
   res.sendFile(path.join(staticPath, 'index.html'));
 });
 
 app.listen(port, '0.0.0.0', () => {
   console.log(`Server running on port ${port}`);
-  console.log(`Static files served from: ${staticPath}`);
 });
