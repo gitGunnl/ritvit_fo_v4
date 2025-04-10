@@ -21,12 +21,12 @@ export default function Services() {
           {/* Hero Section */}
           <div className="text-center max-w-3xl mx-auto mb-20">
             <h1 className="text-4xl font-bold mb-6 animate-fade-down">
-              Byrja tína ritvit ferð í dag
+              Byrja tína vitlíki ferð í dag
             </h1>
             <p className="text-lg text-text/80 mb-8">
-              Vit hjálpa føroyskum fyritøkum at taka ritvit-tøkni til sín, við praktiskum
+              Vit hjálpa føroyskum fyritøkum at taka vitlíki-tøkni til sín, við praktiskum
               amboðum sum KjattGPT, mynda generering og Microsoft Copilot. Við einari
-              skipaðari tilgongd tryggja vit, at tykkara toymi kann nýta ritvit á ein
+              skipaðari tilgongd tryggja vit, at tykkara toymi kann nýta vitlíki á ein
               munagóðan hátt í gerandisdegnum.
             </p>
           </div>
@@ -38,7 +38,7 @@ export default function Services() {
                 Byrja her: Okkara net-skeið
               </h2>
               <p className="text-lg text-text/80">
-                Eitt fullkomið innlit í ritvit til tína fyritøku
+                Eitt fullkomið innlit í vitlíki til tína fyritøku
               </p>
             </div>
 
@@ -60,7 +60,7 @@ export default function Services() {
                     <p className="text-text/80 mb-6">
                       Okkara umfatandi skeið lærir teg at brúka KjattGPT effektivt í
                       gerandisarbeiði. Perfekt til bæði ný byrjandi og yrkisfólk. Flestu av
-                      okkara kundum byrja sína ritvit-ferð her.
+                      okkara kundum byrja sína vitlíki-ferð her.
                     </p>
                     <div className="flex flex-col sm:flex-row items-center gap-4">
                       <p className="text-xl font-semibold text-primary">1.200 DKK</p>
@@ -125,27 +125,27 @@ export default function Services() {
                 <span className="inline-block bg-primary text-white text-xs font-semibold px-3 py-1 rounded-full mb-4">Fyrilestur</span>
                 <Presentation className="w-12 h-12 text-primary mb-4" />
                 <h3 className="text-2xl font-semibold mb-4">
-                  Ritvit: Frá Óvissu til Møguleikar
+                  vitlíki: Frá Óvissu til Møguleikar
                 </h3>
                 <p className="text-text/80 mb-6">
-                  Ritvit er komið – og tað broytir máta okkara at arbeiða uppá. Men hvat merkir tað í veruleikanum? Hvat kann ritvit – og hvat kann tað ikki? Hetta fyrilesturin gevur eina greiða fatan av, hvussu ritvit kann nýtast í gerandisdegnum, so óvissa og ivi verða skift út við forvitni og nýggjar møguleikar.
+                  vitlíki er komið – og tað broytir máta okkara at arbeiða uppá. Men hvat merkir tað í veruleikanum? Hvat kann vitlíki – og hvat kann tað ikki? Hetta fyrilesturin gevur eina greiða fatan av, hvussu vitlíki kann nýtast í gerandisdegnum, so óvissa og ivi verða skift út við forvitni og nýggjar møguleikar.
                 </p>
                 <div className="space-y-2 mb-6">
                   <div className="flex gap-2">
                     <span className="text-primary">🔹</span>
-                    <p className="text-text/80"><strong>Minni ógreiðni, meira greiða</strong> – Skil ritvit uttan torskilt tekniskt mál.</p>
+                    <p className="text-text/80"><strong>Minni ógreiðni, meira greiða</strong> – Skil vitlíki uttan torskilt tekniskt mál.</p>
                   </div>
                   <div className="flex gap-2">
                     <span className="text-primary">🔹</span>
-                    <p className="text-text/80"><strong>Frá ræðslu til spenning</strong> – Síggj, hvussu ritvit kann vera ein hjálp, ikki ein hóttan.</p>
+                    <p className="text-text/80"><strong>Frá ræðslu til spenning</strong> – Síggj, hvussu vitlíki kann vera ein hjálp, ikki ein hóttan.</p>
                   </div>
                   <div className="flex gap-2">
                     <span className="text-primary">🔹</span>
-                    <p className="text-text/80"><strong>Konkret íblástur</strong> – Uppliv, hvussu ritvit kann gera arbeiðið lættari og meir munagott.</p>
+                    <p className="text-text/80"><strong>Konkret íblástur</strong> – Uppliv, hvussu vitlíki kann gera arbeiðið lættari og meir munagott.</p>
                   </div>
                 </div>
                 <p className="text-text/80 mb-6">
-                  Ein fyrilestur, sum gevur yvirlit, vísir møguleikar og leggur fram praktisk dømi, so tit fara avstað við nýggjari tilgongd til ritvit – og eini sterkari støðu í framtíðini.
+                  Ein fyrilestur, sum gevur yvirlit, vísir møguleikar og leggur fram praktisk dømi, so tit fara avstað við nýggjari tilgongd til vitlíki – og eini sterkari støðu í framtíðini.
                 </p>
                 <div className="flex items-center gap-4 mb-4">
                   <p className="text-xl font-semibold text-primary">18.000 DKK</p>
@@ -159,7 +159,7 @@ export default function Services() {
                   </Link>
                 </div>
                 <p className="text-text/60 text-sm">
-                  Perfekt til fyritøkur, ið vilja vera á odda við ritviti – uttan óneyðuga ótta ella óvissu.
+                  Perfekt til fyritøkur, ið vilja vera á odda við vitlíkii – uttan óneyðuga ótta ella óvissu.
                 </p>
               </div>
             </div>
@@ -173,7 +173,7 @@ export default function Services() {
               <div className="bg-primary/10 backdrop-blur-sm rounded-lg p-8 shadow-lg border border-border">
                 <Users2 className="w-12 h-12 text-primary mb-4" />
                 <h3 className="text-2xl font-semibold mb-4">
-                  Ritvit-ráðgeving
+                  vitlíki-ráðgeving
                 </h3>
                 <p className="text-text/80 mb-6">
                   Tá ið títt toymi hevur fingið grundvitan, veita vit hándsama hjálp til at
@@ -193,7 +193,7 @@ export default function Services() {
                 </div>
                 <p className="text-text/60 text-sm">
                   Okkara serfrøði ger tað nógv smidligari at fáa tykkara toymi at innleiða
-                  ritvit-amboð inn í teirra dagliga arbeiði.
+                  vitlíki-amboð inn í teirra dagliga arbeiði.
                 </p>
               </div>
             </div>
@@ -209,7 +209,7 @@ export default function Services() {
                   Serloysnir til sjálvirkan
                 </h3>
                 <p className="text-text/80 mb-6">
-                  Ger tínar ritvit-automatións hugskot til veruleika við okkara
+                  Ger tínar vitlíki-automatións hugskot til veruleika við okkara
                   menningarserfrøði. Vit hjálpa tær at byggja sniðgjørdar loysnir, ið hóska til
                   tín tørv.
                 </p>
@@ -224,8 +224,8 @@ export default function Services() {
                   </Link>
                 </div>
                 <p className="text-text/60 text-sm">
-                  Hefur tú eina ítøkiliga mannagongd, tú vilt automatisera við ritvit? Ella
-                  hevur tú eitt slóðbrótandi hugskot til hvussu tín vinna kann brúka ritvit á
+                  Hevur tú eina ítøkiliga mannagongd, tú vilt automatisera við vitlíki? Ella
+                  hevur tú eitt slóðbrótandi hugskot til hvussu tín vinna kann brúka vitlíki á
                   ein nýggjan hátt? Vit kunnu hjálpa við at gera tínar visjónir til veruleika.
                 </p>
               </div>
@@ -235,7 +235,7 @@ export default function Services() {
           {/* Call to Action */}
           <div className="mt-32 text-center max-w-2xl mx-auto">
             <p className="text-lg text-text/80 mb-6">
-              Vilt tú býrja tína Ritvit-ferð? Byrja við okkara KjattGPT-skeiði í dag.
+              Vilt tú býrja tína vitlíki-ferð? Byrja við okkara KjattGPT-skeiði í dag.
             </p>
             <Link to="/contact">
               <Button

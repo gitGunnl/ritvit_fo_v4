@@ -192,7 +192,7 @@ const courseOverview = [
     lessons: [
       "Top tuna KjattGPT til at umseta til Føroyskt fyri teg.",
       "Munurin millum GPT-4o og GPT-o1",
-      "Almennt um ritvit lóggeving",
+      "Almennt um vitlíki lóggeving",
       "Verulig dømir frá veruligum royndum",
     ],
   },
@@ -419,14 +419,14 @@ const AboutCourse: React.FC = () => {
                 so drúgvar royndir sum til ber.
               </p>
               <p>
-                Eg havi fylgt menningini innan ritvit í meira enn 10 ár og havi
-                roynt øll tey størstu ritvit-amboðini á marknaðinum – eisini tá tey
-                veruliga høvdu lítið at bjóða. Fyri meg er ritvit ein máttmikil
+                Eg havi fylgt menningini innan vitlíki í meira enn 10 ár og havi
+                roynt øll tey størstu vitlíki-amboðini á marknaðinum – eisini tá tey
+                veruliga høvdu lítið at bjóða. Fyri meg er vitlíki ein máttmikil
                 tøkni, ið kann gera arbeiðið lættari, snildari og stuttligari.
               </p>
               <p>
                 Í dag reki eg mína egnu fyritøku, Tøkni Tænastan, har eg hjálpi
-                føroyskum fyritøkum at brúka ritvit sum eitt effektivt amboð. Eg
+                føroyskum fyritøkum at brúka vitlíki sum eitt effektivt amboð. Eg
                 leggji dent á at gera læringina ítøkiliga, við veruligakendum dømum
                 og uppgávum, so tú beinanvegin kanst brúka tað, tú lærir.
               </p>

@@ -275,7 +275,7 @@ const openSignupForm = () => {
           <div className="prose prose-lg mx-auto text-text/80">
             <p>
               Eg eiti <strong>Gunnleygur Clementsen</strong>, og tað er nokk eingin sum
-              hefur spælt meira við ritvit amboð í Føroya enn eg.
+              hevur spælt meira við ritvit amboð í Føroya enn eg.
             </p>
             <ul className="list-none mt-6 space-y-2">
               <li>
@@ -500,7 +500,7 @@ const openSignupForm = () => {
             <Link to="/aboutCourse">
               <Button
                 size="lg"
-                className="bg-primary hover:bg-primary/90 text-text font-bold text-lg py-7 px-8 shadow-[0_0_30px_rgba(147,51,234,0.6)] hover:shadow-[0_0_40px_rgba(147,51,234,0.8)] transition-all duration-300 animate-pulse hover:animate-none"
+                className="bg-primary hover:bg-primary/90 text-text font-bold text-lg py-7 px-8 shadow-[0_0_30px_rgba(147,51,234,0.6)] hover:shadow-[0_0_40px_rgba(147,51,234,0.8)] transition-all duration-1300 animate-pulse hover:animate-none"
                 onClick={openSignupForm}
               >
                 <span className="flex items-center gap-2">
