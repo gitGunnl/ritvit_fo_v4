@@ -1,0 +1,68 @@
+index-C5KtTsKk.js:556 
+            
+            
+           GET https://ritvit.fo/other%20media/Faroe%20Islands_%20Impact%20of%20New%20U_S_%20Tariffs.wav 500 (Internal Server Error)
+(anonymous) @ index-C5KtTsKk.js:556
+Ku @ index-C5KtTsKk.js:40
+ws @ index-C5KtTsKk.js:40
+ig @ index-C5KtTsKk.js:40
+vi @ index-C5KtTsKk.js:38
+HS @ index-C5KtTsKk.js:40
+Ci @ index-C5KtTsKk.js:40
+sw @ index-C5KtTsKk.js:40
+E @ index-C5KtTsKk.js:25
+I @ index-C5KtTsKk.js:25
+index-C5KtTsKk.js:556 Error loading audio file: Error: Failed to load audio: 500 
+    at index-C5KtTsKk.js:556:21490
+(anonymous) @ index-C5KtTsKk.js:556
+Promise.catch
+(anonymous) @ index-C5KtTsKk.js:556
+Ku @ index-C5KtTsKk.js:40
+ws @ index-C5KtTsKk.js:40
+ig @ index-C5KtTsKk.js:40
+vi @ index-C5KtTsKk.js:38
+HS @ index-C5KtTsKk.js:40
+Ci @ index-C5KtTsKk.js:40
+sw @ index-C5KtTsKk.js:40
+E @ index-C5KtTsKk.js:25
+I @ index-C5KtTsKk.js:25
+tariffs-podcast:18 
+            
+            
+           GET https://ritvit.fo/other%20media/Faroe%20Islands_%20Impact%20of%20New%20U_S_%20Tariffs.wav 500 (Internal Server Error)
+index-C5KtTsKk.js:556 Audio error: t {_reactName: 'onError', _targetInst: null, type: 'error', nativeEvent: Event, target: audio.hidden, …}
+h @ index-C5KtTsKk.js:556
+u2 @ index-C5KtTsKk.js:37
+d2 @ index-C5KtTsKk.js:37
+f2 @ index-C5KtTsKk.js:37
+Np @ index-C5KtTsKk.js:37
+dx @ index-C5KtTsKk.js:37
+(anonymous) @ index-C5KtTsKk.js:37
+Hh @ index-C5KtTsKk.js:40
+Ov @ index-C5KtTsKk.js:37
+Hc @ index-C5KtTsKk.js:37
+vh @ index-C5KtTsKk.js:37
+index-C5KtTsKk.js:556 Error code: 4
+h @ index-C5KtTsKk.js:556
+u2 @ index-C5KtTsKk.js:37
+d2 @ index-C5KtTsKk.js:37
+f2 @ index-C5KtTsKk.js:37
+Np @ index-C5KtTsKk.js:37
+dx @ index-C5KtTsKk.js:37
+(anonymous) @ index-C5KtTsKk.js:37
+Hh @ index-C5KtTsKk.js:40
+Ov @ index-C5KtTsKk.js:37
+Hc @ index-C5KtTsKk.js:37
+vh @ index-C5KtTsKk.js:37
+index-C5KtTsKk.js:556 Error message: MEDIA_ELEMENT_ERROR: Format error
+h @ index-C5KtTsKk.js:556
+u2 @ index-C5KtTsKk.js:37
+d2 @ index-C5KtTsKk.js:37
+f2 @ index-C5KtTsKk.js:37
+Np @ index-C5KtTsKk.js:37
+dx @ index-C5KtTsKk.js:37
+(anonymous) @ index-C5KtTsKk.js:37
+Hh @ index-C5KtTsKk.js:40
+Ov @ index-C5KtTsKk.js:37
+Hc @ index-C5KtTsKk.js:37
+vh @ index-C5KtTsKk.js:37
