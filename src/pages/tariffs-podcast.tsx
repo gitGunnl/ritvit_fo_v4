@@ -10,7 +10,7 @@ export default function TariffsPodcast() {
   const [currentTime, setCurrentTime] = React.useState(0);
   const [duration, setDuration] = React.useState(0);
   const audioRef = React.useRef<HTMLAudioElement>(null);
-  const audioUrl = "/other%20media/Faroe%20Islands_%20Impact%20of%20New%20U_S_%20Tariffs.wav";
+  const audioUrl = "/other-media/Faroe_Islands_Impact_of_New_US_Tariffs.wav";
   
   React.useEffect(() => {
     console.log("Audio component mounted, trying to load:", audioUrl);
