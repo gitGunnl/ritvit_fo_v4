@@ -11,6 +11,7 @@ import BlogIndex from "./pages/blog";
 import BlogPost from "./pages/blog/[id]";
 import AboutCourse from "./pages/aboutCourse";
 import ScenarioTrainer from "./pages/scenariotrainer";
+import TariffsPodcast from "./pages/tariffs-podcast"; // Added import for new page
 
 const queryClient = new QueryClient();
 
@@ -29,6 +30,7 @@ const App = () => (
           <Route path="/blog/:id" element={<BlogPost />} />
           <Route path="/aboutCourse" element={<AboutCourse />} />
           <Route path="/scenariotrainer" element={<ScenarioTrainer />} />
+          <Route path="/tariffs-podcast" element={<TariffsPodcast />} /> {/* Added route for podcast page */}
         </Routes>
       </BrowserRouter>
     </TooltipProvider>
