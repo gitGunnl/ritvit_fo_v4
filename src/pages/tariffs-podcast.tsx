@@ -494,7 +494,7 @@ In conclusion, the U.S. tariffs, while undoubtedly challenging, can be a **catal
               </div>
               <div>
                 <h2 className="text-2xl font-bold text-text">Impact of New U.S. Tariffs</h2>
-                <p className="text-text/80">Released: June 15, 2023 • 16:32 min</p>
+                <p className="text-text/80">Released: April, 2025 • 18:48 min</p>
               </div>
             </div>
 
