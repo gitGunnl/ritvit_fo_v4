@@ -10,6 +10,27 @@ export default function TariffsPodcast() {
   const [currentTime, setCurrentTime] = React.useState(0);
   const [duration, setDuration] = React.useState(0);
   const audioRef = React.useRef<HTMLAudioElement>(null);
+  const audioUrl = "/other media/Faroe Islands_ Impact of New U_S_ Tariffs.wav";
+  
+  React.useEffect(() => {
+    console.log("Audio component mounted, trying to load:", audioUrl);
+    
+    // Check if the audio file is accessible
+    fetch(audioUrl)
+      .then(response => {
+        console.log("Audio file fetch response:", response.status, response.statusText);
+        if (!response.ok) {
+          throw new Error(`Failed to load audio: ${response.status} ${response.statusText}`);
+        }
+        return response.blob();
+      })
+      .then(blob => {
+        console.log("Audio file loaded successfully, type:", blob.type, "size:", blob.size);
+      })
+      .catch(error => {
+        console.error("Error loading audio file:", error);
+      });
+  }, []);
 
   const formatTime = (seconds: number) => {
     const mins = Math.floor(seconds / 60);
@@ -20,11 +41,18 @@ export default function TariffsPodcast() {
   const handlePlayPause = () => {
     if (audioRef.current) {
       if (isPlaying) {
+        console.log("Pausing audio");
         audioRef.current.pause();
       } else {
-        audioRef.current.play();
+        console.log("Playing audio");
+        const playPromise = audioRef.current.play();
+        playPromise.catch(error => {
+          console.error("Error playing audio:", error);
+        });
       }
       setIsPlaying(!isPlaying);
+    } else {
+      console.error("Audio reference is null");
     }
   };
 
@@ -36,7 +64,18 @@ export default function TariffsPodcast() {
 
   const handleLoadedMetadata = () => {
     if (audioRef.current) {
+      console.log("Audio metadata loaded, duration:", audioRef.current.duration);
       setDuration(audioRef.current.duration);
+    } else {
+      console.error("Audio reference is null during metadata load");
+    }
+  };
+  
+  const handleAudioError = (e: React.SyntheticEvent<HTMLAudioElement, Event>) => {
+    console.error("Audio error:", e);
+    if (audioRef.current) {
+      console.error("Error code:", audioRef.current.error?.code);
+      console.error("Error message:", audioRef.current.error?.message);
     }
   };
 
@@ -469,9 +508,11 @@ In conclusion, the U.S. tariffs, while undoubtedly challenging, can be a **catal
             <div className="mb-4">
               <audio
                 ref={audioRef}
-                src="/other media/Faroe Islands_ Impact of New U_S_ Tariffs.wav"
+                src={audioUrl}
                 onTimeUpdate={handleTimeUpdate}
                 onLoadedMetadata={handleLoadedMetadata}
+                onError={handleAudioError}
+                preload="metadata"
                 className="hidden"
               />
 
