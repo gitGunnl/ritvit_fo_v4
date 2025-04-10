@@ -10,11 +10,14 @@ export default function TariffsPodcast() {
   const [currentTime, setCurrentTime] = React.useState(0);
   const [duration, setDuration] = React.useState(0);
   const audioRef = React.useRef<HTMLAudioElement>(null);
-  // Use the file that's already working locally
-  const audioUrl = "/other%20media/Faroe%20Islands_%20Impact%20of%20New%20U_S_%20Tariffs.wav";
+  // We'll try multiple path formats to identify what works in production
+  // Using standardized path with no spaces or special characters
+  const audioUrl = "/other-media/Faroe_Islands_Impact_of_New_US_Tariffs.wav";
   
   React.useEffect(() => {
     console.log("Audio component mounted, trying to load:", audioUrl);
+    console.log("Current window location:", window.location.href);
+    console.log("Environment:", import.meta.env.MODE);
     
     // Check if the audio file is accessible
     fetch(audioUrl)
@@ -30,6 +33,16 @@ export default function TariffsPodcast() {
       })
       .catch(error => {
         console.error("Error loading audio file:", error);
+        console.error("Error details:", JSON.stringify(error, Object.getOwnPropertyNames(error)));
+        
+        // Try to check if the file exists with a HEAD request as a fallback
+        fetch(audioUrl, { method: 'HEAD' })
+          .then(headResponse => {
+            console.log("HEAD request response:", headResponse.status, headResponse.statusText);
+          })
+          .catch(headError => {
+            console.error("HEAD request failed:", headError);
+          });
       });
   }, []);
 
