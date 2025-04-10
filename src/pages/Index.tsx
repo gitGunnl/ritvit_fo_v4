@@ -23,18 +23,18 @@ const openSignupForm = () => {
         {/* Animated background effect */}
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--primary)_0%,_transparent_65%)] opacity-80 animate-pulse [animation-duration:8s]"></div>
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_right,_var(--accent)_0%,_transparent_70%)] opacity-30 mix-blend-overlay"></div>
-        
+
         <div className="max-w-4xl mx-auto text-center px-4 z-10">
           <div className="inline-block mb-8 px-8 py-3 bg-primary/20 backdrop-blur-sm rounded-full animate-fade-down border border-primary/30 shadow-lg shadow-primary/10">
             <span className="text-primary font-semibold tracking-wide">Nýtt skeið byrjar skjótt!</span>
           </div>
           <h1 className="text-4xl sm:text-6xl lg:text-7xl font-bold mb-8 animate-fade-up leading-tight drop-shadow-md">
             Steðga at spilla tíð upp á uppgávur, sum 
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary via-primary/90 to-accent px-2 whitespace-nowrap">ritvit</span> 
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary via-primary/90 to-accent px-2 whitespace-nowrap">vitlíki</span> 
             kann gera fyri teg!
           </h1>
           <p className="text-xl mb-10 text-text/90 animate-fade-up [animation-delay:200ms] max-w-3xl mx-auto">
-            Lær at brúka ritvit upp á fáar dagar – og fá meira tíð til tað, sum veruliga hevur týdning fyri teg.
+            Lær at brúka vitlíki upp á fáar dagar – og fá meira tíð til tað, sum veruliga hevur týdning fyri teg.
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-6 animate-fade-up [animation-delay:400ms]">
             <Button
@@ -67,7 +67,7 @@ const openSignupForm = () => {
           <div className="bg-primary/10 p-8 md:p-12 relative overflow-hidden border border-primary/30 backdrop-blur-sm rounded-xl shadow-xl shadow-primary/5">
             {/* Decorative element */}
             <div className="absolute top-0 right-0 h-40 w-40 bg-accent/10 rounded-full blur-3xl opacity-50 -translate-y-1/2 translate-x-1/4"></div>
-            
+
             <h2 className="text-3xl md:text-4xl font-bold mb-8 relative z-10 drop-shadow-sm">
               Byrja við tí týdningarmesta: Lær at brúka ChatGPT
             </h2>
@@ -105,7 +105,7 @@ const openSignupForm = () => {
             {/* End of Enhanced Course Card */}
 
             <p className="text-xl text-text/90 mb-10 leading-relaxed">
-              Hetta skeiðið er skjótasti háttur at koma í gongd við ritvit – og serliga lagað til føroysk skrivstovufólk!
+              Hetta skeiðið er skjótasti háttur at koma í gongd við vitlíki – og serliga lagað til føroysk skrivstovufólk!
             </p>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
               <div className="flex items-start gap-4 p-4 rounded-lg bg-background/50 border border-primary/20 hover:border-primary/40 transition-all hover:shadow-md group">
@@ -117,7 +117,7 @@ const openSignupForm = () => {
                   <p className="text-text/80">Lær hvussu tú kann spara tímar hvønn mána – ímeðan tú ger arbeiði stuttligari.</p>
                 </div>
               </div>
-              
+
               <div className="flex items-start gap-4 p-4 rounded-lg bg-background/50 border border-primary/20 hover:border-primary/40 transition-all hover:shadow-md group">
                 <div className="bg-primary/20 p-3 rounded-full mt-1 group-hover:bg-primary/30 transition-colors">
                   <CheckCircle2 className="w-6 h-6 text-primary" />
@@ -127,7 +127,7 @@ const openSignupForm = () => {
                   <p className="text-text/80">Online, fleksibult og lætt at skilja – tilpassað tær.</p>
                 </div>
               </div>
-              
+
               <div className="flex items-start gap-4 p-4 rounded-lg bg-background/50 border border-primary/20 hover:border-primary/40 transition-all hover:shadow-md group">
                 <div className="bg-primary/20 p-3 rounded-full mt-1 group-hover:bg-primary/30 transition-colors">
                   <CheckCircle2 className="w-6 h-6 text-primary" />
@@ -137,17 +137,17 @@ const openSignupForm = () => {
                   <p className="text-text/80">Tú fert ikki at minnast hvussu lívið uttan ChatGPT plagdi at vera.</p>
                 </div>
               </div>
-              
+
               <div className="flex items-start gap-4 p-4 rounded-lg bg-background/50 border border-primary/20 hover:border-primary/40 transition-all hover:shadow-md group">
                 <div className="bg-primary/20 p-3 rounded-full mt-1 group-hover:bg-primary/30 transition-colors">
                   <CheckCircle2 className="w-6 h-6 text-primary" />
                 </div>
                 <div>
-                  <h4 className="font-bold text-lg text-primary/90 mb-1">Ritvit lærari</h4>
-                  <p className="text-text/80">Fá atgongd til ein ritvit-lærara, sum vegleiðir teg alla leiðina.</p>
+                  <h4 className="font-bold text-lg text-primary/90 mb-1">Vitlíki lærari</h4>
+                  <p className="text-text/80">Fá atgongd til ein vitlíki-lærara, sum vegleiðir teg alla leiðina.</p>
                 </div>
               </div>
-              
+
               <div className="flex items-start gap-4 p-4 rounded-lg bg-background/50 border border-primary/20 hover:border-primary/40 transition-all hover:shadow-md group md:col-span-2">
                 <div className="bg-primary/20 p-3 rounded-full mt-1 group-hover:bg-primary/30 transition-colors">
                   <CheckCircle2 className="w-6 h-6 text-primary" />
@@ -158,10 +158,10 @@ const openSignupForm = () => {
                 </div>
               </div>
             </div>
-            
+
             <div className="bg-accent/10 border border-accent/30 p-6 rounded-lg mb-10 shadow-inner">
               <p className="text-lg mb-2">
-                <strong className="text-text">Skeiðið ger teg kláran at brúka ritvit frá fyrsta degi – uttan tekniskan forkunnleika.</strong>
+                <strong className="text-text">Skeiðið ger teg kláran at brúka vitlíki frá fyrsta degi – uttan tekniskan forkunnleika.</strong>
               </p>
               <p className="text-lg flex items-center gap-2">
                 <span className="text-2xl">📌</span> 
@@ -179,7 +179,7 @@ const openSignupForm = () => {
       <section className="py-16 px-4 sm:px-6 lg:px-8 bg-primary/10">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-3xl font-bold mb-8 text-center">
-            Vit hjálpa tær í gongd við ritvit – uttan mun til hvat støði tú ert á
+            Vit hjálpa tær í gongd við vitlíki – uttan mun til hvat støði tú ert á
           </h2>
           <ul className="space-y-4 mb-8">
             <Link to="/aboutCourse" className="block">
@@ -197,9 +197,9 @@ const openSignupForm = () => {
               <li className="flex items-start p-4 border rounded-lg hover:bg-primary/20 transition cursor-pointer">
                 <span className="text-3xl mr-4">📌</span>
                 <div>
-                  <p className="font-bold">Vilt tú bara finna útav hvussu ritvit kann hjálpa júst tær?</p>
+                  <p className="font-bold">Vilt tú bara finna útav hvussu vitlíki kann hjálpa júst tær?</p>
                   <p>
-                    <strong>Vit finna 15 ting júst tú kann brúka ChatGPT til!</strong> - so kemur tú ígong á besta hátt.
+                    <strong>Vit finna 15 ting júst tú kann brúka ChatGPT til!</strong> - so kemur tú ígongd á besta hátt.
                   </p>
                 </div>
               </li>
@@ -210,7 +210,7 @@ const openSignupForm = () => {
                 <div>
                   <p className="font-bold">Vilt tú hava praktiska venjing?</p>
                   <p>
-                    <strong>Verkstovur & fyrilestrar</strong> – Vit vísa øllum tínum toymi, hvussu ritvit kann gera mun fyri tykkum.
+                    <strong>Verkstovur & fyrilestrar</strong> – Vit vísa øllum tínum toymi, hvussu vitlíki kann gera mun fyri tykkum.
                   </p>
                 </div>
               </li>
@@ -221,7 +221,7 @@ const openSignupForm = () => {
                 <div>
                   <p className="font-bold">Ella vilt tú sjálvirka arbeiðsgongdir?</p>
                   <p>
-                    <strong>Ráðgeving</strong> – Vit hjálpa tær at fáa ritvit at gera tað keðiliga arbeiði.
+                    <strong>Ráðgeving</strong> – Vit hjálpa tær at fáa vitlíki at gera tað keðiliga arbeiði.
                   </p>
                 </div>
               </li>
@@ -243,14 +243,14 @@ const openSignupForm = () => {
       <section className="py-20 px-8 my-16 mx-4 bg-gradient-to-br from-primary/10 to-accent/10 rounded-3xl shadow-lg">
         <div className="max-w-3xl mx-auto text-center">
           <h2 className="text-4xl font-bold mb-10 text-primary">
-            💡 Ritvit mennist skjótt – ikki sova í tímanum!
+            💡 Vitlíki mennist skjótt – ikki sova í tímanum!
           </h2>
           <p className="text-xl font-semibold text-text mb-8">
-            Ritvit er longu her – fyritøkur, sum læra tað nú, fáa ein stóran fyrimun.
+            Vitlíki er longu her – fyritøkur, sum læra tað nú, fáa ein stóran fyrimun.
           </p>
           <p className="text-lg text-text/80 mb-12 leading-relaxed max-w-2xl mx-auto">
-            Okkara ritvit-skeið er skjótasta og lættasta leiðin at koma í gongd. 
-            Við atgongd til ein ritvit-lærara og 100% peningaafturgjald um tú ikki ert nøgd/ur.
+            Okkara vitlíki-skeið er skjótasta og lættasta leiðin at koma í gongd. 
+            Við atgongd til ein vitlíki-lærara og 100% peningaafturgjald um tú ikki ert nøgd/ur.
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-6">
             <Link to="/services" className="w-full sm:w-auto">
@@ -275,35 +275,35 @@ const openSignupForm = () => {
           <div className="prose prose-lg mx-auto text-text/80">
             <p>
               Eg eiti <strong>Gunnleygur Clementsen</strong>, og tað er nokk eingin sum
-              hevur spælt meira við ritvit amboð í Føroya enn eg.
+              hevur spælt meira við vitlíki amboð í Føroya enn eg.
             </p>
             <ul className="list-none mt-6 space-y-2">
               <li>
                 🧠 <strong>Eg havi brúkt ChatGPT so at siga hvønn dag síðan 2022</strong>,
                 fyrst tá ið eg arbeiddi sum el-verkfrøðingur í Danmark. Og í dag
-                ígjøgnum mína fyritøku sum bara arbeiður við ritvit øki.
+                ígjøgnum mína fyritøku sum bara arbeiður við vitlíki øki.
               </li>
               <li>
                 📈{" "}
                 <strong>
-                  Eg havi fylgt við í menningini av ritvit í meira enn 10 ár
+                  Eg havi fylgt við í menningini av vitlíki í meira enn 10 ár
                 </strong>{" "}
-                og roynt fleiri hundra ritvit-amboð – eisini tá ið tey ikki nýttaðu
+                og roynt fleiri hundra vitlíki-amboð – eisini tá ið tey ikki nýttaðu
                 nakað.
               </li>
               <li>
                 ⚡ <strong>Eg stovnaði Tøkni Tænastuna</strong> fyri at hjálpa
-                føroyskum fyritøkum at gagnnýta møguleikarnar við ritvit.
+                føroyskum fyritøkum at gagnnýta møguleikarnar við vitlíki.
               </li>
               <li>
                 📌{" "}
                 <strong>Eg leggi dent á praktiskar loysnir</strong> – tú lærir ikki
-                teori, men hvussu tú kanst brúka ritvit til at spara tíð í
+                teori, men hvussu tú kanst brúka vitlíki til at spara tíð í
                 gerandisdegnum og gera arbeiði stuttligari.
               </li>
             </ul>
             <p className="mt-4">
-              <strong>Ritvit er ikki framtíðin – tað er nútíðin.</strong> So fá
+              <strong>Vitlíki er ikki framtíðin – tað er nútíðin.</strong> So fá
               fingurin úr reyvuni og kom ígongd.
             </p>
           </div>
@@ -315,9 +315,9 @@ const openSignupForm = () => {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold mb-4">Skula vit taka eitt prát?</h2>
-            <p className="text-text/70 max-w-xl mx-auto">Fá skjóta vegleiðing um, hvussu vit kunnu hjálpa tær at loysa tínar avbjóðingar við ritvit</p>
+            <p className="text-text/70 max-w-xl mx-auto">Fá skjóta vegleiðing um, hvussu vit kunnu hjálpa tær at loysa tínar avbjóðingar við vitlíki</p>
           </div>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
             {/* Contact Details - Enhanced */}
             <div className="bg-primary/10 p-8 border border-primary/30 backdrop-blur-sm rounded-xl shadow-lg hover:shadow-primary/5 transition-all duration-300">
@@ -329,14 +329,14 @@ const openSignupForm = () => {
                   </div>
                   <span className="text-lg group-hover:text-primary transition-colors">info@ritvit.fo</span>
                 </a>
-                
+
                 <a href="tel:+298919444" className="flex items-center gap-4 p-3 hover:bg-primary/10 rounded-lg transition-colors group">
                   <div className="p-3 bg-primary/20 rounded-full group-hover:bg-primary/30 transition-colors">
                     <Phone className="w-5 h-5 text-primary" />
                   </div>
                   <span className="text-lg group-hover:text-primary transition-colors">+298 919444</span>
                 </a>
-                
+
                 <a
                   href="https://www.facebook.com/profile.php?id=61557593776267"
                   target="_blank"
@@ -355,7 +355,7 @@ const openSignupForm = () => {
                   </div>
                   <span className="text-lg group-hover:text-primary transition-colors">Facebook</span>
                 </a>
-                
+
                 <a
                   href="https://linkedin.com/company/t%C3%B8kni-t%C3%A6nastan"
                   target="_blank"
@@ -442,19 +442,19 @@ const openSignupForm = () => {
           <div className="absolute top-[-10%] left-[-10%] w-[60%] h-[60%] bg-primary/30 rounded-full blur-[100px] animate-pulse" style={{animationDuration: '15s'}}></div>
           <div className="absolute bottom-[-20%] right-[-10%] w-[70%] h-[70%] bg-accent/30 rounded-full blur-[100px] animate-pulse" style={{animationDuration: '20s'}}></div>
         </div>
-        
+
         <div className="max-w-4xl mx-auto p-12 md:p-16 rounded-3xl border-2 border-primary shadow-[0_0_50px_rgba(147,51,234,0.4)] bg-background/95 backdrop-blur-lg relative z-10">
           {/* Corner accent */}
           <div className="absolute top-0 right-0 w-32 h-32 bg-primary/10 rounded-full blur-3xl opacity-80"></div>
-          
+
           <h2 className="text-4xl md:text-5xl font-bold mb-8 text-center bg-clip-text text-transparent bg-gradient-to-r from-primary to-primary/80">
             Tíðin er røtt nú – lat okkum býrja!
           </h2>
-          
+
           <p className="text-xl md:text-2xl mb-12 text-center text-text">
-            Ritvit er <strong className="text-primary animate-pulse">ikki nakað, tú kanst skoyta til viks</strong> – tað hevur longu broytt spælið.
+            Vitlíki er <strong className="text-primary animate-pulse">ikki nakað, tú kanst skoyta til viks</strong> – tað hevur longu broytt spælið.
           </p>
-          
+
           <div className="space-y-6 mb-12">
             <Link to="/services" className="block">
               <div className="flex items-center gap-4 p-5 bg-primary/10 rounded-xl hover:bg-primary/20 transition-all duration-300 border-2 border-primary/50 hover:border-primary hover:shadow-lg hover:shadow-primary/20 hover:translate-x-1 group">
@@ -462,29 +462,29 @@ const openSignupForm = () => {
                   <span className="text-3xl">🎓</span>
                 </div>
                 <div className="text-text flex-1">
-                  <h3 className="font-bold text-xl text-primary/90 group-hover:text-primary transition-colors">Vilt tú læra ritvit frá grundini?</h3>
+                  <h3 className="font-bold text-xl text-primary/90 group-hover:text-primary transition-colors">Vilt tú læra vitlíki frá grundini?</h3>
                   <p className="text-text/80">Tekna teg til okkara skeið</p>
                 </div>
                 <ArrowRight className="w-7 h-7 text-primary opacity-70 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
               </div>
             </Link>
-            
+
             <Link to="/services" className="block">
               <div className="flex items-center gap-4 p-5 bg-primary/10 rounded-xl hover:bg-primary/20 transition-all duration-300 border-2 border-primary/50 hover:border-primary hover:shadow-lg hover:shadow-primary/20 hover:translate-x-1 group">
                 <div className="p-2 bg-background/50 rounded-full">
                   <span className="text-3xl">💼</span>
                 </div>
                 <div className="text-text flex-1">
-                  <h3 className="font-bold text-xl text-primary/90 group-hover:text-primary transition-colors">Vilt tú innføra ritvit í tína fyritøku?</h3>
+                  <h3 className="font-bold text-xl text-primary/90 group-hover:text-primary transition-colors">Vilt tú innføra vitlíki í tína fyritøku?</h3>
                   <p className="text-text/80">Hygg eftir okkara tænastum</p>
                 </div>
                 <ArrowRight className="w-7 h-7 text-primary opacity-70 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
               </div>
             </Link>
-            
+
             <Link to="/contact" className="block">
               <div className="flex items-center gap-4 p-5 bg-primary/10 rounded-xl hover:bg-primary/20 transition-all duration-300 border-2 border-primary/50 hover:border-primary hover:shadow-lg hover:shadow-primary/20 hover:translate-x-1 group">
-                <div className="p-2 bg-background/50 rounded-full">
+                <div className="p-2 bg-background/50 roundedfull">
                   <span className="text-3xl">❓</span>
                 </div>
                 <div className="text-text flex-1">
@@ -495,7 +495,7 @@ const openSignupForm = () => {
               </div>
             </Link>
           </div>
-          
+
           <div className="flex flex-col sm:flex-row justify-center gap-6">
             <Link to="/aboutCourse">
               <Button
