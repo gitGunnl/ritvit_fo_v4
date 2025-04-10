@@ -3,6 +3,7 @@ import React from "react";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Play, Pause, SkipBack, SkipForward } from "lucide-react";
+import MarkdownRenderer from "@/components/MarkdownRenderer";
 
 export default function TariffsPodcast() {
   const [isPlaying, setIsPlaying] = React.useState(false);
@@ -60,6 +61,18 @@ export default function TariffsPodcast() {
         audioRef.current.currentTime + 15
       );
     }
+  };
+
+  // Component to render markdown episode notes
+  const EpisodeNotes = () => {
+    const markdownContent = `
+# Impact of New U.S. Tariffs on the Faroe Islands – April 2025
+
+## Executive Summary  
+The **Faroe Islands' export-driven economy** faces significant challenges from the new U.S. import tariffs introduced on April 5, 2025. A universal 10% tariff now applies to most Faroese goods entering the U.S., with seafood – the **backbone of Faroese exports** – directly in the crosshairs. Faroese salmon, a premium export that makes up nearly half of the nation's export value, is particularly exposed. Approximately **one-third of leading producer Bakkafrost's exports go to the U.S.** ([Færøsk lakseproducent køber eget fragtfly - skal styrke USA-eksport](https://www.sermitsiaq.ag/erhverv/faerosk-lakseproducent-kober-eget-fragtfly-skal-styrke-usa-eksport/417139#:~:text=Fersk%20fisk%20til%20sushi%20i,Y)), so a 10% price handicap threatens to erode profit margins, reduce export revenues, and weaken the competitive position of Faroese salmon in the critical American market. Other fish products and any minor exports (such as wool textiles) will likewise become more expensive in the U.S., squeezing those niche industries.
+    `;
+
+    return <MarkdownRenderer content={markdownContent} />;
   };
 
   return (
@@ -156,13 +169,7 @@ export default function TariffsPodcast() {
 
           <div className="mt-12 p-6 bg-accent/10 rounded-lg border border-accent/20">
             <h3 className="text-xl font-semibold mb-4">Episode Notes</h3>
-            <ul className="list-disc list-inside space-y-2 text-text/80">
-              <li>Overview of the new U.S. tariff structure affecting Faroese exports</li>
-              <li>Analysis of impact on the Faroese fishing industry and economy</li>
-              <li>Interviews with local business owners and industry representatives</li>
-              <li>Discussion of potential mitigation strategies and government response</li>
-              <li>Long-term outlook for Faroe-U.S. trade relations</li>
-            </ul>
+            <EpisodeNotes />
           </div>
         </div>
       </main>

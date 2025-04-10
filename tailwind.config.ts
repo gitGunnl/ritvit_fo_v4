@@ -1,5 +1,6 @@
 // tailwind.config.js
-import type { Config } from "tailwindcss";
+import { type Config } from "tailwindcss";
+import typography from '@tailwindcss/typography';
 
 export default {
   darkMode: ["class"],
