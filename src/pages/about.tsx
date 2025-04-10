@@ -16,7 +16,7 @@ export default function About() {
             Um okkum
           </h1>
           <h2 className="text-2xl md:text-3xl font-semibold mb-6 animate-fade-down text-text/80">
-            Vit bera ritvit til Føroyar – og víðari
+            Vit bera vitlíki til Føroyar – og víðari
           </h2>
           <p className="text-xl max-w-3xl mx-auto leading-relaxed text-text/80 animate-fade-down">
             Stig fyri stig broytur ritvit heimin. Vit syrgja fyri, at tú ikki dettur afturúr.

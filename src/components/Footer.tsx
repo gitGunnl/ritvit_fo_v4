@@ -19,7 +19,7 @@ const Footer = () => {
               </Link>
             </div>
             <p className="text-text/80">
-              Ritvit serfrøði í verðinsklassa í Føroyum.
+              Vitlíki serfrøði í verðinsklassa í Føroyum.
             </p>
           </div>
 
