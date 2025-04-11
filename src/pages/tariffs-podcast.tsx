@@ -542,7 +542,7 @@ In conclusion, the U.S. tariffs, while undoubtedly challenging, can be a **catal
         <div className="max-w-4xl mx-auto">
           <div className="mb-12 text-center">
             <h1 className="text-4xl md:text-5xl font-bold mb-4 animate-fade-down">
-              Faroe Islands Podcast
+              Ritvit podvarpur
             </h1>
             <p className="text-xl text-text/80 max-w-2xl mx-auto animate-fade-down">
               Special Episode: Impact of New U.S. Tariffs on Faroese Exports
