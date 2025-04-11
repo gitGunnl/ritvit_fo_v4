@@ -170,13 +170,20 @@ Policymakers and industry leaders in the Faroe Islands are beginning to respond 
   <h3 className="text-xl font-semibold mb-2">Listen to the Analysis</h3>
   <audio
     controls
-    src="/other_media/Faroe_Islands_Impact_of_New_US_Tariffs.mp3"
+    src={import.meta.env.MODE === 'production' 
+      ? '/other_media/Faroe_Islands_Impact_of_New_US_Tariffs.mp3'
+      : '/other_media/Faroe_Islands_Impact_of_New_US_Tariffs.mp3'}
     className="w-full"
     onError={(e) => {
       console.log("Audio Element Error:", e);
       console.log("Error Code:", e.target.error?.code);
+      console.log("Current path:", window.location.pathname);
+      console.log("Current mode:", import.meta.env.MODE);
     }}
   />
+  <div className="text-xs text-gray-500 mt-1">
+    If audio doesn't play, you can <a href="/other_media/Faroe_Islands_Impact_of_New_US_Tariffs.mp3" download className="underline">download it here</a>
+  </div>
 </div>is crucial supply line.  
 
 **Primary Industries Affected:** The **seafood industry dominates Faroese exports**, accounting for 90–95% of total export value ([Foreign Trade - The Government](https://www.government.fo/en/foreign-relations/foreign-trade#:~:text=Fisheries%20and%20Aquaculture%20Fisheries%2C%20and,employed%20by%20the%20fishing%20industry)). Thus, the newly imposed 10% U.S. tariff will principally affect **fish and aquaculture products**, with salmon farming taking center stage. Other exporting sectors – though much smaller in scale – include **traditional fisheries (whitefish and pelagic species)**, and a modest **wool/textiles industry** known for knitwear. All of these will now face a 10% cost hurdle in the U.S. market.
