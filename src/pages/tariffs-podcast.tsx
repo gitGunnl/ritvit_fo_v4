@@ -164,7 +164,20 @@ Policymakers and industry leaders in the Faroe Islands are beginning to respond 
 
 ## 1. Sectoral Impact Analysis
 
- ([Færøsk lakseproducent køber eget fragtfly - skal styrke USA-eksport](https://www.sermitsiaq.ag/erhverv/faerosk-lakseproducent-kober-eget-fragtfly-skal-styrke-usa-eksport/417139)) **Figure:** A FarCargo Boeing 757 freighter acquired by Bakkafrost to transport fresh Faroese salmon directly to the U.S. (New York) in 2022. Around one-third of Bakkafrost's total exports were destined for the U.S. prior to the new tariffs ([Færøsk lakseproducent køber eget fragtfly - skal styrke USA-eksport](https://www.sermitsiaq.ag/erhverv/faerosk-lakseproducent-kober-eget-fragtfly-skal-styrke-usa-eksport/417139#:~:text=Fersk%20fisk%20til%20sushi%20i,Y)). The 10% import duty now imposed threatens this crucial supply line.  
+ ([Færøsk lakseproducent køber eget fragtfly - skal styrke USA-eksport](https://www.sermitsiaq.ag/erhverv/faerosk-lakseproducent-kober-eget-fragtfly-skal-styrke-usa-eksport/417139)) **Figure:** A FarCargo Boeing 757 freighter acquired by Bakkafrost to transport fresh Faroese salmon directly to the U.S. (New York) in 2022. Around one-third of Bakkafrost's total exports were destined for the U.S. prior to the new tariffs ([Færøsk lakseproducent køber eget fragtfly - skal styrke USA-eksport](https://www.sermitsiaq.ag/erhverv/faerosk-lakseproducent-kober-eget-fragtfly-skal-styrke-usa-eksport/417139#:~:text=Fersk%20fisk%20til%20sushi%20i,Y)). The 10% import duty now imposed threatens th
+
+<div className="mt-8">
+  <h3 className="text-xl font-semibold mb-2">Listen to the Analysis</h3>
+  <audio
+    controls
+    src="/other_media/Faroe_Islands_Impact_of_New_US_Tariffs.mp3"
+    className="w-full"
+    onError={(e) => {
+      console.log("Audio Element Error:", e);
+      console.log("Error Code:", e.target.error?.code);
+    }}
+  />
+</div>is crucial supply line.  
 
 **Primary Industries Affected:** The **seafood industry dominates Faroese exports**, accounting for 90–95% of total export value ([Foreign Trade - The Government](https://www.government.fo/en/foreign-relations/foreign-trade#:~:text=Fisheries%20and%20Aquaculture%20Fisheries%2C%20and,employed%20by%20the%20fishing%20industry)). Thus, the newly imposed 10% U.S. tariff will principally affect **fish and aquaculture products**, with salmon farming taking center stage. Other exporting sectors – though much smaller in scale – include **traditional fisheries (whitefish and pelagic species)**, and a modest **wool/textiles industry** known for knitwear. All of these will now face a 10% cost hurdle in the U.S. market.
 `;
