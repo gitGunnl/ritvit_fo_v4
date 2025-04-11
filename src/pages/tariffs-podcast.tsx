@@ -1,10 +1,9 @@
-import React, { useEffect } from "react";
+import React from "react";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Play, Pause, SkipBack, SkipForward } from "lucide-react";
 import MarkdownRenderer from "@/components/MarkdownRenderer";
 import { Button } from "@/components/ui/button";
-import { Helmet } from "react-helmet";
 
 export default function TariffsPodcast() {
   const [isPlaying, setIsPlaying] = React.useState(false);
@@ -13,11 +12,6 @@ export default function TariffsPodcast() {
   const [isLoading, setIsLoading] = React.useState(true);
   const [error, setError] = React.useState<string | null>(null);
   const audioRef = React.useRef<HTMLAudioElement>(null);
-  
-  // Page title and metadata
-  const pageTitle = "Impact of New U.S. Tariffs - Faroe Islands Podcast";
-  const pageDescription = "Special Episode: Analysis of the economic impact of new U.S. tariffs on Faroese exports, particularly focusing on the seafood industry.";
-  const ogImageUrl = "/images/podcast_thumbnail.png";
 
   // Reference MP3 from the public directory path
   const audioUrl = "/other_media/Faroe_Islands_Impact_of_New_US_Tariffs.mp3";
@@ -515,22 +509,6 @@ In conclusion, the U.S. tariffs, while undoubtedly challenging, can be a **catal
 
   return (
     <div className="min-h-screen bg-background text-text flex flex-col">
-      <Helmet>
-        <title>{pageTitle}</title>
-        <meta name="description" content={pageDescription} />
-        
-        {/* Open Graph / Facebook */}
-        <meta property="og:type" content="website" />
-        <meta property="og:title" content={pageTitle} />
-        <meta property="og:description" content={pageDescription} />
-        <meta property="og:image" content={ogImageUrl} />
-        
-        {/* Twitter */}
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content={pageTitle} />
-        <meta name="twitter:description" content={pageDescription} />
-        <meta name="twitter:image" content={ogImageUrl} />
-      </Helmet>
       <Navigation />
 
       <main className="flex-grow container mx-auto px-4 py-16 mt-16">
