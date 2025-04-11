@@ -16,6 +16,11 @@ export default function TariffsPodcast() {
     const ogDescMeta = document.createElement('meta');
     ogDescMeta.setAttribute('property', 'og:description');
     ogDescMeta.setAttribute('content', 'Listen to our analysis of how the new U.S. tariffs are affecting Faroese exports, particularly in the seafood industry.');
+    
+    // Create image meta tag pointing to the correct thumbnail
+    const ogImageMeta = document.createElement('meta');
+    ogImageMeta.setAttribute('property', 'og:image');
+    ogImageMeta.setAttribute('content', '/images/podcast_thumbnail.png');
 
     // Add meta tags to head
     document.head.appendChild(ogImageMeta);
@@ -24,6 +29,7 @@ export default function TariffsPodcast() {
 
     // Clean up when component unmounts
     return () => {
+      document.head.removeChild(ogImageMeta);
       document.head.removeChild(ogTitleMeta);
       document.head.removeChild(ogDescMeta);
     };
