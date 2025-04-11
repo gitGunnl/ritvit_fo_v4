@@ -75,23 +75,3 @@
 .fade-in {
   @apply animate-fade-up;
 }
-
-@layer utilities {
-  .animate-fade-up {
-    animation: fadeUp 1s ease forwards;
-  }
-  .animate-fade-down {
-    animation: fadeDown 1s ease forwards;
-  }
-  .particles-wrapper {
-    position: absolute;
-    inset: 0;
-    z-index: -1;
-    overflow: hidden;
-  }
-  .backdrop-blur-sm {
-    backdrop-filter: blur(4px);
-    box-shadow: 0 0 20px rgba(147, 51, 234, 0.07);
-    border: 1px solid rgba(147, 51, 234, 0.1);
-  }
-}

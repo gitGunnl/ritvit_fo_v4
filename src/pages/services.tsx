@@ -12,20 +12,14 @@ import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 
-import ParticleBackground from "@/components/ParticleBackground";
-
 export default function Services() {
   return (
     <div className="min-h-screen bg-background text-text">
       <Navigation />
-      <div className="py-20 relative">
-        {/* Particle Background */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <ParticleBackground className="absolute inset-0 -z-10" />
-        </div>
-        <div className="container px-4 mx-auto relative z-10">
+      <div className="py-20">
+        <div className="container px-4 mx-auto">
           {/* Hero Section */}
-          <div className="text-center max-w-3xl mx-auto mb-20 backdrop-blur-sm p-8 rounded-xl">
+          <div className="text-center max-w-3xl mx-auto mb-20">
             <h1 className="text-4xl font-bold mb-6 animate-fade-down">
               Byrja tína vitlíki ferð í dag
             </h1>
