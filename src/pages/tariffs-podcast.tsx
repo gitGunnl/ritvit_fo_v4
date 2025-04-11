@@ -9,13 +9,9 @@ export default function TariffsPodcast() {
   // Add Open Graph metadata for proper thumbnail
   useEffect(() => {
     // Create meta tags for Open Graph
-    const ogImageMeta = document.createElement('meta');
-    ogImageMeta.setAttribute('property', 'og:image');
-    ogImageMeta.setAttribute('content', window.location.origin + '/images/podcast_thumbnail.png');
-    
     const ogTitleMeta = document.createElement('meta');
     ogTitleMeta.setAttribute('property', 'og:title');
-    ogTitleMeta.setAttribute('content', 'Impact of New U.S. Tariffs on the Faroe Islands – Podcast');
+    ogTitleMeta.setAttribute('content', 'Ritvit podvarpur');
     
     const ogDescMeta = document.createElement('meta');
     ogDescMeta.setAttribute('property', 'og:description');
@@ -28,7 +24,6 @@ export default function TariffsPodcast() {
 
     // Clean up when component unmounts
     return () => {
-      document.head.removeChild(ogImageMeta);
       document.head.removeChild(ogTitleMeta);
       document.head.removeChild(ogDescMeta);
     };
