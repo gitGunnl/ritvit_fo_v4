@@ -13,13 +13,29 @@ export default function TariffsPodcast() {
   const [error, setError] = React.useState<string | null>(null);
   const audioRef = React.useRef<HTMLAudioElement>(null);
 
-  // Reference MP3 from the correct public directory path
-  const audioUrl = import.meta.env.PROD 
-    ? "/other_media/Faroe_Islands_Impact_of_New_US_Tariffs.mp3" 
-    : "/other_media/Faroe_Islands_Impact_of_New_US_Tariffs.mp3";
+  // Reference MP3 from the correct public directory path with better error handling
+  const audioUrl = "/other_media/Faroe_Islands_Impact_of_New_US_Tariffs.mp3";
 
   React.useEffect(() => {
     const audioElement = audioRef.current;
+    
+    if (audioElement) {
+      console.log(`Setting audio source to: ${audioUrl}`);
+      
+      // Add error handling for audio loading
+      const handleError = (e: Event) => {
+        console.error("Audio Element Error:", e);
+        if (audioElement.error) {
+          console.error("Error Code:", audioElement.error.code);
+        }
+      };
+      
+      audioElement.addEventListener('error', handleError);
+      
+      return () => {
+        audioElement.removeEventListener('error', handleError);
+      };
+    }
     if (!audioElement) return;
 
     const handleLoadedMetadata = () => {
