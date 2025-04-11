@@ -9,8 +9,8 @@ channel = "stable-24_05"
 # Deployment configuration
 [deployment]
 deploymentTarget = "cloudrun"
-build = ["sh", "-c", "npm install && cp -r public/other_media dist/other_media && npm run build"]
-run = ["sh", "-c", "npm run start"]
+build = ["sh", "-c", "bun install && mkdir -p dist/other_media && cp -r public/other_media dist/ && bun run build"]
+run = ["sh", "-c", "bun run start"]
 
 [[deployment.rewrites]]
 from = "/*"
