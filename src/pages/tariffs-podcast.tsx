@@ -14,7 +14,9 @@ export default function TariffsPodcast() {
   const audioRef = React.useRef<HTMLAudioElement>(null);
 
   // Reference MP3 from the correct public directory path
-  const audioUrl = "/other_media/Faroe_Islands_Impact_of_New_US_Tariffs.mp3";
+  const audioUrl = import.meta.env.PROD 
+    ? "/other_media/Faroe_Islands_Impact_of_New_US_Tariffs.mp3" 
+    : "/other_media/Faroe_Islands_Impact_of_New_US_Tariffs.mp3";
 
   React.useEffect(() => {
     const audioElement = audioRef.current;

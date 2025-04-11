@@ -16,6 +16,11 @@ run = ["sh", "-c", "npm run start"]
 from = "/*"
 to = "/index.html"
 
+# Ensure static files are served correctly
+[[deployment.rewrites]]
+from = "/other_media/*"
+to = "/other_media/*"
+
 # Port configuration
 [[ports]]
 localPort = 3000
