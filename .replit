@@ -21,6 +21,17 @@ to = "/index.html"
 from = "/other_media/*"
 to = "/other_media/*"
 
+# Add proper MIME type for MP3 files
+[[deployment.responseHeaders]]
+path = "*.mp3"
+name = "Content-Type"
+value = "audio/mpeg"
+
+[[deployment.responseHeaders]]
+path = "/other_media/*.mp3"
+name = "Content-Type" 
+value = "audio/mpeg"
+
 # Port configuration
 [[ports]]
 localPort = 3000

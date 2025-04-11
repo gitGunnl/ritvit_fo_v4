@@ -187,20 +187,22 @@ Policymakers and industry leaders in the Faroe Islands are beginning to respond 
 <div className="mt-8">
   <h3 className="text-xl font-semibold mb-2">Listen to the Analysis</h3>
   <audio
+    ref={audioRef}
     controls
-    src={import.meta.env.MODE === 'production' 
-      ? '/other_media/Faroe_Islands_Impact_of_New_US_Tariffs.mp3'
-      : '/other_media/Faroe_Islands_Impact_of_New_US_Tariffs.mp3'}
+    preload="metadata"
     className="w-full"
     onError={(e) => {
-      console.log("Audio Element Error:", e);
-      console.log("Error Code:", e.target.error?.code);
+      console.error("Audio Element Error:", e);
+      if (e.target.error) {
+        console.error("Error Code:", e.target.error.code);
+        setError(`Audio error: ${e.target.error.message || 'Failed to load audio'}`);
+      }
       console.log("Current path:", window.location.pathname);
       console.log("Current mode:", import.meta.env.MODE);
     }}
   />
   <div className="text-xs text-gray-500 mt-1">
-    If audio doesn't play, you can <a href="/other_media/Faroe_Islands_Impact_of_New_US_Tariffs.mp3" download className="underline">download it here</a>
+    If audio doesn't play, you can <a href={audioUrl} download className="underline">download it here</a>
   </div>
 </div>is crucial supply line.  
 
