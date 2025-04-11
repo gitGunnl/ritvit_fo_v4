@@ -12,8 +12,13 @@ import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import Particles from "react-tsparticles";
+import { loadFull } from "tsparticles";
 
 export default function Services() {
+  const particlesInit = async (engine) => {
+    await loadFull(engine);
+  };
+  
   return (
     <div className="min-h-screen bg-background text-text">
       <Navigation />
@@ -25,6 +30,7 @@ export default function Services() {
             <Particles
               id="tsparticles-services"
               className="absolute inset-0 -z-10"
+              init={particlesInit}
               options={{
                 fullScreen: { enable: false },
                 fpsLimit: 60,

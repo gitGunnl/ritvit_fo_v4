@@ -6,10 +6,15 @@ import { ArrowRight, Mail, Phone, MessageSquare, CheckCircle2 } from "lucide-rea
 import { Link } from "react-router-dom";
 import { Input } from "@/components/ui/input"; // Added imports
 import Particles from "react-tsparticles";
+import { loadFull } from "tsparticles";
 
 
 const Index = () => {
   const signupUrl = "https://docs.google.com/forms/d/e/1FAIpQLSfDtowxpOMTXaccvE49FM-e-LC9Hb6-pWO-E8Rr2jyOlgJnLg/viewform?usp=sf_link";
+
+  const particlesInit = async (engine) => {
+    await loadFull(engine);
+  };
 
 const openSignupForm = () => {
   window.open(signupUrl, '_blank', 'noopener,noreferrer');
@@ -25,6 +30,7 @@ const openSignupForm = () => {
         <Particles
           id="tsparticles"
           className="absolute inset-0"
+          init={particlesInit}
           options={{
             fullScreen: { enable: false },
             fpsLimit: 60,
