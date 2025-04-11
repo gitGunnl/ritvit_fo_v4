@@ -20,7 +20,7 @@ export default function TariffsPodcast() {
     // Create image meta tag pointing to the correct thumbnail
     const ogImageMeta = document.createElement('meta');
     ogImageMeta.setAttribute('property', 'og:image');
-    ogImageMeta.setAttribute('content', '/images/podcast_thumbnail.png');
+    ogImageMeta.setAttribute('content', `${window.location.origin}/images/podcast_thumbnail.png`);
 
     // Add meta tags to head
     document.head.appendChild(ogImageMeta);
