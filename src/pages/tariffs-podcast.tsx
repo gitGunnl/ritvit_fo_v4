@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Play, Pause, SkipBack, SkipForward } from "lucide-react";
@@ -6,6 +6,33 @@ import MarkdownRenderer from "@/components/MarkdownRenderer";
 import { Button } from "@/components/ui/button";
 
 export default function TariffsPodcast() {
+  // Add Open Graph metadata for proper thumbnail
+  useEffect(() => {
+    // Create meta tags for Open Graph
+    const ogImageMeta = document.createElement('meta');
+    ogImageMeta.setAttribute('property', 'og:image');
+    ogImageMeta.setAttribute('content', window.location.origin + '/images/podcast_thumbnail.png');
+    
+    const ogTitleMeta = document.createElement('meta');
+    ogTitleMeta.setAttribute('property', 'og:title');
+    ogTitleMeta.setAttribute('content', 'Impact of New U.S. Tariffs on the Faroe Islands – Podcast');
+    
+    const ogDescMeta = document.createElement('meta');
+    ogDescMeta.setAttribute('property', 'og:description');
+    ogDescMeta.setAttribute('content', 'Listen to our analysis of how the new U.S. tariffs are affecting Faroese exports, particularly in the seafood industry.');
+
+    // Add meta tags to head
+    document.head.appendChild(ogImageMeta);
+    document.head.appendChild(ogTitleMeta);
+    document.head.appendChild(ogDescMeta);
+
+    // Clean up when component unmounts
+    return () => {
+      document.head.removeChild(ogImageMeta);
+      document.head.removeChild(ogTitleMeta);
+      document.head.removeChild(ogDescMeta);
+    };
+  }, []);
   const [isPlaying, setIsPlaying] = React.useState(false);
   const [currentTime, setCurrentTime] = React.useState(0);
   const [duration, setDuration] = React.useState(0);
