@@ -5,16 +5,10 @@ import ChatbotButton from "@/components/ChatbotButton";
 import { ArrowRight, Mail, Phone, MessageSquare, CheckCircle2 } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Input } from "@/components/ui/input"; // Added imports
-import Particles from "react-tsparticles";
-import { loadFull } from "tsparticles";
 
 
 const Index = () => {
   const signupUrl = "https://docs.google.com/forms/d/e/1FAIpQLSfDtowxpOMTXaccvE49FM-e-LC9Hb6-pWO-E8Rr2jyOlgJnLg/viewform?usp=sf_link";
-
-  const particlesInit = async (engine) => {
-    await loadFull(engine);
-  };
 
 const openSignupForm = () => {
   window.open(signupUrl, '_blank', 'noopener,noreferrer');
@@ -26,88 +20,9 @@ const openSignupForm = () => {
 
       {/* Hero Section - Enhanced with Animations */}
       <section className="min-h-[90vh] flex items-center justify-center relative overflow-hidden">
-        {/* Particles background effect */}
-        <Particles
-          id="tsparticles"
-          className="absolute inset-0"
-          init={particlesInit}
-          options={{
-            fullScreen: { enable: false },
-            fpsLimit: 60,
-            particles: {
-              number: {
-                value: 80,
-                density: {
-                  enable: true,
-                  value_area: 800
-                }
-              },
-              color: {
-                value: "#9333ea", // Using primary color
-              },
-              links: {
-                enable: true,
-                color: "#9333ea",
-                opacity: 0.3,
-                width: 1,
-                distance: 150,
-              },
-              move: {
-                enable: true,
-                speed: 1,
-                direction: "none",
-                random: true,
-                straight: false,
-                outMode: "out",
-                bounce: false,
-              },
-              size: {
-                value: 2,
-                random: true,
-              },
-              opacity: {
-                value: 0.5,
-                random: true,
-                anim: {
-                  enable: true,
-                  speed: 1,
-                  opacity_min: 0.1,
-                  sync: false
-                }
-              },
-            },
-            interactivity: {
-              detect_on: "canvas",
-              events: {
-                onhover: {
-                  enable: true,
-                  mode: "grab"
-                },
-                onclick: {
-                  enable: true,
-                  mode: "push"
-                },
-                resize: true
-              },
-              modes: {
-                grab: {
-                  distance: 140,
-                  line_linked: {
-                    opacity: 0.5
-                  }
-                },
-                push: {
-                  particles_nb: 3
-                },
-              }
-            },
-            detectRetina: true,
-          }}
-        />
-        
-        {/* Keep original gradients as fallback with reduced opacity */}
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--primary)_0%,_transparent_65%)] opacity-40 animate-pulse [animation-duration:8s]"></div>
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_right,_var(--accent)_0%,_transparent_70%)] opacity-20 mix-blend-overlay"></div>
+        {/* Animated background effect */}
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--primary)_0%,_transparent_65%)] opacity-80 animate-pulse [animation-duration:8s]"></div>
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_right,_var(--accent)_0%,_transparent_70%)] opacity-30 mix-blend-overlay"></div>
 
         <div className="max-w-4xl mx-auto text-center px-4 z-10">
           <div className="inline-block mb-8 px-8 py-3 bg-primary/20 backdrop-blur-sm rounded-full animate-fade-down border border-primary/30 shadow-lg shadow-primary/10">

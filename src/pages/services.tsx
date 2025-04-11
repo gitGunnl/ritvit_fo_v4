@@ -11,110 +11,24 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import Particles from "react-tsparticles";
-import { loadFull } from "tsparticles";
 
 export default function Services() {
-  const particlesInit = async (engine) => {
-    await loadFull(engine);
-  };
-  
   return (
     <div className="min-h-screen bg-background text-text">
       <Navigation />
       <div className="py-20">
         <div className="container px-4 mx-auto">
           {/* Hero Section */}
-          <div className="relative text-center max-w-3xl mx-auto mb-20">
-            {/* Particles background */}
-            <Particles
-              id="tsparticles-services"
-              className="absolute inset-0 -z-10"
-              init={particlesInit}
-              options={{
-                fullScreen: { enable: false },
-                fpsLimit: 60,
-                particles: {
-                  number: {
-                    value: 60,
-                    density: {
-                      enable: true,
-                      value_area: 800
-                    }
-                  },
-                  color: {
-                    value: "#9333ea", // Using primary color
-                  },
-                  links: {
-                    enable: true,
-                    color: "#9333ea",
-                    opacity: 0.3,
-                    width: 1,
-                    distance: 150,
-                  },
-                  move: {
-                    enable: true,
-                    speed: 0.8,
-                    direction: "none",
-                    random: true,
-                    straight: false,
-                    outMode: "out",
-                    bounce: false,
-                  },
-                  size: {
-                    value: 2,
-                    random: true,
-                  },
-                  opacity: {
-                    value: 0.5,
-                    random: true,
-                    anim: {
-                      enable: true,
-                      speed: 1,
-                      opacity_min: 0.1,
-                      sync: false
-                    }
-                  },
-                },
-                interactivity: {
-                  detect_on: "canvas",
-                  events: {
-                    onhover: {
-                      enable: true,
-                      mode: "grab"
-                    },
-                    onclick: {
-                      enable: true,
-                      mode: "push"
-                    },
-                    resize: true
-                  },
-                  modes: {
-                    grab: {
-                      distance: 140,
-                      line_linked: {
-                        opacity: 0.5
-                      }
-                    },
-                    push: {
-                      particles_nb: 3
-                    },
-                  }
-                },
-                detectRetina: true,
-              }}
-            />
-            <div className="bg-background/40 backdrop-blur-sm p-8 rounded-2xl">
-              <h1 className="text-4xl font-bold mb-6 animate-fade-down">
-                Byrja tína vitlíki ferð í dag
-              </h1>
-              <p className="text-lg text-text/80 mb-8">
-                Vit hjálpa føroyskum fyritøkum at taka vitlíki-tøkni til sín, við praktiskum
-                amboðum sum KjattGPT, mynda generering og Microsoft Copilot. Við einari
-                skipaðari tilgongd tryggja vit, at tykkara toymi kann nýta vitlíki á ein
-                munagóðan hátt í gerandisdegnum.
-              </p>
-            </div>
+          <div className="text-center max-w-3xl mx-auto mb-20">
+            <h1 className="text-4xl font-bold mb-6 animate-fade-down">
+              Byrja tína vitlíki ferð í dag
+            </h1>
+            <p className="text-lg text-text/80 mb-8">
+              Vit hjálpa føroyskum fyritøkum at taka vitlíki-tøkni til sín, við praktiskum
+              amboðum sum KjattGPT, mynda generering og Microsoft Copilot. Við einari
+              skipaðari tilgongd tryggja vit, at tykkara toymi kann nýta vitlíki á ein
+              munagóðan hátt í gerandisdegnum.
+            </p>
           </div>
 
           {/* Main Course Section */}
