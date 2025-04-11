@@ -17,7 +17,7 @@ export default function TariffsPodcast() {
   // Page title and metadata
   const pageTitle = "Impact of New U.S. Tariffs - Faroe Islands Podcast";
   const pageDescription = "Special Episode: Analysis of the economic impact of new U.S. tariffs on Faroese exports, particularly focusing on the seafood industry.";
-  const ogImageUrl = "/images/og/podcast-thumbnail.jpg";
+  const ogImageUrl = "/images/podcast_thumbnail.png";
 
   // Reference MP3 from the public directory path
   const audioUrl = "/other_media/Faroe_Islands_Impact_of_New_US_Tariffs.mp3";
