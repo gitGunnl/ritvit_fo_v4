@@ -552,15 +552,12 @@ In conclusion, the U.S. tariffs, while undoubtedly challenging, can be a **catal
 
           <div className="bg-primary/10 backdrop-blur-sm rounded-xl p-8 border border-primary/20 shadow-lg animate-fade-up">
             <div className="flex gap-4 mb-6 items-center">
-              <div className="h-20 w-20 bg-primary/20 rounded-lg flex items-center justify-center">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 24 24"
-                  fill="currentColor"
-                  className="w-12 h-12 text-primary"
-                >
-                  <path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm-3 17v-10l9 5.146-9 4.854z" />
-                </svg>
+              <div className="h-20 w-20 overflow-hidden rounded-lg">
+                <img 
+                  src="/images/podcast_thumbnail.png" 
+                  alt="Impact of New U.S. Tariffs" 
+                  className="w-full h-full object-cover"
+                />
               </div>
               <div>
                 <h2 className="text-2xl font-bold text-text">Impact of New U.S. Tariffs</h2>
