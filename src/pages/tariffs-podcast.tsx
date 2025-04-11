@@ -13,8 +13,8 @@ export default function TariffsPodcast() {
   const [error, setError] = React.useState<string | null>(null);
   const audioRef = React.useRef<HTMLAudioElement>(null);
 
-  // Reference MP3 instead of WAV (you'll need to convert the file)
-  const audioUrl = "/other media/Faroe_Islands_Impact_of_New_US_Tariffs.mp3";
+  // Reference MP3 from the correct public directory path
+  const audioUrl = "/other_media/Faroe_Islands_Impact_of_New_US_Tariffs.mp3";
 
   React.useEffect(() => {
     const audioElement = audioRef.current;
