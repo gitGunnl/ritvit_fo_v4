@@ -10,9 +10,8 @@ export default function TariffsPodcast() {
   const [currentTime, setCurrentTime] = React.useState(0);
   const [duration, setDuration] = React.useState(0);
   const audioRef = React.useRef<HTMLAudioElement>(null);
-  // We'll try multiple path formats to identify what works in production
-  // Using standardized path with no spaces or special characters
-  const audioUrl = "/other-media/Faroe_Islands_Impact_of_New_US_Tariffs.wav";
+  // Using relative path that will work both in development and production
+  const audioUrl = `${import.meta.env.BASE_URL}other-media/Faroe_Islands_Impact_of_New_US_Tariffs.wav`;
   
   React.useEffect(() => {
     console.log("Audio component mounted, trying to load:", audioUrl);
