@@ -10,40 +10,6 @@ export default function TariffsPodcast() {
   const [currentTime, setCurrentTime] = React.useState(0);
   const [duration, setDuration] = React.useState(0);
   const audioRef = React.useRef<HTMLAudioElement>(null);
-  // Using relative path that will work both in development and production
-  const audioUrl = `${import.meta.env.BASE_URL}other-media/Faroe_Islands_Impact_of_New_US_Tariffs.wav`;
-  
-  React.useEffect(() => {
-    console.log("Audio component mounted, trying to load:", audioUrl);
-    console.log("Current window location:", window.location.href);
-    console.log("Environment:", import.meta.env.MODE);
-    
-    // Check if the audio file is accessible
-    fetch(audioUrl)
-      .then(response => {
-        console.log("Audio file fetch response:", response.status, response.statusText);
-        if (!response.ok) {
-          throw new Error(`Failed to load audio: ${response.status} ${response.statusText}`);
-        }
-        return response.blob();
-      })
-      .then(blob => {
-        console.log("Audio file loaded successfully, type:", blob.type, "size:", blob.size);
-      })
-      .catch(error => {
-        console.error("Error loading audio file:", error);
-        console.error("Error details:", JSON.stringify(error, Object.getOwnPropertyNames(error)));
-        
-        // Try to check if the file exists with a HEAD request as a fallback
-        fetch(audioUrl, { method: 'HEAD' })
-          .then(headResponse => {
-            console.log("HEAD request response:", headResponse.status, headResponse.statusText);
-          })
-          .catch(headError => {
-            console.error("HEAD request failed:", headError);
-          });
-      });
-  }, []);
 
   const formatTime = (seconds: number) => {
     const mins = Math.floor(seconds / 60);
@@ -54,18 +20,11 @@ export default function TariffsPodcast() {
   const handlePlayPause = () => {
     if (audioRef.current) {
       if (isPlaying) {
-        console.log("Pausing audio");
         audioRef.current.pause();
       } else {
-        console.log("Playing audio");
-        const playPromise = audioRef.current.play();
-        playPromise.catch(error => {
-          console.error("Error playing audio:", error);
-        });
+        audioRef.current.play();
       }
       setIsPlaying(!isPlaying);
-    } else {
-      console.error("Audio reference is null");
     }
   };
 
@@ -77,18 +36,7 @@ export default function TariffsPodcast() {
 
   const handleLoadedMetadata = () => {
     if (audioRef.current) {
-      console.log("Audio metadata loaded, duration:", audioRef.current.duration);
       setDuration(audioRef.current.duration);
-    } else {
-      console.error("Audio reference is null during metadata load");
-    }
-  };
-  
-  const handleAudioError = (e: React.SyntheticEvent<HTMLAudioElement, Event>) => {
-    console.error("Audio error:", e);
-    if (audioRef.current) {
-      console.error("Error code:", audioRef.current.error?.code);
-      console.error("Error message:", audioRef.current.error?.message);
     }
   };
 
@@ -507,7 +455,7 @@ In conclusion, the U.S. tariffs, while undoubtedly challenging, can be a **catal
               </div>
               <div>
                 <h2 className="text-2xl font-bold text-text">Impact of New U.S. Tariffs</h2>
-                <p className="text-text/80">Released: April, 2025 • 18:48 min</p>
+                <p className="text-text/80">Released: June 15, 2023 • 16:32 min</p>
               </div>
             </div>
 
@@ -521,11 +469,9 @@ In conclusion, the U.S. tariffs, while undoubtedly challenging, can be a **catal
             <div className="mb-4">
               <audio
                 ref={audioRef}
-                src={audioUrl}
+                src="/other media/Faroe Islands_ Impact of New U_S_ Tariffs.wav"
                 onTimeUpdate={handleTimeUpdate}
                 onLoadedMetadata={handleLoadedMetadata}
-                onError={handleAudioError}
-                preload="metadata"
                 className="hidden"
               />
 

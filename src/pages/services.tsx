@@ -89,7 +89,7 @@ export default function Services() {
                   15 hættir at brúka KjattGPT
                 </h3>
                 <p className="text-text/80 mb-6">
-                  Spar tær fleiri vikur av feilum og skeivum royndum – vit geva tær 15 tillagaðar
+                  Spar tær vikur av feilum og skeivum royndum – vit geva tær 15 tillagaðar
                   mátar at brúka KjattGPT í tínum arbeiði. Hendan tænastan hjálpir tær at
                   finna beinraktar uppgábur tú kann brúka KjattGPT til í júst tínum arbeiði - í dag.
                 </p>
