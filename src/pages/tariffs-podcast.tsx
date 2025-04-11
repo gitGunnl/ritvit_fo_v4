@@ -13,31 +13,15 @@ export default function TariffsPodcast() {
   const [error, setError] = React.useState<string | null>(null);
   const audioRef = React.useRef<HTMLAudioElement>(null);
 
-  // Reference MP3 from the correct public directory path with better error handling
+  // Reference MP3 from the public directory path
   const audioUrl = "/other_media/Faroe_Islands_Impact_of_New_US_Tariffs.mp3";
 
   React.useEffect(() => {
     const audioElement = audioRef.current;
-    
-    if (audioElement) {
-      console.log(`Setting audio source to: ${audioUrl}`);
-      
-      // Add error handling for audio loading
-      const handleError = (e: Event) => {
-        console.error("Audio Element Error:", e);
-        if (audioElement.error) {
-          console.error("Error Code:", audioElement.error.code);
-        }
-      };
-      
-      audioElement.addEventListener('error', handleError);
-      
-      return () => {
-        audioElement.removeEventListener('error', handleError);
-      };
-    }
     if (!audioElement) return;
-
+    
+    console.log(`Setting audio source to: ${audioUrl}`);
+    
     const handleLoadedMetadata = () => {
       setDuration(audioElement.duration);
       setIsLoading(false);
@@ -83,12 +67,9 @@ export default function TariffsPodcast() {
     };
 
     // Set audio source
-    if (audioElement.src !== new URL(audioUrl, window.location.href).href) {
-      console.log(`Setting audio source to: ${audioUrl}`);
-      audioElement.src = audioUrl;
-      setIsLoading(true);
-      setError(null);
-    }
+    audioElement.src = audioUrl;
+    setIsLoading(true);
+    setError(null);
 
     // Add event listeners
     audioElement.addEventListener('loadedmetadata', handleLoadedMetadata);
@@ -105,7 +86,7 @@ export default function TariffsPodcast() {
       audioElement.removeEventListener('error', handleError);
       audioElement.removeEventListener('ended', handleEnded);
     };
-  }, [audioUrl]);
+  }, []);
 
   const formatTime = (seconds: number) => {
     const mins = Math.floor(seconds / 60);
@@ -186,21 +167,8 @@ Policymakers and industry leaders in the Faroe Islands are beginning to respond 
 
 <div className="mt-8">
   <h3 className="text-xl font-semibold mb-2">Listen to the Analysis</h3>
-  <audio
-    controls
-    src={import.meta.env.MODE === 'production' 
-      ? '/other_media/Faroe_Islands_Impact_of_New_US_Tariffs.mp3'
-      : '/other_media/Faroe_Islands_Impact_of_New_US_Tariffs.mp3'}
-    className="w-full"
-    onError={(e) => {
-      console.log("Audio Element Error:", e);
-      console.log("Error Code:", e.target.error?.code);
-      console.log("Current path:", window.location.pathname);
-      console.log("Current mode:", import.meta.env.MODE);
-    }}
-  />
   <div className="text-xs text-gray-500 mt-1">
-    If audio doesn't play, you can <a href="/other_media/Faroe_Islands_Impact_of_New_US_Tariffs.mp3" download className="underline">download it here</a>
+    If the player above doesn't work, you can <a href="/other_media/Faroe_Islands_Impact_of_New_US_Tariffs.mp3" download className="underline">download the audio here</a>
   </div>
 </div>is crucial supply line.  
 
