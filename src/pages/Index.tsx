@@ -36,7 +36,7 @@ const openSignupForm = () => {
         {activeBackground === 'gradient' && <GradientBackground />}
         
         {/* Background selector buttons */}
-        <div className="absolute top-4 left-1/2 transform -translate-x-1/2 z-20 flex gap-2 bg-background/60 backdrop-blur-md rounded-full p-2 shadow-lg">
+        <div className="absolute top-24 left-1/2 transform -translate-x-1/2 z-20 flex gap-2 bg-background/60 backdrop-blur-md rounded-full p-2 shadow-lg">
           <button
             onClick={() => setActiveBackground('particles')}
             className={`px-3 py-1 rounded-full text-sm font-medium transition-colors ${
