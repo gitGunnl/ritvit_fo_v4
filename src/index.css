@@ -75,3 +75,24 @@
 .fade-in {
   @apply animate-fade-up;
 }
+
+/* Background effect styles */
+.background-effect {
+  @apply absolute inset-0 w-full h-full z-0;
+}
+
+.background-selector {
+  @apply fixed top-4 left-1/2 transform -translate-x-1/2 z-50 flex gap-2 bg-background/60 backdrop-blur-md rounded-full p-2 shadow-lg;
+}
+
+.background-button {
+  @apply px-3 py-1 rounded-full text-sm font-medium transition-colors;
+}
+
+.background-button-active {
+  @apply bg-primary text-text;
+}
+
+.background-button-inactive {
+  @apply bg-background/70 text-text/70 hover:bg-primary/20;
+}
