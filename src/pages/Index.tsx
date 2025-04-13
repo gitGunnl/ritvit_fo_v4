@@ -71,18 +71,18 @@ const Index = () => {
         {activeBackground === 'particles' && (
           <div className="absolute inset-0 overflow-hidden">
             <div className="particles-container">
-              {Array.from({ length: 50 }).map((_, index) => (
+              {Array.from({ length: 100 }).map((_, index) => (
                 <div 
                   key={index} 
                   className="particle"
                   style={{
                     "--x": `${Math.random() * 100}%`,
                     "--y": `${Math.random() * 100}%`,
-                    "--size": `${Math.random() * 4 + 1}px`,
-                    "--duration": `${Math.random() * 20 + 10}s`,
+                    "--size": `${Math.random() * 8 + 4}px`,
+                    "--duration": `${Math.random() * 30 + 15}s`,
                     "--delay": `${Math.random() * 5}s`,
-                    "--opacity": Math.random() * 0.5 + 0.2,
-                    "--color": `hsl(${Math.random() * 60 + 240}, 70%, 65%)`,
+                    "--opacity": Math.random() * 0.7 + 0.3,
+                    "--color": `hsl(${Math.random() * 60 + 200}, 80%, 65%)`,
                   } as React.CSSProperties}
                 ></div>
               ))}

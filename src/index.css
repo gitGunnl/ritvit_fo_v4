@@ -193,10 +193,50 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: radial-gradient(circle at center, rgba(33, 150, 243, 0.3) 0%, transparent 65%);
+  background: radial-gradient(circle at center, rgba(33, 150, 243, 0.6) 0%, transparent 65%);
   opacity: 0.8;
   animation: pulse-bubbles 8s infinite ease-in-out;
   z-index: -1;
+}
+
+.bubbles-background::before {
+  content: "";
+  position: absolute;
+  top: 10%;
+  left: 20%;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(33, 150, 243, 0.8) 0%, transparent 70%);
+  border-radius: 50%;
+  animation: float-bubble 15s infinite ease-in-out;
+}
+
+.bubbles-background::after {
+  content: "";
+  position: absolute;
+  bottom: 15%;
+  right: 25%;
+  width: 250px;
+  height: 250px;
+  background: radial-gradient(circle, rgba(33, 150, 243, 0.7) 0%, transparent 70%);
+  border-radius: 50%;
+  animation: float-bubble 12s infinite ease-in-out reverse;
+  animation-delay: -5s;
+}
+
+@keyframes float-bubble {
+  0%, 100% {
+    transform: translate(0, 0);
+  }
+  25% {
+    transform: translate(50px, -25px);
+  }
+  50% {
+    transform: translate(0, -50px);
+  }
+  75% {
+    transform: translate(-50px, -25px);
+  }
 }
 
 /* Gradient Background Effect */
@@ -206,10 +246,22 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: radial-gradient(circle at bottom right, rgba(255, 193, 7, 0.3) 0%, transparent 70%);
-  opacity: 0.3;
+  background: 
+    radial-gradient(circle at bottom right, rgba(255, 193, 7, 0.6) 0%, transparent 70%),
+    radial-gradient(circle at top left, rgba(33, 150, 243, 0.4) 0%, transparent 60%);
+  opacity: 0.7;
   mix-blend-mode: overlay;
   z-index: -1;
+  animation: gradient-shift 15s infinite alternate ease-in-out;
+}
+
+@keyframes gradient-shift {
+  0% {
+    background-position: 0% 0%;
+  }
+  100% {
+    background-position: 100% 100%;
+  }
 }
 
 /* Particles Animation */
@@ -235,6 +287,8 @@
   animation: float var(--duration) infinite linear;
   animation-delay: var(--delay);
   z-index: -1;
+  box-shadow: 0 0 10px 2px var(--color);
+  filter: blur(1px);
 }
 
 @keyframes float {
@@ -242,13 +296,13 @@
     transform: translateY(0) translateX(0);
   }
   25% {
-    transform: translateY(-20px) translateX(10px);
+    transform: translateY(-50px) translateX(30px);
   }
   50% {
-    transform: translateY(-40px) translateX(0);
+    transform: translateY(-100px) translateX(0);
   }
   75% {
-    transform: translateY(-20px) translateX(-10px);
+    transform: translateY(-50px) translateX(-30px);
   }
   100% {
     transform: translateY(0) translateX(0);
