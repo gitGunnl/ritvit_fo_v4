@@ -47,6 +47,60 @@
   .prose blockquote {
     @apply border-l-4 border-text/20;
   }
+
+  /* Waves Animation */
+  .waves-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+
+  .wave {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 200%;
+    height: 100%;
+    background: linear-gradient(to bottom, transparent 80%, var(--primary) 100%);
+    border-radius: 45%;
+    animation: wave-animation 25s linear infinite;
+    opacity: 0.1;
+    transform-origin: 50% 50%;
+  }
+
+  .wave1 {
+    animation-duration: 20s;
+    opacity: 0.1;
+  }
+
+  .wave2 {
+    animation-duration: 15s;
+    animation-direction: reverse;
+    opacity: 0.05;
+  }
+
+  .wave3 {
+    animation-duration: 25s;
+    opacity: 0.08;
+    animation-delay: -5s;
+  }
+
+  .wave4 {
+    animation-duration: 22s;
+    opacity: 0.06;
+    animation-direction: reverse;
+    animation-delay: -3s;
+  }
+
+  @keyframes wave-animation {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
 }
 
 /* A glass-card now uses a subtle primary tint and our defined border color */
@@ -74,4 +128,31 @@
 
 .fade-in {
   @apply animate-fade-up;
+}
+
+.hero-section {
+  position: relative; /* To position the waves absolutely */
+  overflow: hidden; /* To contain the waves */
+  height: 600px; /* Adjust as needed */
+}
+
+.hero-buttons {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  display: flex;
+  gap: 10px;
+}
+
+.hero-buttons button {
+  @apply bg-accent text-white px-4 py-2 rounded hover:bg-accent/80;
+}
+
+.waves-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1; /* Place behind other content */
 }
