@@ -16,47 +16,8 @@ export default function Services() {
   return (
     <div className="min-h-screen bg-background text-text">
       <Navigation />
-      <div className="py-20 relative overflow-hidden">
-        {/* Gradient Mesh Background */}
-        <div className="absolute inset-0 z-0">
-          <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-transparent to-accent/20 animate-gradient-shift"></div>
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--primary)/20,_transparent_70%)] animate-pulse [animation-duration:8s]"></div>
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_left,_var(--accent)/10,_transparent_60%)] animate-pulse [animation-duration:12s] [animation-delay:2s]"></div>
-
-          {/* Mesh grid lines */}
-          <div className="absolute inset-0 grid grid-cols-8 opacity-20">
-            {Array.from({ length: 8 }).map((_, i) => (
-              <div key={i} className="border-r border-primary/20 h-full animate-pulse [animation-duration:15s]" style={{ animationDelay: `${i * 0.5}s` }}></div>
-            ))}
-          </div>
-          <div className="absolute inset-0 grid grid-rows-8 opacity-20">
-            {Array.from({ length: 8 }).map((_, i) => (
-              <div key={i} className="border-b border-primary/20 w-full animate-pulse [animation-duration:15s]" style={{ animationDelay: `${i * 0.5}s` }}></div>
-            ))}
-          </div>
-        </div>
-
-        {/* CSS Animation */}
-        <style jsx global>{`
-          @keyframes gradient-shift {
-            0% {
-              background-position: 0% 50%;
-            }
-            50% {
-              background-position: 100% 50%;
-            }
-            100% {
-              background-position: 0% 50%;
-            }
-          }
-
-          .animate-gradient-shift {
-            animation: gradient-shift 15s ease infinite;
-            background-size: 200% 200%;
-          }
-        `}</style>
-
-        <div className="container px-4 mx-auto relative z-10">
+      <div className="py-20">
+        <div className="container px-4 mx-auto">
           {/* Hero Section */}
           <div className="text-center max-w-3xl mx-auto mb-20">
             <h1 className="text-4xl font-bold mb-6 animate-fade-down">
