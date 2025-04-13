@@ -4,121 +4,25 @@ import Footer from "@/components/Footer";
 import ChatbotButton from "@/components/ChatbotButton";
 import { ArrowRight, Mail, Phone, MessageSquare, CheckCircle2 } from "lucide-react";
 import { Link } from "react-router-dom";
-import { Input } from "@/components/ui/input";
-import { useState, useEffect } from "react";
+import { Input } from "@/components/ui/input"; // Added imports
 
 
 const Index = () => {
-  const [activeBackground, setActiveBackground] = useState<'particles' | 'waves' | 'grid' | 'bubbles' | 'gradient'>('particles');
-  
   const signupUrl = "https://docs.google.com/forms/d/e/1FAIpQLSfDtowxpOMTXaccvE49FM-e-LC9Hb6-pWO-E8Rr2jyOlgJnLg/viewform?usp=sf_link";
 
-  const openSignupForm = () => {
-    window.open(signupUrl, '_blank', 'noopener,noreferrer');
-  };
+const openSignupForm = () => {
+  window.open(signupUrl, '_blank', 'noopener,noreferrer');
+};
 
   return (
     <div className="min-h-screen flex flex-col bg-background text-text">
       <Navigation />
 
-      {/* Hero Section - Enhanced with Dynamic Animations */}
+      {/* Hero Section - Enhanced with Animations */}
       <section className="min-h-[90vh] flex items-center justify-center relative overflow-hidden">
-        {/* Background Effect Selector */}
-        <div className="absolute top-24 left-0 right-0 flex justify-center gap-2 p-4 z-20">
-          <Button 
-            onClick={() => setActiveBackground('particles')}
-            variant="outline" 
-            size="sm"
-            className="bg-background/50 backdrop-blur-sm border-primary/50 hover:border-primary"
-          >
-            Particles
-          </Button>
-          <Button 
-            onClick={() => setActiveBackground('waves')}
-            variant="outline" 
-            size="sm"
-            className="bg-background/50 backdrop-blur-sm border-primary/50 hover:border-primary"
-          >
-            Waves
-          </Button>
-          <Button 
-            onClick={() => setActiveBackground('grid')}
-            variant="outline" 
-            size="sm"
-            className="bg-background/50 backdrop-blur-sm border-primary/50 hover:border-primary"
-          >
-            Grid
-          </Button>
-          <Button 
-            onClick={() => setActiveBackground('bubbles')}
-            variant="outline" 
-            size="sm"
-            className="bg-background/50 backdrop-blur-sm border-primary/50 hover:border-primary"
-          >
-            Bubbles
-          </Button>
-          <Button 
-            onClick={() => setActiveBackground('gradient')}
-            variant="outline" 
-            size="sm"
-            className="bg-background/50 backdrop-blur-sm border-primary/50 hover:border-primary"
-          >
-            Gradient
-          </Button>
-        </div>
-
-        {/* Dynamic Background Effect */}
-        {activeBackground === 'particles' && (
-          <div className="absolute inset-0 overflow-hidden">
-            <div className="particles-container">
-              {Array.from({ length: 100 }).map((_, index) => (
-                <div 
-                  key={index} 
-                  className="particle"
-                  style={{
-                    "--x": `${Math.random() * 100}%`,
-                    "--y": `${Math.random() * 100}%`,
-                    "--size": `${Math.random() * 8 + 4}px`,
-                    "--duration": `${Math.random() * 30 + 15}s`,
-                    "--delay": `${Math.random() * 5}s`,
-                    "--opacity": Math.random() * 0.7 + 0.3,
-                    "--color": `hsl(${Math.random() * 60 + 200}, 80%, 65%)`,
-                  } as React.CSSProperties}
-                ></div>
-              ))}
-            </div>
-          </div>
-        )}
-        
-        {activeBackground === 'waves' && (
-          <div className="absolute inset-0">
-            <div className="waves-container">
-              <div className="wave wave1"></div>
-              <div className="wave wave2"></div>
-              <div className="wave wave3"></div>
-              <div className="wave wave4"></div>
-            </div>
-          </div>
-        )}
-        
-        {activeBackground === 'grid' && (
-          <div className="absolute inset-0">
-            <div className="grid-background"></div>
-            <div className="grid-overlay"></div>
-          </div>
-        )}
-        
-        {activeBackground === 'bubbles' && (
-          <div className="absolute inset-0">
-            <div className="bubbles-background"></div>
-          </div>
-        )}
-        
-        {activeBackground === 'gradient' && (
-          <div className="absolute inset-0">
-            <div className="gradient-background"></div>
-          </div>
-        )}
+        {/* Animated background effect */}
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--primary)_0%,_transparent_65%)] opacity-80 animate-pulse [animation-duration:8s]"></div>
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_right,_var(--accent)_0%,_transparent_70%)] opacity-30 mix-blend-overlay"></div>
 
         <div className="max-w-4xl mx-auto text-center px-4 z-10">
           <div className="inline-block mb-8 px-8 py-3 bg-primary/20 backdrop-blur-sm rounded-full animate-fade-down border border-primary/30 shadow-lg shadow-primary/10">
