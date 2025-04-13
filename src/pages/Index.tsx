@@ -109,11 +109,15 @@ const Index = () => {
         )}
         
         {activeBackground === 'bubbles' && (
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--primary)_0%,_transparent_65%)] opacity-80 animate-pulse [animation-duration:8s]"></div>
+          <div className="absolute inset-0">
+            <div className="bubbles-background"></div>
+          </div>
         )}
         
         {activeBackground === 'gradient' && (
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_right,_var(--accent)_0%,_transparent_70%)] opacity-30 mix-blend-overlay"></div>
+          <div className="absolute inset-0">
+            <div className="gradient-background"></div>
+          </div>
         )}
 
         <div className="max-w-4xl mx-auto text-center px-4 z-10">

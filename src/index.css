@@ -169,8 +169,8 @@
   height: 100%;
   background-size: 40px 40px;
   background-image: 
-    linear-gradient(to right, rgba(var(--primary), 0.1) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(var(--primary), 0.1) 1px, transparent 1px);
+    linear-gradient(to right, rgba(33, 150, 243, 0.1) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(33, 150, 243, 0.1) 1px, transparent 1px);
   z-index: -1;
   opacity: 0.5;
 }
@@ -181,9 +181,78 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: radial-gradient(circle at center, rgba(var(--primary), 0.2) 0%, transparent 70%);
+  background: radial-gradient(circle at center, rgba(33, 150, 243, 0.2) 0%, transparent 70%);
   animation: pulse 8s infinite ease-in-out;
   z-index: -1;
+}
+
+/* Bubbles Background Effect */
+.bubbles-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at center, rgba(33, 150, 243, 0.3) 0%, transparent 65%);
+  opacity: 0.8;
+  animation: pulse-bubbles 8s infinite ease-in-out;
+  z-index: -1;
+}
+
+/* Gradient Background Effect */
+.gradient-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at bottom right, rgba(255, 193, 7, 0.3) 0%, transparent 70%);
+  opacity: 0.3;
+  mix-blend-mode: overlay;
+  z-index: -1;
+}
+
+/* Particles Animation */
+.particles-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: -1;
+}
+
+.particle {
+  position: absolute;
+  top: var(--y);
+  left: var(--x);
+  width: var(--size);
+  height: var(--size);
+  background-color: var(--color);
+  border-radius: 50%;
+  opacity: var(--opacity);
+  animation: float var(--duration) infinite linear;
+  animation-delay: var(--delay);
+  z-index: -1;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0) translateX(0);
+  }
+  25% {
+    transform: translateY(-20px) translateX(10px);
+  }
+  50% {
+    transform: translateY(-40px) translateX(0);
+  }
+  75% {
+    transform: translateY(-20px) translateX(-10px);
+  }
+  100% {
+    transform: translateY(0) translateX(0);
+  }
 }
 
 @keyframes pulse {
@@ -194,5 +263,16 @@
   50% {
     opacity: 0.5;
     transform: scale(1.05);
+  }
+}
+
+@keyframes pulse-bubbles {
+  0%, 100% {
+    opacity: 0.5;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.1);
   }
 }
