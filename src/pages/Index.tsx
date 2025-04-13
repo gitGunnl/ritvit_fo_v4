@@ -24,7 +24,7 @@ const Index = () => {
       {/* Hero Section - Enhanced with Dynamic Animations */}
       <section className="min-h-[90vh] flex items-center justify-center relative overflow-hidden">
         {/* Background Effect Selector */}
-        <div className="absolute top-0 left-0 right-0 flex justify-center gap-2 p-4 z-20">
+        <div className="absolute top-24 left-0 right-0 flex justify-center gap-2 p-4 z-20">
           <Button 
             onClick={() => setActiveBackground('particles')}
             variant="outline" 
@@ -102,7 +102,10 @@ const Index = () => {
         )}
         
         {activeBackground === 'grid' && (
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--primary)_0%,_transparent_65%)] opacity-80 animate-pulse [animation-duration:8s]"></div>
+          <div className="absolute inset-0">
+            <div className="grid-background"></div>
+            <div className="grid-overlay"></div>
+          </div>
         )}
         
         {activeBackground === 'bubbles' && (
