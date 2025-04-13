@@ -18,12 +18,71 @@ const openSignupForm = () => {
     <div className="min-h-screen flex flex-col bg-background text-text">
       <Navigation />
 
-      {/* Hero Section - Enhanced with Animations */}
+      {/* Hero Section - Enhanced with Dynamic Wave Animation */}
       <section className="min-h-[90vh] flex items-center justify-center relative overflow-hidden">
-        {/* Animated background effect */}
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--primary)_0%,_transparent_65%)] opacity-80 animate-pulse [animation-duration:8s]"></div>
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_right,_var(--accent)_0%,_transparent_70%)] opacity-30 mix-blend-overlay"></div>
+        {/* Wave background animation */}
+        <div className="absolute inset-0 bg-background">
+          <div className="wave-container">
+            <div className="wave wave1"></div>
+            <div className="wave wave2"></div>
+            <div className="wave wave3"></div>
+            <div className="wave wave4"></div>
+          </div>
+        </div>
+        <style jsx global>{`
+          .wave-container {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            transform: translate3d(0, 0, 0);
+          }
 
+          .wave {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 200%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(var(--primary-rgb), 0.1) 0%, rgba(var(--primary-rgb), 0) 80%);
+            border-radius: 50% 50% 0 0;
+            animation: wave 18s infinite cubic-bezier(0.42, 0, 0.58, 1);
+          }
+
+          .wave1 {
+            opacity: 0.15;
+            height: 60%;
+            animation-delay: 0s;
+          }
+
+          .wave2 {
+            opacity: 0.2;
+            height: 70%;
+            animation-delay: -3s;
+            background: linear-gradient(to bottom, rgba(var(--accent-rgb), 0.1) 0%, rgba(var(--accent-rgb), 0) 80%);
+          }
+
+          .wave3 {
+            opacity: 0.15;
+            height: 50%;
+            animation-delay: -6s;
+          }
+
+          .wave4 {
+            opacity: 0.3;
+            height: 80%;
+            animation-delay: -9s;
+            background: linear-gradient(to bottom, rgba(var(--primary-rgb), 0.05) 0%, rgba(var(--primary-rgb), 0) 80%);
+          }
+
+          @keyframes wave {
+            0% { transform: translateX(0) translateZ(0) scaleY(1); }
+            25% { transform: translateX(-25%) translateZ(0) scaleY(0.8); }
+            50% { transform: translateX(-50%) translateZ(0) scaleY(1.2); }
+            75% { transform: translateX(-25%) translateZ(0) scaleY(0.8); }
+            100% { transform: translateX(0) translateZ(0) scaleY(1); }
+          }
+        `}</style>
         <div className="max-w-4xl mx-auto text-center px-4 z-10">
           <div className="inline-block mb-8 px-8 py-3 bg-primary/20 backdrop-blur-sm rounded-full animate-fade-down border border-primary/30 shadow-lg shadow-primary/10">
             <span className="text-primary font-semibold tracking-wide">Nýtt skeið byrjar skjótt!</span>
@@ -53,7 +112,7 @@ const openSignupForm = () => {
                 size="lg" 
                 className="border-2 border-primary/70 text-primary hover:bg-primary/10 px-8 py-6 backdrop-blur-sm"
               >
-                Les meira um skeiði
+                Les meira um skeiðið
               </Button>
             </Link>
           </div>
