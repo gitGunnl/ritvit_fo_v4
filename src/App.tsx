@@ -18,9 +18,8 @@ import Birt from "./pages/birt";
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
+    <Toaster position="top-center" richColors />
     <TooltipProvider>
-      <Toaster />
-      <Sonner />
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index />} />
