@@ -5,17 +5,9 @@ import ChatbotButton from "@/components/ChatbotButton";
 import { ArrowRight, Mail, Phone, MessageSquare, CheckCircle2 } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Input } from "@/components/ui/input";
-import { useState } from "react";
-import ParticlesBackground from "@/components/background/ParticlesBackground";
-import WavesBackground from "@/components/background/WavesBackground";
 import GridBackground from "@/components/background/GridBackground";
-import BubblesBackground from "@/components/background/BubblesBackground";
-import GradientBackground from "@/components/background/GradientBackground";
-
-type BackgroundType = 'particles' | 'waves' | 'grid' | 'bubbles' | 'gradient';
 
 const Index = () => {
-  const [activeBackground, setActiveBackground] = useState<BackgroundType>('particles');
   const signupUrl = "https://docs.google.com/forms/d/e/1FAIpQLSfDtowxpOMTXaccvE49FM-e-LC9Hb6-pWO-E8Rr2jyOlgJnLg/viewform?usp=sf_link";
 
 const openSignupForm = () => {
@@ -28,56 +20,7 @@ const openSignupForm = () => {
 
       {/* Hero Section - Enhanced with Animations */}
       <section className="min-h-[90vh] flex flex-col items-center justify-center relative overflow-hidden">
-        {/* Background effects - only one will be active based on state */}
-        {activeBackground === 'particles' && <ParticlesBackground />}
-        {activeBackground === 'waves' && <WavesBackground />}
-        {activeBackground === 'grid' && <GridBackground />}
-        {activeBackground === 'bubbles' && <BubblesBackground />}
-        {activeBackground === 'gradient' && <GradientBackground />}
-        
-        {/* Background selector buttons */}
-        <div className="absolute top-24 left-1/2 transform -translate-x-1/2 z-20 flex gap-2 bg-background/60 backdrop-blur-md rounded-full p-2 shadow-lg">
-          <button
-            onClick={() => setActiveBackground('particles')}
-            className={`px-3 py-1 rounded-full text-sm font-medium transition-colors ${
-              activeBackground === 'particles' ? 'bg-primary text-text' : 'bg-background/70 text-text/70 hover:bg-primary/20'
-            }`}
-          >
-            Particles
-          </button>
-          <button
-            onClick={() => setActiveBackground('waves')}
-            className={`px-3 py-1 rounded-full text-sm font-medium transition-colors ${
-              activeBackground === 'waves' ? 'bg-primary text-text' : 'bg-background/70 text-text/70 hover:bg-primary/20'
-            }`}
-          >
-            Waves
-          </button>
-          <button
-            onClick={() => setActiveBackground('grid')}
-            className={`px-3 py-1 rounded-full text-sm font-medium transition-colors ${
-              activeBackground === 'grid' ? 'bg-primary text-text' : 'bg-background/70 text-text/70 hover:bg-primary/20'
-            }`}
-          >
-            Grid
-          </button>
-          <button
-            onClick={() => setActiveBackground('bubbles')}
-            className={`px-3 py-1 rounded-full text-sm font-medium transition-colors ${
-              activeBackground === 'bubbles' ? 'bg-primary text-text' : 'bg-background/70 text-text/70 hover:bg-primary/20'
-            }`}
-          >
-            Bubbles
-          </button>
-          <button
-            onClick={() => setActiveBackground('gradient')}
-            className={`px-3 py-1 rounded-full text-sm font-medium transition-colors ${
-              activeBackground === 'gradient' ? 'bg-primary text-text' : 'bg-background/70 text-text/70 hover:bg-primary/20'
-            }`}
-          >
-            Gradient
-          </button>
-        </div>
+        <GridBackground />
 
         <div className="max-w-4xl mx-auto text-center px-4 z-10">
           <div className="inline-block mb-8 px-8 py-3 bg-primary/20 backdrop-blur-sm rounded-full animate-fade-down border border-primary/30 shadow-lg shadow-primary/10">
