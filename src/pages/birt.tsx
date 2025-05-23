@@ -1,4 +1,4 @@
-
+typescript
 import { useState } from "react";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
@@ -19,52 +19,98 @@ interface PromptTask {
   };
 }
 
-interface CompanyPrompts {
-  [key: string]: PromptTask[];
+interface CompanyConfig {
+  prompts: PromptTask[];
+  endPage: string;
 }
 
+interface CompanyConfigs {
+  [key: string]: CompanyConfig;
+}
+
+
 // Define our prompt data
-const companyPrompts: CompanyPrompts = {
-  "Bakkafrost": [
-    {
-      preCheck: {
-        checkText: "I have opened a new chat and picked the right model."
+const companyConfigs: CompanyConfigs = {
+  "Bakkafrost": {
+    prompts: [
+      {
+        preCheck: {
+          checkText: "I have opened a new chat and picked the right model."
+        },
+        promptText: "Analyze the latest salmon market trends and provide a summary of how this might affect Bakkafrost's exports to the US market in the next quarter. Consider tariffs, consumer demand, and competition.",
+        checkText: "I've copied this prompt to ChatGPT and received a market analysis summary"
       },
-      promptText: "Analyze the latest salmon market trends and provide a summary of how this might affect Bakkafrost's exports to the US market in the next quarter. Consider tariffs, consumer demand, and competition.",
-      checkText: "I've copied this prompt to ChatGPT and received a market analysis summary"
-    },
-    {
-      promptText: "Create a sustainability report outline for Bakkafrost that highlights our commitment to environmentally friendly aquaculture practices. Include sections on carbon footprint reduction, fish welfare, and sustainable feed sourcing.",
-      checkText: "I've created a sustainability report outline with ChatGPT"
-    },
-    {
-      preCheck: {
-        checkText: "I have started a fresh conversation"
+      {
+        promptText: "Create a sustainability report outline for Bakkafrost that highlights our commitment to environmentally friendly aquaculture practices. Include sections on carbon footprint reduction, fish welfare, and sustainable feed sourcing.",
+        checkText: "I've created a sustainability report outline with ChatGPT"
       },
-      promptText: "Based on Bakkafrost's annual report data, suggest three innovation areas that could improve operational efficiency and reduce production costs in our salmon farming facilities.",
-      checkText: "I've identified three potential innovation areas using this prompt"
-    }
-  ],
-  "Betri": [
-    {
-      preCheck: {
-        checkText: "I have opened a new chat"
+      {
+        preCheck: {
+          checkText: "I have started a fresh conversation"
+        },
+        promptText: "Based on Bakkafrost's annual report data, suggest three innovation areas that could improve operational efficiency and reduce production costs in our salmon farming facilities.",
+        checkText: "I've identified three potential innovation areas using this prompt"
+      }
+    ],
+    endPage: `
+      <div class="text-center space-y-6">
+        <h1 class="text-3xl font-bold bg-gradient-to-r from-primary to-accent text-transparent bg-clip-text">
+          Congratulations! 🎉
+        </h1>
+        <p class="text-xl text-text/80">
+          You've completed all prompts for Bakkafrost's market analysis.
+        </p>
+        <div class="p-6 bg-primary/5 rounded-lg border-2 border-primary/20">
+          <h2 class="text-2xl font-semibold mb-4">Next Steps</h2>
+          <ul class="list-disc text-left pl-6 space-y-2">
+            <li>Review your generated analyses</li>
+            <li>Compile key insights into a report</li>
+            <li>Schedule a follow-up meeting to discuss findings</li>
+          </ul>
+        </div>
+      </div>
+    `
+  },
+  "Betri": {
+    prompts: [
+      {
+        preCheck: {
+          checkText: "I have opened a new chat"
+        },
+        promptText: "Draft a customer communication email explaining Betri's new digital banking features. The tone should be friendly but professional, emphasizing security and convenience.",
+        checkText: "I've created a customer email draft using ChatGPT"
       },
-      promptText: "Draft a customer communication email explaining Betri's new digital banking features. The tone should be friendly but professional, emphasizing security and convenience.",
-      checkText: "I've created a customer email draft using ChatGPT"
-    },
-    {
-      promptText: "Analyze the current financial market situation in the Faroe Islands and suggest investment strategies that Betri could recommend to different customer segments (young professionals, families, retirees).",
-      checkText: "I've generated investment strategy recommendations"
-    },
-    {
-      preCheck: {
-        checkText: "I have cleared my conversation history"
+      {
+        promptText: "Analyze the current financial market situation in the Faroe Islands and suggest investment strategies that Betri could recommend to different customer segments (young professionals, families, retirees).",
+        checkText: "I've generated investment strategy recommendations"
       },
-      promptText: "Create a training plan for Betri customer service representatives to improve their ability to explain insurance products clearly to customers from different demographics.",
-      checkText: "I've created a training plan outline with this prompt"
-    }
-  ]
+      {
+        preCheck: {
+          checkText: "I have cleared my conversation history"
+        },
+        promptText: "Create a training plan for Betri customer service representatives to improve their ability to explain insurance products clearly to customers from different demographics.",
+        checkText: "I've created a training plan outline with this prompt"
+      }
+    ],
+    endPage: `
+      <div class="text-center space-y-6">
+        <h1 class="text-3xl font-bold bg-gradient-to-r from-primary to-accent text-transparent bg-clip-text">
+          Congratulations! 🎉
+        </h1>
+        <p class="text-xl text-text/80">
+          You've completed all prompts for Betri's customer service improvement plan.
+        </p>
+        <div class="p-6 bg-primary/5 rounded-lg border-2 border-primary/20">
+          <h2 class="text-2xl font-semibold mb-4">Next Steps</h2>
+          <ul class="list-disc text-left pl-6 space-y-2">
+            <li>Implement the training plan</li>
+            <li>Gather feedback from customer service representatives</li>
+            <li>Monitor customer satisfaction metrics</li>
+          </ul>
+        </div>
+      </div>
+    `
+  }
 };
 
 const Birt = () => {
@@ -77,12 +123,12 @@ const Birt = () => {
 
   // Handle password check
   const checkPassword = () => {
-    if (Object.keys(companyPrompts).includes(password)) {
+    if (Object.keys(companyConfigs).includes(password)) {
       setAuthenticated(true);
       setCompany(password);
       // Initialize tasks completed array
-      setTasksCompleted(Array(companyPrompts[password].length).fill(false));
-      setPreChecksCompleted(Array(companyPrompts[password].length).fill(false));
+      setTasksCompleted(Array(companyConfigs[password].prompts.length).fill(false));
+      setPreChecksCompleted(Array(companyConfigs[password].prompts.length).fill(false));
       toast.success(`Welcome to ${password} prompts`, {
         duration: 3000,
       });
@@ -95,21 +141,21 @@ const Birt = () => {
 
   // State to track copy feedback
   const [showCopied, setShowCopied] = useState(false);
-  
+
   // Handle copying prompt to clipboard
   const copyPrompt = () => {
     if (!company) return;
-    
-    const promptText = companyPrompts[company][currentPromptIndex].promptText;
+
+    const promptText = companyConfigs[company].prompts[currentPromptIndex].promptText;
     navigator.clipboard.writeText(promptText).then(() => {
       // Show the "Copied" indicator
       setShowCopied(true);
-      
+
       // Hide it after 1.5 seconds
       setTimeout(() => {
         setShowCopied(false);
       }, 1500);
-      
+
       toast.success("Prompt copied to clipboard!", {
         duration: 2000,
       });
@@ -137,7 +183,7 @@ const Birt = () => {
   // Navigate to the next prompt
   const goToNextPrompt = () => {
     if (!company) return;
-    
+
     // Check if the pre-check exists and is not completed
     if (hasPreCheck() && !preChecksCompleted[currentPromptIndex]) {
       toast.warning("Please complete the pre-check first", {
@@ -145,7 +191,7 @@ const Birt = () => {
       });
       return;
     }
-    
+
     // Check if the task is not completed
     if (!tasksCompleted[currentPromptIndex]) {
       toast.warning("Please mark the task as completed before moving to the next prompt", {
@@ -153,8 +199,8 @@ const Birt = () => {
       });
       return;
     }
-    
-    if (currentPromptIndex < companyPrompts[company].length - 1) {
+
+    if (currentPromptIndex < companyConfigs[company].prompts.length - 1) {
       setCurrentPromptIndex(currentPromptIndex + 1);
     }
   };
@@ -178,14 +224,18 @@ const Birt = () => {
 
   // Check if current prompt has a pre-check
   const hasPreCheck = () => {
-    return company && companyPrompts[company][currentPromptIndex].preCheck;
+    return company && companyConfigs[company].prompts[currentPromptIndex].preCheck;
   };
 
   // Get current pre-check text
   const getCurrentPreCheckText = () => {
     if (!company || !hasPreCheck()) return "";
-    return companyPrompts[company][currentPromptIndex].preCheck?.checkText || "";
+    return companyConfigs[company].prompts[currentPromptIndex].preCheck?.checkText || "";
   };
+
+  const isLastPrompt = () => {
+    return company && currentPromptIndex === companyConfigs[company].prompts.length - 1;
+  }
 
   return (
     <div className="min-h-screen flex flex-col bg-background text-text">
@@ -205,7 +255,7 @@ const Birt = () => {
                   Enter your company password to access your custom prompts.
                 </p>
               </div>
-              
+
               <div className="space-y-4">
                 <Input
                   type="password"
@@ -225,7 +275,7 @@ const Birt = () => {
                 >
                   Access Prompts
                 </Button>
-                
+
                 <div className="text-center mt-4 text-text/60 text-sm">
                   <p>Try "Bakkafrost" or "Betri" for demo access</p>
                 </div>
@@ -242,11 +292,11 @@ const Birt = () => {
                   Log Out
                 </Button>
               </div>
-              
+
               <div className="bg-primary/5 p-1 rounded-full mb-6">
                 <div className="flex justify-between px-4">
                   <span className="text-text/60 text-sm">
-                    Prompt {currentPromptIndex + 1} of {company ? companyPrompts[company].length : 0}
+                    Prompt {currentPromptIndex + 1} of {company ? companyConfigs[company].prompts.length : 0}
                   </span>
                   <span className="text-text/60 text-sm">
                     {tasksCompleted.filter(Boolean).length} completed
@@ -254,13 +304,14 @@ const Birt = () => {
                 </div>
                 <div className="relative h-2 mt-1">
                   <div className="absolute top-0 left-0 h-2 bg-gradient-to-r from-primary to-accent rounded-full" style={{
-                    width: `${(currentPromptIndex + 1) / (company ? companyPrompts[company].length : 1) * 100}%`
+                    width: `${(currentPromptIndex + 1) / (company ? companyConfigs[company].prompts.length : 1) * 100}%`
                   }}></div>
                   <div className="absolute top-0 left-0 h-2 w-full bg-background/50 -z-10 rounded-full"></div>
                 </div>
               </div>
-              
-              <Card className="p-6 bg-background border border-border">
+
+              { !isLastPrompt() ? (
+                <Card className="p-6 bg-background border border-border">
                 <div className="mb-4 flex justify-between">
                   <span className="text-sm text-text/60">Prompt #{currentPromptIndex + 1}</span>
                   {!hasPreCheck() || preChecksCompleted[currentPromptIndex] ? (
@@ -277,7 +328,7 @@ const Birt = () => {
                     </div>
                   ) : null}
                 </div>
-                
+
                 {/* Pre-check area */}
                 {hasPreCheck() && (
                   <Collapsible open={!preChecksCompleted[currentPromptIndex]} className="mb-4">
@@ -295,17 +346,17 @@ const Birt = () => {
                     </div>
                   </Collapsible>
                 )}
-                
+
                 {/* Prompt area - only show if no pre-check or pre-check is completed */}
                 {(!hasPreCheck() || preChecksCompleted[currentPromptIndex]) && (
                   <>
                     <div className="mb-2 text-text/70 text-sm">Copy this prompt:</div>
                     <div className="p-6 bg-primary/5 border-2 border-primary/20 rounded-lg mb-6 relative group">
                       <div className="font-mono text-sm whitespace-pre-wrap">
-                        {company && companyPrompts[company][currentPromptIndex].promptText}
+                        {company && companyConfigs[company].prompts[currentPromptIndex].promptText}
                       </div>
                     </div>
-                    
+
                     <div className="flex items-center gap-3 mb-4 p-4 bg-background/50 rounded-md border border-border">
                       <Checkbox 
                         checked={tasksCompleted[currentPromptIndex]}
@@ -313,12 +364,12 @@ const Birt = () => {
                         className={tasksCompleted[currentPromptIndex] ? "text-green-500" : ""}
                       />
                       <label className="text-sm cursor-pointer select-none">
-                        {company && companyPrompts[company][currentPromptIndex].checkText}
+                        {company && companyConfigs[company].prompts[currentPromptIndex].checkText}
                       </label>
                     </div>
                   </>
                 )}
-                
+
                 <div className="flex justify-between mt-6">
                   <Button 
                     variant="outline"
@@ -328,7 +379,7 @@ const Birt = () => {
                   >
                     <ChevronLeft className="h-4 w-4" /> Previous
                   </Button>
-                  
+
                   <div className="relative group">
                     <Button 
                       onClick={goToNextPrompt}
@@ -336,7 +387,7 @@ const Birt = () => {
                         (hasPreCheck() && !preChecksCompleted[currentPromptIndex]) ||
                         (!hasPreCheck() && !tasksCompleted[currentPromptIndex]) ||
                         (hasPreCheck() && preChecksCompleted[currentPromptIndex] && !tasksCompleted[currentPromptIndex]) ||
-                        (company && currentPromptIndex === companyPrompts[company].length - 1)
+                        (company && currentPromptIndex === companyConfigs[company].prompts.length - 1)
                       }
                       className="flex items-center gap-2 bg-primary hover:bg-primary/80"
                     >
@@ -355,6 +406,14 @@ const Birt = () => {
                   </div>
                 </div>
               </Card>
+              ) : (
+                <div 
+                  className="mt-8"
+                  dangerouslySetInnerHTML={{ 
+                    __html: company ? companyConfigs[company].endPage : '' 
+                  }} 
+                />
+              )}
             </div>
           )}
         </div>
