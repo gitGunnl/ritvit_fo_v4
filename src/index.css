@@ -76,6 +76,21 @@
   @apply animate-fade-up;
 }
 
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -20px);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}
+
+.animate-fade-in-down {
+  animation: fadeInDown 0.2s ease-out forwards;
+}
+
 /* Background effect styles */
 .background-effect {
   @apply absolute inset-0 w-full h-full z-0;

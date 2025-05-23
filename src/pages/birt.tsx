@@ -92,12 +92,23 @@ const Birt = () => {
     }
   };
 
+  // State to track copy feedback
+  const [showCopied, setShowCopied] = useState(false);
+  
   // Handle copying prompt to clipboard
   const copyPrompt = () => {
     if (!company) return;
     
     const promptText = companyPrompts[company][currentPromptIndex].promptText;
     navigator.clipboard.writeText(promptText).then(() => {
+      // Show the "Copied" indicator
+      setShowCopied(true);
+      
+      // Hide it after 1.5 seconds
+      setTimeout(() => {
+        setShowCopied(false);
+      }, 1500);
+      
       toast.success("Prompt copied to clipboard!", {
         duration: 2000,
       });
@@ -252,9 +263,17 @@ const Birt = () => {
                 <div className="mb-4 flex justify-between">
                   <span className="text-sm text-text/60">Prompt #{currentPromptIndex + 1}</span>
                   {!hasPreCheck() || preChecksCompleted[currentPromptIndex] ? (
-                    <Button variant="ghost" size="icon" onClick={copyPrompt}>
-                      <Copy className="h-4 w-4" />
-                    </Button>
+                    <div className="relative">
+                      {/* Copied feedback message */}
+                      {showCopied && (
+                        <div className="absolute -top-9 left-1/2 transform -translate-x-1/2 bg-primary text-white text-xs py-1 px-2 rounded shadow-md animate-fade-in-down">
+                          Copied!
+                        </div>
+                      )}
+                      <Button variant="ghost" size="icon" onClick={copyPrompt}>
+                        <Copy className="h-4 w-4" />
+                      </Button>
+                    </div>
                   ) : null}
                 </div>
                 
