@@ -7,11 +7,15 @@ import { Input } from "@/components/ui/input";
 import { Card } from "@/components/ui/card";
 import { Check, Copy, ChevronRight, ChevronLeft, Lock } from "lucide-react";
 import { toast } from "sonner";
+import { Checkbox } from "@/components/ui/checkbox";
 
 // Define types for our prompts
 interface PromptTask {
   promptText: string;
   checkText: string;
+  preCheck?: {
+    checkText: string;
+  };
 }
 
 interface CompanyPrompts {
@@ -22,6 +26,9 @@ interface CompanyPrompts {
 const companyPrompts: CompanyPrompts = {
   "Bakkafrost": [
     {
+      preCheck: {
+        checkText: "I have opened a new chat"
+      },
       promptText: "Analyze the latest salmon market trends and provide a summary of how this might affect Bakkafrost's exports to the US market in the next quarter. Consider tariffs, consumer demand, and competition.",
       checkText: "I've copied this prompt to ChatGPT and received a market analysis summary"
     },
@@ -30,12 +37,18 @@ const companyPrompts: CompanyPrompts = {
       checkText: "I've created a sustainability report outline with ChatGPT"
     },
     {
+      preCheck: {
+        checkText: "I have started a fresh conversation"
+      },
       promptText: "Based on Bakkafrost's annual report data, suggest three innovation areas that could improve operational efficiency and reduce production costs in our salmon farming facilities.",
       checkText: "I've identified three potential innovation areas using this prompt"
     }
   ],
   "Betri": [
     {
+      preCheck: {
+        checkText: "I have opened a new chat"
+      },
       promptText: "Draft a customer communication email explaining Betri's new digital banking features. The tone should be friendly but professional, emphasizing security and convenience.",
       checkText: "I've created a customer email draft using ChatGPT"
     },
@@ -44,6 +57,9 @@ const companyPrompts: CompanyPrompts = {
       checkText: "I've generated investment strategy recommendations"
     },
     {
+      preCheck: {
+        checkText: "I have cleared my conversation history"
+      },
       promptText: "Create a training plan for Betri customer service representatives to improve their ability to explain insurance products clearly to customers from different demographics.",
       checkText: "I've created a training plan outline with this prompt"
     }
@@ -56,6 +72,7 @@ const Birt = () => {
   const [company, setCompany] = useState<string | null>(null);
   const [currentPromptIndex, setCurrentPromptIndex] = useState(0);
   const [tasksCompleted, setTasksCompleted] = useState<boolean[]>([]);
+  const [preChecksCompleted, setPreChecksCompleted] = useState<boolean[]>([]);
 
   // Handle password check
   const checkPassword = () => {
@@ -64,6 +81,7 @@ const Birt = () => {
       setCompany(password);
       // Initialize tasks completed array
       setTasksCompleted(Array(companyPrompts[password].length).fill(false));
+      setPreChecksCompleted(Array(companyPrompts[password].length).fill(false));
       toast.success(`Welcome to ${password} prompts`, {
         duration: 3000,
       });
@@ -97,6 +115,13 @@ const Birt = () => {
     setTasksCompleted(newTasksCompleted);
   };
 
+  // Toggle pre-check completion
+  const togglePreCheckCompleted = () => {
+    const newPreChecksCompleted = [...preChecksCompleted];
+    newPreChecksCompleted[currentPromptIndex] = !newPreChecksCompleted[currentPromptIndex];
+    setPreChecksCompleted(newPreChecksCompleted);
+  };
+
   // Navigate to the next prompt
   const goToNextPrompt = () => {
     if (!company) return;
@@ -120,6 +145,18 @@ const Birt = () => {
     setPassword("");
     setCurrentPromptIndex(0);
     setTasksCompleted([]);
+    setPreChecksCompleted([]);
+  };
+
+  // Check if current prompt has a pre-check
+  const hasPreCheck = () => {
+    return company && companyPrompts[company][currentPromptIndex].preCheck;
+  };
+
+  // Get current pre-check text
+  const getCurrentPreCheckText = () => {
+    if (!company || !hasPreCheck()) return "";
+    return companyPrompts[company][currentPromptIndex].preCheck?.checkText || "";
   };
 
   return (
@@ -198,24 +235,48 @@ const Birt = () => {
               <Card className="p-6 bg-background border border-border shadow-lg">
                 <div className="mb-4 flex justify-between">
                   <span className="text-sm text-text/60">Prompt #{currentPromptIndex + 1}</span>
-                  <Button variant="ghost" size="icon" onClick={copyPrompt}>
-                    <Copy className="h-4 w-4" />
-                  </Button>
-                </div>
-                <div className="p-4 bg-primary/10 rounded-md mb-4 text-text font-mono text-sm whitespace-pre-wrap">
-                  {company && companyPrompts[company][currentPromptIndex].promptText}
+                  {!hasPreCheck() || preChecksCompleted[currentPromptIndex] ? (
+                    <Button variant="ghost" size="icon" onClick={copyPrompt}>
+                      <Copy className="h-4 w-4" />
+                    </Button>
+                  ) : null}
                 </div>
                 
-                <div className="flex items-center gap-2 mb-4">
-                  <Button 
-                    variant="outline" 
-                    className={`flex items-center gap-2 ${tasksCompleted[currentPromptIndex] ? 'bg-green-500/20 border-green-500/50 text-green-500' : 'bg-background border-border text-text/70'}`}
-                    onClick={toggleTaskCompleted}
-                  >
-                    {tasksCompleted[currentPromptIndex] ? <Check className="h-4 w-4" /> : null}
-                    {company && companyPrompts[company][currentPromptIndex].checkText}
-                  </Button>
-                </div>
+                {/* Pre-check area */}
+                {hasPreCheck() && (
+                  <div className="mb-4 p-4 bg-primary/5 rounded-md border border-primary/20">
+                    <div className="flex items-center gap-3 mb-2">
+                      <Checkbox 
+                        id="precheck" 
+                        checked={preChecksCompleted[currentPromptIndex]}
+                        onCheckedChange={() => togglePreCheckCompleted()}
+                      />
+                      <label htmlFor="precheck" className="text-sm cursor-pointer select-none">
+                        {getCurrentPreCheckText()}
+                      </label>
+                    </div>
+                  </div>
+                )}
+                
+                {/* Prompt area - only show if no pre-check or pre-check is completed */}
+                {(!hasPreCheck() || preChecksCompleted[currentPromptIndex]) && (
+                  <>
+                    <div className="p-4 bg-primary/10 rounded-md mb-4 text-text font-mono text-sm whitespace-pre-wrap">
+                      {company && companyPrompts[company][currentPromptIndex].promptText}
+                    </div>
+                    
+                    <div className="flex items-center gap-2 mb-4">
+                      <Button 
+                        variant="outline" 
+                        className={`flex items-center gap-2 ${tasksCompleted[currentPromptIndex] ? 'bg-green-500/20 border-green-500/50 text-green-500' : 'bg-background border-border text-text/70'}`}
+                        onClick={toggleTaskCompleted}
+                      >
+                        {tasksCompleted[currentPromptIndex] ? <Check className="h-4 w-4" /> : null}
+                        {company && companyPrompts[company][currentPromptIndex].checkText}
+                      </Button>
+                    </div>
+                  </>
+                )}
                 
                 <div className="flex justify-between mt-6">
                   <Button 
@@ -230,7 +291,9 @@ const Birt = () => {
                   <Button 
                     onClick={goToNextPrompt}
                     disabled={
-                      !tasksCompleted[currentPromptIndex] || 
+                      (hasPreCheck() && !preChecksCompleted[currentPromptIndex]) ||
+                      (!hasPreCheck() && !tasksCompleted[currentPromptIndex]) ||
+                      (hasPreCheck() && preChecksCompleted[currentPromptIndex] && !tasksCompleted[currentPromptIndex]) ||
                       (company && currentPromptIndex === companyPrompts[company].length - 1)
                     }
                     className="flex items-center gap-2 bg-primary hover:bg-primary/80"
