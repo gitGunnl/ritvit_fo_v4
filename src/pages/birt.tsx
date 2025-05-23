@@ -126,6 +126,22 @@ const Birt = () => {
   const goToNextPrompt = () => {
     if (!company) return;
     
+    // Check if the pre-check exists and is not completed
+    if (hasPreCheck() && !preChecksCompleted[currentPromptIndex]) {
+      toast.warning("Please complete the pre-check first", {
+        duration: 2000,
+      });
+      return;
+    }
+    
+    // Check if the task is not completed
+    if (!tasksCompleted[currentPromptIndex]) {
+      toast.warning("Please mark the task as completed before moving to the next prompt", {
+        duration: 2000,
+      });
+      return;
+    }
+    
     if (currentPromptIndex < companyPrompts[company].length - 1) {
       setCurrentPromptIndex(currentPromptIndex + 1);
     }
@@ -288,18 +304,30 @@ const Birt = () => {
                     <ChevronLeft className="h-4 w-4" /> Previous
                   </Button>
                   
-                  <Button 
-                    onClick={goToNextPrompt}
-                    disabled={
-                      (hasPreCheck() && !preChecksCompleted[currentPromptIndex]) ||
-                      (!hasPreCheck() && !tasksCompleted[currentPromptIndex]) ||
-                      (hasPreCheck() && preChecksCompleted[currentPromptIndex] && !tasksCompleted[currentPromptIndex]) ||
-                      (company && currentPromptIndex === companyPrompts[company].length - 1)
-                    }
-                    className="flex items-center gap-2 bg-primary hover:bg-primary/80"
-                  >
-                    Next <ChevronRight className="h-4 w-4" />
-                  </Button>
+                  <div className="relative group">
+                    <Button 
+                      onClick={goToNextPrompt}
+                      disabled={
+                        (hasPreCheck() && !preChecksCompleted[currentPromptIndex]) ||
+                        (!hasPreCheck() && !tasksCompleted[currentPromptIndex]) ||
+                        (hasPreCheck() && preChecksCompleted[currentPromptIndex] && !tasksCompleted[currentPromptIndex]) ||
+                        (company && currentPromptIndex === companyPrompts[company].length - 1)
+                      }
+                      className="flex items-center gap-2 bg-primary hover:bg-primary/80"
+                    >
+                      Next <ChevronRight className="h-4 w-4" />
+                    </Button>
+                    {/* Tooltip that appears on hover */}
+                    {((hasPreCheck() && !preChecksCompleted[currentPromptIndex]) || 
+                       (!hasPreCheck() && !tasksCompleted[currentPromptIndex]) || 
+                       (hasPreCheck() && preChecksCompleted[currentPromptIndex] && !tasksCompleted[currentPromptIndex])) && (
+                      <div className="absolute bottom-full mb-2 left-1/2 transform -translate-x-1/2 w-64 p-2 bg-background/90 backdrop-blur-sm text-text text-xs rounded border border-border shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none">
+                        {hasPreCheck() && !preChecksCompleted[currentPromptIndex] ? 
+                          "Please complete the pre-check first" : 
+                          "Please mark the task as completed before continuing"}
+                      </div>
+                    )}
+                  </div>
                 </div>
               </Card>
             </div>
