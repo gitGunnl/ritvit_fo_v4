@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card } from "@/components/ui/card";
 import { Check, Copy, ChevronRight, ChevronLeft, Lock } from "lucide-react";
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
 import { toast } from "sonner";
 import { Checkbox } from "@/components/ui/checkbox";
 
@@ -279,37 +280,41 @@ const Birt = () => {
                 
                 {/* Pre-check area */}
                 {hasPreCheck() && (
-                  <div className="mb-4 p-4 bg-background rounded-md border border-border">
-                    <div className="flex items-center gap-3 mb-2">
-                      <Checkbox 
-                        id="precheck" 
-                        checked={preChecksCompleted[currentPromptIndex]}
-                        onCheckedChange={() => togglePreCheckCompleted()}
-                      />
-                      <label htmlFor="precheck" className="text-sm cursor-pointer select-none">
-                        {getCurrentPreCheckText()}
-                      </label>
+                  <Collapsible open={!preChecksCompleted[currentPromptIndex]} className="mb-4">
+                    <div className="p-4 bg-background/50 rounded-md border border-border">
+                      <div className="flex items-center gap-3">
+                        <Checkbox 
+                          id="precheck" 
+                          checked={preChecksCompleted[currentPromptIndex]}
+                          onCheckedChange={() => togglePreCheckCompleted()}
+                        />
+                        <label htmlFor="precheck" className="text-sm cursor-pointer select-none">
+                          {getCurrentPreCheckText()}
+                        </label>
+                      </div>
                     </div>
-                  </div>
+                  </Collapsible>
                 )}
                 
                 {/* Prompt area - only show if no pre-check or pre-check is completed */}
                 {(!hasPreCheck() || preChecksCompleted[currentPromptIndex]) && (
                   <>
-                    Copy this prompt:
-                    <div className="p-4 bg-background border border-border rounded-md mb-4 text-text font-mono text-sm whitespace-pre-wrap">
-                      {company && companyPrompts[company][currentPromptIndex].promptText}
+                    <div className="mb-2 text-text/70 text-sm">Copy this prompt:</div>
+                    <div className="p-6 bg-primary/5 border-2 border-primary/20 rounded-lg mb-6 relative group">
+                      <div className="font-mono text-sm whitespace-pre-wrap">
+                        {company && companyPrompts[company][currentPromptIndex].promptText}
+                      </div>
                     </div>
                     
-                    <div className="flex items-center gap-2 mb-4">
-                      <Button 
-                        variant="outline" 
-                        className={`flex items-center gap-2 ${tasksCompleted[currentPromptIndex] ? 'bg-green-500/20 border-green-500/50 text-green-500' : 'bg-background border-border text-text/70'}`}
-                        onClick={toggleTaskCompleted}
-                      >
-                        {tasksCompleted[currentPromptIndex] ? <Check className="h-4 w-4" /> : null}
+                    <div className="flex items-center gap-3 mb-4 p-4 bg-background/50 rounded-md border border-border">
+                      <Checkbox 
+                        checked={tasksCompleted[currentPromptIndex]}
+                        onCheckedChange={() => toggleTaskCompleted()}
+                        className={tasksCompleted[currentPromptIndex] ? "text-green-500" : ""}
+                      />
+                      <label className="text-sm cursor-pointer select-none">
                         {company && companyPrompts[company][currentPromptIndex].checkText}
-                      </Button>
+                      </label>
                     </div>
                   </>
                 )}
