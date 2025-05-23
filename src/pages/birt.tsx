@@ -27,7 +27,7 @@ const companyPrompts: CompanyPrompts = {
   "Bakkafrost": [
     {
       preCheck: {
-        checkText: "I have opened a new chat"
+        checkText: "I have opened a new chat and picked the right model."
       },
       promptText: "Analyze the latest salmon market trends and provide a summary of how this might affect Bakkafrost's exports to the US market in the next quarter. Consider tariffs, consumer demand, and competition.",
       checkText: "I've copied this prompt to ChatGPT and received a market analysis summary"
