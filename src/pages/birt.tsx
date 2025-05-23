@@ -194,7 +194,7 @@ const Birt = () => {
         <div className="max-w-3xl mx-auto">
           {!authenticated ? (
             // Password entry screen
-            <Card className="p-8 bg-primary/10 border border-border shadow-xl backdrop-blur-sm">
+            <Card className="p-8 bg-background border border-border">
               <div className="text-center mb-6 space-y-4">
                 <Lock className="w-12 h-12 mx-auto text-primary" />
                 <h1 className="text-3xl font-bold bg-gradient-to-r from-primary to-accent text-transparent bg-clip-text">
@@ -259,7 +259,7 @@ const Birt = () => {
                 </div>
               </div>
               
-              <Card className="p-6 bg-background border border-border shadow-lg">
+              <Card className="p-6 bg-background border border-border">
                 <div className="mb-4 flex justify-between">
                   <span className="text-sm text-text/60">Prompt #{currentPromptIndex + 1}</span>
                   {!hasPreCheck() || preChecksCompleted[currentPromptIndex] ? (
@@ -279,7 +279,7 @@ const Birt = () => {
                 
                 {/* Pre-check area */}
                 {hasPreCheck() && (
-                  <div className="mb-4 p-4 bg-primary/5 rounded-md border border-primary/20">
+                  <div className="mb-4 p-4 bg-background rounded-md border border-border">
                     <div className="flex items-center gap-3 mb-2">
                       <Checkbox 
                         id="precheck" 
@@ -297,7 +297,7 @@ const Birt = () => {
                 {(!hasPreCheck() || preChecksCompleted[currentPromptIndex]) && (
                   <>
                     Copy this prompt:
-                    <div className="p-4 bg-primary/10 rounded-md mb-4 text-text font-mono text-sm whitespace-pre-wrap">
+                    <div className="p-4 bg-background border border-border rounded-md mb-4 text-text font-mono text-sm whitespace-pre-wrap">
                       {company && companyPrompts[company][currentPromptIndex].promptText}
                     </div>
                     
