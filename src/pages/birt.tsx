@@ -296,6 +296,7 @@ const Birt = () => {
                 {/* Prompt area - only show if no pre-check or pre-check is completed */}
                 {(!hasPreCheck() || preChecksCompleted[currentPromptIndex]) && (
                   <>
+                    Copy this prompt:
                     <div className="p-4 bg-primary/10 rounded-md mb-4 text-text font-mono text-sm whitespace-pre-wrap">
                       {company && companyPrompts[company][currentPromptIndex].promptText}
                     </div>
