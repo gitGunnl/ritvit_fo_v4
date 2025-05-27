@@ -106,7 +106,7 @@ export default function About() {
             </p>
             <ul className="list-disc ml-6 text-lg mb-4">
               <li>
-                ✅ <strong>Gera vitlíki lætt og atkomiligt</strong> fyri øll.
+                ✅ <strong>Gera vitlíki lætt og atkomuligt</strong> fyri øll.
               </li>
               <li>
                 ✅ <strong>Hjálpa fyritøkum at spara tíð og tilfeingi</strong> – uttan
