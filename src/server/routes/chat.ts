@@ -6,17 +6,24 @@ const router = express.Router();
 
 router.post('/', async (req, res) => {
   try {
+    // Basic request validation
+    if (!req.body || typeof req.body !== 'object') {
+      return res.status(400).json({
+        error: 'Invalid request body'
+      });
+    }
+
     const { messages } = req.body;
     
     // Log the received data (without sensitive information)
     console.log('Chat request received. Messages count:', messages?.length || 0);
     
     // Check if API key is configured
-    if (!process.env.OPENAI_API_KEY) {
-      console.error('OpenAI API key missing - please set it in Replit Secrets');
+    if (!process.env.OPENAI_API_KEY || process.env.OPENAI_API_KEY.length < 20) {
+      console.error('OpenAI API key missing or invalid - please set it in Replit Secrets');
       return res.status(500).json({
         error: 'API Configuration Error',
-        details: 'OpenAI API key is not configured'
+        details: 'OpenAI API key is not configured properly'
       });
     }
 
