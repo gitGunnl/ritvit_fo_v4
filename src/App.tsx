@@ -14,6 +14,7 @@ import BlogPost from "./pages/blog/[id]";
 import AboutCourse from "./pages/aboutCourse";
 import ScenarioTrainer from "./pages/scenariotrainer";
 import TariffsPodcast from "./pages/tariffs-podcast";
+import BetriAIPodcast from "./pages/betri-ai-podcast";
 import Birt from "./pages/birt";
 
 const App = () => (
@@ -31,6 +32,7 @@ const App = () => (
           <Route path="/aboutCourse" element={<AboutCourse />} />
           <Route path="/scenariotrainer" element={<ScenarioTrainer />} />
           <Route path="/tariffs-podcast" element={<TariffsPodcast />} />
+          <Route path="/betri-ai-podcast" element={<BetriAIPodcast />} />
           <Route path="/birt" element={<Birt />} />
         </Routes>
       </BrowserRouter>
