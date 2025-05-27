@@ -275,7 +275,9 @@ const Birt = () => {
                   Access Prompts
                 </Button>
 
-                
+                <div className="text-center mt-4 text-text/60 text-sm">
+                  <p>Try "Bakkafrost" or "Betri" for demo access</p>
+                </div>
               </div>
             </Card>
           ) : (
@@ -404,22 +406,12 @@ const Birt = () => {
                 </div>
               </Card>
               ) : (
-                <div className="text-center space-y-6">
-                  <h1 className="text-3xl font-bold bg-gradient-to-r from-primary to-accent text-transparent bg-clip-text">
-                    Congratulations! 🎉
-                  </h1>
-                  <p className="text-xl text-text/80">
-                    You've completed all prompts for {company}.
-                  </p>
-                  <div className="p-6 bg-primary/5 rounded-lg border-2 border-primary/20">
-                    <h2 className="text-2xl font-semibold mb-4">Next Steps</h2>
-                    <ul className="list-disc text-left pl-6 space-y-2">
-                      <li>Review your generated analyses</li>
-                      <li>Compile key insights into a report</li>
-                      <li>Schedule a follow-up meeting to discuss findings</li>
-                    </ul>
-                  </div>
-                </div>
+                <div 
+                  className="mt-8"
+                  dangerouslySetInnerHTML={{ 
+                    __html: company ? companyConfigs[company].endPage : '' 
+                  }} 
+                />
               )}
             </div>
           )}
