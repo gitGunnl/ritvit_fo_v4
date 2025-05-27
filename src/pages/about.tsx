@@ -19,7 +19,7 @@ export default function About() {
             Vit bera vitlíki til Føroyar – og víðari
           </h2>
           <p className="text-xl max-w-3xl mx-auto leading-relaxed text-text/80 animate-fade-down">
-            Stig fyri stig broytur ritvit heimin. Vit syrgja fyri, at tú ikki dettur afturúr.
+            Stig fyri stig broytur vitlíki heimin. Vit syrgja fyri, at tú ikki dettur afturúr.
           </p>
         </div>
       </section>
@@ -33,7 +33,7 @@ export default function About() {
             </p>
             <p className="text-lg mb-4">
               <strong>
-                At hjálpa føroyskum fyritøkum at brúka ritvit.
+                At hjálpa føroyskum fyritøkum at brúka vitlíki.
               </strong>
             </p>
             <p className="text-lg mb-4">
@@ -57,19 +57,19 @@ export default function About() {
             </p>
             <p className="text-lg mb-4">
               Sum verkfrøðingur arbeiddi eg við framkomnum skipanum, men einki
-              fangaði meg sum ritvit.
+              fangaði meg sum vitlíki.
             </p>
             <p className="text-lg mb-4">So ein dag gekk tað upp fyri mær:</p>
             <ul className="list-disc ml-6 text-lg mb-4">
               <li>
-                💡 <strong>Ritvit er ikki bara fyri stórar tøkni-risar.</strong>
+                💡 <strong>vitlíki er ikki bara fyri stórar tøkni-risar.</strong>
               </li>
               <li>
-                💡 <strong>Ritvit er ikki bara framtíð – tað er nú.</strong>
+                💡 <strong>vitlíki er ikki bara framtíð – tað er nú.</strong>
               </li>
               <li>
                 💡{" "}
-                <strong>Ritvit kann nýtast í øllum fyritøkum – eisini í Føroyum.</strong>
+                <strong>vitlíki kann nýtast í øllum fyritøkum – eisini í Føroyum.</strong>
               </li>
             </ul>
             <p className="text-lg mb-4">
@@ -77,13 +77,13 @@ export default function About() {
             </p>
             <p className="text-lg mt-4">
               Tí stovnaði eg <strong>Tøkni Tænastuna</strong> – fyri at byggja brúnna
-              millum <strong>møguleikarnar hjá ritviti</strong> og{" "}
+              millum <strong>møguleikarnar hjá vitlíkii</strong> og{" "}
               <strong>veruligu tørvin hjá føroyskum fyritøkum</strong>.
             </p>
             <p className="text-lg mt-4">
               Nú hjálpa vit fyritøkum at{" "}
               <strong>
-                sjálvvirka uppgávur, effektivisera arbeiðið og brúka ritvit fult
+                sjálvvirka uppgávur, effektivisera arbeiðið og brúka vitlíki fult
                 út
               </strong>{" "}
               – so tær kunnu fokusera uppá tað, sum veruliga hevur týdning.
@@ -96,9 +96,9 @@ export default function About() {
       <section className="py-16">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto bg-primary/10 backdrop-blur-sm rounded-lg p-8 shadow-xl border border-border animate-fade-up">
-            <h2 className="text-3xl font-bold mb-4">Okkara visjón: Ritvit til øll</h2>
+            <h2 className="text-3xl font-bold mb-4">Okkara visjón: vitlíki til øll</h2>
             <p className="text-lg mb-4">
-              Ritvit er ikki bara fyri <strong>Silicon Valley</strong>. Tað er fyri
+              vitlíki er ikki bara fyri <strong>Silicon Valley</strong>. Tað er fyri
               tína fyritøku. Títt toymi. Tína gerandisdag.
             </p>
             <p className="text-lg mb-4">
@@ -106,18 +106,18 @@ export default function About() {
             </p>
             <ul className="list-disc ml-6 text-lg mb-4">
               <li>
-                ✅ <strong>Gera ritvit lætt og atkomiligt</strong> fyri øll.
+                ✅ <strong>Gera vitlíki lætt og atkomiligt</strong> fyri øll.
               </li>
               <li>
                 ✅ <strong>Hjálpa fyritøkum at spara tíð og tilfeingi</strong> – uttan
                 at seta fleiri fólk í starv.
               </li>
               <li>
-                ✅ <strong>Skapa ritvit-loysnir, sum veruliga rigga.</strong>
+                ✅ <strong>Skapa vitlíki-loysnir, sum veruliga rigga.</strong>
               </li>
             </ul>
             <p className="text-lg">
-              Vit selja ikki bara "ritvit-ráðgeving". Vit{" "}
+              Vit selja ikki bara "vitlíki-ráðgeving". Vit{" "}
               <strong>læra, innføra og byggja</strong> loysnir, sum geva{" "}
               <strong>verulig úrslit</strong>.
             </p>
@@ -131,7 +131,7 @@ export default function About() {
           <div className="max-w-3xl mx-auto bg-primary/10 backdrop-blur-sm rounded-lg p-8 shadow-xl border border-border animate-fade-up">
             <h2 className="text-3xl font-bold mb-4">Hvat ger okkum øðrvísi?</h2>
             <p className="text-lg mb-4">
-              Ritvit er <strong>allastaðni</strong>, men flestu fyritøkur stríðast
+              vitlíki er <strong>allastaðni</strong>, men flestu fyritøkur stríðast
               við somu spurningar:
             </p>
             <ul className="list-disc ml-6 text-lg mb-4">
@@ -142,7 +142,7 @@ export default function About() {
                 ❌ <strong>Hvussu riggar tað í verki?</strong>
               </li>
               <li>
-                ❌ <strong>Er ritvit ov trupult fyri okkum?</strong>
+                ❌ <strong>Er vitlíki ov trupult fyri okkum?</strong>
               </li>
             </ul>
             <p className="text-lg mb-4">
@@ -162,7 +162,7 @@ export default function About() {
                 veruligu avbjóðingarnar.
               </li>
               <li>
-                🤖 <strong>Vit brúka sjálvi ritvit hvønn dag.</strong> Tað her er
+                🤖 <strong>Vit brúka sjálvi vitlíki hvønn dag.</strong> Tað her er
                 ikki bara teori – vit vita, hvat riggar.
               </li>
             </ul>

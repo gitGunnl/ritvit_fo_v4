@@ -191,7 +191,7 @@ A short podcast about real world usecases for LLM tools throughout Betri.
         <div className="max-w-4xl mx-auto">
           <div className="mb-12 text-center">
             <h1 className="text-4xl md:text-5xl font-bold mb-4 animate-fade-down">
-              Ritvit podvarpur
+              Vitlíki podvarpur
             </h1>
             <p className="text-xl text-text/80 max-w-2xl mx-auto animate-fade-down">
               AI í arbeiðinum hjá Betri
