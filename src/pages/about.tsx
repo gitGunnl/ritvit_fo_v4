@@ -29,7 +29,7 @@ export default function About() {
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto bg-primary/10 backdrop-blur-sm rounded-lg p-8 shadow-xl border border-border animate-fade-up">
             <p className="text-lg mb-4">
-              <strong>Tøkni Tænastan</strong> var stovna av einføldum orsøkum:
+              <strong>Vitlíkisstovan</strong> var stovna av einføldum orsøkum:
             </p>
             <p className="text-lg mb-4">
               <strong>

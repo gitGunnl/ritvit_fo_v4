@@ -425,7 +425,7 @@ const AboutCourse: React.FC = () => {
                 tøkni, ið kann gera arbeiðið lættari, snildari og stuttligari.
               </p>
               <p>
-                Í dag reki eg mína egnu fyritøku, Tøkni Tænastan, har eg hjálpi
+                Í dag reki eg mína egnu fyritøku, Vitlíkisstovan, har eg hjálpi
                 føroyskum fyritøkum at brúka vitlíki sum eitt effektivt amboð. Eg
                 leggji dent á at gera læringina ítøkiliga, við veruligakendum dømum
                 og uppgávum, so tú beinanvegin kanst brúka tað, tú lærir.

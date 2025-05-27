@@ -16,7 +16,7 @@ export default function BetriAIPodcast() {
     
     const ogDescMeta = document.createElement('meta');
     ogDescMeta.setAttribute('property', 'og:description');
-    ogDescMeta.setAttribute('content', 'Hoyra um hvussu starfsfólk hjá Betri kunnu nýta gervi-græðisemi (AI) til at gera arbeiðið meira effektivt og kreativt.');
+    ogDescMeta.setAttribute('content', 'A short podcast about real world usecases for LLM tools throughout Betri. !This podcast is not affiliated with Betri.');
     
     // Create image meta tag pointing to the correct thumbnail
     const ogImageMeta = document.createElement('meta');
@@ -176,90 +176,9 @@ export default function BetriAIPodcast() {
   // Component to render markdown episode notes
   const EpisodeNotes = () => {
     const markdownContent = `
-# AI í arbeiðinum hjá Betri
+A short podcast about real world usecases for LLM tools throughout Betri.
 
-Í hesum podvarp tosa vit um, hvussu starfsfólk hjá Betri kunnu nýta gervi-græðisemi (AI) til at gera arbeiðið meira effektivt og kreativt.
-
-## Yvirlit
-
-Gervi-græðisemi broytur hvussu vit arbeiða í dag. Hjá Betri hava vit møguleika at nýta hesi nýggju tól til at:
-
-- Gera kundatænastu betri
-- Økja produktivitetin
-- Finna nýggjar loysnir á gomul viðurskifti
-- Spara tíð á hvørdagsligum uppgávum
-
-## Hvat er AI?
-
-**Gervi-græðisemi (AI)** er tøkni, sum kann:
-- Skilja og svara spurningum á náttúrligum máli
-- Greiða tekst og skjøl
-- Hjálpa við at skriva og redigera
-- Gera samandráttir av longum dokumentum
-- Koma við hugskotum og ideum
-
-## Møgulig nýtsluøki hjá Betri
-
-### 1. Kundaráðgeving og tænasta
-- **Tekstskriving**: AI kann hjálpa við at skriva proffesionell bræv og teldubræv til kundar
-- **Svarmal**: Gera standardsvar, sum kunnu tillagast hvørjum einstaka kundum
-- **Spurningar og svar**: Fáa hjálp til at svara tekniskum spurningum frá kundum
-
-### 2. Marknaðarføring og kommunikatioun
-- **Innihald til sosial miðlar**: AI kann hjálpa við at skapa áhugavert innihald
-- **Bloggar og greinar**: Fáa hjálp til at skriva um fíggjargongdir og tryggingarviðurskifti
-- **Kunngerðir**: Gera kunngerðir, sum eru lættfatnar og áhugaverdar
-
-### 3. Innvortis arbeiði
-- **Samandráttir**: Gera stuttar samandráttir av longum møtum ella dokumentum
-- **Kynningar**: Hjálp til at gera PowerPoint og aðrar kynningar
-- **Útroknskap**: Hjálp við at greiða tøl og gera útreiðslur
-
-### 4. Útbúgving og þróun
-- **Nám**: AI kann vera eins og ein persónligur lærari
-- **Spurningar**: Fáa svar á spurningar um arbeiðsviðurskifti
-- **Íblástur**: Koma við nýggjum hugskotum til verkætlanir
-
-## Praktisk rád
-
-### At fáa byrjað
-1. **Byrja smátt**: Vel eina lítla uppgávu at royna AI á
-2. **Ver týður**: Skriv nákvæmar spurningar og biðningar
-3. **Kontrolleraí**: Kontrolleraí altíð tað, sum AI framleiðir
-4. **Lær av mistøkum**: Broyt spurningarnar, um tú ikki fært tað, sum tú vilt hava
-
-### Góð dømi um spurningar
-- "Skriv eitt formligt bræv til ein kunda, sum spyr um..."
-- "Gør eitt samandráttur av hesum møti..."
-- "Hjálp mær við at finna 5 hugskot til ein marknaðarføringskampanje um..."
-- "Útskýr hetta tekniska viðurskifti á einføldum máti..."
-
-### Hvat ber til at varast
-- **Trúnaðarmál**: Lat ikki sum persónupplýsingar ella trúnaðarmál í AI
-- **Juridiск viðurskifti**: Fá altíð lógaráð um juridiск mál
-- **Viðkvæm fíggjarmál**: Ver varin við at deila viðkvæmum fíggjaruplýsingum
-
-## Framtíðin
-
-AI-tøknin er bara í byrjan. Í framtíðini fáa vit:
-- Betri integration við okkara IT-kerv
-- Meira persónliggjørd tól til hvønn starvspláss
-- Automatisering av enn fleiri uppgávum
-
-## Niðurstøða
-
-AI er ikki her fyri at taka arbeiðsplássini frá okkum, men fyri at gera okkum betri til tað arbeiði, vit longu gera. Tað handlar um at:
-
-- **Spara tíð** á hvørdagsligum uppgávum
-- **Bøta um kvalitetin** av okkara arbeiði  
-- **Finna nýggjar loysnir** á gamal viðurskifti
-- **Gera meira kreativt** arbeiði
-
-Hugs á AI sum ein týðandi kollega, sum aldri verður trottur og altíð er reiður at hjálpa!
-
----
-
-*Hevur tú spurningar um AI hjá Betri? Tak samband við IT-deildina ella spyr leiðsluna.*
+!This podcast is not affiliated with Betri.
 `;
     return <MarkdownRenderer content={markdownContent} />;
   };
@@ -296,9 +215,9 @@ Hugs á AI sum ein týðandi kollega, sum aldri verður trottur og altíð er re
 
             <div className="mb-8">
               <p className="text-text/80 leading-relaxed">
-                Í hesum podvarpi tosa vit um, hvussu starfsfólk hjá Betri kunnu nýta gervi-græðisemi (AI) 
-                til at gera arbeiðið meira effektivt, kreativt og áhugavert. Vit fara ígjøgnum praktisk dømi 
-                og geva konkret rád til, hvussu AI kann hjálpa í dagligum arbeiðsuppgávum.
+                A short podcast about real world usecases for LLM tools throughout Betri.
+
+                !This podcast is not affiliated with Betri.
               </p>
             </div>
 
