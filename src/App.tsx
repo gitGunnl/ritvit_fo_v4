@@ -16,6 +16,7 @@ import ScenarioTrainer from "./pages/scenariotrainer";
 import TariffsPodcast from "./pages/tariffs-podcast";
 import BetriAIPodcast from "./pages/betri-ai-podcast";
 import Birt from "./pages/birt";
+import VegleidingLaearar from "./pages/vegleiding-laearar";
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
@@ -34,6 +35,7 @@ const App = () => (
           <Route path="/tariffs-podcast" element={<TariffsPodcast />} />
           <Route path="/betri-ai-podcast" element={<BetriAIPodcast />} />
           <Route path="/birt" element={<Birt />} />
+          <Route path="/vegleiding-laearar" element={<VegleidingLaearar />} />
         </Routes>
       </BrowserRouter>
     </TooltipProvider>
