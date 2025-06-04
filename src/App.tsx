@@ -2,7 +2,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 
 const queryClient = new QueryClient();
@@ -16,6 +16,7 @@ import ScenarioTrainer from "./pages/scenariotrainer";
 import TariffsPodcast from "./pages/tariffs-podcast";
 import BetriAIPodcast from "./pages/betri-ai-podcast";
 import Birt from "./pages/birt";
+import VegleidingLaearar from "./pages/vegleiding-laearar";
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
@@ -34,7 +35,7 @@ const App = () => (
           <Route path="/tariffs-podcast" element={<TariffsPodcast />} />
           <Route path="/betri-ai-podcast" element={<BetriAIPodcast />} />
           <Route path="/birt" element={<Birt />} />
-          <Route path="/vegleiding-laearar" element={<Navigate to="/other_media/vegleiding-laearar.pdf" replace />} />
+          <Route path="/vegleiding-laearar" element={<VegleidingLaearar />} />
         </Routes>
       </BrowserRouter>
     </TooltipProvider>
