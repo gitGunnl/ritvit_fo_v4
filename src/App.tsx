@@ -34,7 +34,7 @@ const App = () => (
           <Route path="/tariffs-podcast" element={<TariffsPodcast />} />
           <Route path="/betri-ai-podcast" element={<BetriAIPodcast />} />
           <Route path="/birt" element={<Birt />} />
-          <Route path="/vegleiding-laearar" element={<Navigate to="/other_media/Vegleiðing - Lærarar.pdf" replace />} />
+          <Route path="/vegleiding-laearar" element={<Navigate to="/other_media/vegleiding-laearar.pdf" replace />} />
         </Routes>
       </BrowserRouter>
     </TooltipProvider>
