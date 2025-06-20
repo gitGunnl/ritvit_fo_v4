@@ -20,7 +20,10 @@ jobs:
 
       # 3. install & build (adjust if you use pnpm / yarn)
       - run: npm ci
-      - run: npm run build        # ➜ dist/
+      - run: npm run build          # keep your normal build command
+      - run: |
+          echo "=== tree (depth 2) ==="
+          find . -maxdepth 2 -type d -print
 
       # 4. switch to an orphan branch & clear the *index* only
       - name: Prepare deploy branch
