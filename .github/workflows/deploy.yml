@@ -1,0 +1,23 @@
+name: Build & Push Static Site
+on:
+  push:
+    branches: [ main ]          # your source branch
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v3
+        with: { version: 9 }
+      - run: pnpm install       # or npm ci
+      - run: pnpm run build     # outputs dist/
+      - name: Deploy to branch
+        run: |
+          git config --global user.email "ci@github"
+          git config --global user.name  "CI Bot"
+          git switch --force-create deploy
+          rm -rf ./* .[^.]* || true       # wipe repo dir
+          cp -r dist/* .                  # copy built files
+          git add -A
+          git commit -m "deploy $GITHUB_SHA"
+          git push -f origin deploy
