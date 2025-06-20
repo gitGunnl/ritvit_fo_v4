@@ -1,23 +1,44 @@
-name: Build & Push Static Site
+name: Build & push static site to `deploy`
+
 on:
   push:
-    branches: [ main ]          # your source branch
+    branches: [ main ]           # <-- your source branch
+
 jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
+      # 1. checkout source (keeps full history for the build step)
       - uses: actions/checkout@v4
-      - uses: pnpm/action-setup@v3
-        with: { version: 9 }
-      - run: pnpm install       # or npm ci
-      - run: pnpm run build     # outputs dist/
-      - name: Deploy to branch
+
+      # 2. set up Node (replace 20.x if needed)
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20.x
+          cache: npm
+
+      # 3. install & build (adjust if you use pnpm / yarn)
+      - run: npm ci
+      - run: npm run build        # ➜ dist/
+
+      # 4. switch to an orphan branch & clear the *index* only
+      - name: Prepare deploy branch
         run: |
           git config --global user.email "ci@github"
-          git config --global user.name  "CI Bot"
-          git switch --force-create deploy
-          rm -rf ./* .[^.]* || true       # wipe repo dir
-          cp -r dist/* .                  # copy built files
+          git config --global user.name  "CI bot"
+          git switch --orphan deploy     # new branch, no history
+          git rm -rf . --ignore-unmatch  # removes everything from the *index*
+      
+      # 5. copy the *contents* of dist/ into repo root
+      - name: Copy build output
+        run: |
+          cp -r dist/* .
+          touch .nojekyll            # prevents GitHub from treating the site as Jekyll
+          echo -e "RewriteEngine On\nRewriteCond %{REQUEST_FILENAME} !-f\nRewriteCond %{REQUEST_FILENAME} !-d\nRewriteRule ^ /index.html [L]" > .htaccess
+      
+      # 6. commit & push
+      - run: |
           git add -A
           git commit -m "deploy $GITHUB_SHA"
           git push -f origin deploy
