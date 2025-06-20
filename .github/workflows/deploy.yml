@@ -1,47 +1,33 @@
-name: Build & push static site to `deploy`
+name: Build & publish static site
 
 on:
   push:
-    branches: [ main ]           # <-- your source branch
+    branches: [ main ]               # ← your source branch
 
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
-
     steps:
-      # 1. checkout source (keeps full history for the build step)
+      # 1 — check out the source
       - uses: actions/checkout@v4
 
-      # 2. set up Node (replace 20.x if needed)
+      # 2 — build (adjust if you use pnpm / yarn)
       - uses: actions/setup-node@v4
-        with:
-          node-version: 20.x
-          cache: npm
-
-      # 3. install & build (adjust if you use pnpm / yarn)
+        with: {node-version: 20, cache: npm}
       - run: npm ci
-      - run: npm run build          # keep your normal build command
-      - run: |
-          echo "=== tree (depth 2) ==="
-          find . -maxdepth 2 -type d -print
+      - run: npm run build            # ➜ dist/
 
-      # 4. switch to an orphan branch & clear the *index* only
-      - name: Prepare deploy branch
+      # 3 — publish dist/ to branch `deploy`
+      - name: Push to deploy branch
         run: |
-          git config --global user.email "ci@github"
-          git config --global user.name  "CI bot"
-          git switch --orphan deploy     # new branch, no history
-          git rm -rf . --ignore-unmatch  # removes everything from the *index*
-      
-      # 5. copy the *contents* of dist/ into repo root
-      - name: Copy build output
-        run: |
-          cp -r dist/* .
-          touch .nojekyll            # prevents GitHub from treating the site as Jekyll
-          echo -e "RewriteEngine On\nRewriteCond %{REQUEST_FILENAME} !-f\nRewriteCond %{REQUEST_FILENAME} !-d\nRewriteRule ^ /index.html [L]" > .htaccess
-      
-      # 6. commit & push
-      - run: |
-          git add -A
-          git commit -m "deploy $GITHUB_SHA"
+          # tell Git to treat dist/ as the working tree
+          git --work-tree=dist checkout -B deploy
+          
+          # optional SPA fallback + GH convenience files
+          echo -e "RewriteEngine On\nRewriteCond %{REQUEST_FILENAME} !-f\nRewriteCond %{REQUEST_FILENAME} !-d\nRewriteRule ^ /index.html [L]" > dist/.htaccess
+          touch dist/.nojekyll
+          
+          # commit & force-push
+          git --work-tree=dist add -A
+          git --work-tree=dist commit -m "deploy $GITHUB_SHA" || true
           git push -f origin deploy
