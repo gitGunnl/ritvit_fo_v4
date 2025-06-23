@@ -13,8 +13,9 @@ import BlogIndex from "./pages/blog";
 import BlogPost from "./pages/blog/[id]";
 import AboutCourse from "./pages/aboutCourse";
 import ScenarioTrainer from "./pages/scenariotrainer";
-import TariffsPodcast from "./pages/tariffs-podcast";
-import BetriAIPodcast from "./pages/betri-ai-podcast";
+import TariffsPodcast from "@/pages/tariffs-podcast";
+import BetriAIPodcast from "@/pages/betri-ai-podcast";
+import RisinOgKellinginPodcast from "@/pages/risin-og-kellingin-podcast";
 import Birt from "./pages/birt";
 import VegleidingLaearar from "./pages/vegleiding-laearar";
 
@@ -34,6 +35,7 @@ const App = () => (
           <Route path="/scenariotrainer" element={<ScenarioTrainer />} />
           <Route path="/tariffs-podcast" element={<TariffsPodcast />} />
           <Route path="/betri-ai-podcast" element={<BetriAIPodcast />} />
+          <Route path="/risin-og-kellingin-podcast" element={<RisinOgKellinginPodcast />} />
           <Route path="/birt" element={<Birt />} />
           <Route path="/vegleiding-laearar" element={<VegleidingLaearar />} />
         </Routes>
