@@ -50,3 +50,5 @@ node_modules
 *.njsproj
 *.sln
 *.sw?
+
+attached_assets
