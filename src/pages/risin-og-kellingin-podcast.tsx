@@ -176,9 +176,7 @@ export default function RisinOgKellinginPodcast() {
   // Component to render markdown episode notes
   const EpisodeNotes = () => {
     const markdownContent = `
-Risin og Kellingin podcast episode.
-
-Add your episode notes here.
+Risin og Kellingin podcast episoden udforsker legenden om Risin og Kellingin, to forstenede søstakke ud for Færøernes kyst, som ifølge folkloren er en islandsk kæmpe og heks, der forsøgte at stjæle øerne. Den beskriver, hvordan de to skikkelser blev forvandlet til sten ved solopgang, et klassisk motiv i nordisk mytologi, der symboliserer naturens beskyttelse mod udefrakommende trusler. Artiklen fremhæver historiens kulturelle betydning som en central del af færøsk identitet og national stolthed, der bekræfter øernes urokkelighed. Endvidere trækkes paralleller til lignende forsteningsmyter i Nordatlanten, hvilket viser historiens rødder i en bredere mytologisk tradition, selvom den færøske udgave har sin egen unikke karakter. Til sidst overvejes legendens varige arv, som fortsat fascinerer lokale og turister og beriger landskabets dramatiske skønhed.
 `;
     return <MarkdownRenderer content={markdownContent} />;
   };
@@ -209,7 +207,7 @@ Add your episode notes here.
               </div>
               <div>
                 <h2 className="text-2xl font-bold text-text">Risin og Kellingin</h2>
-                <p className="text-text/80">Released: TBD • Duration TBD</p>
+                <p className="text-text/80"> 24 Juni 2025 • Longd: 5 min.</p>
               </div>
             </div>
 
