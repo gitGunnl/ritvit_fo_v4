@@ -23,9 +23,6 @@ const openSignupForm = () => {
         <GridBackground />
 
         <div className="max-w-4xl mx-auto text-center px-4 z-10">
-          <div className="inline-block mb-8 px-8 py-3 bg-primary/20 backdrop-blur-sm rounded-full animate-fade-down border border-primary/30 shadow-lg shadow-primary/10">
-            <span className="text-primary font-semibold tracking-wide">Nýtt skeið byrjar skjótt!</span>
-          </div>
           <h1 className="text-4xl sm:text-6xl lg:text-7xl font-bold mb-8 animate-fade-up leading-tight drop-shadow-md">
             Steðga at spilla tíð upp á uppgávur, sum 
             <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary via-primary/90 to-accent px-2 whitespace-nowrap">vitlíki</span> 
