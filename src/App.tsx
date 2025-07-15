@@ -3,8 +3,6 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { useEffect } from "react";
-import { HumanBehaviorSimulator } from "@/lib/humanBehavior";
 import Index from "./pages/Index";
 
 const queryClient = new QueryClient();
@@ -23,12 +21,6 @@ import VegleidingLaearar from "./pages/vegleiding-laearar";
 import Tilarbeidis from "./pages/tilarbeidis";
 
 const App = () => {
-  useEffect(() => {
-    // Initialize human behavior tracking
-    const simulator = HumanBehaviorSimulator.getInstance();
-    simulator.initializeTracking();
-  }, []);
-
   return (
     <QueryClientProvider client={queryClient}>
       <Toaster position="top-center" richColors />
