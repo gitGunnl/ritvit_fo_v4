@@ -18,7 +18,6 @@ import BetriAIPodcast from "@/pages/betri-ai-podcast";
 import RisinOgKellinginPodcast from "@/pages/risin-og-kellingin-podcast";
 import Birt from "./pages/birt";
 import VegleidingLaearar from "./pages/vegleiding-laearar";
-import TilArbeidis from "./pages/tilarbeidis";
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
@@ -39,7 +38,6 @@ const App = () => (
           <Route path="/risin_og_kellingin" element={<RisinOgKellinginPodcast />} />
           <Route path="/birt" element={<Birt />} />
           <Route path="/vegleiding-laearar" element={<VegleidingLaearar />} />
-          <Route path="/tilarbeidis" element={<TilArbeidis />} />
         </Routes>
       </BrowserRouter>
     </TooltipProvider>
