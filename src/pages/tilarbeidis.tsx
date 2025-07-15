@@ -452,7 +452,7 @@ type TimelineEvent = {
 
                             alt={event.title}
 
-              _                className="w-full h-full object-cover"
+                            className="w-full h-full object-cover"
 
                           />
 
