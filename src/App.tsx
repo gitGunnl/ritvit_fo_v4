@@ -20,13 +20,12 @@ import Birt from "./pages/birt";
 import VegleidingLaearar from "./pages/vegleiding-laearar";
 import Tilarbeidis from "./pages/tilarbeidis";
 
-const App = () => {
-  return (
-    <QueryClientProvider client={queryClient}>
-      <Toaster position="top-center" richColors />
-      <TooltipProvider>
-        <BrowserRouter>
-          <Routes>
+const App = () => (
+  <QueryClientProvider client={queryClient}>
+    <Toaster position="top-center" richColors />
+    <TooltipProvider>
+      <BrowserRouter>
+        <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/about" element={<About />} />
           <Route path="/services" element={<Services />} />
@@ -43,10 +42,9 @@ const App = () => {
           <Route path="/tilarbeidis" element={<Tilarbeidis />} />
           <Route path="/tilarbeiðis" element={<Tilarbeidis />} />
         </Routes>
-        </BrowserRouter>
-      </TooltipProvider>
-    </QueryClientProvider>
-  );
-};
+      </BrowserRouter>
+    </TooltipProvider>
+  </QueryClientProvider>
+);
 
 export default App;

@@ -3,7 +3,6 @@ import { Button } from './ui/button';
 import { Send, X } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { MAX_MESSAGES } from '@/lib/constants';
-import { HumanBehaviorSimulator, HumanRequestThrottler } from '@/lib/humanBehavior';
 
 interface ChatMessage {
   id: string;
@@ -28,14 +27,9 @@ const ChatWindow = ({ onClose }: ChatWindowProps) => {
 
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const abortControllerRef = useRef<AbortController | null>(null);
-  const humanSimulator = HumanBehaviorSimulator.getInstance();
-  const requestThrottler = new HumanRequestThrottler();
 
   const scrollToBottom = () => {
-    // Add slight delay to make scrolling more natural
-    setTimeout(() => {
-      messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
-    }, 100);
+    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   };
 
   useEffect(() => {
@@ -70,24 +64,6 @@ const ChatWindow = ({ onClose }: ChatWindowProps) => {
       return;
     }
 
-    // Check if behavior seems human-like
-    if (!humanSimulator.isHumanLikeActivity()) {
-      const warningMessage: ChatMessage = {
-        id: Date.now().toString(),
-        role: 'assistant',
-        content: 'Vinarliga interaktér við síðuna áðrenn tú sendur boð.'
-      };
-      setMessages(prev => [...prev, warningMessage]);
-      return;
-    }
-
-    // Record this interaction
-    humanSimulator.recordInteraction();
-
-    // Add human-like delay before processing (simulates reading/thinking time)
-    const humanDelay = humanSimulator.getTypingDelay(userInput.length);
-    await new Promise(resolve => setTimeout(resolve, Math.min(humanDelay, 1000)));
-
     const userMessage: ChatMessage = {
       id: Date.now().toString(),
       role: 'user',
@@ -116,13 +92,11 @@ const ChatWindow = ({ onClose }: ChatWindowProps) => {
     try {
       const baseUrl = window.location.origin;
       
-      const response = await requestThrottler.throttleRequest(async () => {
-        return fetch(`${baseUrl}/api/chat`, {
+      const response = await fetch(`${baseUrl}/api/chat`, {
         method: 'POST',
         headers: { 
           'Content-Type': 'application/json',
-          'User-Agent': 'RitVit-Chat/1.0',
-          'X-Request-Source': 'user-interaction'
+          'User-Agent': 'RitVit-Chat/1.0'
         },
         body: JSON.stringify({
           messages: truncatedMessages.map(msg => ({
@@ -131,9 +105,8 @@ const ChatWindow = ({ onClose }: ChatWindowProps) => {
           }))
         }),
         signal: abortControllerRef.current.signal,
-          // Add timeout
-          ...(fetch.length > 2 && { timeout: 30000 })
-        });
+        // Add timeout
+        ...(fetch.length > 2 && { timeout: 30000 })
       });
 
       if (!response.ok) {
