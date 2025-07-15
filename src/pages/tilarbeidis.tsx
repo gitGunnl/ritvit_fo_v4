@@ -18,79 +18,79 @@ type TimelineEvent = {
 
 };const timelineData: TimelineEvent[] = [
 
-  {
+  { 
 
-    id: "evt-001",
+    id: "evt-001", 
 
-    date: "2025-05-01",
+    date: "2025-05-01", 
 
-    title: "Verkætlanin fíggjað",
+    title: "Verkætlanin fíggjað", 
 
-    summary: "Verkætlanin hevur fingið játtan, sum gevur okkum førleika at kanna nýtsluna av vitlíki fyri starvsfólk á gólvinum."
-
-  },
-
-  {
-
-    id: "evt-002",
-
-    date: "2025-07-15",
-
-    title: "Verkætlanin byrjar",
-
-    summary: "Kjarnubólkurin er mannaður og fyrsta arbeiðsætlanin er kunngjørd."
+    summary: "Átakið tryggjaði sær játtan, ið gevur okkum tilfeingi at kanna nýtslumøguleikar av vitlíki hjá starvsfólki í úrvaldu bólkunum."
 
   },
 
-  {
+  { 
 
-    id: "evt-003",
+    id: "evt-002", 
 
-    date: "2025-07-15",
+    date: "2025-07-01", 
 
-    title: "Verkstova um bólkaval",
+    title: "Verkætlanin byrjar", 
 
-    summary: "Áhugabólkar hittust fyri at velja níggju týðandi yrkisbólkar út til royndarverkætlanir.",
+    summary: "Fyrsta arbeiðsætlanin kunngjørd."
 
-    mediaType: "image",
+  },
+
+  { 
+
+    id: "evt-003", 
+
+    date: "2025-07-07", 
+
+    title: "Verkstova um bólkaval", 
+
+    summary: "Verkstovan um at geva íblástur til hvørjir bólkar kunna hava størsta gagn av hesum átakinum og til at meta styrkistøl fyri yrkisbólkar til royndarverkætlanir.",
+
+    mediaType: "image", 
 
     mediaSrc: "/images/verkstova.jpeg"
 
   },
 
-  {
+  { 
 
-    id: "evt-004",
+    id: "evt-004", 
 
-    date: "2025-07-15",
+    date: "2025-07-09", 
 
-    title: "Raðfesting í gongd",
+    title: "Raðfesting í gongd", 
 
-    summary: "Vit meta nú um teir níggju bólkarnar út frá ásettum mátum: \"Fáir skíggjar, starvsfólkatal, vitlíkis-snertifletur.\" Úrslitini verða nýtt til at velja royndarverkætlanir."
-
-  },
-
-  {
-
-    id: "evt-005",
-
-    date: "2025-07-28",
-
-    title: "Samrøða við miðil",
-
-    summary: "Høvdu fyrstu samrøðu við tíðarrit frá *Granskingarráðnum* um leiklutin hjá vitlíki í føroyska arbeiðslívinum. Vit bíða eftir greinini til gjøgnumlestur."
+    summary: "Vit meta nú um teir tjúgu bólkarnar eftir hesum styrkistølum: \"Fáir skíggjar, stórt starvsfólkatal og vitlíkis-nýtslumøguleikar.\""
 
   },
 
-  {
+  { 
 
-    id: "evt-006",
+    id: "evt-005", 
 
-    date: "2025-08-01",
+    date: "2025-07-15", 
 
-    title: "Samskiftisfasa",
+    title: "Samrøða við miðlar", 
 
-    summary: "Næsta stigið: seta okkum í samband við valdu bólkarnar og skipa fyri hálv-skipaðum samrøðum fyri at kortleggja dagligar avbjóðingar."
+    summary: "Hava gjørt fyrstu samrøðu við tíðarritið hjá Granskingarráðnum um verkætlanina og um leiklutin hjá vitlíki í føroyskum arbeiðslívi. Greinin er ikki komin út enn."
+
+  },
+
+  { 
+
+    id: "evt-006", 
+
+    date: "2025-08-01", 
+
+    title: "Kanningarstig", 
+
+    summary: "Næsta stigið: seta okkum í samband við valdar bólkar og skipa fyri samrøður fyri at avdúkað dagligar avbjóðingar."
 
   }
 
@@ -106,9 +106,9 @@ type TimelineEvent = {
 
     const date = new Date(dateString);
 
-    const options: Intl.DateTimeFormatOptions = {
+    const options: Intl.DateTimeFormatOptions = { 
 
-      year: 'numeric',
+      year: 'numeric', 
 
       month: 'short',
 
@@ -116,7 +116,7 @@ type TimelineEvent = {
 
     };
 
-    return date.toLocaleDateString('fo-FO', options);
+    return date.toLocaleDateString('da-DK', options);
 
   };
 
@@ -234,13 +234,13 @@ type TimelineEvent = {
 
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6">
 
-            Støðan í verkætlanini – Vitlíki til arbeiðis
+            Verkætlanar dagføringar – Vitlíki til arbeiðis
 
           </h1>
 
           <p className="text-xl text-text/80 mb-8">
 
-            Fylg okkara arbeiðsætlan, meðan vit menna føroyskt vitlíki til gerandisdagin á arbeiðsplássinum.
+            Fylg við okkara arbeiðsætlan, meðan vit menna vitlíki vegleiðingar til Føroyska vinnulívið.
 
           </p>
 
@@ -266,9 +266,9 @@ type TimelineEvent = {
 
               <div>
 
-                <h3 className="font-bold text-lg text-primary">Verandi uppgáva:</h3>
+                <h3 className="font-bold text-lg text-primary">Núverandi uppgáva:</h3>
 
-                <p className="text-text/90">raðfesta útvaldu yrkisbólkarnar eftir okkara mátum.</p>
+                <p className="text-text/90">raðfesta úrvaldu yrkisbólkarnar eftir okkara styrkitøl.</p>
 
               </div>
 
@@ -290,7 +290,7 @@ type TimelineEvent = {
 
                 <h4 className="font-semibold text-accent">Næst:</h4>
 
-                <p className="text-text/80 text-sm">seta okkum í samband við umboð fyri bólkarnar og skipa fyri kanningarsamrøðum (aug. 2025).</p>
+                <p className="text-text/80 text-sm">seta okkum í samband við umboð frá úrvaldu bólkarnar og avtala samrøður (aug. 2025).</p>
 
               </div>
 
@@ -479,159 +479,55 @@ type TimelineEvent = {
 
 
       {/* Roadmap Table */}
-
       <section className="mt-24 py-16 px-4 sm:px-6 lg:px-8 bg-primary/5">
-
-        <div className="max-w-6xl mx-auto">
-
-          <h2 className="text-3xl font-bold mb-8 text-center">Arbeiðsætlan fyri verkætlanina</h2>
-
-
-
-          <div className="overflow-x-auto bg-background/50 border border-text/10 rounded-xl p-6">
-
-            <table className="w-full text-sm">
-
-              <thead>
-
-                <tr className="border-b border-text/20">
-
-                  <th className="text-left py-3 px-2 font-semibold">Stig</th>
-
-                  <th className="text-left py-3 px-2 font-semibold">Byrjan</th>
-
-                  <th className="text-left py-3 px-2 font-semibold">Endi</th>
-
-                  <th className="text-left py-3 px-2 font-semibold">Tíðarskeið</th>
-
-                  <th className="text-left py-3 px-2 font-semibold">Lýsing</th>
-
-                </tr>
-
-              </thead>
-
-              <tbody className="space-y-2">
-
-                <tr className="border-b border-text/10">
-
-                  <td className="py-3 px-2">Fyrireiking</td>
-
-                  <td className="py-3 px-2">Mai 2025</td>
-
-                  <td className="py-3 px-2">Juli 2025</td>
-
-                  <td className="py-3 px-2">3 mán.</td>
-
-                  <td className="py-3 px-2">Mannan av toymi, kortlegging av áhugabólkum, innleiðandi kanningar</td>
-
-                </tr>
-
-                <tr className="border-b border-text/10 font-bold bg-primary/10">
-
-                  <td className="py-3 px-2">📦 Úrslit: Verkstova um bólkaval</td>
-
-                  <td className="py-3 px-2">15. juli 2025</td>
-
-                  <td className="py-3 px-2">–</td>
-
-                  <td className="py-3 px-2">–</td>
-
-                  <td className="py-3 px-2">Velja 9 týðandi yrkisbólkar út</td>
-
-                </tr>
-
-                <tr className="border-b border-text/10">
-
-                  <td className="py-3 px-2">Kanningarstig</td>
-
-                  <td className="py-3 px-2">Aug. 2025</td>
-
-                  <td className="py-3 px-2">Okt. 2025</td>
-
-                  <td className="py-3 px-2">3 mán.</td>
-
-                  <td className="py-3 px-2">Brúkarasamrøður, kanning av arbeiðsgongdum, kortlegging av avbjóðingum</td>
-
-                </tr>
-
-                <tr className="border-b border-text/10 font-bold bg-primary/10">
-
-                  <td className="py-3 px-2">📦 Úrslit: Samandráttur av kanningum</td>
-
-                  <td className="py-3 px-2">Nov. 2025</td>
-
-                  <td className="py-3 px-2">–</td>
-
-                  <td className="py-3 px-2">–</td>
-
-                  <td className="py-3 px-2">Nágreinilig meting av tørvi hjá brúkarum og raðfesting av møguleikum</td>
-
-                </tr>
-
-                <tr className="border-b border-text/10">
-
-                  <td className="py-3 px-2">Frumgerð</td>
-
-                  <td className="py-3 px-2">Nov. 2025</td>
-
-                  <td className="py-3 px-2">Jan. 2026</td>
-
-                  <td className="py-3 px-2">3 mán.</td>
-
-                  <td className="py-3 px-2">Mennna og royna fyrstu vitlíkishjáparar til valdar bólkar</td>
-
-                </tr>
-
-                <tr className="border-b border-text/10 font-bold bg-primary/10">
-
-                  <td className="py-3 px-2">📦 Úrslit: Virkandi frumgerðir</td>
-
-                  <td className="py-3 px-2">Feb. 2026</td>
-
-                  <td className="py-3 px-2">–</td>
-
-                  <td className="py-3 px-2">–</td>
-
-                  <td className="py-3 px-2">2-3 virkandi vitlíkisamboð klár til royndarkoyring</td>
-
-                </tr>
-
-                <tr className="border-b border-text/10">
-
-                  <td className="py-3 px-2">Royndarkoyring</td>
-
-                  <td className="py-3 px-2">Feb. 2026</td>
-
-                  <td className="py-3 px-2">Apr. 2026</td>
-
-                  <td className="py-3 px-2">3 mán.</td>
-
-                  <td className="py-3 px-2">Royndarkoyring við veruligum brúkarum, innsavnan av afturmeldingum og tillagingar</td>
-
-                </tr>
-
-                <tr className="font-bold bg-primary/10">
-
-                  <td className="py-3 px-2">📦 Úrslit: Endalig frágreiðing</td>
-
-                  <td className="py-3 px-2">Mai 2026</td>
-
-                  <td className="py-3 px-2">–</td>
-
-                  <td className="py-3 px-2">–</td>
-
-                  <td className="py-3 px-2">Meting av ávirkan og tilmæli um víðkan</td>
-
-                </tr>
-
-              </tbody>
-
-            </table>
-
-          </div>
-
-        </div>
-
+      <div className="max-w-6xl mx-auto">
+      <h2 className="text-3xl font-bold mb-8 text-center">Arbeiðsætlan</h2>
+
+      <div className="overflow-x-auto bg-background/50 border border-text/10 rounded-xl p-6">
+      <table className="w-full text-sm">
+      <thead>
+      <tr className="border-b border-text/20">
+      <th className="text-left py-3 px-2 font-semibold">Stig</th>
+      <th className="text-left py-3 px-2 font-semibold">Tíðarskeið</th>
+      <th className="text-left py-3 px-2 font-semibold">Høvuðsuppgávur</th>
+      <th className="text-left py-3 px-2 font-semibold">Úrslit</th>
+      </tr>
+      </thead>
+      <tbody className="divide-y divide-text/10">
+      <tr>
+      <td className="py-4 px-2 font-medium">Fyrireiking & Kanning</td>
+      <td className="py-4 px-2">jul. – aug. 2025</td>
+      <td className="py-4 px-2">Verkætlanarbyrjan, val av vinnugreinum og kanningarsamrøður.</td>
+      <td className="py-4 px-2">Endaligt vinnugreinaval</td>
+      </tr>
+      <tr>
+      <td className="py-4 px-2 font-medium">Menning (Stig 1)</td>
+      <td className="py-4 px-2">sep. – nov. 2025</td>
+      <td className="py-4 px-2">Greina samrøður og skriva fyrstu vegleiðingarnar.</td>
+      <td className="py-4 px-2 font-bold text-primary/90">📦 Vegleiðingar 1 & 2</td>
+      </tr>
+                      <tr>
+      <td className="py-4 px-2 font-medium">Menning (Stig 2)</td>
+      <td className="py-4 px-2">nov. 2025 – jan. 2026</td>
+      <td className="py-4 px-2">Halda fram við samrøðum og skriva næstu vegleiðingarnar.</td>
+      <td className="py-4 px-2 font-bold text-primary/90">📦 Vegleiðingar 3 & 4</td>
+      </tr>
+      <tr>
+      <td className="py-4 px-2 font-medium">Menning (Stig 3)</td>
+      <td className="py-4 px-2">feb. – apr. 2026</td>
+      <td className="py-4 px-2">Menna og skriva seinastu vegleiðingarnar.</td>
+      <td className="py-4 px-2 font-bold text-primary/90">📦 Vegleiðingar 5 & 6</td>
+      </tr>
+      <tr>
+      <td className="py-4 px-2 font-medium">Frágreiðing</td>
+      <td className="py-4 px-2">apr. – mai 2026</td>
+      <td className="py-4 px-2">Skriva endaliga samandráttarfrágreiðing við úrslitum og tilmælum.</td>
+      <td className="py-4 px-2 font-bold text-primary/90">📦 Endalig verkætlanarfrágreiðing</td>
+      </tr>
+      </tbody>
+      </table>
+      </div>
+      </div>
       </section>
 
 
@@ -674,7 +570,7 @@ type TimelineEvent = {
 
           <p className="text-sm text-text/60">
 
-            Vit kunngera bert høvuðsvarðar; nágreiniligar kanningarfrásagnir verða goymdar innanhýsis.
+            Vit almannakunngera bert høvuðsvarðar; smálutjaðar kanningarfrásagnir eru innanhýsis.
 
           </p>
 
