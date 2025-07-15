@@ -40,6 +40,7 @@ const App = () => (
           <Route path="/birt" element={<Birt />} />
           <Route path="/vegleiding-laearar" element={<VegleidingLaearar />} />
           <Route path="/tilarbeidis" element={<Tilarbeidis />} />
+          <Route path="/tilarbeiðis" element={<Tilarbeidis />} />
         </Routes>
       </BrowserRouter>
     </TooltipProvider>
