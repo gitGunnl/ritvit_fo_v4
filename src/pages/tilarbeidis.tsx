@@ -1,8 +1,6 @@
 
 import { useState, useEffect } from "react";
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
-import { Button } from "@/components/ui/button";
-import { Calendar, Play, Image } from "lucide-react";
+import { Calendar } from "lucide-react";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 
@@ -68,7 +66,6 @@ const timelineData: TimelineEvent[] = [
 
 const Tilarbeidis = () => {
   const [activeSection, setActiveSection] = useState<string>("evt-001");
-  const [selectedMedia, setSelectedMedia] = useState<TimelineEvent | null>(null);
   const [visibleEvents, setVisibleEvents] = useState<Set<string>>(new Set());
 
   const formatDate = (dateString: string) => {
@@ -209,19 +206,22 @@ const Tilarbeidis = () => {
                       {event.summary}
                     </p>
                     
-                    <Button
-                      variant="outline"
-                      size="sm"
-                      onClick={() => setSelectedMedia(event)}
-                      className="flex items-center gap-2 hover:bg-primary/10 hover:border-primary/50 border-primary/20"
-                    >
+                    <div className="aspect-video w-full rounded-lg overflow-hidden border border-text/10">
                       {event.mediaType === 'video' ? (
-                        <Play className="w-4 h-4" />
+                        <iframe
+                          src={event.mediaSrc}
+                          className="w-full h-full"
+                          allowFullScreen
+                          title={event.title}
+                        />
                       ) : (
-                        <Image className="w-4 h-4" />
+                        <img
+                          src={event.mediaSrc}
+                          alt={event.title}
+                          className="w-full h-full object-cover"
+                        />
                       )}
-                      View Media →
-                    </Button>
+                    </div>
                   </div>
                 </div>
               ))}
@@ -245,30 +245,7 @@ const Tilarbeidis = () => {
         </div>
       </section>
 
-      {/* Media Dialog */}
-      <Dialog open={!!selectedMedia} onOpenChange={() => setSelectedMedia(null)}>
-        <DialogContent className="max-w-4xl w-full max-h-[90vh] overflow-hidden">
-          <DialogHeader>
-            <DialogTitle>{selectedMedia?.title}</DialogTitle>
-          </DialogHeader>
-          <div className="aspect-video w-full">
-            {selectedMedia?.mediaType === 'video' ? (
-              <iframe
-                src={selectedMedia.mediaSrc}
-                className="w-full h-full rounded-lg"
-                allowFullScreen
-                title={selectedMedia.title}
-              />
-            ) : (
-              <img
-                src={selectedMedia?.mediaSrc}
-                alt={selectedMedia?.title}
-                className="w-full h-full object-cover rounded-lg"
-              />
-            )}
-          </div>
-        </DialogContent>
-      </Dialog>
+      
 
       <Footer />
     </div>
