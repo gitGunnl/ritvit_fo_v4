@@ -72,10 +72,11 @@ export default defineConfig(({ mode }) => {
       port,
       hmr: {
         port: 5000,
-        host: '0.0.0.0'
+        host: 'localhost'
       },
       // Dynamically allow the specific Replit host
       allowedHosts,
+      cors: true,
       proxy: {
         '/api': {
           target: 'http://0.0.0.0:3000',
