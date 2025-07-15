@@ -53,12 +53,10 @@ export default defineConfig({
   server: {
     host: '0.0.0.0',
     port: process.env.PORT ? parseInt(process.env.PORT) : 8080,
-    allowedHosts: 'all',
     strictPort: true,
     hmr: {
       port: process.env.PORT ? parseInt(process.env.PORT) : 8080,
-      host: '0.0.0.0',
-      clientPort: process.env.PORT ? parseInt(process.env.PORT) : 8080
+      host: '0.0.0.0'
     },
     proxy: {
       '/api': {
@@ -68,6 +66,13 @@ export default defineConfig({
     },
     fs: {
       strict: false
+    },
+    middlewareMode: false,
+    cors: true,
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'GET,HEAD,PUT,PATCH,POST,DELETE',
+      'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept, Authorization, Cache-Control'
     }
   },
   preview: {
