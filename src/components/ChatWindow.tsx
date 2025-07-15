@@ -53,6 +53,15 @@ const ChatWindow = ({ onClose }: ChatWindowProps) => {
     e.preventDefault();
     if (!userInput.trim() || isLoading) return;
 
+    // Add minimum interaction delay to prevent bot-like behavior
+    const interactionDelay = 500; // 500ms minimum between interactions
+    const now = Date.now();
+    const timeSinceLastInteraction = now - lastRequestTime;
+    
+    if (timeSinceLastInteraction < interactionDelay) {
+      await new Promise(resolve => setTimeout(resolve, interactionDelay - timeSinceLastInteraction));
+    }
+
     // Rate limiting check
     if (isRateLimited()) {
       const errorMessage: ChatMessage = {

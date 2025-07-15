@@ -137,83 +137,60 @@ type TimelineEvent = {
 
 
   useEffect(() => {
-
+    // Throttle scroll handler to prevent excessive firing
+    let scrollTimeout: NodeJS.Timeout;
     const handleScroll = () => {
+      if (scrollTimeout) return; // Skip if already processing
 
-      const sections = timelineData.map(event => document.getElementById(event.id));
+      scrollTimeout = setTimeout(() => {
+        const sections = timelineData.map(event => document.getElementById(event.id));
+        const scrollPosition = window.scrollY + window.innerHeight / 2;
 
-      const scrollPosition = window.scrollY + window.innerHeight / 2;
-
-
-
-      for (let i = sections.length - 1; i >= 0; i--) {
-
-        const section = sections[i];
-
-        if (section && section.offsetTop <= scrollPosition) {
-
-          setActiveSection(timelineData[i].id);
-
-          break;
-
+        for (let i = sections.length - 1; i >= 0; i--) {
+          const section = sections[i];
+          if (section && section.offsetTop <= scrollPosition) {
+            setActiveSection(timelineData[i].id);
+            break;
+          }
         }
-
-      }
-
+        scrollTimeout = undefined;
+      }, 100); // Throttle to 100ms intervals
     };
-
-
 
     const observerOptions = {
-
       threshold: 0.1,
-
       rootMargin: '-50px 0px'
-
     };
 
-
-
+    // Throttle intersection observer callbacks
+    let observerTimeout: NodeJS.Timeout;
     const observer = new IntersectionObserver((entries) => {
+      if (observerTimeout) return;
 
-      entries.forEach((entry) => {
-
-        if (entry.isIntersecting) {
-
-          setVisibleEvents(prev => new Set([...prev, entry.target.id]));
-
-        }
-
-      });
-
+      observerTimeout = setTimeout(() => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setVisibleEvents(prev => new Set([...prev, entry.target.id]));
+          }
+        });
+        observerTimeout = undefined;
+      }, 150); // Throttle observer updates
     }, observerOptions);
 
-
-
     timelineData.forEach(event => {
-
       const element = document.getElementById(event.id);
-
       if (element) observer.observe(element);
-
     });
 
-
-
-    window.addEventListener('scroll', handleScroll);
-
+    window.addEventListener('scroll', handleScroll, { passive: true });
     handleScroll();
 
-
-
     return () => {
-
       window.removeEventListener('scroll', handleScroll);
-
       observer.disconnect();
-
+      if (scrollTimeout) clearTimeout(scrollTimeout);
+      if (observerTimeout) clearTimeout(observerTimeout);
     };
-
   }, []);
 
 
