@@ -73,11 +73,11 @@ const Tilarbeidis = () => {
 
   const formatDate = (dateString: string) => {
     const date = new Date(dateString);
-    return date.toLocaleDateString('fo-FO', { 
+    const options: Intl.DateTimeFormatOptions = { 
       year: 'numeric', 
-      month: 'long', 
-      day: 'numeric' 
-    });
+      month: 'short'
+    };
+    return date.toLocaleDateString('en-US', options);
   };
 
   const scrollToEvent = (eventId: string) => {
@@ -154,24 +154,24 @@ const Tilarbeidis = () => {
           {/* Left Column - Navigation (Desktop Only) */}
           <div className="hidden lg:block lg:w-1/4">
             <div className="sticky top-24">
-              <h3 className="text-sm font-semibold text-text/60 uppercase tracking-wider mb-4">
+              <h3 className="text-sm font-semibold text-text/60 uppercase tracking-wider mb-6">
                 ROADMAP
               </h3>
-              <nav className="space-y-2">
+              <nav className="space-y-1">
                 {timelineData.map((event) => (
                   <button
                     key={event.id}
                     onClick={() => scrollToEvent(event.id)}
-                    className={`block w-full text-left px-3 py-2 rounded-lg transition-all duration-300 ${
+                    className={`block w-full text-left px-4 py-3 rounded-lg transition-all duration-300 ${
                       activeSection === event.id
-                        ? 'bg-primary/20 text-primary border-l-2 border-primary'
+                        ? 'bg-primary/15 text-primary border-l-3 border-primary'
                         : 'text-text/70 hover:text-text hover:bg-text/5'
                     }`}
                   >
-                    <div className="text-xs text-text/50 mb-1">
+                    <div className="text-xs text-text/50 mb-1 font-medium">
                       {formatDate(event.date)}
                     </div>
-                    <div className="text-sm font-medium line-clamp-2">
+                    <div className="text-sm font-medium">
                       {event.title}
                     </div>
                   </button>
@@ -182,55 +182,46 @@ const Tilarbeidis = () => {
 
           {/* Right Column - Timeline */}
           <div className="lg:w-3/4">
-            <div className="space-y-12">
+            <div className="space-y-8">
               {timelineData.map((event, index) => (
                 <div
                   key={event.id}
                   id={event.id}
-                  className={`relative transition-all duration-700 transform ${
+                  className={`transition-all duration-700 transform ${
                     visibleEvents.has(event.id)
                       ? 'opacity-100 translate-y-0'
                       : 'opacity-0 translate-y-8'
                   }`}
                 >
-                  {/* Timeline Line */}
-                  <div className="absolute left-4 top-12 bottom-0 w-px bg-text/20"></div>
-                  
-                  {/* Timeline Dot */}
-                  <div className="absolute left-2 top-8 w-5 h-5 bg-primary rounded-full border-4 border-background shadow-lg"></div>
-                  
-                  {/* Content */}
-                  <div className="ml-12">
-                    <div className="bg-text/5 border border-text/10 rounded-xl p-6 hover:border-primary/30 transition-all duration-300 group">
-                      <div className="flex items-center gap-2 mb-3">
-                        <Calendar className="w-4 h-4 text-primary" />
-                        <span className="text-sm text-primary font-semibold">
-                          {formatDate(event.date)}
-                        </span>
-                      </div>
-                      
-                      <h3 className="text-xl font-bold mb-3 group-hover:text-primary transition-colors">
-                        {event.title}
-                      </h3>
-                      
-                      <p className="text-text/80 mb-4 leading-relaxed">
-                        {event.summary}
-                      </p>
-                      
-                      <Button
-                        variant="outline"
-                        size="sm"
-                        onClick={() => setSelectedMedia(event)}
-                        className="flex items-center gap-2 hover:bg-primary/10 hover:border-primary/50"
-                      >
-                        {event.mediaType === 'video' ? (
-                          <Play className="w-4 h-4" />
-                        ) : (
-                          <Image className="w-4 h-4" />
-                        )}
-                        View Media →
-                      </Button>
+                  <div className="bg-background/50 border border-text/10 rounded-xl p-8 hover:border-primary/20 hover:bg-background/60 transition-all duration-300 group">
+                    <div className="flex items-center gap-2 mb-4">
+                      <Calendar className="w-5 h-5 text-primary/80" />
+                      <span className="text-sm text-primary/80 font-semibold uppercase tracking-wide">
+                        {formatDate(event.date)}
+                      </span>
                     </div>
+                    
+                    <h3 className="text-2xl font-bold mb-4 text-text group-hover:text-primary transition-colors">
+                      {event.title}
+                    </h3>
+                    
+                    <p className="text-text/70 mb-6 leading-relaxed text-lg">
+                      {event.summary}
+                    </p>
+                    
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      onClick={() => setSelectedMedia(event)}
+                      className="flex items-center gap-2 hover:bg-primary/10 hover:border-primary/50 border-primary/20"
+                    >
+                      {event.mediaType === 'video' ? (
+                        <Play className="w-4 h-4" />
+                      ) : (
+                        <Image className="w-4 h-4" />
+                      )}
+                      View Media →
+                    </Button>
                   </div>
                 </div>
               ))}
