@@ -52,28 +52,12 @@ export default defineConfig({
   },
   server: {
     host: '0.0.0.0',
-    port: process.env.PORT ? parseInt(process.env.PORT) : 3001,
-    strictPort: true,
-    allowedHosts: ['localhost', '127.0.0.1', /\.replit\.dev$/, /\.replit\.app$/, /\.repl\.co$/],
-    hmr: {
-      port: process.env.PORT ? parseInt(process.env.PORT) : 3001,
-      host: '0.0.0.0'
-    },
+    port: process.env.PORT ? parseInt(process.env.PORT) : 8080,
     proxy: {
       '/api': {
         target: 'http://0.0.0.0:3000',
         changeOrigin: true
       }
-    },
-    fs: {
-      strict: false
-    },
-    middlewareMode: false,
-    cors: true,
-    headers: {
-      'Access-Control-Allow-Origin': '*',
-      'Access-Control-Allow-Methods': 'GET,HEAD,PUT,PATCH,POST,DELETE',
-      'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept, Authorization, Cache-Control'
     }
   },
   preview: {
