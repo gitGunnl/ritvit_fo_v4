@@ -54,15 +54,20 @@ export default defineConfig({
     host: '0.0.0.0',
     port: process.env.PORT ? parseInt(process.env.PORT) : 8080,
     allowedHosts: 'all',
+    strictPort: true,
     hmr: {
       port: process.env.PORT ? parseInt(process.env.PORT) : 8080,
-      host: '0.0.0.0'
+      host: '0.0.0.0',
+      clientPort: process.env.PORT ? parseInt(process.env.PORT) : 8080
     },
     proxy: {
       '/api': {
         target: 'http://0.0.0.0:3000',
         changeOrigin: true
       }
+    },
+    fs: {
+      strict: false
     }
   },
   preview: {
