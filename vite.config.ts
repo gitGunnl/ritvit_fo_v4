@@ -1,5 +1,5 @@
 
-import { defineConfig } from 'vite'
+import { defineConfig, loadEnv } from 'vite'
 import react from '@vitejs/plugin-react'
 import path from 'path'
 import fs from 'fs'
@@ -37,50 +37,69 @@ const logBuildOutputPlugin = () => {
   }
 }
 
-export default defineConfig({
-  plugins: [
-    react(), 
-    logBuildOutputPlugin()
-  ],
-  resolve: {
-    alias: {
-      '@': path.resolve(__dirname, './src'),
+export default defineConfig(({ mode }) => {
+  // Load env file based on `mode` in the current working directory.
+  const env = loadEnv(mode, process.cwd(), '')
+
+  const host = env.VITE_HOST || '0.0.0.0'
+  const port = parseInt(env.VITE_PORT) || 5000
+
+  // Construct the Replit host URL dynamically
+  const replitHost = process.env.REPL_SLUG && process.env.REPL_OWNER
+    ? `${process.env.REPL_SLUG}.${process.env.REPL_OWNER}.replit.dev`
+    : null
+
+  const allowedHosts = ['.replit.dev']
+  if (replitHost) {
+    allowedHosts.push(replitHost)
+  }
+
+  return {
+    plugins: [
+      react(), 
+      logBuildOutputPlugin()
+    ],
+    resolve: {
+      alias: {
+        '@': path.resolve(__dirname, './src'),
+      },
     },
-  },
-  define: {
-    'process.env': {}
-  },
-  server: {
-    host: '0.0.0.0',
-    port: 5000,
-    hmr: {
-      clientPort: 443, // Required for Replit's proxy
+    define: {
+      'process.env': {}
     },
-    allowedHosts: ['.replit.dev'],
-    proxy: {
-      '/api': {
-        target: 'http://0.0.0.0:3000',
-        changeOrigin: true
-      }
-    }
-  },
-  preview: {
-    host: '0.0.0.0',
-    port: process.env.PORT ? parseInt(process.env.PORT) : 3000
-  },
-  build: {
-    outDir: 'dist',
-    assetsDir: 'assets',
-    sourcemap: true,
-    emptyOutDir: true,
-    rollupOptions: {
-      output: {
-        manualChunks: {
-          vendor: ['react', 'react-dom', 'react-router-dom']
+    server: {
+      host,
+      port,
+      hmr: {
+        clientPort: 443, // Required for Replit's proxy
+      },
+      // Dynamically allow the specific Replit host
+      allowedHosts,
+      proxy: {
+        '/api': {
+          target: 'http://0.0.0.0:3000',
+          changeOrigin: true
         }
       }
     },
-    // Ensure public directory files are copied as-is
-    copyPublicDir: true
+    preview: {
+      host: '0.0.0.0',
+      port: process.env.PORT ? parseInt(process.env.PORT) : 3000
+    },
+    build: {
+      outDir: 'dist',
+      assetsDir: 'assets',
+      sourcemap: true,
+      emptyOutDir: true,
+      rollupOptions: {
+        output: {
+          manualChunks: {
+            vendor: ['react', 'react-dom', 'react-router-dom']
+          }
+        }
+      },
+      // Ensure public directory files are copied as-is
+      copyPublicDir: true
+    }
   }
 })
