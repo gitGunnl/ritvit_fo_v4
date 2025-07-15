@@ -276,7 +276,7 @@ const openSignupForm = () => {
               <li>
                 🧠 <strong>Eg havi brúkt ChatGPT so at siga hvønn dag síðan 2022</strong>,
                 fyrst tá ið eg arbeiddi sum el-verkfrøðingur í Danmark. Og í dag
-                ígjøgnum mína fyritøku sum bara arbeiðir við vitlíki øki.
+                ígjøgnum mína fyritøku sum bara arbeiður við vitlíki øki.
               </li>
               <li>
                 📈{" "}
@@ -381,12 +381,12 @@ const openSignupForm = () => {
                 const formData = new FormData(formElement);
                 const formStartTime = parseInt(formData.get('formStartTime') as string);
                 const honeypot = formData.get('honeypot') as string;
-
+                
                 // Honeypot check
                 if (honeypot && honeypot.trim() !== "") {
                   return; // Silently reject
                 }
-
+                
                 // Timestamp check
                 const submissionTime = Date.now();
                 const timeTaken = (submissionTime - formStartTime) / 1000;
@@ -394,7 +394,7 @@ const openSignupForm = () => {
                   alert("Vinarliga bíða eina løtu áðrenn tú sendur formið aftur.");
                   return;
                 }
-
+                
                 try {
                   // Try API endpoint first (more reliable)
                   const response = await fetch('/api/contact', {
@@ -420,7 +420,7 @@ const openSignupForm = () => {
                 } catch (apiError) {
                   console.warn('API submission failed, falling back to Google Forms');
                 }
-
+                
                 // Fallback to Google Forms with better error handling
                 try {
                   await fetch('https://docs.google.com/forms/d/e/1FAIpQLSf8FFci-J91suIjxY2xh4GD-DQ-UfZftUNxq3dUdXkgJAjB1Q/formResponse', {
@@ -437,7 +437,7 @@ const openSignupForm = () => {
                 }
               }}>
                 <input type="hidden" name="formStartTime" value={Date.now()} />
-
+                
                 {/* Honeypot field - hidden from users */}
                 <div className="absolute left-[-9999px] opacity-0 pointer-events-none">
                   <label htmlFor="honeypot">Leave this field empty</label>
@@ -449,7 +449,7 @@ const openSignupForm = () => {
                     tabIndex={-1}
                   />
                 </div>
-
+                
                 <div>
                   <label htmlFor="name" className="block mb-2 font-medium text-text/90">
                     Navn:
@@ -589,20 +589,6 @@ const openSignupForm = () => {
           </div>
         </div>
       </section>
-                  <script
-                    authed="document.getElementById('auth-success').style.display='block'; document.getElementById('auth-login').style.display='none';"
-                    src="https://auth.util.repl.co/script.js"
-                  ></script>
-                  <div id="auth-success" style="display:none;" className="text-center mt-4">
-                    <p className="text-green-600 font-semibold">✓ Authentication successful!</p>
-                    <button 
-                      onClick={() => window.location.reload()} 
-                      className="mt-2 px-4 py-2 bg-primary text-white rounded hover:bg-primary/80"
-                    >
-                      Continue to Dashboard
-                    </button>
-                  </div>
-                  <div id="auth-login"></div>
 
       <ChatbotButton />
       <Footer />

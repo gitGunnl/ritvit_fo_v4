@@ -61,43 +61,25 @@ export default function Contact() {
       return;
     }
 
-    // Add minimum form interaction time to prevent bot-like behavior
-    const minimumFormTime = 2000; // 2 seconds minimum
-    if (timeTaken < minimumFormTime / 1000) {
-      toast({
-        title: "Villa!",
-        description: "Vinarliga tak tær tíð at fylla út formið.",
-        variant: "destructive",
-      });
-      return;
-    }
-
-    // Retry logic with exponential backoff and user notification
-    const maxRetries = 2; // Reduced retries to seem less bot-like
+    // Retry logic with exponential backoff
+    const maxRetries = 3;
     let retryCount = 0;
     
     while (retryCount < maxRetries) {
       try {
-        // Add random delay between 100-300ms to simulate human behavior
-        const humanLikeDelay = Math.random() * 200 + 100;
-        await new Promise(resolve => setTimeout(resolve, humanLikeDelay));
-
         const controller = new AbortController();
-        const timeoutId = setTimeout(() => controller.abort(), 15000); // Increased timeout
+        const timeoutId = setTimeout(() => controller.abort(), 10000); // 10 second timeout
 
         const response = await fetch('/api/contact', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
-            'User-Agent': 'RitVit-Contact/1.0',
-            'X-Requested-With': 'XMLHttpRequest' // Indicate this is an AJAX request
+            'User-Agent': 'RitVit-Contact/1.0'
           },
           body: JSON.stringify({
             ...values,
             submissionTime: submissionTime,
-            formStartTime: formStartTime,
-            userAgent: navigator.userAgent,
-            screenResolution: `${screen.width}x${screen.height}`
+            formStartTime: formStartTime
           }),
           signal: controller.signal
         });
