@@ -10,58 +10,48 @@ type TimelineEvent = {
   date: string;
   title: string;
   summary: string;
-  mediaType: "image" | "video";
-  mediaSrc: string;
+  mediaType?: "image" | "video";
+  mediaSrc?: string;
 };
 
 const timelineData: TimelineEvent[] = [
   { 
     id: "evt-001", 
-    date: "2025-02-15", 
-    title: "Project Kick-off & Team Assembly", 
-    summary: "Initial funding secured and core project team assembled. Strategic planning and initial stakeholder meetings commence.", 
-    mediaType: "image", 
-    mediaSrc: "https://placehold.co/1200x800/f8fafc/0c0a09?text=Team+Kick-off" 
+    date: "2025-05-01", 
+    title: "Project funded", 
+    summary: "The initiative secured grant financing, giving us resources to explore vitlíki for frontline staff."
   },
   { 
     id: "evt-002", 
-    date: "2025-04-01", 
-    title: "Alpha Version of Data Portal Launched", 
-    summary: "The first internal version of the data portal is released for testing and feedback among key partners. Focus on core data ingestion and API stability.", 
-    mediaType: "image", 
-    mediaSrc: "https://placehold.co/1200x800/e7e5e4/0c0a09?text=Alpha+Portal+UI" 
+    date: "2025-07-15", 
+    title: "Project kickoff", 
+    summary: "Core team assembled and initial roadmap published."
   },
   { 
     id: "evt-003", 
-    date: "2025-06-20", 
-    title: "First Public API Documentation Published", 
-    summary: "Comprehensive documentation for our public data API is now available, enabling third-party developers to start building integrations.", 
-    mediaType: "video", 
-    mediaSrc: "https://www.youtube.com/embed/dQw4w9WgXcQ" 
+    date: "2025-07-15", 
+    title: "Group-selection workshop", 
+    summary: "Stakeholders met to shortlist nine high-impact professions for pilot projects.",
+    mediaType: "image", 
+    mediaSrc: "/images/verkstova.jpeg"
   },
   { 
     id: "evt-004", 
-    date: "2025-09-01", 
-    title: "Public Beta Program Opens", 
-    summary: "The 'Vitlíki til arbeiðis' platform is now open for public beta testing. We invite all interested parties to sign up and provide valuable feedback.", 
-    mediaType: "image", 
-    mediaSrc: "https://placehold.co/1200x800/67e8f9/0c0a09?text=Public+Beta" 
+    date: "2025-07-15", 
+    title: "Ranking in progress", 
+    summary: "We're scoring the nine groups by \"Few screens, Head-count, AI touch-points.\" Results will guide pilot selection."
   },
   { 
     id: "evt-005", 
-    date: "2025-11-10", 
-    title: "Integration with National Statistics Office", 
-    summary: "A landmark partnership with the National Statistics Office to integrate key demographic and economic datasets directly into the platform.", 
-    mediaType: "image", 
-    mediaSrc: "https://placehold.co/1200x800/a5b4fc/0c0a09?text=Partnership" 
+    date: "2025-07-28", 
+    title: "Media interview", 
+    summary: "Gave first interview to *Granskingaráði* magazine on vitlíki's role in Faroese work-life. Awaiting article for review."
   },
   { 
     id: "evt-006", 
-    date: "2026-01-20", 
-    title: "Official v1.0 Launch", 
-    summary: "After extensive testing and community feedback, the platform is officially launched. Full public access and enterprise-grade support now available.", 
-    mediaType: "video", 
-    mediaSrc: "https://www.youtube.com/embed/rokGy0huYEA" 
+    date: "2025-08-01", 
+    title: "Outreach phase", 
+    summary: "Next step: contact selected groups and arrange semi-structured interviews to map daily pain-points."
   }
 ];
 
@@ -73,7 +63,8 @@ const Tilarbeidis = () => {
     const date = new Date(dateString);
     const options: Intl.DateTimeFormatOptions = { 
       year: 'numeric', 
-      month: 'short'
+      month: 'short',
+      day: 'numeric'
     };
     return date.toLocaleDateString('en-US', options);
   };
@@ -134,14 +125,37 @@ const Tilarbeidis = () => {
       <section className="pt-24 pb-16 px-4 sm:px-6 lg:px-8 text-center">
         <div className="max-w-4xl mx-auto">
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6">
-            Vitlíki til arbeiðis
+            Project Updates – Vitlíki til arbeiðis
           </h1>
           <p className="text-xl text-text/80 mb-8">
-            A transparent look at our journey and progress.
+            Follow our roadmap as we bring Faroese-language vitlíki into everyday work.
           </p>
-          <div className="flex items-center justify-center gap-2">
-            <div className="w-3 h-3 bg-green-500 rounded-full"></div>
-            <span className="text-green-500 font-semibold">All Systems Operational</span>
+        </div>
+      </section>
+
+      {/* Status Boxes */}
+      <section className="px-4 sm:px-6 lg:px-8 mb-12">
+        <div className="max-w-4xl mx-auto space-y-4">
+          {/* Current Focus */}
+          <div className="bg-primary/20 border-2 border-primary/50 rounded-xl p-6 shadow-lg">
+            <div className="flex items-center gap-3">
+              <span className="text-2xl">🔍</span>
+              <div>
+                <h3 className="font-bold text-lg text-primary">Current task:</h3>
+                <p className="text-text/90">ranking the shortlisted professional groups against our selection metrics.</p>
+              </div>
+            </div>
+          </div>
+
+          {/* Next Up */}
+          <div className="bg-accent/10 border border-accent/30 rounded-lg p-4">
+            <div className="flex items-center gap-3">
+              <span className="text-xl">📅</span>
+              <div>
+                <h4 className="font-semibold text-accent">Next:</h4>
+                <p className="text-text/80 text-sm">contact group representatives and schedule discovery interviews (Aug 2025).</p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -153,7 +167,7 @@ const Tilarbeidis = () => {
           <div className="hidden lg:block lg:w-1/4">
             <div className="sticky top-24">
               <h3 className="text-sm font-semibold text-text/60 uppercase tracking-wider mb-6">
-                ROADMAP
+                MILESTONES
               </h3>
               <nav className="space-y-1">
                 {timelineData.map((event) => (
@@ -194,12 +208,12 @@ const Tilarbeidis = () => {
                   <div className="bg-background/50 border border-text/10 rounded-xl p-8 hover:border-primary/20 hover:bg-background/60 transition-all duration-300 group">
                     <div className="flex items-center gap-2 mb-4">
                       <Calendar className="w-5 h-5 text-primary/80" />
-                      <span className="text-sm text-primary/80 font-semibold uppercase tracking-wide">
+                      <span className="text-sm text-primary/80 font-bold uppercase tracking-wide">
                         {formatDate(event.date)}
                       </span>
                     </div>
                     
-                    <h3 className="text-2xl font-bold mb-4 text-text group-hover:text-primary transition-colors">
+                    <h3 className="text-2xl font-semibold mb-4 text-text group-hover:text-primary transition-colors">
                       {event.title}
                     </h3>
                     
@@ -207,22 +221,24 @@ const Tilarbeidis = () => {
                       {event.summary}
                     </p>
                     
-                    <div className="aspect-video w-full rounded-lg overflow-hidden border border-text/10">
-                      {event.mediaType === 'video' ? (
-                        <iframe
-                          src={event.mediaSrc}
-                          className="w-full h-full"
-                          allowFullScreen
-                          title={event.title}
-                        />
-                      ) : (
-                        <img
-                          src={event.mediaSrc}
-                          alt={event.title}
-                          className="w-full h-full object-cover"
-                        />
-                      )}
-                    </div>
+                    {event.mediaSrc && (
+                      <div className="aspect-video w-full rounded-lg overflow-hidden border border-text/10">
+                        {event.mediaType === 'video' ? (
+                          <iframe
+                            src={event.mediaSrc}
+                            className="w-full h-full"
+                            allowFullScreen
+                            title={event.title}
+                          />
+                        ) : (
+                          <img
+                            src={event.mediaSrc}
+                            alt={event.title}
+                            className="w-full h-full object-cover"
+                          />
+                        )}
+                      </div>
+                    )}
                   </div>
                 </div>
               ))}
@@ -231,8 +247,87 @@ const Tilarbeidis = () => {
         </div>
       </div>
 
+      {/* Roadmap Table */}
+      <section className="mt-24 py-16 px-4 sm:px-6 lg:px-8 bg-primary/5">
+        <div className="max-w-6xl mx-auto">
+          <h2 className="text-3xl font-bold mb-8 text-center">Project Roadmap</h2>
+          
+          <div className="overflow-x-auto bg-background/50 border border-text/10 rounded-xl p-6">
+            <table className="w-full text-sm">
+              <thead>
+                <tr className="border-b border-text/20">
+                  <th className="text-left py-3 px-2 font-semibold">Phase</th>
+                  <th className="text-left py-3 px-2 font-semibold">Start</th>
+                  <th className="text-left py-3 px-2 font-semibold">End</th>
+                  <th className="text-left py-3 px-2 font-semibold">Duration</th>
+                  <th className="text-left py-3 px-2 font-semibold">Description</th>
+                </tr>
+              </thead>
+              <tbody className="space-y-2">
+                <tr className="border-b border-text/10">
+                  <td className="py-3 px-2">Setup</td>
+                  <td className="py-3 px-2">May 2025</td>
+                  <td className="py-3 px-2">Jul 2025</td>
+                  <td className="py-3 px-2">3 mán</td>
+                  <td className="py-3 px-2">Team assembly, stakeholder mapping, initial research</td>
+                </tr>
+                <tr className="border-b border-text/10 font-bold bg-primary/10">
+                  <td className="py-3 px-2">📦 Delivery: Group selection workshop</td>
+                  <td className="py-3 px-2">15 Jul 2025</td>
+                  <td className="py-3 px-2">–</td>
+                  <td className="py-3 px-2">–</td>
+                  <td className="py-3 px-2">Shortlist 9 high-impact professional groups</td>
+                </tr>
+                <tr className="border-b border-text/10">
+                  <td className="py-3 px-2">Discovery</td>
+                  <td className="py-3 px-2">Aug 2025</td>
+                  <td className="py-3 px-2">Okt 2025</td>
+                  <td className="py-3 px-2">3 mán</td>
+                  <td className="py-3 px-2">User interviews, workflow analysis, pain-point mapping</td>
+                </tr>
+                <tr className="border-b border-text/10 font-bold bg-primary/10">
+                  <td className="py-3 px-2">📦 Delivery: Research synthesis</td>
+                  <td className="py-3 px-2">Nov 2025</td>
+                  <td className="py-3 px-2">–</td>
+                  <td className="py-3 px-2">–</td>
+                  <td className="py-3 px-2">Detailed user needs assessment and opportunity ranking</td>
+                </tr>
+                <tr className="border-b border-text/10">
+                  <td className="py-3 px-2">Prototyping</td>
+                  <td className="py-3 px-2">Nov 2025</td>
+                  <td className="py-3 px-2">Jan 2026</td>
+                  <td className="py-3 px-2">3 mán</td>
+                  <td className="py-3 px-2">Build and test initial AI assistants for selected groups</td>
+                </tr>
+                <tr className="border-b border-text/10 font-bold bg-primary/10">
+                  <td className="py-3 px-2">📦 Delivery: Working prototypes</td>
+                  <td className="py-3 px-2">Feb 2026</td>
+                  <td className="py-3 px-2">–</td>
+                  <td className="py-3 px-2">–</td>
+                  <td className="py-3 px-2">2-3 functional AI tools ready for pilot testing</td>
+                </tr>
+                <tr className="border-b border-text/10">
+                  <td className="py-3 px-2">Pilot Testing</td>
+                  <td className="py-3 px-2">Feb 2026</td>
+                  <td className="py-3 px-2">Apr 2026</td>
+                  <td className="py-3 px-2">3 mán</td>
+                  <td className="py-3 px-2">Live testing with real users, feedback collection, iteration</td>
+                </tr>
+                <tr className="font-bold bg-primary/10">
+                  <td className="py-3 px-2">📦 Delivery: Final report</td>
+                  <td className="py-3 px-2">Mai 2026</td>
+                  <td className="py-3 px-2">–</td>
+                  <td className="py-3 px-2">–</td>
+                  <td className="py-3 px-2">Impact assessment and recommendations for scaling</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
       {/* Contact Banner */}
-      <section className="mt-24 py-16 px-4 sm:px-6 lg:px-8 bg-primary/10">
+      <section className="mt-16 py-16 px-4 sm:px-6 lg:px-8 bg-primary/10">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-3xl font-bold mb-4">
             Vilt tú vera partur av okkara ferð?
@@ -246,7 +341,14 @@ const Tilarbeidis = () => {
         </div>
       </section>
 
-      
+      {/* Footer Note */}
+      <section className="py-8 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-4xl mx-auto text-center">
+          <p className="text-sm text-text/60">
+            We publish high-level milestones only; detailed research logs are kept internally.
+          </p>
+        </div>
+      </section>
 
       <Footer />
     </div>
