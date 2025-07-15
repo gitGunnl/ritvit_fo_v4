@@ -375,7 +375,51 @@ const openSignupForm = () => {
             {/* Contact Form - Enhanced */}
             <div className="bg-primary/10 p-8 border border-primary/30 backdrop-blur-sm rounded-xl shadow-lg">
               <h3 className="text-2xl font-semibold mb-6 border-b border-border pb-3">Send eini boð</h3>
-              <form className="space-y-5">
+              <form className="space-y-5" onSubmit={(e) => {
+                e.preventDefault();
+                const formData = new FormData(e.target as HTMLFormElement);
+                const formStartTime = parseInt(formData.get('formStartTime') as string);
+                const honeypot = formData.get('honeypot') as string;
+                
+                // Honeypot check
+                if (honeypot && honeypot.trim() !== "") {
+                  return; // Silently reject
+                }
+                
+                // Timestamp check
+                const submissionTime = Date.now();
+                const timeTaken = (submissionTime - formStartTime) / 1000;
+                if (timeTaken < 3) {
+                  alert("Vinarliga bíða eina løtu áðrenn tú sendur formið aftur.");
+                  return;
+                }
+                
+                // Submit to Google Forms (existing behavior)
+                fetch('https://docs.google.com/forms/d/e/1FAIpQLSf8FFci-J91suIjxY2xh4GD-DQ-UfZftUNxq3dUdXkgJAjB1Q/formResponse', {
+                  method: 'POST',
+                  body: formData,
+                  mode: 'no-cors'
+                }).then(() => {
+                  alert("Boðini eru send!");
+                  (e.target as HTMLFormElement).reset();
+                }).catch(() => {
+                  alert("Villa! Royn aftur ella send teldupost til info@ritvit.fo");
+                });
+              }}>
+                <input type="hidden" name="formStartTime" value={Date.now()} />
+                
+                {/* Honeypot field - hidden from users */}
+                <div className="absolute left-[-9999px] opacity-0 pointer-events-none">
+                  <label htmlFor="honeypot">Leave this field empty</label>
+                  <Input
+                    type="text"
+                    id="honeypot"
+                    name="honeypot"
+                    autoComplete="off"
+                    tabIndex={-1}
+                  />
+                </div>
+                
                 <div>
                   <label htmlFor="name" className="block mb-2 font-medium text-text/90">
                     Navn:

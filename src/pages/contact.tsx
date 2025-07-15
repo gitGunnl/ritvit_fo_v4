@@ -1,6 +1,7 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
+import React from "react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import {
@@ -22,22 +23,43 @@ const formSchema = z.object({
   name: z.string().min(2, "Navnet skal være mindst 2 tegn"),
   email: z.string().email("Indtast venligst en gyldig e-mail-adresse"),
   message: z.string(),
+  honeypot: z.string().optional(),
 });
 
 type FormValues = z.infer<typeof formSchema>;
 
 export default function Contact() {
   const { toast } = useToast();
+  const [formStartTime] = React.useState(Date.now());
+  
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
     defaultValues: {
       name: "",
       email: "",
       message: "",
+      honeypot: "",
     },
   });
 
   async function onSubmit(values: FormValues) {
+    // Honeypot check - reject if honeypot field is filled
+    if (values.honeypot && values.honeypot.trim() !== "") {
+      // Silently reject spam submission
+      return;
+    }
+
+    // Timestamp check - reject if submitted too quickly (under 3 seconds)
+    const submissionTime = Date.now();
+    const timeTaken = (submissionTime - formStartTime) / 1000;
+    if (timeTaken < 3) {
+      toast({
+        title: "Villa!",
+        description: "Vinarliga bíða eina løtu áðrenn tú sendur formið aftur.",
+        variant: "destructive",
+      });
+      return;
+    }
 
     try {
         const response = await fetch('/api/contact', {
@@ -45,7 +67,11 @@ export default function Contact() {
           headers: {
             'Content-Type': 'application/json'
           },
-          body: JSON.stringify(values)
+          body: JSON.stringify({
+            ...values,
+            submissionTime: submissionTime,
+            formStartTime: formStartTime
+          })
         });
 
         if (!response.ok) {
@@ -202,6 +228,25 @@ export default function Contact() {
                         </div>
                       </FormControl>
                       <FormMessage />
+                    </FormItem>
+                  )}
+                />
+
+                {/* Honeypot Field - Hidden from users */}
+                <FormField
+                  control={form.control}
+                  name="honeypot"
+                  render={({ field }) => (
+                    <FormItem className="absolute left-[-9999px] opacity-0 pointer-events-none" tabIndex={-1}>
+                      <FormLabel>Leave this field empty</FormLabel>
+                      <FormControl>
+                        <Input
+                          {...field}
+                          type="text"
+                          autoComplete="off"
+                          tabIndex={-1}
+                        />
+                      </FormControl>
                     </FormItem>
                   )}
                 />
