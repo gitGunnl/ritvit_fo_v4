@@ -536,9 +536,7 @@ const openSignupForm = () => {
                 </div>
                 <ArrowRight className="w-7 h-7 text-primary opacity-70 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
               </div>
-            </This commit addresses potential bot-like behavior by replacing auto-reload on authentication with a user-triggered action.
-```
-Link>
+            </Link>
 
             <Link to="/services" className="block">
               <div className="flex items-center gap-4 p-5 bg-primary/10 rounded-xl hover:bg-primary/20 transition-all duration-300 border-2 border-primary/50 hover:border-primary hover:shadow-lg hover:shadow-primary/20 hover:translate-x-1 group">
