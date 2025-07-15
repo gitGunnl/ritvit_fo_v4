@@ -70,10 +70,7 @@ export default defineConfig(({ mode }) => {
     server: {
       host,
       port,
-      hmr: {
-        port: 5000,
-        host: 'localhost'
-      },
+      hmr: false,
       // Dynamically allow the specific Replit host
       allowedHosts,
       cors: true,
