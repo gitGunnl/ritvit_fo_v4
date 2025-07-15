@@ -537,7 +537,7 @@ type TimelineEvent = {
             Vilt tú vera partur av okkara ferð?
           </h2>
           <p className="text-xl text-text/80 mb-8">
-            Fylg okkum á LinkedIn og Facebook, har vit deila miklu meira um vitlíki í Føroyum. Ver fyrst/ur at vita um nýggjar møguleikar, vit og teknologiskir framskríðir!
+            Fylg okkum á LinkedIn og Facebook, har vit deila nógv meira um vitlíki í Føroyum. Ver fyrst at læra um nýggjar møguleikar innan vitlíki!
           </p>
           <div className="flex gap-4 justify-center">
             <a
@@ -575,24 +575,6 @@ type TimelineEvent = {
           </div>
         </div>
       </section>
-
-      {/* Footer Note */}
-
-      <section className="py-8 px-4 sm:px-6 lg:px-8">
-
-        <div className="max-w-4xl mx-auto text-center">
-
-          <p className="text-sm text-text/60">
-
-            Vit almannakunngera bert høvuðsvarðar; smálutjaðar kanningarfrásagnir eru innanhýsis.
-
-          </p>
-
-        </div>
-
-      </section>
-
-
 
       <Footer />
 
