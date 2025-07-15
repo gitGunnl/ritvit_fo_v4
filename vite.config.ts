@@ -55,7 +55,8 @@ export default defineConfig({
     port: process.env.PORT ? parseInt(process.env.PORT) : 8080,
     allowedHosts: 'all',
     hmr: {
-      clientPort: process.env.PORT ? parseInt(process.env.PORT) : 8080
+      port: process.env.PORT ? parseInt(process.env.PORT) : 8080,
+      host: '0.0.0.0'
     },
     proxy: {
       '/api': {
