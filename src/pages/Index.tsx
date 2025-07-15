@@ -375,9 +375,10 @@ const openSignupForm = () => {
             {/* Contact Form - Enhanced */}
             <div className="bg-primary/10 p-8 border border-primary/30 backdrop-blur-sm rounded-xl shadow-lg">
               <h3 className="text-2xl font-semibold mb-6 border-b border-border pb-3">Send eini boð</h3>
-              <form className="space-y-5" onSubmit={(e) => {
+              <form className="space-y-5" onSubmit={async (e) => {
                 e.preventDefault();
-                const formData = new FormData(e.target as HTMLFormElement);
+                const formElement = e.target as HTMLFormElement;
+                const formData = new FormData(formElement);
                 const formStartTime = parseInt(formData.get('formStartTime') as string);
                 const honeypot = formData.get('honeypot') as string;
                 
@@ -394,17 +395,46 @@ const openSignupForm = () => {
                   return;
                 }
                 
-                // Submit to Google Forms (existing behavior)
-                fetch('https://docs.google.com/forms/d/e/1FAIpQLSf8FFci-J91suIjxY2xh4GD-DQ-UfZftUNxq3dUdXkgJAjB1Q/formResponse', {
-                  method: 'POST',
-                  body: formData,
-                  mode: 'no-cors'
-                }).then(() => {
+                try {
+                  // Try API endpoint first (more reliable)
+                  const response = await fetch('/api/contact', {
+                    method: 'POST',
+                    headers: {
+                      'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                      name: formData.get('entry.1179687836'),
+                      email: formData.get('entry.263197538'),
+                      message: formData.get('entry.240567695'),
+                      honeypot: honeypot,
+                      submissionTime: submissionTime,
+                      formStartTime: formStartTime
+                    })
+                  });
+
+                  if (response.ok) {
+                    alert("Boðini eru send!");
+                    formElement.reset();
+                    return;
+                  }
+                } catch (apiError) {
+                  console.warn('API submission failed, falling back to Google Forms');
+                }
+                
+                // Fallback to Google Forms with better error handling
+                try {
+                  await fetch('https://docs.google.com/forms/d/e/1FAIpQLSf8FFci-J91suIjxY2xh4GD-DQ-UfZftUNxq3dUdXkgJAjB1Q/formResponse', {
+                    method: 'POST',
+                    body: formData,
+                    mode: 'no-cors',
+                    signal: AbortSignal.timeout(10000) // 10 second timeout
+                  });
                   alert("Boðini eru send!");
-                  (e.target as HTMLFormElement).reset();
-                }).catch(() => {
+                  formElement.reset();
+                } catch (error) {
+                  console.error('Form submission failed:', error);
                   alert("Villa! Royn aftur ella send teldupost til info@ritvit.fo");
-                });
+                }
               }}>
                 <input type="hidden" name="formStartTime" value={Date.now()} />
                 

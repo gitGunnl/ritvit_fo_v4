@@ -61,35 +61,73 @@ export default function Contact() {
       return;
     }
 
-    try {
+    // Retry logic with exponential backoff
+    const maxRetries = 3;
+    let retryCount = 0;
+    
+    while (retryCount < maxRetries) {
+      try {
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), 10000); // 10 second timeout
+
         const response = await fetch('/api/contact', {
           method: 'POST',
           headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'User-Agent': 'RitVit-Contact/1.0'
           },
           body: JSON.stringify({
             ...values,
             submissionTime: submissionTime,
             formStartTime: formStartTime
-          })
+          }),
+          signal: controller.signal
         });
 
-        if (!response.ok) {
-          throw new Error('Failed to submit form');
-        }
+        clearTimeout(timeoutId);
 
-      toast({
-        title: "Boðini eru send!",
-        description: "Vit venda aftur sum skjótast.",
-      });
-      form.reset();
-    } catch (error) {
-      toast({
-        title: "Villa!",
-        description: "Tað eydnaðist ikki at senda boðini. Royn aftur ella send teldupost til info@ritvit.fo",
-        variant: "destructive",
-      });
+        if (response.ok) {
+          toast({
+            title: "Boðini eru send!",
+            description: "Vit venda aftur sum skjótast.",
+          });
+          form.reset();
+          return;
+        } else if (response.status === 429) {
+          // Rate limited - wait before retry
+          const waitTime = Math.pow(2, retryCount) * 1000; // Exponential backoff
+          await new Promise(resolve => setTimeout(resolve, waitTime));
+          retryCount++;
+          continue;
+        } else if (response.status >= 400 && response.status < 500) {
+          // Client error - don't retry
+          throw new Error(`Client error: ${response.status}`);
+        } else {
+          // Server error - retry
+          throw new Error(`Server error: ${response.status}`);
+        }
+      } catch (error: any) {
+        if (error.name === 'AbortError') {
+          throw new Error('Request timed out');
+        }
+        
+        retryCount++;
+        if (retryCount >= maxRetries) {
+          throw error;
+        }
+        
+        // Wait before retry with exponential backoff
+        const waitTime = Math.pow(2, retryCount) * 1000;
+        await new Promise(resolve => setTimeout(resolve, waitTime));
+      }
     }
+
+    // If we get here, all retries failed
+    toast({
+      title: "Villa!",
+      description: "Tað eydnaðist ikki at senda boðini. Royn aftur ella send teldupost til info@ritvit.fo",
+      variant: "destructive",
+    });
   }
 
   return (
