@@ -71,7 +71,8 @@ export default defineConfig(({ mode }) => {
       host,
       port,
       hmr: {
-        clientPort: 443, // Required for Replit's proxy
+        port: 5000,
+        host: '0.0.0.0'
       },
       // Dynamically allow the specific Replit host
       allowedHosts,
