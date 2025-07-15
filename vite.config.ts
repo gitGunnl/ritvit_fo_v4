@@ -52,7 +52,11 @@ export default defineConfig({
   },
   server: {
     host: '0.0.0.0',
-    port: process.env.PORT ? parseInt(process.env.PORT) : 8080,
+    port: 5000,
+    hmr: {
+      clientPort: 443, // Required for Replit's proxy
+    },
+    allowedHosts: ['.replit.dev'],
     proxy: {
       '/api': {
         target: 'http://0.0.0.0:3000',
