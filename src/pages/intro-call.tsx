@@ -80,20 +80,61 @@ const IntroCallLanding = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
+    // Validate required fields
+    if (!formData.name.trim()) {
+      toast.error('Please enter your name');
+      return;
+    }
+    
+    if (!formData.email.trim()) {
+      toast.error('Please enter your email');
+      return;
+    }
+    
+    if (!formData.company.trim()) {
+      toast.error('Please enter your company');
+      return;
+    }
+    
+    if (!formData.role.trim()) {
+      toast.error('Please enter your role');
+      return;
+    }
+    
     if (!formData.consent) {
       toast.error('Please consent to be contacted');
+      return;
+    }
+
+    // Email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(formData.email)) {
+      toast.error('Please enter a valid email address');
       return;
     }
 
     setIsSubmitting(true);
 
     try {
-      // Here you would integrate with your CRM/notification system
       const payload = {
         ...formData,
         utm_params: utmParams,
         timestamp: new Date().toISOString()
       };
+
+      // Submit to API
+      const response = await fetch('/api/intro-call', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(payload)
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.message || 'Failed to submit form');
+      }
 
       // Fire form submitted event
       if (window.gtag) {
@@ -104,8 +145,7 @@ const IntroCallLanding = () => {
         });
       }
 
-      // Simulate API call (replace with actual implementation)
-      await new Promise(resolve => setTimeout(resolve, 1000));
+      toast.success('Your intro call request has been submitted!');
       
       // Navigate to thank you page
       navigate('/intro-call/thank-you');

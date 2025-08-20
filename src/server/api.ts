@@ -12,16 +12,16 @@ const checkRateLimit = (ip: string): boolean => {
   const maxRequests = 10; // Max 10 requests per minute per IP
 
   const record = rateLimitMap.get(ip);
-  
+
   if (!record || now > record.resetTime) {
     rateLimitMap.set(ip, { count: 1, resetTime: now + windowMs });
     return true;
   }
-  
+
   if (record.count >= maxRequests) {
     return false;
   }
-  
+
   record.count++;
   return true;
 };
@@ -31,13 +31,13 @@ router.post('/contact', async (req, res) => {
   res.setHeader('X-Content-Type-Options', 'nosniff');
   res.setHeader('X-Frame-Options', 'DENY');
   res.setHeader('X-XSS-Protection', '1; mode=block');
-  
+
   try {
     const clientIp = req.ip || req.connection.remoteAddress || 'unknown';
-    
+
     // Rate limiting check
     if (!checkRateLimit(clientIp)) {
-      return res.status(429).json({ 
+      return res.status(429).json({
         error: 'Too many requests',
         details: 'Rate limit exceeded. Please wait before trying again.'
       });
@@ -47,7 +47,7 @@ router.post('/contact', async (req, res) => {
 
     // Comprehensive server-side validation
     if (!name || typeof name !== 'string' || name.trim().length < 2 || name.length > 100) {
-      return res.status(400).json({ 
+      return res.status(400).json({
         error: 'Invalid name',
         details: 'Name must be between 2 and 100 characters'
       });
@@ -56,14 +56,14 @@ router.post('/contact', async (req, res) => {
     // Enhanced email validation
     const emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
     if (!email || typeof email !== 'string' || !emailRegex.test(email) || email.length > 254) {
-      return res.status(400).json({ 
+      return res.status(400).json({
         error: 'Invalid email',
         details: 'Please provide a valid email address'
       });
     }
 
     if (!message || typeof message !== 'string' || message.trim().length === 0 || message.length > 5000) {
-      return res.status(400).json({ 
+      return res.status(400).json({
         error: 'Invalid message',
         details: 'Message must be between 1 and 5000 characters'
       });
@@ -77,12 +77,12 @@ router.post('/contact', async (req, res) => {
       /data:text\/html/gi,
       /<iframe/gi
     ];
-    
+
     const combinedText = `${name} ${email} ${message}`;
     for (const pattern of dangerousPatterns) {
       if (pattern.test(combinedText)) {
         console.warn(`Potential XSS attempt from IP ${clientIp}: ${combinedText.substring(0, 100)}`);
-        return res.status(400).json({ 
+        return res.status(400).json({
           error: 'Invalid content detected',
           details: 'Please remove any HTML or script content'
         });
@@ -133,7 +133,7 @@ router.post('/contact', async (req, res) => {
       );
 
       clearTimeout(timeoutId);
-      
+
       // Even with no-cors, we can still detect some failures
       if (!response) {
         throw new Error('No response received from Google Forms');
@@ -142,25 +142,34 @@ router.post('/contact', async (req, res) => {
       res.json({ success: true });
     } catch (fetchError: any) {
       clearTimeout(timeoutId);
-      
+
       if (fetchError.name === 'AbortError') {
         console.error('Google Forms request timeout');
-        return res.status(408).json({ 
+        return res.status(408).json({
           error: 'Request timeout',
           details: 'External service took too long to respond'
         });
       }
-      
+
       console.error('Google Forms submission failed:', fetchError);
       // Still return success to user, but log the failure
       res.json({ success: true });
     }
   } catch (error) {
     console.error('Form submission error:', error);
-    res.status(500).json({ 
+    res.status(500).json({
       error: 'Failed to submit form'
     });
   }
 });
+
+// Assuming './routes/introCall' contains handleIntroCallSubmission
+// and './routes/chat' contains chatHandler.
+// The following lines are added to reflect the inclusion of these handlers.
+import { chatHandler } from './routes/chat';
+import { handleIntroCallSubmission } from './routes/introCall'; // This line imports the new handler
+
+router.post('/chat', chatHandler);
+router.post('/intro-call', handleIntroCallSubmission); // This line adds the new route
 
 export default router;
