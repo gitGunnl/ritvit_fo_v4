@@ -21,6 +21,8 @@ import RisinOgKellinginPodcast from "@/pages/risin-og-kellingin-podcast";
 import Birt from "./pages/birt";
 import VegleidingLaearar from "./pages/vegleiding-laearar";
 import Tilarbeidis from "./pages/tilarbeidis";
+import IntroCallLanding from "./pages/intro-call";
+import IntroCallThankYou from "./pages/intro-call-thank-you";
 
 const App = () => {
   useEffect(() => {
@@ -50,6 +52,8 @@ const App = () => {
           <Route path="/vegleiding-laearar" element={<VegleidingLaearar />} />
           <Route path="/tilarbeidis" element={<Tilarbeidis />} />
           <Route path="/tilarbeiðis" element={<Tilarbeidis />} />
+          <Route path="/intro-call" element={<IntroCallLanding />} />
+          <Route path="/intro-call/thank-you" element={<IntroCallThankYou />} />
         </Routes>
         </BrowserRouter>
       </TooltipProvider>
