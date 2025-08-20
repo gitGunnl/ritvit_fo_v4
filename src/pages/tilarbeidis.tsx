@@ -1,4 +1,10 @@
-import { useState, useEffect } from "react";import { Calendar } from "lucide-react";import { Button } from "@/components/ui/button";import Navigation from "@/components/Navigation";import Footer from "@/components/Footer";
+import { useState, useEffect } from "react";
+import { Calendar } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import Navigation from "@/components/Navigation";
+import Footer from "@/components/Footer";
+import SEO from "@/components/SEO";
+import { siteUrl } from "@/lib/seo";
 
 
 
@@ -220,6 +226,12 @@ type TimelineEvent = {
 
   return (
 
+    <>
+    <SEO
+      title="Til arbeiðis - Vitlíkisstovan"
+      description="Arbeiðsdagur við vitlíki og effektivum verkfřrum."
+      url={`${siteUrl}/tilarbeidis`}
+    />
     <div className="min-h-screen bg-background text-text">
 
       <Navigation />
@@ -578,8 +590,9 @@ type TimelineEvent = {
 
       <Footer />
 
-    </div>
-
+  </div>
+    </>
   );
+};
 
-};export default Tilarbeidis;
+export default Tilarbeidis;

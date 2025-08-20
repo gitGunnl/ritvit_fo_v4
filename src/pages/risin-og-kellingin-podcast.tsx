@@ -5,6 +5,8 @@ import Footer from "@/components/Footer";
 import { Play, Pause, SkipBack, SkipForward } from "lucide-react";
 import MarkdownRenderer from "@/components/MarkdownRenderer";
 import { Button } from "@/components/ui/button";
+import SEO from "@/components/SEO";
+import { siteUrl } from "@/lib/seo";
 
 export default function RisinOgKellinginPodcast() {
   // Add Open Graph metadata for proper thumbnail
@@ -182,6 +184,12 @@ Risin og Kellingin podcast episoden udforsker legenden om Risin og Kellingin, to
   };
 
   return (
+    <>
+    <SEO
+      title="Risin og Kellingin Podcast - Vitlíkisstovan"
+      description="Frásøgan um risan og kellingina í AI podvarpi."
+      url={`${siteUrl}/risin_og_kellingin`}
+    />
     <div className="min-h-screen bg-background text-text flex flex-col">
       <Navigation />
 
@@ -292,5 +300,6 @@ Risin og Kellingin podcast episoden udforsker legenden om Risin og Kellingin, to
 
       <Footer />
     </div>
+    </>
   );
 }

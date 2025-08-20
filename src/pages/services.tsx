@@ -11,9 +11,17 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
+import SEO from "@/components/SEO";
+import { siteUrl } from "@/lib/seo";
 
 export default function Services() {
   return (
+    <>
+      <SEO
+        title="Tænastur - Vitlíkisstovan"
+        description="AI ráðgeving og vitlíki verkstovur til føroyskar fyritøkur."
+        url={`${siteUrl}/services`}
+      />
     <div className="min-h-screen bg-background text-text">
       <Navigation />
       <div className="py-20">
@@ -250,5 +258,6 @@ export default function Services() {
       </div>
       <Footer />
     </div>
+    </>
   );
 }

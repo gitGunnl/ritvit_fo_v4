@@ -5,10 +5,14 @@ import { Button } from "@/components/ui/button";
 import { Calendar, Clock, ArrowLeft } from "lucide-react";
 import blogPosts from "@/data/blogPosts.json";
 import RelatedPosts from "@/components/blog/RelatedPosts";
+import SEO from "@/components/SEO";
+import { siteUrl, defaultDescription } from "@/lib/seo";
 
 const BlogPost = () => {
   const { id } = useParams();
   const post = blogPosts.find((post) => post.id === id);
+  const seoTitle = post ? `${post.title} - Vitlíkisstovan` : "Bloggur - Vitlíkisstovan";
+  const seoDescription = post?.excerpt ?? defaultDescription;
 
   if (!post) {
     return (
@@ -23,6 +27,13 @@ const BlogPost = () => {
   }
 
   return (
+    <>
+    <SEO
+      title={seoTitle}
+      description={seoDescription}
+      image={post?.imageUrl}
+      url={`${siteUrl}/blog/${id}`}
+    />
     <div className="min-h-screen flex flex-col bg-background text-text">
       <Navigation />
 
@@ -84,6 +95,7 @@ const BlogPost = () => {
 
       <Footer />
     </div>
+    </>
   );
 };
 

@@ -9,6 +9,8 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import Footer from "@/components/Footer";
+import SEO from "@/components/SEO";
+import { siteUrl } from "@/lib/seo";
 
 /**
  * ScenarioTrainer: A revolutionary platform that democratizes professional development.
@@ -18,6 +20,11 @@ import Footer from "@/components/Footer";
 const ScenarioTrainer: FC = () => {
   return (
     <>
+      <SEO
+        title="Scenario Trainer - Vitlíkisstovan"
+        description="AI-drivin venjingarskipan við realistiskum leiklutspæli."
+        url={`${siteUrl}/scenariotrainer`}
+      />
       <div className="bg-gradient-to-b from-background to-muted min-h-screen">
         {/* Hero Section */}
         <section className="pt-24 pb-16 px-4 container mx-auto text-center">
