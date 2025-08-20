@@ -5,10 +5,37 @@ import { Button } from "@/components/ui/button";
 import { Calendar, Clock, ArrowLeft } from "lucide-react";
 import blogPosts from "@/data/blogPosts.json";
 import RelatedPosts from "@/components/blog/RelatedPosts";
+import SEO from "@/components/SEO";
+import { siteUrl, defaultDescription, siteName } from "@/lib/seo";
 
 const BlogPost = () => {
   const { id } = useParams();
   const post = blogPosts.find((post) => post.id === id);
+  const seoTitle = post ? `${post.title} - Vitlíkisstovan` : "Bloggur - Vitlíkisstovan";
+  const seoDescription = post?.excerpt ?? defaultDescription;
+  const structuredData = post
+    ? {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        headline: post.title,
+        image: `${siteUrl}${post.imageUrl}`,
+        datePublished: post.date,
+        author: {
+          "@type": "Organization",
+          name: siteName,
+        },
+        publisher: {
+          "@type": "Organization",
+          name: siteName,
+          logo: {
+            "@type": "ImageObject",
+            url: `${siteUrl}/images/podcast_thumbnail.png`,
+          },
+        },
+        description: seoDescription,
+        mainEntityOfPage: `${siteUrl}/blog/${id}`,
+      }
+    : undefined;
 
   if (!post) {
     return (
@@ -23,6 +50,15 @@ const BlogPost = () => {
   }
 
   return (
+    <>
+    <SEO
+      title={seoTitle}
+      description={seoDescription}
+      image={post?.imageUrl}
+      url={`${siteUrl}/blog/${id}`}
+      structuredData={structuredData}
+      alternateLocales={["en_US", "da_DK"]}
+    />
     <div className="min-h-screen flex flex-col bg-background text-text">
       <Navigation />
 
@@ -84,6 +120,7 @@ const BlogPost = () => {
 
       <Footer />
     </div>
+    </>
   );
 };
 

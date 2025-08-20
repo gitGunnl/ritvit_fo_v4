@@ -5,6 +5,8 @@ import Footer from "@/components/Footer";
 import { Play, Pause, SkipBack, SkipForward } from "lucide-react";
 import MarkdownRenderer from "@/components/MarkdownRenderer";
 import { Button } from "@/components/ui/button";
+import SEO from "@/components/SEO";
+import { siteUrl } from "@/lib/seo";
 
 export default function BetriAIPodcast() {
   // Add Open Graph metadata for proper thumbnail
@@ -184,6 +186,12 @@ A short podcast about real world usecases for LLM tools throughout Betri.
   };
 
   return (
+    <>
+    <SEO
+      title="Betri AI Podcast - Vitlíkisstovan"
+      description="Hoyr hvussu Betri brúkar vitlíki í arbeiðinum."
+      url={`${siteUrl}/betri-ai-podcast`}
+    />
     <div className="min-h-screen bg-background text-text flex flex-col">
       <Navigation />
 
@@ -296,5 +304,6 @@ A short podcast about real world usecases for LLM tools throughout Betri.
 
       <Footer />
     </div>
+    </>
   );
 }

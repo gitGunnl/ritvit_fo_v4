@@ -18,6 +18,8 @@ import { useToast } from "@/hooks/use-toast";
 import { Mail, MessageSquare, User } from "lucide-react";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
+import SEO from "@/components/SEO";
+import { siteUrl } from "@/lib/seo";
 
 const formSchema = z.object({
   name: z.string().min(2, "Navnet skal være mindst 2 tegn"),
@@ -131,6 +133,12 @@ export default function Contact() {
   }
 
   return (
+    <>
+      <SEO
+        title="Samband - Vitlíkisstovan"
+        description="Set teg í samband við okkum fyri AI ráðgeving og skeið."
+        url={`${siteUrl}/contact`}
+      />
     <div className="min-h-screen bg-background text-text">
       <Navigation />
       <div className="py-20">
@@ -303,5 +311,6 @@ export default function Contact() {
       </div>
       <Footer />
     </div>
+    </>
   );
 }

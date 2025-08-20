@@ -7,6 +7,8 @@ import Footer from "@/components/Footer";
 import ChatbotButton from "@/components/ChatbotButton";
 import { Button } from "@/components/ui/button";
 import { CheckCircle2 } from "lucide-react";
+import SEO from "@/components/SEO";
+import { siteUrl } from "@/lib/seo";
 
 
 /**
@@ -254,6 +256,12 @@ const AboutCourse: React.FC = () => {
   }, []);
 
   return (
+    <>
+      <SEO
+        title="ChatGPT skeið - Vitlíkisstovan"
+        description="Lær at brúka ChatGPT effektivt á føroyskum arbeiðsplássi."
+        url={`${siteUrl}/aboutCourse`}
+      />
     <div className="min-h-screen flex flex-col bg-background text-text">
       {/* Navigation */}
       <Navigation />
@@ -632,6 +640,7 @@ const AboutCourse: React.FC = () => {
       {/* Optional Chatbot floating button, if desired */}
       <ChatbotButton />
     </div>
+    </>
   );
 };
 

@@ -6,6 +6,8 @@ import { ArrowRight, Mail, Phone, MessageSquare, CheckCircle2 } from "lucide-rea
 import { Link } from "react-router-dom";
 import { Input } from "@/components/ui/input";
 import GridBackground from "@/components/background/GridBackground";
+import SEO from "@/components/SEO";
+import { siteUrl, siteName, defaultDescription } from "@/lib/seo";
 
 const Index = () => {
   const signupUrl = "https://docs.google.com/forms/d/e/1FAIpQLSfDtowxpOMTXaccvE49FM-e-LC9Hb6-pWO-E8Rr2jyOlgJnLg/viewform?usp=sf_link";
@@ -15,7 +17,21 @@ const openSignupForm = () => {
 };
 
   return (
-    <div className="min-h-screen flex flex-col bg-background text-text">
+    <>
+      <SEO
+        title="Vitlíkisstovan - AI í Føroyum | ChatGPT skeið og verkstovur"
+        description="Vitlíkisstovan bjóðar skeið í ChatGPT, vitlíki verkstovur og ráðgeving til føroyskar leiðarar og stjóra."
+        keywords={["AI in the Faroe Islands", "Vitlíki", "ChatGPT skeið", "ChatGPT course", "Vitlíki verkstova"]}
+        alternateLocales={["en_US", "da_DK"]}
+        structuredData={{
+          "@context": "https://schema.org",
+          "@type": "WebSite",
+          url: siteUrl,
+          name: siteName,
+          description: defaultDescription,
+        }}
+      />
+      <div className="min-h-screen flex flex-col bg-background text-text">
       <Navigation />
 
       {/* Hero Section - Enhanced with Animations */}
@@ -74,7 +90,7 @@ const openSignupForm = () => {
                 <div className="absolute inset-0 bg-gradient-to-r from-primary/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10"></div>
                 <img
                   src="/images/course-screenshot.png"
-                  alt="Course Screenshot"
+                  alt="Screenshot from our ChatGPT course for Faroese managers"
                   className="object-cover w-full h-full transition-transform duration-700 group-hover:scale-105"
                 />
               </div>
@@ -84,7 +100,7 @@ const openSignupForm = () => {
                   <div className="p-2 bg-background/50 rounded-full shadow-inner">
                     <img
                       src="/images/ChatGPT-Logo.webp"
-                      alt="OpenAI Logo"
+                      alt="OpenAI logo used in our ChatGPT course"
                       className="w-12 h-12 object-contain"
                     />
                   </div>
@@ -593,6 +609,7 @@ const openSignupForm = () => {
       <ChatbotButton />
       <Footer />
     </div>
+    </>
   );
 };
 

@@ -5,6 +5,8 @@ import BlogSearch from "@/components/blog/BlogSearch";
 import BlogCategories from "@/components/blog/BlogCategories";
 import BlogCard from "@/components/blog/BlogCard";
 import blogPosts from "@/data/blogPosts.json";
+import SEO from "@/components/SEO";
+import { siteUrl } from "@/lib/seo";
 
 const BlogIndex = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -23,6 +25,12 @@ const BlogIndex = () => {
   });
 
   return (
+    <>
+      <SEO
+        title="Bloggur - Vitlíkisstovan"
+        description="Greinar um AI í Føroyum, vitlíki og ChatGPT."
+        url={`${siteUrl}/blog`}
+      />
     <div className="min-h-screen flex flex-col bg-background text-text">
       <Navigation />
 
@@ -80,6 +88,7 @@ const BlogIndex = () => {
 
       <Footer />
     </div>
+    </>
   );
 };
 
