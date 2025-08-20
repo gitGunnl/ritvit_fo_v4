@@ -3,11 +3,19 @@ import { Button } from "@/components/ui/button";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Link } from "react-router-dom";
+import SEO from "@/components/SEO";
+import { siteUrl } from "@/lib/seo";
 
 export default function About() {
   return (
-    <div className="min-h-screen bg-background text-text">
-      <Navigation />
+    <>
+      <SEO
+        title="Um Vitlíkisstovuna - AI í Føroyum"
+        description="Kunnu teg um hvussu Vitlíkisstovan hjálpir leiðarum og stjóra at nýta vitlíki."
+        url={`${siteUrl}/about`}
+      />
+      <div className="min-h-screen bg-background text-text">
+        <Navigation />
 
       {/* Hero Section */}
       <section className="py-20">
@@ -172,5 +180,6 @@ export default function About() {
 
       <Footer />
     </div>
+    </>
   );
 }

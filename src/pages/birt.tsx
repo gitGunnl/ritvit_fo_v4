@@ -8,6 +8,8 @@ import { Check, Copy, ChevronRight, ChevronLeft, Lock } from "lucide-react";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
 import { toast } from "sonner";
 import { Checkbox } from "@/components/ui/checkbox";
+import SEO from "@/components/SEO";
+import { siteUrl } from "@/lib/seo";
 
 // Define types for our prompts
 interface PromptTask {
@@ -237,6 +239,12 @@ const Birt = () => {
   }
 
   return (
+    <>
+      <SEO
+        title="Birt - Vitlíkisstovan"
+        description="Verkfærið Birt hjálpir tær at greina og deila tekst."
+        url={`${siteUrl}/birt`}
+      />
     <div className="min-h-screen flex flex-col bg-background text-text">
       <Navigation />
 
@@ -420,6 +428,7 @@ const Birt = () => {
 
       <Footer />
     </div>
+    </>
   );
 };
 

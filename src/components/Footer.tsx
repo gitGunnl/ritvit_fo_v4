@@ -11,7 +11,7 @@ const Footer = () => {
               <Link to="/" className="flex items-center">
                 <img
                   src="/logos/logo-header.png"
-                  alt="Logo"
+                  alt="Vitlíkisstovan logo"
                   className="h-10"
                   width="auto"
                   height="40"

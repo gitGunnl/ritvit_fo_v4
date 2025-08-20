@@ -22,7 +22,7 @@ const Navigation = () => {
             <Link to="/" className="flex items-center gap-3">
               <img
                 src="/logos/logo-header.png"
-                alt="Logo"
+                alt="Vitlíkisstovan logo"
                 className="h-10"
                 width="auto"
                 height="40"

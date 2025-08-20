@@ -4,6 +4,8 @@ import Footer from "@/components/Footer";
 import { Play, Pause, SkipBack, SkipForward } from "lucide-react";
 import MarkdownRenderer from "@/components/MarkdownRenderer";
 import { Button } from "@/components/ui/button";
+import SEO from "@/components/SEO";
+import { siteUrl } from "@/lib/seo";
 
 export default function TariffsPodcast() {
   // Add Open Graph metadata for proper thumbnail
@@ -536,6 +538,12 @@ In conclusion, the U.S. tariffs, while undoubtedly challenging, can be a **catal
   };
 
   return (
+    <>
+    <SEO
+      title="Tariffs Podcast - Vitlíkisstovan"
+      description="Podvarpur um ávirkan av tollum á Føroyar."
+      url={`${siteUrl}/tariffs-podcast`}
+    />
     <div className="min-h-screen bg-background text-text flex flex-col">
       <Navigation />
 
@@ -647,5 +655,6 @@ In conclusion, the U.S. tariffs, while undoubtedly challenging, can be a **catal
 
       <Footer />
     </div>
+    </>
   );
 }
