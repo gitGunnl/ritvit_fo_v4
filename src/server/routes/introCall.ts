@@ -55,41 +55,37 @@ export const handleIntroCallSubmission = async (req: Request, res: Response) => 
       timestamp: new Date().toISOString()
     });
 
-    // Send actual email notification
+    // Submit to Google Forms
     try {
-      // For now, we'll use a webhook or external service
-      // You can replace this with your preferred email service
-      const emailData = {
-        to: 'info@ritvit.fo',
-        subject: `New Intro Call Request from ${name} at ${company}`,
-        message: `
-          New Intro Call Request:
-          
-          Name: ${name}
-          Email: ${email}
-          Company: ${company}
-          Role: ${role}
-          Team Size: ${teamSize}
-          Microsoft 365/Copilot: ${microsoft365}
-          Preferred Time: ${preferredTime}
-          Notes: ${notes}
-          
-          UTM Parameters: ${JSON.stringify(utm_params, null, 2)}
-          Submitted: ${timestamp}
-        `
-      };
+      // Create FormData for Google Forms submission
+      const formData = new FormData();
+      formData.append("entry.XXXXXXXXX", name); // Replace with actual entry IDs
+      formData.append("entry.XXXXXXXXX", email);
+      formData.append("entry.XXXXXXXXX", company);
+      formData.append("entry.XXXXXXXXX", role);
+      formData.append("entry.XXXXXXXXX", teamSize || '');
+      formData.append("entry.XXXXXXXXX", microsoft365 || '');
+      formData.append("entry.XXXXXXXXX", preferredTime || '');
+      formData.append("entry.XXXXXXXXX", notes || '');
+      formData.append("entry.XXXXXXXXX", JSON.stringify(utm_params));
 
-      // Log for now - replace with actual email service
-      console.log('Sending email to info@ritvit.fo:', emailData);
+      // Submit to Google Forms with timeout
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), 10000);
+
+      await fetch('https://docs.google.com/forms/d/e/YOUR_FORM_ID/formResponse', {
+        method: 'POST',
+        body: formData,
+        mode: 'no-cors',
+        signal: controller.signal
+      });
+
+      clearTimeout(timeoutId);
+      console.log('Successfully submitted intro call request to Google Forms');
       
-      // TODO: Implement actual email sending with service like:
-      // - Nodemailer with SMTP
-      // - SendGrid API
-      // - Mailgun API
-      // - Or webhook to external service
-      
-    } catch (emailError) {
-      console.error('Failed to send email notification:', emailError);
+    } catch (error) {
+      console.error('Failed to submit to Google Forms:', error);
+      // Don't fail the request if Google Forms submission fails
     }
 
     res.status(200).json({ 
