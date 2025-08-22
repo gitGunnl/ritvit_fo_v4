@@ -59,13 +59,16 @@ export const handleIntroCallSubmission = async (req: Request, res: Response) => 
     try {
       // Create FormData for Google Forms submission
       const formData = new FormData();
-      formData.append("entry.744211008", name); // Replace with actual entry IDs
+      formData.append("entry.744211008", name);
       formData.append("entry.118668112", email);
       formData.append("entry.75387275", company);
       formData.append("entry.1650462245", role);
       formData.append("entry.1082936322", teamSize || '');
       formData.append("entry.2023709294", microsoft365 || '');
       formData.append("entry.39468664", preferredTime || '');
+      formData.append("entry.1234567890", notes || ''); // Add notes field - replace with actual entry ID
+      formData.append("entry.0987654321", consent ? 'Yes' : 'No'); // Add consent field - replace with actual entry ID
+      formData.append("entry.1111111111", JSON.stringify(utm_params)); // Add UTM tracking - replace with actual entry ID
 
       // Submit to Google Forms with timeout
       const controller = new AbortController();
