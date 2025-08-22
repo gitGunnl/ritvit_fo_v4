@@ -59,13 +59,13 @@ export const handleIntroCallSubmission = async (req: Request, res: Response) => 
     try {
       // Create FormData for Google Forms submission
       const formData = new FormData();
-      formData.append("entry.XXXXXXXXX", name); // Replace with actual entry IDs
-      formData.append("entry.XXXXXXXXX", email);
-      formData.append("entry.XXXXXXXXX", company);
-      formData.append("entry.XXXXXXXXX", role);
-      formData.append("entry.XXXXXXXXX", teamSize || '');
-      formData.append("entry.XXXXXXXXX", microsoft365 || '');
-      formData.append("entry.XXXXXXXXX", preferredTime || '');
+      formData.append("entry.744211008", name); // Replace with actual entry IDs
+      formData.append("entry.118668112", email);
+      formData.append("entry.75387275", company);
+      formData.append("entry.1650462245", role);
+      formData.append("entry.1082936322", teamSize || '');
+      formData.append("entry.2023709294", microsoft365 || '');
+      formData.append("entry.39468664", preferredTime || '');
       formData.append("entry.XXXXXXXXX", notes || '');
       formData.append("entry.XXXXXXXXX", JSON.stringify(utm_params));
 
@@ -73,7 +73,7 @@ export const handleIntroCallSubmission = async (req: Request, res: Response) => 
       const controller = new AbortController();
       const timeoutId = setTimeout(() => controller.abort(), 10000);
 
-      await fetch('https://docs.google.com/forms/d/e/YOUR_FORM_ID/formResponse', {
+      await fetch('https://docs.google.com/forms/d/e/1FAIpQLSc0D-nlO13jnsg9cLP8WyknKpWwTfl09XpkKsO__VXqzjH9Xw/formResponse', {
         method: 'POST',
         body: formData,
         mode: 'no-cors',
