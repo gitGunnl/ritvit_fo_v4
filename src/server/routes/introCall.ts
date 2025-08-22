@@ -66,8 +66,6 @@ export const handleIntroCallSubmission = async (req: Request, res: Response) => 
       formData.append("entry.1082936322", teamSize || '');
       formData.append("entry.2023709294", microsoft365 || '');
       formData.append("entry.39468664", preferredTime || '');
-      formData.append("entry.XXXXXXXXX", notes || '');
-      formData.append("entry.XXXXXXXXX", JSON.stringify(utm_params));
 
       // Submit to Google Forms with timeout
       const controller = new AbortController();
