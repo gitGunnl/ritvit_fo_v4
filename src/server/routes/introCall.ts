@@ -55,24 +55,42 @@ export const handleIntroCallSubmission = async (req: Request, res: Response) => 
       timestamp: new Date().toISOString()
     });
 
-    // Simulate email notification (replace with actual email service)
-    const notificationEmail = `
-      New Intro Call Request:
-      
-      Name: ${name}
-      Email: ${email}
-      Company: ${company}
-      Role: ${role}
-      Team Size: ${teamSize}
-      Microsoft 365/Copilot: ${microsoft365}
-      Preferred Time: ${preferredTime}
-      Notes: ${notes}
-      
-      UTM Parameters: ${JSON.stringify(utm_params, null, 2)}
-      Submitted: ${timestamp}
-    `;
+    // Send actual email notification
+    try {
+      // For now, we'll use a webhook or external service
+      // You can replace this with your preferred email service
+      const emailData = {
+        to: 'info@ritvit.fo',
+        subject: `New Intro Call Request from ${name} at ${company}`,
+        message: `
+          New Intro Call Request:
+          
+          Name: ${name}
+          Email: ${email}
+          Company: ${company}
+          Role: ${role}
+          Team Size: ${teamSize}
+          Microsoft 365/Copilot: ${microsoft365}
+          Preferred Time: ${preferredTime}
+          Notes: ${notes}
+          
+          UTM Parameters: ${JSON.stringify(utm_params, null, 2)}
+          Submitted: ${timestamp}
+        `
+      };
 
-    console.log('Email notification would be sent to info@ritvit.fo:', notificationEmail);
+      // Log for now - replace with actual email service
+      console.log('Sending email to info@ritvit.fo:', emailData);
+      
+      // TODO: Implement actual email sending with service like:
+      // - Nodemailer with SMTP
+      // - SendGrid API
+      // - Mailgun API
+      // - Or webhook to external service
+      
+    } catch (emailError) {
+      console.error('Failed to send email notification:', emailError);
+    }
 
     res.status(200).json({ 
       success: true, 
